@@ -5,10 +5,6 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _jquery = require('jquery');
-
-var _jquery2 = _interopRequireDefault(_jquery);
-
 var _lodash = require('lodash');
 
 var _lodash2 = _interopRequireDefault(_lodash);
@@ -17,7 +13,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.default = {
 	render: function render(cb) {
-		(0, _jquery2.default)(function () {
+		$(function () {
 			return cb();
 		});
 	},

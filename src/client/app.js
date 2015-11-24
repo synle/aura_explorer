@@ -1,10 +1,8 @@
 //utils
 import util from './src/client/util';
 
-global.React = React;
-
 //render
-$(() => {
+util.render( () => {
     //navs
     const navItems = $(`
         <div id="navbar" class="navbar-collapse collapse">
@@ -19,7 +17,7 @@ $(() => {
 	//search box
 	const searchForm = $(`
 		<form class="navbar-form navbar-right">
-        	<input id="headerSearchBox" type="text" class="form-control" placeholder="Search... (<namespace>:<control>)">
+        	<input id="headerSearchBox" type="text" class="form-control" placeholder="Search...">
     	</form>
     `)
     .submit((e) => {

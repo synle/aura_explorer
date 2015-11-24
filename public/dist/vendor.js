@@ -20806,3 +20806,8 @@ module.exports = warning;
 })(function(React) {
   return React.__SECRET_DOM_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
 });
+
+//this script is appended to vendor script to make certain external
+//lib available in global
+global.React = React;
+global.$ = $;

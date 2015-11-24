@@ -66,7 +66,7 @@ var CountTableComponent = React.createClass({
 						onChange: this.onSearchTermChanged,
 						value: this.state.searchTerm,
 						className: 'form-control',
-						placeholder: 'Enter text to search ... (<namespace>:<control>)',
+						placeholder: 'Enter text to search ...',
 						'aria-describedby': 'search-term-input' })
 				)
 			),

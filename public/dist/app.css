@@ -6767,16 +6767,16 @@ button.close {
 a {
   cursor: pointer;
 }
+#btnScrollToTop {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
 #nav {
   margin-bottom: 20px;
 }
 #nav #headerSearchBox {
   width: 250px;
-}
-#nav #btnScrollToTop {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
 }
 #body {
   margin-top: 60px;
