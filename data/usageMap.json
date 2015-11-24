@@ -9999,7 +9999,6 @@
    "controlFullName": "ui:tooltip.cmp",
    "attribs": {
     "name": "isVisible",
-    "access": "INTERNAL",
     "type": "Boolean",
     "description": "Specifies whether the tooltip is visible. The default is \"false\".",
     "default": "false"
@@ -10116,6 +10115,17 @@
    "controlName": "tooltip.cmp",
    "controlFullName": "ui:tooltip.cmp",
    "attribs": {
+    "name": "disableFocusTrigger",
+    "type": "Integer",
+    "access": "INTERNAL",
+    "description": "Disabled the focus trigger on the root element. Child focusable elements are not affected"
+   }
+  },
+  {
+   "controlNameSpace": "ui",
+   "controlName": "tooltip.cmp",
+   "controlFullName": "ui:tooltip.cmp",
+   "attribs": {
     "name": "direction",
     "type": "String",
     "access": "INTERNAL",
@@ -10139,6 +10149,200 @@
    "controlNameSpace": "ui",
    "controlName": "tooltip.cmp",
    "controlFullName": "ui:tooltip.cmp",
+   "attribs": {
+    "name": "domId",
+    "type": "String",
+    "access": "INTERNAL",
+    "description": "DOM id of the input element. By default, this attribute resolved to the globalId of the component to avoid id collision."
+   }
+  },
+  {
+   "controlNameSpace": "ui",
+   "controlName": "tooltipAdvanced.cmp",
+   "controlFullName": "ui:tooltipAdvanced.cmp",
+   "attribs": {
+    "name": "isVisible",
+    "type": "Boolean",
+    "description": "Specifies whether the tooltip is visible. The default is \"false\".",
+    "default": "false"
+   }
+  },
+  {
+   "controlNameSpace": "ui",
+   "controlName": "tooltipAdvanced.cmp",
+   "controlFullName": "ui:tooltipAdvanced.cmp",
+   "attribs": {
+    "name": "tooltipBody",
+    "type": "String",
+    "default": "false",
+    "description": "The message to display in the tooltip"
+   }
+  },
+  {
+   "controlNameSpace": "ui",
+   "controlName": "tooltipAdvanced.cmp",
+   "controlFullName": "ui:tooltipAdvanced.cmp",
+   "attribs": {
+    "name": "target",
+    "type": "Aura.Component",
+    "access": "INTERNAL"
+   }
+  },
+  {
+   "controlNameSpace": "ui",
+   "controlName": "tooltipAdvanced.cmp",
+   "controlFullName": "ui:tooltipAdvanced.cmp",
+   "attribs": {
+    "name": "classList",
+    "type": "String",
+    "access": "INTERNAL"
+   }
+  },
+  {
+   "controlNameSpace": "ui",
+   "controlName": "tooltipAdvanced.cmp",
+   "controlFullName": "ui:tooltipAdvanced.cmp",
+   "attribs": {
+    "name": "direction",
+    "type": "String",
+    "access": "INTERNAL"
+   }
+  },
+  {
+   "controlNameSpace": "ui",
+   "controlName": "tooltipAdvanced.cmp",
+   "controlFullName": "ui:tooltipAdvanced.cmp",
+   "attribs": {
+    "name": "advanced",
+    "type": "Boolean",
+    "access": "INTERNAL",
+    "default": "true"
+   }
+  },
+  {
+   "controlNameSpace": "ui",
+   "controlName": "tooltipAdvanced.cmp",
+   "controlFullName": "ui:tooltipAdvanced.cmp",
+   "attribs": {
+    "name": "disabled",
+    "type": "Boolean",
+    "access": "INTERNAL",
+    "default": "false",
+    "description": "Specifies whether the tooltip is disabled. The default is \"false\"."
+   }
+  },
+  {
+   "controlNameSpace": "ui",
+   "controlName": "tooltipAdvanced.cmp",
+   "controlFullName": "ui:tooltipAdvanced.cmp",
+   "attribs": {
+    "name": "fadeOut",
+    "access": "INTERNAL",
+    "default": "0",
+    "type": "Boolean",
+    "description": "Fade out"
+   }
+  },
+  {
+   "controlNameSpace": "ui",
+   "controlName": "tooltipAdvanced.cmp",
+   "controlFullName": "ui:tooltipAdvanced.cmp",
+   "attribs": {
+    "name": "fadeIn",
+    "access": "INTERNAL",
+    "default": "0",
+    "type": "Boolean",
+    "description": "Fade in"
+   }
+  },
+  {
+   "controlNameSpace": "ui",
+   "controlName": "tooltipAdvanced.cmp",
+   "controlFullName": "ui:tooltipAdvanced.cmp",
+   "attribs": {
+    "name": "fadeOutDuration",
+    "access": "INTERNAL",
+    "default": "0",
+    "type": "Integer",
+    "description": "Fade out duration in ms"
+   }
+  },
+  {
+   "controlNameSpace": "ui",
+   "controlName": "tooltipAdvanced.cmp",
+   "controlFullName": "ui:tooltipAdvanced.cmp",
+   "attribs": {
+    "name": "fadeInDuration",
+    "access": "INTERNAL",
+    "default": "0",
+    "type": "Integer",
+    "description": "Fade in duration in ms"
+   }
+  },
+  {
+   "controlNameSpace": "ui",
+   "controlName": "tooltipAdvanced.cmp",
+   "controlFullName": "ui:tooltipAdvanced.cmp",
+   "attribs": {
+    "name": "delay",
+    "default": "0",
+    "access": "INTERNAL",
+    "type": "Integer",
+    "description": "Appearance delay in ms"
+   }
+  },
+  {
+   "controlNameSpace": "ui",
+   "controlName": "tooltipAdvanced.cmp",
+   "controlFullName": "ui:tooltipAdvanced.cmp",
+   "attribs": {
+    "name": "class",
+    "type": "String",
+    "access": "INTERNAL",
+    "default": "",
+    "description": "A CSS style to be attached to the tooltip. This style is added in addition to base styles output by the component."
+   }
+  },
+  {
+   "controlNameSpace": "ui",
+   "controlName": "tooltipAdvanced.cmp",
+   "controlFullName": "ui:tooltipAdvanced.cmp",
+   "attribs": {
+    "name": "tooltipStyle",
+    "type": "String",
+    "access": "INTERNAL",
+    "default": "false",
+    "description": "The style of the tooltip"
+   }
+  },
+  {
+   "controlNameSpace": "ui",
+   "controlName": "tooltipAdvanced.cmp",
+   "controlFullName": "ui:tooltipAdvanced.cmp",
+   "attribs": {
+    "name": "domClass",
+    "type": "String",
+    "access": "INTERNAL",
+    "description": "The classes to include in the dom",
+    "default": "advanced-wrapper "
+   }
+  },
+  {
+   "controlNameSpace": "ui",
+   "controlName": "tooltipAdvanced.cmp",
+   "controlFullName": "ui:tooltipAdvanced.cmp",
+   "attribs": {
+    "name": "allowFlips",
+    "default": "true",
+    "type": "Boolean",
+    "access": "INTERNAL",
+    "description": "If true the tooltip will change direction automatically when needed to stay in the viewport"
+   }
+  },
+  {
+   "controlNameSpace": "ui",
+   "controlName": "tooltipAdvanced.cmp",
+   "controlFullName": "ui:tooltipAdvanced.cmp",
    "attribs": {
     "name": "domId",
     "type": "String",
@@ -22135,6 +22339,15 @@
    }
   },
   {
+   "controlNameSpace": "ui",
+   "controlName": "tooltip.cmp",
+   "controlFullName": "ui:tooltip.cmp",
+   "attribs": {
+    "resource": "markup://ui:tooltipAdvanced",
+    "type": "COMPONENT"
+   }
+  },
+  {
    "controlNameSpace": "actionsTest",
    "controlName": "transactions.cmp",
    "controlFullName": "actionsTest:transactions.cmp",
@@ -24746,47 +24959,16 @@
    "controlName": "tooltip.cmp",
    "controlFullName": "ui:tooltip.cmp",
    "attribs": {
+    "aura:flavorable": "true",
+    "onclick": "{!c.handleClick}",
+    "onmouseover": "{!c.handleMouseOver}",
+    "onmouseout": "{!c.handleMouseOut}",
+    "onkeypress": "{!c.handleKeyPress}",
+    "onfocus": "{!c.handleFocus}",
+    "onblur": "{!c.handleBlur}",
     "class": "{!(v.triggerClass ? v.triggerClass + ' ' : '') + 'tooltip-trigger'}",
     "aria-describedby": "{!v.domId}",
-    "tabindex": "{!v.tabIndex}",
-    "onkeypress": "{!c.handleKeyPress}"
-   }
-  },
-  {
-   "controlNameSpace": "ui",
-   "controlName": "tooltip.cmp",
-   "controlFullName": "ui:tooltip.cmp",
-   "attribs": {
-    "class": "uiTooltip advanced-wrapper",
-    "aura:flavorable": "true",
-    "aura:id": "tooltip",
-    "aria-hidden": "{!!v.isVisible}"
-   }
-  },
-  {
-   "controlNameSpace": "ui",
-   "controlName": "tooltip.cmp",
-   "controlFullName": "ui:tooltip.cmp",
-   "attribs": {
-    "aura:id": "tooltipwrapper"
-   }
-  },
-  {
-   "controlNameSpace": "ui",
-   "controlName": "tooltip.cmp",
-   "controlFullName": "ui:tooltip.cmp",
-   "attribs": {
-    "class": "pointer pointer-advanced"
-   }
-  },
-  {
-   "controlNameSpace": "ui",
-   "controlName": "tooltip.cmp",
-   "controlFullName": "ui:tooltip.cmp",
-   "attribs": {
-    "aura:id": "tooltipbody",
-    "class": "tooltip-advanced tooltip-body",
-    "id": "{!v.domId}"
+    "tabindex": "{!v.tabIndex}"
    }
   },
   {
@@ -24798,6 +24980,43 @@
     "aria-describedby": "{!v.domId}",
     "class": "{!(v.triggerClass ? v.triggerClass + ' ' : '') + 'tooltip-trigger tooltip-basic'}",
     "tabindex": "{!v.tabIndex}"
+   }
+  },
+  {
+   "controlNameSpace": "ui",
+   "controlName": "tooltipAdvanced.cmp",
+   "controlFullName": "ui:tooltipAdvanced.cmp",
+   "attribs": {
+    "class": "{!v.classList}",
+    "aura:flavorable": "true",
+    "aura:id": "tooltip",
+    "style": "{!v.tooltipStyle}",
+    "aria-hidden": "{!!v.isVisible}"
+   }
+  },
+  {
+   "controlNameSpace": "ui",
+   "controlName": "tooltipAdvanced.cmp",
+   "controlFullName": "ui:tooltipAdvanced.cmp",
+   "attribs": {
+    "aura:id": "tooltipwrapper"
+   }
+  },
+  {
+   "controlNameSpace": "ui",
+   "controlName": "tooltipAdvanced.cmp",
+   "controlFullName": "ui:tooltipAdvanced.cmp",
+   "attribs": {
+    "class": "pointer pointer-advanced"
+   }
+  },
+  {
+   "controlNameSpace": "ui",
+   "controlName": "tooltipAdvanced.cmp",
+   "controlFullName": "ui:tooltipAdvanced.cmp",
+   "attribs": {
+    "aura:id": "tooltipbody",
+    "class": "tooltip-advanced tooltip-body"
    }
   },
   {
@@ -57417,6 +57636,16 @@
   },
   {
    "controlNameSpace": "ui",
+   "controlName": "tooltipAdvanced.cmp",
+   "controlFullName": "ui:tooltipAdvanced.cmp",
+   "attribs": {
+    "name": "change",
+    "value": "{!v.isVisible}",
+    "action": "{!c.handleVis}"
+   }
+  },
+  {
+   "controlNameSpace": "ui",
    "controlName": "tree.cmp",
    "controlFullName": "ui:tree.cmp",
    "attribs": {
@@ -65554,6 +65783,12 @@
    "attribs": {}
   },
   {
+   "controlNameSpace": "uiExamples",
+   "controlName": "panelsTooltipsDemo.app",
+   "controlFullName": "uiExamples:panelsTooltipsDemo.app",
+   "attribs": {}
+  },
+  {
    "controlNameSpace": "uitest",
    "controlName": "containerManagerTest.app",
    "controlFullName": "uitest:containerManagerTest.app",
@@ -65565,6 +65800,30 @@
    "controlNameSpace": "uitest",
    "controlName": "panel2_Test.app",
    "controlFullName": "uitest:panel2_Test.app",
+   "attribs": {}
+  },
+  {
+   "controlNameSpace": "uiExamples",
+   "controlName": "tooltipExample.cmp",
+   "controlFullName": "uiExamples:tooltipExample.cmp",
+   "attribs": {}
+  },
+  {
+   "controlNameSpace": "uitest",
+   "controlName": "tooltipTestPosition.cmp",
+   "controlFullName": "uitest:tooltipTestPosition.cmp",
+   "attribs": {}
+  },
+  {
+   "controlNameSpace": "uitest",
+   "controlName": "tooltip_FullTest.cmp",
+   "controlFullName": "uitest:tooltip_FullTest.cmp",
+   "attribs": {}
+  },
+  {
+   "controlNameSpace": "uitest",
+   "controlName": "tooltip_Test.cmp",
+   "controlFullName": "uitest:tooltip_Test.cmp",
    "attribs": {}
   }
  ],
@@ -65647,7 +65906,8 @@
     "advanced": "false",
     "triggerClass": "my-tt",
     "tabIndex": "-1",
-    "tooltipBody": "This is a CSS-only tooltip, perfect for long lists. (long tooltips are ok too)"
+    "tooltipBody": "This is a CSS-only tooltip, perfect for long lists. (long tooltips are ok too)",
+    "fadeInDuration": "400"
    }
   },
   {
@@ -65670,6 +65930,7 @@
     "fadeOutDuration": "500",
     "triggerClass": "my-tt",
     "advanced": "true",
+    "direction": "east",
     "trigger": "click",
     "tooltipBody": "Also it fades in!"
    }
@@ -65682,7 +65943,7 @@
     "aura:flavor": "pop",
     "fadeInDuration": "500",
     "fadeOutDuration": "500",
-    "direction": "south",
+    "direction": "east",
     "triggerClass": "my-tt",
     "advanced": "true",
     "tooltipBody": "This is tooltip goes to the east, also supported: south and west!"
@@ -65732,6 +65993,7 @@
    "controlName": "tooltipExample.cmp",
    "controlFullName": "uiExamples:tooltipExample.cmp",
    "attribs": {
+    "class": "magic",
     "tooltipBody": "Click here for more info"
    }
   },
@@ -65760,7 +66022,7 @@
    "controlName": "tooltipExample.cmp",
    "controlFullName": "uiExamples:tooltipExample.cmp",
    "attribs": {
-    "delay": "3000",
+    "delay": "1000",
     "fadeInDuration": "500",
     "advanced": "false",
     "fadeOutDuration": "500",
@@ -65782,6 +66044,7 @@
    "controlName": "tooltipExample.cmp",
    "controlFullName": "uiExamples:tooltipExample.cmp",
    "attribs": {
+    "class": "banana",
     "advanced": "true",
     "direction": "east",
     "disabled": "true",
@@ -65806,6 +66069,7 @@
    "controlFullName": "uitest:tooltipTestPosition.cmp",
    "attribs": {
     "aura:id": "topLeftWest",
+    "class": "topLeftWest",
     "advanced": "true",
     "direction": "west",
     "trigger": "hover"
@@ -65817,6 +66081,7 @@
    "controlFullName": "uitest:tooltipTestPosition.cmp",
    "attribs": {
     "aura:id": "topLeftNorth",
+    "class": "topLeftNorth",
     "advanced": "true",
     "direction": "north",
     "trigger": "hover"
@@ -65828,6 +66093,7 @@
    "controlFullName": "uitest:tooltipTestPosition.cmp",
    "attribs": {
     "aura:id": "topLeftSouth",
+    "class": "topLeftSouth",
     "advanced": "true",
     "direction": "south",
     "trigger": "hover"
@@ -65839,6 +66105,7 @@
    "controlFullName": "uitest:tooltipTestPosition.cmp",
    "attribs": {
     "aura:id": "topLeftEast",
+    "class": "topLeftEast",
     "advanced": "true",
     "direction": "east",
     "trigger": "hover"
@@ -65850,6 +66117,7 @@
    "controlFullName": "uitest:tooltipTestPosition.cmp",
    "attribs": {
     "aura:id": "topCenterWest",
+    "class": "topCenterWest",
     "advanced": "true",
     "direction": "west",
     "trigger": "hover"
@@ -65861,6 +66129,7 @@
    "controlFullName": "uitest:tooltipTestPosition.cmp",
    "attribs": {
     "aura:id": "topCenterNorth",
+    "class": "topCenterNorth",
     "advanced": "true",
     "direction": "west",
     "trigger": "hover"
@@ -65872,6 +66141,7 @@
    "controlFullName": "uitest:tooltipTestPosition.cmp",
    "attribs": {
     "aura:id": "topCenterSouth",
+    "class": "topCenterSouth",
     "advanced": "true",
     "direction": "south",
     "trigger": "hover"
@@ -65883,6 +66153,7 @@
    "controlFullName": "uitest:tooltipTestPosition.cmp",
    "attribs": {
     "aura:id": "topCenterEast",
+    "class": "topCenterEast",
     "advanced": "true",
     "direction": "west",
     "trigger": "hover"
@@ -65894,6 +66165,7 @@
    "controlFullName": "uitest:tooltipTestPosition.cmp",
    "attribs": {
     "aura:id": "topRightWest",
+    "class": "topRightWest",
     "advanced": "true",
     "direction": "west",
     "trigger": "hover"
@@ -65905,6 +66177,7 @@
    "controlFullName": "uitest:tooltipTestPosition.cmp",
    "attribs": {
     "aura:id": "topRightNorth",
+    "class": "topRightNorth",
     "advanced": "true",
     "direction": "north",
     "trigger": "hover"
@@ -65916,6 +66189,7 @@
    "controlFullName": "uitest:tooltipTestPosition.cmp",
    "attribs": {
     "aura:id": "topRightSouth",
+    "class": "topRightSouth",
     "advanced": "true",
     "direction": "south",
     "trigger": "hover"
@@ -65927,6 +66201,7 @@
    "controlFullName": "uitest:tooltipTestPosition.cmp",
    "attribs": {
     "aura:id": "topRightEast",
+    "class": "topRightEast",
     "advanced": "true",
     "direction": "east",
     "trigger": "hover"
@@ -65938,6 +66213,7 @@
    "controlFullName": "uitest:tooltipTestPosition.cmp",
    "attribs": {
     "aura:id": "leftCenterWest",
+    "class": "leftCenterWest",
     "advanced": "true",
     "direction": "west",
     "trigger": "hover"
@@ -65949,6 +66225,7 @@
    "controlFullName": "uitest:tooltipTestPosition.cmp",
    "attribs": {
     "aura:id": "leftCenterNorth",
+    "class": "leftCenterNorth",
     "advanced": "true",
     "direction": "north",
     "trigger": "hover"
@@ -65960,6 +66237,7 @@
    "controlFullName": "uitest:tooltipTestPosition.cmp",
    "attribs": {
     "aura:id": "leftCenterSouth",
+    "class": "leftCenterSouth",
     "advanced": "true",
     "direction": "south",
     "trigger": "hover"
@@ -65971,6 +66249,7 @@
    "controlFullName": "uitest:tooltipTestPosition.cmp",
    "attribs": {
     "aura:id": "leftCenterEast",
+    "class": "leftCenterEast",
     "advanced": "true",
     "direction": "east",
     "trigger": "hover"
@@ -65982,6 +66261,7 @@
    "controlFullName": "uitest:tooltipTestPosition.cmp",
    "attribs": {
     "aura:id": "centerCenterWest",
+    "class": "centerCenterWest",
     "advanced": "true",
     "direction": "west",
     "trigger": "hover"
@@ -65993,6 +66273,7 @@
    "controlFullName": "uitest:tooltipTestPosition.cmp",
    "attribs": {
     "aura:id": "centerCenterNorth",
+    "class": "centerCenterNorth",
     "advanced": "true",
     "direction": "north",
     "trigger": "hover"
@@ -66004,6 +66285,7 @@
    "controlFullName": "uitest:tooltipTestPosition.cmp",
    "attribs": {
     "aura:id": "centerCenterSouth",
+    "class": "centerCenterSouth",
     "advanced": "true",
     "direction": "south",
     "trigger": "hover"
@@ -66015,6 +66297,7 @@
    "controlFullName": "uitest:tooltipTestPosition.cmp",
    "attribs": {
     "aura:id": "centerCenterEast",
+    "class": "centerCenterEast",
     "advanced": "true",
     "direction": "east",
     "trigger": "hover"
@@ -66026,6 +66309,7 @@
    "controlFullName": "uitest:tooltipTestPosition.cmp",
    "attribs": {
     "aura:id": "rightCenterWest",
+    "class": "rightCenterWest",
     "advanced": "true",
     "direction": "west",
     "trigger": "hover"
@@ -66037,6 +66321,7 @@
    "controlFullName": "uitest:tooltipTestPosition.cmp",
    "attribs": {
     "aura:id": "rightCenterNorth",
+    "class": "rightCenterNorth",
     "advanced": "true",
     "direction": "north",
     "trigger": "hover"
@@ -66048,6 +66333,7 @@
    "controlFullName": "uitest:tooltipTestPosition.cmp",
    "attribs": {
     "aura:id": "rightCenterSouth",
+    "class": "rightCenterSouth",
     "advanced": "true",
     "direction": "south",
     "trigger": "hover"
@@ -66059,6 +66345,7 @@
    "controlFullName": "uitest:tooltipTestPosition.cmp",
    "attribs": {
     "aura:id": "rightCenterEast",
+    "class": "rightCenterEast",
     "advanced": "true",
     "direction": "east",
     "trigger": "hover"
@@ -66070,6 +66357,7 @@
    "controlFullName": "uitest:tooltipTestPosition.cmp",
    "attribs": {
     "aura:id": "bottomRightWest",
+    "class": "bottomRightWest",
     "advanced": "true",
     "direction": "west",
     "trigger": "hover"
@@ -66081,6 +66369,7 @@
    "controlFullName": "uitest:tooltipTestPosition.cmp",
    "attribs": {
     "aura:id": "bottomRightNorth",
+    "class": "bottomRightNorth",
     "advanced": "true",
     "direction": "north",
     "trigger": "hover"
@@ -66092,6 +66381,7 @@
    "controlFullName": "uitest:tooltipTestPosition.cmp",
    "attribs": {
     "aura:id": "bottomRightSouth",
+    "class": "bottomRightSouth",
     "advanced": "true",
     "direction": "south",
     "trigger": "hover"
@@ -66103,6 +66393,7 @@
    "controlFullName": "uitest:tooltipTestPosition.cmp",
    "attribs": {
     "aura:id": "bottomRightEast",
+    "class": "bottomRightEast",
     "advanced": "true",
     "direction": "east",
     "trigger": "hover"
@@ -66114,6 +66405,7 @@
    "controlFullName": "uitest:tooltipTestPosition.cmp",
    "attribs": {
     "aura:id": "bottomCenterWest",
+    "class": "bottomCenterWest",
     "advanced": "true",
     "direction": "west",
     "trigger": "hover"
@@ -66125,6 +66417,7 @@
    "controlFullName": "uitest:tooltipTestPosition.cmp",
    "attribs": {
     "aura:id": "bottomCenterNorth",
+    "class": "bottomCenterNorth",
     "advanced": "true",
     "direction": "north",
     "trigger": "hover"
@@ -66136,6 +66429,7 @@
    "controlFullName": "uitest:tooltipTestPosition.cmp",
    "attribs": {
     "aura:id": "bottomCenterSouth",
+    "class": "bottomCenterSouth",
     "advanced": "true",
     "direction": "south",
     "trigger": "hover"
@@ -66147,6 +66441,7 @@
    "controlFullName": "uitest:tooltipTestPosition.cmp",
    "attribs": {
     "aura:id": "bottomCenterEast",
+    "class": "bottomCenterEast",
     "advanced": "true",
     "direction": "east",
     "trigger": "hover"
@@ -66158,6 +66453,7 @@
    "controlFullName": "uitest:tooltipTestPosition.cmp",
    "attribs": {
     "aura:id": "bottomLeftWest",
+    "class": "bottomLeftWest",
     "advanced": "true",
     "direction": "west",
     "trigger": "hover"
@@ -66169,6 +66465,7 @@
    "controlFullName": "uitest:tooltipTestPosition.cmp",
    "attribs": {
     "aura:id": "bottomLeftNorth",
+    "class": "bottomLeftNorth",
     "advanced": "true",
     "direction": "north",
     "trigger": "hover"
@@ -66180,6 +66477,7 @@
    "controlFullName": "uitest:tooltipTestPosition.cmp",
    "attribs": {
     "aura:id": "bottomLeftSouth",
+    "class": "bottomLeftSouth",
     "advanced": "true",
     "direction": "south",
     "trigger": "hover"
@@ -66191,6 +66489,7 @@
    "controlFullName": "uitest:tooltipTestPosition.cmp",
    "attribs": {
     "aura:id": "bottomLeftEast",
+    "class": "bottomLeftEast",
     "advanced": "true",
     "direction": "east",
     "trigger": "hover"
@@ -66201,7 +66500,8 @@
    "controlName": "tooltip_FullTest.cmp",
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
-    "aura:id": "default"
+    "aura:id": "default",
+    "class": "default"
    }
   },
   {
@@ -66210,6 +66510,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "bodyalphanum",
+    "class": "bodyalphanum",
     "advanced": "true",
     "trigger": "hover",
     "tooltipBody": "Tooltip Message"
@@ -66221,6 +66522,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "bodyhtmlimg",
+    "class": "bodyhtmlimg",
     "advanced": "true",
     "trigger": "hover",
     "tooltipBody": "Tooltip Message"
@@ -66232,6 +66534,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "bodyhtmltbl",
+    "class": "bodyhtmltbl",
     "advanced": "true",
     "trigger": "hover",
     "tooltipBody": "Tooltip Message"
@@ -66243,6 +66546,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "tooltip7",
+    "class": "tooltip7",
     "advanced": "false",
     "trigger": "hover",
     "tooltipBody": "Tooltip Message"
@@ -66254,6 +66558,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "disabledfalse",
+    "class": "disabledfalse",
     "advanced": "false",
     "disabled": "false",
     "trigger": "hover",
@@ -66266,6 +66571,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "disabledtrue",
+    "class": "disabledtrue",
     "advanced": "false",
     "disabled": "true",
     "trigger": "hover",
@@ -66278,6 +66584,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "disabledempty",
+    "class": "disabledempty",
     "advanced": "false",
     "disabled": "",
     "trigger": "hover",
@@ -66290,6 +66597,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "advTrueTooltip",
+    "class": "advTrueTooltip",
     "advanced": "true",
     "trigger": "none",
     "tooltipBody": "Tooltip Message"
@@ -66301,6 +66609,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "advFalseTooltip",
+    "class": "advFalseTooltip",
     "advanced": "false",
     "trigger": "none",
     "tooltipBody": "Tooltip Message"
@@ -66312,6 +66621,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "advEmptyTooltip",
+    "class": "advEmptyTooltip",
     "advanced": "false",
     "trigger": "none",
     "tooltipBody": "Tooltip Message"
@@ -66323,6 +66633,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "triggerhover",
+    "class": "triggerhover",
     "advanced": "true",
     "trigger": "hover",
     "tooltipBody": "Tooltip Message"
@@ -66334,6 +66645,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "triggerclick",
+    "class": "triggerclick",
     "advanced": "true",
     "trigger": "click",
     "tooltipBody": "Tooltip Message",
@@ -66346,6 +66658,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "triggerfocus",
+    "class": "triggerfocus",
     "advanced": "true",
     "trigger": "focus",
     "tooltipBody": "Tooltip Message"
@@ -66357,6 +66670,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "triggernone",
+    "class": "triggernone",
     "advanced": "true",
     "trigger": "none",
     "tooltipBody": "Tooltip Message"
@@ -66368,6 +66682,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "triggerempty",
+    "class": "triggerempty",
     "advanced": "true",
     "trigger": "",
     "tooltipBody": "Tooltip Message"
@@ -66379,6 +66694,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "triggerhoveradvfalse",
+    "class": "triggerhoveradvfalse",
     "advanced": "false",
     "trigger": "hover",
     "tooltipBody": "Tooltip Message"
@@ -66390,6 +66706,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "triggerclickadvfalse",
+    "class": "triggerclickadvfalse",
     "advanced": "false",
     "trigger": "click",
     "tooltipBody": "Tooltip Message"
@@ -66401,6 +66718,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "triggerfocusadvfalse",
+    "class": "triggerfocusadvfalse",
     "advanced": "false",
     "trigger": "focus",
     "tooltipBody": "Tooltip Message"
@@ -66412,6 +66730,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "triggernoneadvfalse",
+    "class": "triggernoneadvfalse",
     "advanced": "false",
     "trigger": "none",
     "tooltipBody": "Tooltip Message"
@@ -66423,6 +66742,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "triggeremptyadvfalse",
+    "class": "triggeremptyadvfalse",
     "advanced": "false",
     "trigger": "",
     "tooltipBody": "Tooltip Message"
@@ -66434,6 +66754,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "trigClassAlpha",
+    "class": "trigClassAlpha",
     "advanced": "false",
     "triggerClass": "myTriggerClass",
     "trigger": "hover",
@@ -66446,6 +66767,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "trigClassNum",
+    "class": "trigClassNum",
     "advanced": "false",
     "triggerClass": "1234",
     "trigger": "hover",
@@ -66458,6 +66780,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "trigClassSpl",
+    "class": "trigClassSpl",
     "advanced": "false",
     "triggerClass": "ab:12;$%∆∑π¬",
     "trigger": "hover",
@@ -66470,6 +66793,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "fadeInDuration0",
+    "class": "fadeInDuration0",
     "advanced": "false",
     "fadeIn": "true",
     "fadeInDuration": "0",
@@ -66483,6 +66807,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "fadeInDuration200",
+    "class": "fadeInDuration200",
     "advanced": "false",
     "trigger": "hover",
     "fadeIn": "true",
@@ -66496,6 +66821,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "fadeInDuration5000",
+    "class": "fadeInDuration5000",
     "advanced": "false",
     "trigger": "hover",
     "fadeIn": "true",
@@ -66509,6 +66835,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "fadeInDuration-1000",
+    "class": "fadeInDuration-1000",
     "advanced": "false",
     "trigger": "hover",
     "fadeIn": "true",
@@ -66522,6 +66849,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "fadeInDurationempty",
+    "class": "fadeInDurationempty",
     "advanced": "false",
     "trigger": "hover",
     "fadeIn": "true",
@@ -66536,6 +66864,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "fadeOutDuration0",
+    "class": "fadeOutDuration0",
     "advanced": "false",
     "fadeOut": "true",
     "fadeOutDuration": "0",
@@ -66550,6 +66879,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "fadeOutDuration200",
+    "class": "fadeOutDuration200",
     "advanced": "false",
     "trigger": "hover",
     "fadeOut": "true",
@@ -66563,6 +66893,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "fadeOutDuration5000",
+    "class": "fadeOutDuration5000",
     "advanced": "false",
     "trigger": "hover",
     "fadeOut": "true",
@@ -66577,6 +66908,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "fadeOutDuration-1000",
+    "class": "fadeOutDuration-1000",
     "advanced": "false",
     "trigger": "hover",
     "fadeOut": "true",
@@ -66591,6 +66923,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "fadeOutDurationempty",
+    "class": "fadeOutDurationempty",
     "advanced": "false",
     "trigger": "hover",
     "fadeOut": "true",
@@ -66605,6 +66938,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "fadeIn1000fadeOut0",
+    "class": "fadeIn1000fadeOut0",
     "fadeInDuration": "1000",
     "fadeOutDuration": "0",
     "trigger": "hover",
@@ -66618,6 +66952,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "fadeIn100fadeOut3000",
+    "class": "fadeIn100fadeOut3000",
     "fadeInDuration": "100",
     "fadeOutDuration": "3000",
     "tooltipBody": "Tooltip Message"
@@ -66629,6 +66964,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "fadeIn3000fadeOut100",
+    "class": "fadeIn3000fadeOut100",
     "fadeInDuration": "3000",
     "fadeOutDuration": "100",
     "isVisible": "true",
@@ -66641,6 +66977,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "fadeIn0fadeOut1000",
+    "class": "fadeIn0fadeOut1000",
     "fadeInDuration": "0",
     "fadeOutDuration": "1000",
     "isVisible": "true",
@@ -66653,6 +66990,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "fadeIn-1000fadeOut3000",
+    "class": "fadeIn-1000fadeOut3000",
     "fadeInDuration": "-1000",
     "fadeOutDuration": "3000",
     "tooltipBody": "Tooltip Message"
@@ -66664,6 +67002,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "fadeIn3000fadeOut-1000",
+    "class": "fadeIn3000fadeOut-1000",
     "fadeInDuration": "3000",
     "fadeOutDuration": "-1000",
     "tooltipBody": "Tooltip Message"
@@ -66675,6 +67014,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "fadeInfadeOutEmpty",
+    "class": "fadeInfadeOutEmpty",
     "fadeInDuration": "",
     "fadeOutDuration": "",
     "tooltipBody": "Tooltip Message"
@@ -66686,6 +67026,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "delay0",
+    "class": "delay0",
     "advanced": "false",
     "delay": "0",
     "trigger": "hover",
@@ -66699,6 +67040,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "delay300",
+    "class": "delay300",
     "advanced": "false",
     "trigger": "hover",
     "delay": "300",
@@ -66711,6 +67053,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "delay3000",
+    "class": "delay3000",
     "advanced": "false",
     "trigger": "hover",
     "delay": "3000",
@@ -66724,6 +67067,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "delay-150",
+    "class": "delay-150",
     "advanced": "false",
     "trigger": "hover",
     "delay": "-150",
@@ -66737,6 +67081,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "delay-1000",
+    "class": "delay-1000",
     "advanced": "false",
     "trigger": "hover",
     "delay": "-1000",
@@ -66750,6 +67095,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "delayempty",
+    "class": "delayempty",
     "advanced": "false",
     "trigger": "hover",
     "delay": "",
@@ -66763,6 +67109,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "delay0FadeIn",
+    "class": "delay0FadeIn",
     "advanced": "false",
     "fadeInDuration": "500",
     "delay": "0",
@@ -66777,6 +67124,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "delay300FadeIn",
+    "class": "delay300FadeIn",
     "advanced": "false",
     "trigger": "hover",
     "fadeInDuration": "500",
@@ -66790,6 +67138,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "delay3000FadeIn",
+    "class": "delay3000FadeIn",
     "advanced": "false",
     "trigger": "hover",
     "fadeInDuration": "500",
@@ -66804,6 +67153,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "delay-200FadeIn",
+    "class": "delay-200FadeIn",
     "advanced": "false",
     "trigger": "hover",
     "fadeInDuration": "500",
@@ -66818,6 +67168,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "delay-1000FadeIn",
+    "class": "delay-1000FadeIn",
     "advanced": "false",
     "trigger": "hover",
     "fadeInDuration": "500",
@@ -66832,6 +67183,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "delayEmptyFadeIn",
+    "class": "delayEmptyFadeIn",
     "advanced": "false",
     "trigger": "hover",
     "fadeInDuration": "500",
@@ -66846,6 +67198,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "delay0FadeOut",
+    "class": "delay0FadeOut",
     "advanced": "false",
     "fadeOutDuration": "500",
     "delay": "0",
@@ -66860,6 +67213,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "delay300FadeOut",
+    "class": "delay300FadeOut",
     "advanced": "false",
     "trigger": "hover",
     "fadeOutDuration": "500",
@@ -66873,6 +67227,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "delay3000FadeOut",
+    "class": "delay3000FadeOut",
     "advanced": "false",
     "trigger": "hover",
     "fadeOutDuration": "500",
@@ -66887,6 +67242,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "delay-200FadeOut",
+    "class": "delay-200FadeOut",
     "advanced": "false",
     "trigger": "hover",
     "fadeOutDuration": "500",
@@ -66901,6 +67257,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "delay-1000FadeOut",
+    "class": "delay-1000FadeOut",
     "advanced": "false",
     "trigger": "hover",
     "fadeOutDuration": "500",
@@ -66915,6 +67272,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "delayEmptyFadeOut",
+    "class": "delayEmptyFadeOut",
     "advanced": "false",
     "trigger": "hover",
     "fadeOutDuration": "500",
@@ -66930,7 +67288,7 @@
    "attribs": {
     "aura:id": "classAlpha",
     "advanced": "false",
-    "class": "myOwnClassHERE",
+    "class": "classAlpha myOwnClassHERE",
     "trigger": "hover",
     "tooltipBody": "Tooltip Message"
    }
@@ -66942,7 +67300,7 @@
    "attribs": {
     "aura:id": "classNum",
     "advanced": "false",
-    "class": "1234",
+    "class": "classNum 1234",
     "trigger": "hover",
     "tooltipBody": "Tooltip Message"
    }
@@ -66954,7 +67312,7 @@
    "attribs": {
     "aura:id": "classSpl",
     "advanced": "false",
-    "class": "a:12;å¬∑πßå",
+    "class": "classSpl a:12;å¬∑πßå",
     "trigger": "hover",
     "tooltipBody": "Tooltip Message"
    }
@@ -66966,7 +67324,7 @@
    "attribs": {
     "aura:id": "classDash",
     "advanced": "false",
-    "class": "--a",
+    "class": "classDash --a",
     "trigger": "hover",
     "tooltipBody": "Tooltip Message"
    }
@@ -66977,6 +67335,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "bodyNormal",
+    "class": "bodyNormal",
     "advanced": "false",
     "trigger": "hover",
     "tooltipBody": "This is a fairly normal amount of text that you would put in the tooltip. Maybe a bit more is fine too. Don't forget to include spl. chars (\"!@#$%*^ ÅıÇΩœ∑®†¥ˆøπ¬˚∆˙©ƒ∂ßåΩ≈ç√∫˜µ≤≥ & \")"
@@ -66988,6 +67347,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "bodyMany",
+    "class": "bodyMany",
     "advanced": "false",
     "trigger": "hover",
     "tooltipBody": "This is a fairly normal amount of text that you would put in the tooltip. Maybe a bit more is fine too. Don't forget to include spl. chars (\"!@#$%*^ ÅıÇΩœ∑®†¥ˆøπ¬˚∆˙©ƒ∂ßåΩ≈ç√∫˜µ≤≥ & \") This info here is just to add some more text to the tooltip. Just adding more and more! It's like theres no end to this right? Wrong! All you need is patience. Man! I have to move this test further down the screen just because this tooltip has so many characters! Its just growing and growing. I don't know if the text will overflow. It doesn't look like it will. This was pretty well written so its all been handled very well! Don't you worry, we've got your back!"
@@ -66999,6 +67359,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "bodyHTML",
+    "class": "bodyHTML",
     "advanced": "false",
     "trigger": "hover",
     "tooltipBody": "<h1>Hello</h1>"
@@ -67010,6 +67371,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "bodyEmpty",
+    "class": "bodyEmpty",
     "advanced": "false",
     "trigger": "hover",
     "tooltipBody": ""
@@ -67021,6 +67383,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "domIdAlpha",
+    "class": "domIdAlpha",
     "advanced": "false",
     "domId": "testDomId",
     "trigger": "hover",
@@ -67033,6 +67396,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "domIdNum",
+    "class": "domIdNum",
     "advanced": "false",
     "domId": "1234",
     "trigger": "hover",
@@ -67045,6 +67409,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "domIdSpl",
+    "class": "domIdSpl",
     "advanced": "false",
     "domId": "a:1;%$∆ß∫åœ∑",
     "trigger": "hover",
@@ -67057,6 +67422,7 @@
    "controlFullName": "uitest:tooltip_FullTest.cmp",
    "attribs": {
     "aura:id": "domIdEmpty",
+    "class": "domIdEmpty",
     "advanced": "false",
     "domId": "",
     "trigger": "hover",
@@ -70903,6 +71269,51 @@
    "attribs": {
     "library": "ui:panelPositioningLib",
     "property": "lib"
+   }
+  },
+  {
+   "controlNameSpace": "ui",
+   "controlName": "tooltip.cmp",
+   "controlFullName": "ui:tooltip.cmp",
+   "attribs": {
+    "library": "ui:containerManagerLib",
+    "property": "cmLib"
+   }
+  },
+  {
+   "controlNameSpace": "ui",
+   "controlName": "tooltip.cmp",
+   "controlFullName": "ui:tooltip.cmp",
+   "attribs": {
+    "library": "ui:stackManagerLib",
+    "property": "smLib"
+   }
+  },
+  {
+   "controlNameSpace": "ui",
+   "controlName": "tooltip.cmp",
+   "controlFullName": "ui:tooltip.cmp",
+   "attribs": {
+    "library": "ui:tooltipLib",
+    "property": "ttLib"
+   }
+  },
+  {
+   "controlNameSpace": "ui",
+   "controlName": "tooltipAdvanced.cmp",
+   "controlFullName": "ui:tooltipAdvanced.cmp",
+   "attribs": {
+    "library": "ui:panelPositioningLib",
+    "property": "lib"
+   }
+  },
+  {
+   "controlNameSpace": "ui",
+   "controlName": "tooltipAdvanced.cmp",
+   "controlFullName": "ui:tooltipAdvanced.cmp",
+   "attribs": {
+    "library": "ui:tooltipLib",
+    "property": "ttLib"
    }
   },
   {
@@ -83044,6 +83455,14 @@
    "controlName": "tooltip.cmp",
    "controlFullName": "ui:tooltip.cmp",
    "attribs": {}
+  },
+  {
+   "controlNameSpace": "ui",
+   "controlName": "tooltipAdvanced.cmp",
+   "controlFullName": "ui:tooltipAdvanced.cmp",
+   "attribs": {
+    "description": "This is the tooltip advanced subcomponent, used by tooltip.cmp. DO NOT USE ALONE"
+   }
   },
   {
    "controlNameSpace": "ui",

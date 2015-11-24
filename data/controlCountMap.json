@@ -1,6 +1,6 @@
 {
  "aura:application.cmp": 106,
- "aura:dependency.cmp": 95,
+ "aura:dependency.cmp": 96,
  "auraadmin:cacheView.cmp": 4,
  "aura:iteration.cmp": 112,
  "auraadmin:registryView.cmp": 1,
@@ -28,7 +28,7 @@
  "ui:panelManager2.cmp": 12,
  "ui:panel.cmp": 11,
  "ui:modal.cmp": 10,
- "ui:containerManager.cmp": 3,
+ "ui:containerManager.cmp": 8,
  "ui:tooltip.cmp": 128,
  "appcache:slate.cmp": 1,
  "ui:outputText.cmp": 302,

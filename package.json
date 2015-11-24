@@ -1,6 +1,6 @@
 {
   "name": "aura_explorer",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Aura explorer used to explore Salesforce Aura Components",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha test",

@@ -263,6 +263,7 @@
  "ui:timePicker.cmp": "",
  "ui:toolbar.cmp": "",
  "ui:tooltip.cmp": "",
+ "ui:tooltipAdvanced.cmp": "",
  "ui:tree.cmp": "",
  "ui:treeNode.cmp": "",
  "ui:underConstruction.cmp": "",
