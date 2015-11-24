@@ -1,0 +1,2 @@
+//Developed by Sy Le. Coprighted by Salesforce.com 2015
+{"version":3,"sources":["app.js"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;AAQA,oCACC,eAAK,IAAI,CAAC,OAAO,CAAC,GAAG,EAAE,EAAE,iBAAO,OAAO,CAAC,EACxC,iBAAO,SAAS,CAChB;AAAC","file":"app.js","sourcesContent":["//external\nimport path from 'path';\n\n//internal\nimport processor from './processParsingLookup';\nimport config    from './config';\n\n//run it\nprocessor(\n\tpath.join(process.cwd(), config.baseDir),\n\tconfig.outputDir\n);\n"],"sourceRoot":"/source/"}

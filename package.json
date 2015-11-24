@@ -1,0 +1,65 @@
+{
+  "name": "aura_explorer",
+  "version": "1.0.1",
+  "description": "Aura explorer used to explore Salesforce Aura Components",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha test",
+    "pkg": "gulp; node ./public/backend/app.js;",
+    "start": "npm install --production; nw . &",
+    "clean": "rm -rf public/* data/* aura-master/*",
+    "dev": "gulp dev;",
+    "get_aura_upstream": "rm -rf aura-master master.zip; curl -LOk https://github.com/forcedotcom/aura/archive/master.zip; tar -xf master.zip;",
+    "dist": "zip -r ./aura-explorer data/* public/* node_modules/* package.json"
+  },
+  "main": "public/index.html",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/synle/aura_explorer.git"
+  },
+  "author": "Sy Le - lenguyensy@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/synle/aura_explorer/issues"
+  },
+  "window": {
+    "title": "Aura Explorer",
+    "toolbar": true,
+    "frame": true,
+    "width": 1000,
+    "height": 800,
+    "position": "mouse",
+    "min_width": 800,
+    "min_height": 600
+  },
+  "webkit": {
+    "plugin": false
+  },
+  "homepage": "https://github.com/synle/aura_explorer",
+  "dependencies": {
+    "bootstrap": "^3.3.5",
+    "cheerio": "^0.19.0",
+    "colors": "^1.1.2",
+    "jquery": "^2.1.4",
+    "lodash": "^3.10.0",
+    "mustache": "^2.2.0",
+    "prompt": "^0.2.14",
+    "q": "^1.4.1",
+    "react": "^0.14.3",
+    "react-dom": "^0.14.3",
+    "redux": "^3.0.4"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.1.18",
+    "babel-preset-react": "^6.1.18",
+    "gulp": "^3.9.0",
+    "gulp-babel": "^6.1.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-footer": "^1.0.5",
+    "gulp-header": "^1.7.1",
+    "gulp-less": "^3.0.5",
+    "gulp-plumber": "^1.0.1",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-watch": "^4.3.5",
+    "mocha": "^2.2.5"
+  }
+}
