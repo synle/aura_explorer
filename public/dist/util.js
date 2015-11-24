@@ -67,6 +67,12 @@ exports.default = {
 		return _lodash2.default.reduce(depArgObjs, function (resUniqueArgList, depArgObj) {
 			return _lodash2.default.unique(resUniqueArgList.concat(_lodash2.default.keys(depArgObj)));
 		}, []);
+	},
+
+	//strip .cmp and .app
+	getTagNameFromControlName: function getTagNameFromControlName(tagName) {
+		var extensionIdx = tagName.lastIndexOf('.cmp') || tagName.lastIndexOf('.app');
+		return extensionIdx > 0 ? tagName.substr(0, extensionIdx) : tagName;
 	}
 };
 //# sourceMappingURL=util.js.map

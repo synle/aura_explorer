@@ -74,5 +74,11 @@ export default {
 			},
 			[]
 		);
+	},
+
+	//strip .cmp and .app
+	getTagNameFromControlName(tagName){
+		const extensionIdx = tagName.lastIndexOf('.cmp') || tagName.lastIndexOf('.app');
+		return extensionIdx > 0 ? tagName.substr(0, extensionIdx) : tagName;
 	}
 }
