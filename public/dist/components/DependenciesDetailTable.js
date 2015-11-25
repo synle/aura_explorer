@@ -55,7 +55,18 @@ var DependenciesDetailTable = React.createClass({
 			));
 
 			//append the detail usage
-			resDomDependencies.push(_this.state.useXmlForm ? _this._getXmlViewForm(depKey, uniqueArgList, depArgObjs) : _this._getTableViewForm(depKey, uniqueArgList, depArgObjs));
+			var dependenciesDetailDom = _this.state.useXmlForm ? _this._getXmlViewForm(depKey, uniqueArgList, depArgObjs) : _this._getTableViewForm(depKey, uniqueArgList, depArgObjs);
+
+			resDomDependencies.push(React.createElement(
+				'div',
+				{ key: 'dependencies-' + depKey + '-body', className: 'panel panel-default' },
+				React.createElement(
+					'div',
+					{ className: 'panel-heading' },
+					'Dependency'
+				),
+				dependenciesDetailDom
+			));
 
 			//return
 			return resDomDependencies;
@@ -100,10 +111,14 @@ var DependenciesDetailTable = React.createClass({
 	},
 	_getXmlViewForm: function _getXmlViewForm(depKey, uniqueArgList, depArgObjs) {
 		return _lodash2.default.map(depArgObjs, function (depArgObj, depArgIdx) {
-			return React.createElement(_KeyValueXmlSyntax2.default, {
-				key: 'dependencies-' + depKey + '-xml-' + depArgIdx,
-				objects: depArgObj,
-				tagName: depKey });
+			return React.createElement(
+				'div',
+				{ className: 'mb15' },
+				React.createElement(_KeyValueXmlSyntax2.default, {
+					key: 'dependencies-' + depKey + '-xml-' + depArgIdx,
+					objects: depArgObj,
+					tagName: depKey })
+			);
 		});
 	},
 	_getTableViewForm: function _getTableViewForm(depKey, uniqueArgList, depArgObjs) {

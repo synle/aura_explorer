@@ -94,7 +94,7 @@ var ControlDetailPage = React.createClass({
 				return {
 					v: React.createElement(
 						'div',
-						null,
+						{ id: 'control-detail-wrapper' },
 						React.createElement(
 							'div',
 							null,

@@ -40,9 +40,13 @@ const UsageTable = React.createClass({
 					}
 				);
 
+				const curControlUsageCount = _.size(usageDetails) > 0
+					? `${_.size(usageDetails)} References`
+					: null;
+
 				return (
 					<div key={`${selectedControlName}-${callerControlName}-usage}`}>
-						<div><ControlDetailLink mainText={callerControlName} /></div>
+						<div><ControlDetailLink mainText={callerControlName} subText={curControlUsageCount} /></div>
 						{usagesDom}
 					</div>
 				);

@@ -34,10 +34,16 @@ const DependenciesDetailTable = React.createClass({
 						);
 
 						//append the detail usage
+						const dependenciesDetailDom = this.state.useXmlForm
+							? this._getXmlViewForm(depKey, uniqueArgList, depArgObjs)
+							: this._getTableViewForm(depKey, uniqueArgList, depArgObjs);
+
+
 						resDomDependencies.push(
-							this.state.useXmlForm
-								? this._getXmlViewForm(depKey, uniqueArgList, depArgObjs)
-								: this._getTableViewForm(depKey, uniqueArgList, depArgObjs)
+							<div key={`dependencies-${depKey}-body`} className="panel panel-default">
+								<div className="panel-heading">Dependency</div>
+								{dependenciesDetailDom}
+							</div>
 						);
 
 						//return
@@ -70,10 +76,12 @@ const DependenciesDetailTable = React.createClass({
 			depArgObjs,
 			(depArgObj, depArgIdx) => {
 				return (
-					<KeyValueXmlSyntaxComponent
-						key={`dependencies-${depKey}-xml-${depArgIdx}`}
-						objects={depArgObj}
-						tagName={depKey} />
+					<div className="mb15">
+						<KeyValueXmlSyntaxComponent
+							key={`dependencies-${depKey}-xml-${depArgIdx}`}
+							objects={depArgObj}
+							tagName={depKey} />
+					</div>
 				);
 			}
 		);

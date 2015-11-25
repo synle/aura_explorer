@@ -61,13 +61,15 @@ var UsageTable = React.createClass({
 				);
 			});
 
+			var curControlUsageCount = _lodash2.default.size(usageDetails) > 0 ? _lodash2.default.size(usageDetails) + ' References' : null;
+
 			return React.createElement(
 				'div',
 				{ key: selectedControlName + '-' + callerControlName + '-usage}' },
 				React.createElement(
 					'div',
 					null,
-					React.createElement(_ControlDetailLink2.default, { mainText: callerControlName })
+					React.createElement(_ControlDetailLink2.default, { mainText: callerControlName, subText: curControlUsageCount })
 				),
 				usagesDom
 			);

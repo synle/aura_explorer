@@ -56,7 +56,7 @@ const ControlDetailPage = React.createClass({
 			);
 
 			return (
-				<div>
+				<div id="control-detail-wrapper">
 					<div>
 						<ol className="breadcrumb">{controlNameBreadCrumsDom}</ol>
 					</div>

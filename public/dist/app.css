@@ -6798,6 +6798,10 @@ a {
 #body .p15 {
   padding: 15px;
 }
+#body #control-detail-wrapper .panel pre {
+  margin: 0;
+  background-color: #fff;
+}
 .tab-content {
   background-color: #fefefe;
   border-bottom: 1px solid #ddd;
