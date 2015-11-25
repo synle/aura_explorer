@@ -61,7 +61,7 @@ var UsageTable = React.createClass({
 				);
 			});
 
-			var curControlUsageCount = _lodash2.default.size(usageDetails) > 0 ? _lodash2.default.size(usageDetails) + ' References' : null;
+			var curControlUsageCount = _lodash2.default.size(usageDetails) > 1 ? _lodash2.default.size(usageDetails) + ' References' : null;
 
 			return React.createElement(
 				'div',

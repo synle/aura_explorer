@@ -40,7 +40,7 @@ const UsageTable = React.createClass({
 					}
 				);
 
-				const curControlUsageCount = _.size(usageDetails) > 0
+				const curControlUsageCount = _.size(usageDetails) > 1
 					? `${_.size(usageDetails)} References`
 					: null;
 
