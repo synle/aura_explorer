@@ -71,16 +71,17 @@ var ControlDetailPage = React.createClass({
 		} else {
 			var _ret = (function () {
 				var controlName = _this.props.controlName.toLowerCase();
+				var shortControlName = controlName.substr(controlName, controlName.lastIndexOf('.'));
 				var attributeList = _lodash2.default.get(_this, 'props.controlObj.attributes', []);
 				var dependenciesMap = _lodash2.default.get(_this, 'props.controlObj.dependencies', {});
 				var eventsList = _lodash2.default.get(_this, 'props.controlObj.events', []);
 				var handlersList = _lodash2.default.get(_this, 'props.controlObj.handlers', []);
-				var usageList = _lodash2.default.reduce(_usageMap2.default, function (res, usageArray, controlKey) {
-					if (controlName.indexOf(controlKey.toLowerCase()) === 0) {
-						res = res.concat(usageArray);
+				var usageList = _lodash2.default.reduce(_usageMap2.default, function (res, usageMap, curControlName) {
+					if (shortControlName === curControlName.toLowerCase()) {
+						return usageMap;
 					}
 					return res;
-				}, []);
+				}, {});
 
 				var controlNameBreadCrumsDom = _lodash2.default.map(controlName.split(/[:.]/), function (token, tokenIdx) {
 					return React.createElement(

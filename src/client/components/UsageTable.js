@@ -16,28 +16,41 @@ const UsageTable = React.createClass({
 	},
 	render(){
 		const selectedControlName = this.props.selectedControlName;
-		const myUsage = this.props.usage;
+		const usageMaps = this.props.usage;
 
-		const usagesDom = myUsage.map((usageObj, idx) => {
-			const subSectionLinkLabel = usageObj.controlFullName;
+		const allUsagesDom = _.map(
+			usageMaps,
+			(usageDetails, callerControlName) =>{
+				const usagesDom = _.map(
+					usageDetails,
+					(usageDetail, idx) => {
+						const usageDetailDomKey = `${selectedControlName}-${callerControlName}-${idx}-usage}`;
+						const attributeDetails = usageDetail.attribs;
 
-			const usageDetailDom = this.state.useXmlForm
-				? this._getXmlViewForm( selectedControlName, usageObj.attribs )
-				: this._getTableViewForm( selectedControlName, usageObj.attribs );
+						const usageDetailDom = this.state.useXmlForm
+							? this._getXmlViewForm   (usageDetailDomKey, selectedControlName, attributeDetails )
+							: this._getTableViewForm (usageDetailDomKey, selectedControlName, attributeDetails );
 
-			return (
-				<div key={`${subSectionLinkLabel}-usage-table-row-${idx}`} className="mb15">
-					<div>
-						<ControlDetailLink mainText={subSectionLinkLabel} />
+						return (
+							<div key={usageDetailDomKey} className="panel panel-default">
+								<div className="panel-heading">Usage #{idx + 1}</div>
+								{usageDetailDom}
+							</div>
+						);
+					}
+				);
+
+				return (
+					<div key={`${selectedControlName}-${callerControlName}-usage}`}>
+						<div><ControlDetailLink mainText={callerControlName} /></div>
+						{usagesDom}
 					</div>
-
-					{usageDetailDom}
-				</div>
-			);
-		});
+				);
+			}
+		);
 
 		return (
-			<div key={`${selectedControlName}-usage-table`}>
+			<div key={`${selectedControlName}-usage-${new Date()}`}>
 				<div className="mb15">
 					<ul className="nav nav-pills nav-justified">
 						<li role="presentation" className={!this.state.useXmlForm ? 'active' : ''} onClick={()=> this.changeViewFormat('table')}>
@@ -48,28 +61,28 @@ const UsageTable = React.createClass({
 						</li>
 					</ul>
 				</div>
-				<div id="usageTableContent">{usagesDom}</div>
+				<div>{allUsagesDom}</div>
 			</div>
 		);
 	},
-	_getXmlViewForm(tagName, objects){
+	_getXmlViewForm(domKey, tagName, objects){
 		return (
 			<KeyValueXmlSyntaxComponent
+				key={domKey}
 				objects={objects}
 				tagName={tagName} />
 		);
 	},
-	_getTableViewForm(tagName, objects){
-		return (
+	_getTableViewForm(domKey, tagName, objects){
+		return _.size(objects) > 0
+		? (
 			<KeyValTableComponent
 				objects={objects}
-				keyLabel="Argument Name"
-				valueLabel="Argument Value"
-				emptyMsg="Called with no arguments"
 				clickToViewDetail={false}
-				showHeader={true}
-				showIndex={true} />
-		);
+				showHeader={false}
+				showIndex={false} />
+		)
+		: <div>Called with No Arguments</div>;
 	},
 	changeViewFormat(newForm){
 		this.setState({

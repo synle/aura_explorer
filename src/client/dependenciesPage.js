@@ -4,7 +4,7 @@ import _ from 'lodash';
 //internal
 //data
 import dataDependenciesMap from './data/dependenciesMap.json';
-import usageMap from './data/usageMap.json';
+import usageMaps from './data/usageMap.json';
 
 //internal react components
 import KeyValTableComponent from './src/client/components/KeyValTable';
@@ -31,19 +31,20 @@ const ControlDetailPage = React.createClass({
 			);
 		} else{
 			const controlName = this.props.controlName.toLowerCase();
+			const shortControlName = controlName.substr(controlName, controlName.lastIndexOf('.'));
 			const attributeList = _.get(this, 'props.controlObj.attributes', []);
 			const dependenciesMap = _.get(this, 'props.controlObj.dependencies', {});
 			const eventsList = _.get(this, 'props.controlObj.events', []);
 			const handlersList = _.get(this, 'props.controlObj.handlers', []);
 			const usageList = _.reduce(
-				usageMap,
-				(res, usageArray, controlKey) => {
-					if (controlName.indexOf(controlKey.toLowerCase()) === 0){
-						res = res.concat(usageArray);
+				usageMaps,
+				(res, usageMap, curControlName) => {
+					if (shortControlName === curControlName.toLowerCase()){
+						return usageMap;
 					}
 					return res;
 				},
-				[]
+				{}
 			);
 
 

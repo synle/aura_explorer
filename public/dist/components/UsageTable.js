@@ -39,28 +39,43 @@ var UsageTable = React.createClass({
 		var _this = this;
 
 		var selectedControlName = this.props.selectedControlName;
-		var myUsage = this.props.usage;
+		var usageMaps = this.props.usage;
 
-		var usagesDom = myUsage.map(function (usageObj, idx) {
-			var subSectionLinkLabel = usageObj.controlFullName;
+		var allUsagesDom = _lodash2.default.map(usageMaps, function (usageDetails, callerControlName) {
+			var usagesDom = _lodash2.default.map(usageDetails, function (usageDetail, idx) {
+				var usageDetailDomKey = selectedControlName + '-' + callerControlName + '-' + idx + '-usage}';
+				var attributeDetails = usageDetail.attribs;
 
-			var usageDetailDom = _this.state.useXmlForm ? _this._getXmlViewForm(selectedControlName, usageObj.attribs) : _this._getTableViewForm(selectedControlName, usageObj.attribs);
+				var usageDetailDom = _this.state.useXmlForm ? _this._getXmlViewForm(usageDetailDomKey, selectedControlName, attributeDetails) : _this._getTableViewForm(usageDetailDomKey, selectedControlName, attributeDetails);
+
+				return React.createElement(
+					'div',
+					{ key: usageDetailDomKey, className: 'panel panel-default' },
+					React.createElement(
+						'div',
+						{ className: 'panel-heading' },
+						'Usage #',
+						idx + 1
+					),
+					usageDetailDom
+				);
+			});
 
 			return React.createElement(
 				'div',
-				{ key: subSectionLinkLabel + '-usage-table-row-' + idx, className: 'mb15' },
+				{ key: selectedControlName + '-' + callerControlName + '-usage}' },
 				React.createElement(
 					'div',
 					null,
-					React.createElement(_ControlDetailLink2.default, { mainText: subSectionLinkLabel })
+					React.createElement(_ControlDetailLink2.default, { mainText: callerControlName })
 				),
-				usageDetailDom
+				usagesDom
 			);
 		});
 
 		return React.createElement(
 			'div',
-			{ key: selectedControlName + '-usage-table' },
+			{ key: selectedControlName + '-usage-' + new Date() },
 			React.createElement(
 				'div',
 				{ className: 'mb15' },
@@ -93,25 +108,27 @@ var UsageTable = React.createClass({
 			),
 			React.createElement(
 				'div',
-				{ id: 'usageTableContent' },
-				usagesDom
+				null,
+				allUsagesDom
 			)
 		);
 	},
-	_getXmlViewForm: function _getXmlViewForm(tagName, objects) {
+	_getXmlViewForm: function _getXmlViewForm(domKey, tagName, objects) {
 		return React.createElement(_KeyValueXmlSyntax2.default, {
+			key: domKey,
 			objects: objects,
 			tagName: tagName });
 	},
-	_getTableViewForm: function _getTableViewForm(tagName, objects) {
-		return React.createElement(_KeyValTable2.default, {
+	_getTableViewForm: function _getTableViewForm(domKey, tagName, objects) {
+		return _lodash2.default.size(objects) > 0 ? React.createElement(_KeyValTable2.default, {
 			objects: objects,
-			keyLabel: 'Argument Name',
-			valueLabel: 'Argument Value',
-			emptyMsg: 'Called with no arguments',
 			clickToViewDetail: false,
-			showHeader: true,
-			showIndex: true });
+			showHeader: false,
+			showIndex: false }) : React.createElement(
+			'div',
+			null,
+			'Called with No Arguments'
+		);
 	},
 	changeViewFormat: function changeViewFormat(newForm) {
 		this.setState({
