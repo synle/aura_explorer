@@ -46,7 +46,7 @@ var UsageTable = React.createClass({
 				var usageDetailDomKey = selectedControlName + '-' + callerControlName + '-' + idx + '-usage}';
 				var attributeDetails = usageDetail.attribs;
 
-				var usageDetailDom = _this.state.useXmlForm ? _this._getXmlViewForm(usageDetailDomKey, selectedControlName, attributeDetails) : _this._getTableViewForm(usageDetailDomKey, selectedControlName, attributeDetails);
+				var usageDetailDom = _this.state.useXmlForm ? _this._getXmlViewForm(selectedControlName, attributeDetails) : _this._getTableViewForm(selectedControlName, attributeDetails);
 
 				return React.createElement(
 					'div',
@@ -115,13 +115,12 @@ var UsageTable = React.createClass({
 			)
 		);
 	},
-	_getXmlViewForm: function _getXmlViewForm(domKey, tagName, objects) {
+	_getXmlViewForm: function _getXmlViewForm(tagName, objects) {
 		return React.createElement(_KeyValueXmlSyntax2.default, {
-			key: domKey,
 			objects: objects,
 			tagName: tagName });
 	},
-	_getTableViewForm: function _getTableViewForm(domKey, tagName, objects) {
+	_getTableViewForm: function _getTableViewForm(tagName, objects) {
 		return _lodash2.default.size(objects) > 0 ? React.createElement(_KeyValTable2.default, {
 			objects: objects,
 			clickToViewDetail: false,

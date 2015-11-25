@@ -28,8 +28,8 @@ const UsageTable = React.createClass({
 						const attributeDetails = usageDetail.attribs;
 
 						const usageDetailDom = this.state.useXmlForm
-							? this._getXmlViewForm   (usageDetailDomKey, selectedControlName, attributeDetails )
-							: this._getTableViewForm (usageDetailDomKey, selectedControlName, attributeDetails );
+							? this._getXmlViewForm   (selectedControlName, attributeDetails )
+							: this._getTableViewForm (selectedControlName, attributeDetails );
 
 						return (
 							<div key={usageDetailDomKey} className="panel panel-default">
@@ -69,15 +69,14 @@ const UsageTable = React.createClass({
 			</div>
 		);
 	},
-	_getXmlViewForm(domKey, tagName, objects){
+	_getXmlViewForm(tagName, objects){
 		return (
 			<KeyValueXmlSyntaxComponent
-				key={domKey}
 				objects={objects}
 				tagName={tagName} />
 		);
 	},
-	_getTableViewForm(domKey, tagName, objects){
+	_getTableViewForm(tagName, objects){
 		return _.size(objects) > 0
 		? (
 			<KeyValTableComponent
