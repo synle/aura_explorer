@@ -40,6 +40,7 @@ var UsageTable = React.createClass({
 
 		var selectedControlName = this.props.selectedControlName;
 		var usageMaps = this.props.usage;
+		var usageWrapperKey = selectedControlName + '-usage-' + new Date();
 
 		var allUsagesDom = _lodash2.default.map(usageMaps, function (usageDetails, callerControlName) {
 			var shortCallerControlName = callerControlName.substr(0, callerControlName.lastIndexOf('.'));
@@ -77,9 +78,9 @@ var UsageTable = React.createClass({
 			);
 		});
 
-		return React.createElement(
+		return _lodash2.default.size(usageMaps) > 0 ? React.createElement(
 			'div',
-			{ key: selectedControlName + '-usage-' + new Date() },
+			{ key: usageWrapperKey },
 			React.createElement(
 				'div',
 				{ className: 'mb15' },
@@ -115,6 +116,10 @@ var UsageTable = React.createClass({
 				null,
 				allUsagesDom
 			)
+		) : React.createElement(
+			'div',
+			{ key: usageWrapperKey },
+			'This component has not been used.'
 		);
 	},
 	_getXmlViewForm: function _getXmlViewForm(tagName, objects) {

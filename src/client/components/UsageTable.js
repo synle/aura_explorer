@@ -17,6 +17,7 @@ const UsageTable = React.createClass({
 	render(){
 		const selectedControlName = this.props.selectedControlName;
 		const usageMaps = this.props.usage;
+		const usageWrapperKey =`${selectedControlName}-usage-${new Date()}`;
 
 		const allUsagesDom = _.map(
 			usageMaps,
@@ -55,8 +56,9 @@ const UsageTable = React.createClass({
 			}
 		);
 
-		return (
-			<div key={`${selectedControlName}-usage-${new Date()}`}>
+		return _.size(usageMaps) > 0
+		? (
+			<div key={usageWrapperKey}>
 				<div className="mb15">
 					<ul className="nav nav-pills nav-justified">
 						<li role="presentation" className={!this.state.useXmlForm ? 'active' : ''} onClick={()=> this.changeViewFormat('table')}>
@@ -69,7 +71,8 @@ const UsageTable = React.createClass({
 				</div>
 				<div>{allUsagesDom}</div>
 			</div>
-		);
+		)
+		: (<div key={usageWrapperKey}>This component has not been used.</div>);
 	},
 	_getXmlViewForm(tagName, objects){
 		return (

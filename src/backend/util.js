@@ -130,6 +130,11 @@ const self = {
     },
     serializeJsonObject(jsonObj){
         return JSON.stringify(jsonObj, null, 1);
+    },
+    //this method is used to filter out too common dependencies
+    //such as aura:registerEvent
+    isValidDependencies(componentFullName){
+        return true;
     }
 }
 
