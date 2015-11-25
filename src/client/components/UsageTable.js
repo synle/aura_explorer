@@ -21,6 +21,8 @@ const UsageTable = React.createClass({
 		const allUsagesDom = _.map(
 			usageMaps,
 			(usageDetails, callerControlName) =>{
+				const shortCallerControlName = callerControlName.substr(0, callerControlName.lastIndexOf('.'));
+
 				const usagesDom = _.map(
 					usageDetails,
 					(usageDetail, idx) => {
@@ -32,7 +34,7 @@ const UsageTable = React.createClass({
 							: this._getTableViewForm (selectedControlName, attributeDetails );
 
 						return (
-							<div key={usageDetailDomKey} className="panel panel-default">
+							<div key={usageDetailDomKey} className="panel panel-info">
 								<div className="panel-heading">Usage #{idx + 1}</div>
 								{usageDetailDom}
 							</div>
@@ -46,7 +48,7 @@ const UsageTable = React.createClass({
 
 				return (
 					<div key={`${selectedControlName}-${callerControlName}-usage}`}>
-						<div><ControlDetailLink mainText={callerControlName} subText={curControlUsageCount} /></div>
+						<div><ControlDetailLink mainText={shortCallerControlName} subText={curControlUsageCount} /></div>
 						{usagesDom}
 					</div>
 				);

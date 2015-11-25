@@ -44,7 +44,8 @@ var DependenciesDetailTable = React.createClass({
 			null,
 			'No Dependencies'
 		) : _lodash2.default.reduce(dependenciesMap, function (resDomDependencies, depArgObjs, depKey) {
-			var uniqueArgList = ['idx'].concat(_util2.default.getUniqueArgumentsList(depArgObjs));
+			// const uniqueArgList = ['idx'].concat( util.getUniqueArgumentsList(depArgObjs) );
+			var totalDepCount = _lodash2.default.size(depArgObjs) > 1 ? _lodash2.default.size(depArgObjs) + ' Calls' : null;
 
 			//push the header
 			var depCount = _lodash2.default.size(depArgObjs) > 0 ? _lodash2.default.size(depArgObjs) + ' Uses' : null; //how many time does this use this external component
@@ -52,7 +53,7 @@ var DependenciesDetailTable = React.createClass({
 			resDomDependencies.push(React.createElement(
 				'div',
 				{ key: 'dependencies-header-' + depKey },
-				React.createElement(_ControlDetailLink2.default, { mainText: depKey })
+				React.createElement(_ControlDetailLink2.default, { mainText: depKey, subText: totalDepCount })
 			));
 
 			//detailed usages
@@ -62,7 +63,8 @@ var DependenciesDetailTable = React.createClass({
 
 				return React.createElement(
 					'div',
-					{ key: 'dependencies-' + depKey + '-' + depArgObjIdx + '-body', className: 'panel panel-default' },
+					{ key: 'dependencies-' + depKey + '-' + depArgObjIdx + '-body',
+						className: 'panel panel-info' },
 					React.createElement(
 						'div',
 						{ className: 'panel-heading' },

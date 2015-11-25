@@ -21,8 +21,10 @@ const DependenciesDetailTable = React.createClass({
 				: _.reduce(
 					dependenciesMap,
 					(resDomDependencies, depArgObjs, depKey) => {
-						const uniqueArgList = ['idx'].concat( util.getUniqueArgumentsList(depArgObjs) );
-
+						// const uniqueArgList = ['idx'].concat( util.getUniqueArgumentsList(depArgObjs) );
+						const totalDepCount = _.size(depArgObjs) > 1
+							? `${_.size(depArgObjs)} Calls`
+							: null;
 
 						//push the header
 						const depCount = _.size(depArgObjs) > 0 ? `${_.size(depArgObjs)} Uses`
@@ -30,7 +32,7 @@ const DependenciesDetailTable = React.createClass({
 
 						resDomDependencies.push(
 							<div key={`dependencies-header-${depKey}`}>
-								<ControlDetailLink mainText={depKey} />
+								<ControlDetailLink mainText={depKey} subText={totalDepCount} />
 							</div>
 						);
 
@@ -45,7 +47,8 @@ const DependenciesDetailTable = React.createClass({
 									: this._getTableViewForm(depKey, depArgObj)
 
 								return (
-									<div key={`dependencies-${depKey}-${depArgObjIdx}-body`} className="panel panel-default">
+									<div key={`dependencies-${depKey}-${depArgObjIdx}-body`}
+									className="panel panel-info">
 										<div className="panel-heading">Dependency #{depArgObjIdx + 1}</div>
 										{usageDetailDom}
 									</div>

@@ -98,7 +98,7 @@ var KeyValTableComponent = React.createClass({
 					v: React.createElement(
 						'table',
 						{ key: domKey,
-							className: 'table table-bordered table-hover table-condensed' },
+							className: 'table table-bordered table-hover table-condensed table-striped' },
 						domTableHeaders,
 						React.createElement(
 							'tbody',

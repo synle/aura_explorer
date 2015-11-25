@@ -52,7 +52,7 @@ const KeyValTableComponent = React.createClass({
 
 			return (
 				<table key={domKey}
-				className="table table-bordered table-hover table-condensed">
+				className="table table-bordered table-hover table-condensed table-striped">
 					{domTableHeaders}
 					<tbody>
 					    {domTableRows}

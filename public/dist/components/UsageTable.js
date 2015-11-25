@@ -42,6 +42,8 @@ var UsageTable = React.createClass({
 		var usageMaps = this.props.usage;
 
 		var allUsagesDom = _lodash2.default.map(usageMaps, function (usageDetails, callerControlName) {
+			var shortCallerControlName = callerControlName.substr(0, callerControlName.lastIndexOf('.'));
+
 			var usagesDom = _lodash2.default.map(usageDetails, function (usageDetail, idx) {
 				var usageDetailDomKey = selectedControlName + '-' + callerControlName + '-' + idx + '-usage}';
 				var attributeDetails = usageDetail.attribs;
@@ -50,7 +52,7 @@ var UsageTable = React.createClass({
 
 				return React.createElement(
 					'div',
-					{ key: usageDetailDomKey, className: 'panel panel-default' },
+					{ key: usageDetailDomKey, className: 'panel panel-info' },
 					React.createElement(
 						'div',
 						{ className: 'panel-heading' },
@@ -69,7 +71,7 @@ var UsageTable = React.createClass({
 				React.createElement(
 					'div',
 					null,
-					React.createElement(_ControlDetailLink2.default, { mainText: callerControlName, subText: curControlUsageCount })
+					React.createElement(_ControlDetailLink2.default, { mainText: shortCallerControlName, subText: curControlUsageCount })
 				),
 				usagesDom
 			);
