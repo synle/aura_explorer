@@ -3,7 +3,7 @@
   "version": "1.0.2",
   "description": "Aura explorer used to explore Salesforce Aura Components",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha test",
+    "test": "./node_modules/mocha/bin/mocha --compilers js:babel-core/register test",
     "pkg": "gulp; node ./public/backend/app.js;",
     "start": "npm install --production; nw . &",
     "clean": "rm -rf public/* data/* aura-master/* master.zip",
@@ -49,8 +49,10 @@
     "redux": "^3.0.4"
   },
   "devDependencies": {
+    "babel-core": "^6.2.1",
     "babel-preset-es2015": "^6.1.18",
     "babel-preset-react": "^6.1.18",
+    "chai": "^3.4.1",
     "gulp": "^3.9.0",
     "gulp-babel": "^6.1.0",
     "gulp-concat": "^2.6.0",
