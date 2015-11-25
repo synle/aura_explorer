@@ -33,12 +33,10 @@ export default {
 	findMatchingControl(flattenDependencies, targetString){
 		let resMatches = flattenDependencies;
 		if (targetString){
-			// const regex = new RegExp(`${targetString}`, 'i');//use regex
 			resMatches = _.reduce(
 				flattenDependencies,
 				(res, controlObj, controlKey) => {
-					if (controlKey.toLowerCase().indexOf(targetString) === 0){
-					// if (controlKey.indexOf(targetString) === 0){
+					if (_.startsWith( controlKey.toLowerCase(), targetString )){
 						res[controlKey] = controlObj;
 					}
 					return res;
@@ -54,7 +52,7 @@ export default {
 			? _.reduce(
 				countMap,
 				(res, objVal, objKey) => {
-					if (objKey.toLowerCase().indexOf(newSearchTerm) === 0){
+					if (_.startsWith( objKey.toLowerCase(), newSearchTerm )){
 						res[objKey] = objVal;
 					}
 

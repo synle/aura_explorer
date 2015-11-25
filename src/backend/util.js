@@ -139,6 +139,45 @@ const self = {
             return true;
         }
         return false;
+    },
+
+    /**
+     * @param  {[type]} usageMap     [description]
+     * @param  {[type]} parentName   [description]
+     * @param  {[type]} childrenName [description]
+     * @return the location in the map, this also initialize the map
+     * default state
+     */
+    getUsageMapByName(usageMap, parentName, childrenName){
+        usageMap[parentName] = usageMap[parentName] || {};
+        usageMap[parentName][childrenName] = usageMap[parentName][childrenName] || [];
+        return usageMap[parentName][childrenName];
+    },
+
+    /**
+     * @param  {[type]} curControlObj  [description]
+     * @param  {[type]} depdenciesName [description]
+     * @return the location in the map, this also initialize the map
+     * default state
+     */
+    getDependenciesPropInControlObj(curControlObj, depdenciesName){
+        curControlObj.dependencies[depdenciesName] = curControlObj.dependencies[depdenciesName] || [];
+        return curControlObj.dependencies[depdenciesName];
+    },
+
+    getNamespaceCountMapEntry(namespaceCountMap, controlNameSpace){
+        namespaceCountMap[controlNameSpace] = namespaceCountMap[controlNameSpace] || 0;
+        return namespaceCountMap[controlNameSpace];
+    },
+
+    getControlCountMapEntry(controlCountMap, depdenciesName){
+        controlCountMap[depdenciesName] = controlCountMap[depdenciesName] || 0;
+        return controlCountMap[depdenciesName];
+    },
+
+    getDependenciesMapEntry(dependenciesMap, controlNameSpace){
+        dependenciesMap[controlNameSpace] = dependenciesMap[controlNameSpace] || {};
+        return dependenciesMap[controlNameSpace];
     }
 }
 

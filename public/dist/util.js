@@ -42,10 +42,8 @@ exports.default = {
 	findMatchingControl: function findMatchingControl(flattenDependencies, targetString) {
 		var resMatches = flattenDependencies;
 		if (targetString) {
-			// const regex = new RegExp(`${targetString}`, 'i');//use regex
 			resMatches = _lodash2.default.reduce(flattenDependencies, function (res, controlObj, controlKey) {
-				if (controlKey.toLowerCase().indexOf(targetString) === 0) {
-					// if (controlKey.indexOf(targetString) === 0){
+				if (_lodash2.default.startsWith(controlKey.toLowerCase(), targetString)) {
 					res[controlKey] = controlObj;
 				}
 				return res;
@@ -56,7 +54,7 @@ exports.default = {
 	},
 	findMatchingKeysInHash: function findMatchingKeysInHash(countMap, newSearchTerm) {
 		return _lodash2.default.size(newSearchTerm) > 0 ? _lodash2.default.reduce(countMap, function (res, objVal, objKey) {
-			if (objKey.toLowerCase().indexOf(newSearchTerm) === 0) {
+			if (_lodash2.default.startsWith(objKey.toLowerCase(), newSearchTerm)) {
 				res[objKey] = objVal;
 			}
 
