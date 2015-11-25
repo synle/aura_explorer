@@ -134,7 +134,11 @@ const self = {
     //this method is used to filter out too common dependencies
     //such as aura:registerEvent
     isValidDependencies(componentFullName){
-        return true;
+        if(componentFullName.indexOf(':') >= 0){
+            //only consider tag with : (namespace:control)
+            return true;
+        }
+        return false;
     }
 }
 

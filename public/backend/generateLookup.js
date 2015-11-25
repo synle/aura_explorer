@@ -154,69 +154,69 @@ exports.default = function (componentFileNames, baseDirAuraUpstream, outputDirDa
 																});
 
 																//populate the use a ...
-																if (name.indexOf('aura:') === 0) {
-																				//only interest in aura:*
-																				switch (name) {
-																								case 'aura:attribute':
-																												//{name, type, default, description, access}
+																switch (name.toLowerCase()) {
+																				case 'aura:attribute':
+																								//{name, type, default, description, access}
 
-																												var _util$getKeyValFromCh = _util2.default.getKeyValFromCheerioDom(attribute);
+																								var _util$getKeyValFromCh = _util2.default.getKeyValFromCheerioDom(attribute);
 
-																												var _util$getKeyValFromCh2 = _slicedToArray(_util$getKeyValFromCh, 2);
+																								var _util$getKeyValFromCh2 = _slicedToArray(_util$getKeyValFromCh, 2);
 
-																												var curAttrName = _util$getKeyValFromCh2[0];
-																												var curAttrAttributes = _util$getKeyValFromCh2[1];
+																								var curAttrName = _util$getKeyValFromCh2[0];
+																								var curAttrAttributes = _util$getKeyValFromCh2[1];
 
-																												curControlObj.attributes[curAttrName] = curAttrAttributes;
-																												break;
+																								curControlObj.attributes[curAttrName] = curAttrAttributes;
+																								break;
 
-																								case 'aura:import':
-																												//{library, property}
-																												var library = attribs.library;
+																				case 'aura:import':
+																								//{library, property}
+																								var library = attribs.library;
 
-																												curControlObj.imports[library] = attribs;
-																												break;
+																								curControlObj.imports[library] = attribs;
+																								break;
 
-																								case 'aura:registerevent':
-																												//{name, type, description}
-																												var eventName = attribs.name;
-																												curControlObj.events[eventName] = attribs;
-																												break;
+																				case 'aura:registerevent':
+																								//{name, type, description}
+																								var eventName = attribs.name;
+																								curControlObj.events[eventName] = attribs;
+																								break;
 
-																								case 'aura:handler':
-																												//{name, value, action}
-																												var handlerName = attribs.name;
-																												curControlObj.handlers[handlerName] = attribs;
-																												break;
+																				case 'aura:handler':
+																								//{name, value, action}
+																								var handlerName = attribs.name;
+																								curControlObj.handlers[handlerName] = attribs;
+																								break;
 
-																								case 'aura:method':
-																												//{name, action, access, description}
-																												var methodName = attribs.name;
+																				case 'aura:method':
+																								//{name, action, access, description}
+																								var methodName = attribs.name;
 
-																												var childrenAttrs = _lodash2.default.reduce(children || [], function (resChildAttrs, curChildAttr) {
-																																if (curChildAttr.name === 'aura:attribute' && attribs) {
-																																				var _util$getKeyValFromCh3 = _util2.default.getKeyValFromCheerioDom(curChildAttr);
+																								var childrenAttrs = _lodash2.default.reduce(children || [], function (resChildAttrs, curChildAttr) {
+																												if (curChildAttr.name === 'aura:attribute' && attribs) {
+																																var _util$getKeyValFromCh3 = _util2.default.getKeyValFromCheerioDom(curChildAttr);
 
-																																				var _util$getKeyValFromCh4 = _slicedToArray(_util$getKeyValFromCh3, 2);
+																																var _util$getKeyValFromCh4 = _slicedToArray(_util$getKeyValFromCh3, 2);
 
-																																				var childAttrName = _util$getKeyValFromCh4[0];
-																																				var childAttrAttributes = _util$getKeyValFromCh4[1];
+																																var childAttrName = _util$getKeyValFromCh4[0];
+																																var childAttrAttributes = _util$getKeyValFromCh4[1];
 
-																																				resChildAttrs[childAttrName] = childAttrAttributes;
-																																}
+																																resChildAttrs[childAttrName] = childAttrAttributes;
+																												}
 
-																																return resChildAttrs;
-																												}, {});
+																												return resChildAttrs;
+																								}, {});
 
-																												curControlObj.methods[methodName] = childrenAttrs;
-																												break;
+																								curControlObj.methods[methodName] = childrenAttrs;
+																								break;
 
-																								case 'aura:component':
-																												//to ignore
-																												break;
+																				case 'aura:component':
+																								//to ignore
+																								break;
 
-																								default:
-																												var depdenciesName = name;
+																				default:
+																								//other tag will be considered depdencies
+																								var depdenciesName = name;
+																								if (_util2.default.isValidDependencies(depdenciesName)) {
 																												//list of dependenceis
 																												curControlObj.dependencies[depdenciesName] = curControlObj.dependencies[depdenciesName] || [];
 																												curControlObj.dependencies[depdenciesName].push(attribs);
@@ -224,18 +224,8 @@ exports.default = function (componentFileNames, baseDirAuraUpstream, outputDirDa
 																												//count control usage
 																												controlCountMap[depdenciesName] = controlCountMap[depdenciesName] || 0;
 																												controlCountMap[depdenciesName]++;
-																												break;
-																				}
-																} else if (name.indexOf(':') > 0) {
-																				//only interested in stuffs with a :
-																				var depdenciesName = name;
-																				//list of dependenceis
-																				curControlObj.dependencies[depdenciesName] = curControlObj.dependencies[depdenciesName] || [];
-																				curControlObj.dependencies[depdenciesName].push(attribs);
-
-																				//count control usage
-																				controlCountMap[depdenciesName] = controlCountMap[depdenciesName] || 0;
-																				controlCountMap[depdenciesName]++;
+																								}
+																								break;
 																}
 												});
 

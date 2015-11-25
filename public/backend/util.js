@@ -146,6 +146,16 @@ var self = {
     },
     serializeJsonObject: function serializeJsonObject(jsonObj) {
         return JSON.stringify(jsonObj, null, 1);
+    },
+
+    //this method is used to filter out too common dependencies
+    //such as aura:registerEvent
+    isValidDependencies: function isValidDependencies(componentFullName) {
+        if (componentFullName.indexOf(':') >= 0) {
+            //only consider tag with : (namespace:control)
+            return true;
+        }
+        return false;
     }
 };
 

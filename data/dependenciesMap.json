@@ -2996,17 +2996,15 @@
   "panelHeader.cmp": {
    "attributes": {},
    "imports": {},
-   "events": {},
+   "events": {
+    "notify": {
+     "name": "notify",
+     "type": "ui:notify"
+    }
+   },
    "handlers": {},
    "methods": {},
-   "dependencies": {
-    "aura:registerEvent": [
-     {
-      "name": "notify",
-      "type": "ui:notify"
-     }
-    ]
-   }
+   "dependencies": {}
   },
   "panelPositioningExample.cmp": {
    "attributes": {
@@ -6881,7 +6879,24 @@
     }
    },
    "imports": {},
-   "events": {},
+   "events": {
+    "globalEvent": {
+     "name": "globalEvent",
+     "type": "auratest:accessGlobalEvent"
+    },
+    "publicEvent": {
+     "name": "publicEvent",
+     "type": "auratest:accessPublicEvent"
+    },
+    "internalEvent": {
+     "name": "internalEvent",
+     "type": "auratest:accessInternalEvent"
+    },
+    "privateEvent": {
+     "name": "privateEvent",
+     "type": "auratest:accessPrivateEvent"
+    }
+   },
    "handlers": {},
    "methods": {
     "testSetNonExistentAttribute": {},
@@ -6898,24 +6913,6 @@
     "privateMethod": {}
    },
    "dependencies": {
-    "aura:registerEvent": [
-     {
-      "name": "globalEvent",
-      "type": "auratest:accessGlobalEvent"
-     },
-     {
-      "name": "publicEvent",
-      "type": "auratest:accessPublicEvent"
-     },
-     {
-      "name": "internalEvent",
-      "type": "auratest:accessInternalEvent"
-     },
-     {
-      "name": "privateEvent",
-      "type": "auratest:accessPrivateEvent"
-     }
-    ],
     "componentTest:accessAttributes": [
      {
       "aura:id": "remote"
@@ -9207,7 +9204,12 @@
     }
    },
    "imports": {},
-   "events": {},
+   "events": {
+    "versionEvt": {
+     "name": "versionEvt",
+     "type": "auratest:testEvent"
+    }
+   },
    "handlers": {},
    "methods": {
     "updateWithVersionInConsumedComponentInTest": {},
@@ -9236,12 +9238,6 @@
      {
       "aura:id": "auratest_require"
      }
-    ],
-    "aura:registerEvent": [
-     {
-      "name": "versionEvt",
-      "type": "auratest:testEvent"
-     }
     ]
    }
   },
@@ -9262,7 +9258,12 @@
     }
    },
    "imports": {},
-   "events": {},
+   "events": {
+    "versionEvt": {
+     "name": "versionEvt",
+     "type": "auratest:testEvent"
+    }
+   },
    "handlers": {
     "versionEvt": {
      "name": "versionEvt",
@@ -9275,14 +9276,7 @@
     "updateTextWithCallingDescriptor": {},
     "fireVersionEvent": {}
    },
-   "dependencies": {
-    "aura:registerEvent": [
-     {
-      "name": "versionEvt",
-      "type": "auratest:testEvent"
-     }
-    ]
-   }
+   "dependencies": {}
   },
   "rerenderAbstract.cmp": {
    "attributes": {
@@ -10691,7 +10685,24 @@
     }
    },
    "imports": {},
-   "events": {},
+   "events": {
+    "globalEvent": {
+     "name": "globalEvent",
+     "type": "auratest:accessGlobalEvent"
+    },
+    "publicEvent": {
+     "name": "publicEvent",
+     "type": "auratest:accessPublicEvent"
+    },
+    "internalEvent": {
+     "name": "internalEvent",
+     "type": "auratest:accessInternalEvent"
+    },
+    "privateEvent": {
+     "name": "privateEvent",
+     "type": "auratest:accessPrivateEvent"
+    }
+   },
    "handlers": {},
    "methods": {
     "globalMethod": {},
@@ -10699,26 +10710,7 @@
     "internalMethod": {},
     "privateMethod": {}
    },
-   "dependencies": {
-    "aura:registerEvent": [
-     {
-      "name": "globalEvent",
-      "type": "auratest:accessGlobalEvent"
-     },
-     {
-      "name": "publicEvent",
-      "type": "auratest:accessPublicEvent"
-     },
-     {
-      "name": "internalEvent",
-      "type": "auratest:accessInternalEvent"
-     },
-     {
-      "name": "privateEvent",
-      "type": "auratest:accessPrivateEvent"
-     }
-    ]
-   }
+   "dependencies": {}
   },
   "accessExtendsPublic.cmp": {
    "attributes": {},
@@ -12460,7 +12452,12 @@
   "aHandlesEventFromA.cmp": {
    "attributes": {},
    "imports": {},
-   "events": {},
+   "events": {
+    "evt": {
+     "type": "handleEventTest:event",
+     "name": "evt"
+    }
+   },
    "handlers": {
     "evt": {
      "name": "evt",
@@ -12468,14 +12465,7 @@
     }
    },
    "methods": {},
-   "dependencies": {
-    "aura:registerEvent": [
-     {
-      "type": "handleEventTest:event",
-      "name": "evt"
-     }
-    ]
-   }
+   "dependencies": {}
   },
   "attachEventsInModel.cmp": {
    "attributes": {},
@@ -12488,7 +12478,12 @@
   "bHandlesEventFromA.cmp": {
    "attributes": {},
    "imports": {},
-   "events": {},
+   "events": {
+    "evtB": {
+     "type": "handleEventTest:event",
+     "name": "evtB"
+    }
+   },
    "handlers": {
     "evt": {
      "name": "evt",
@@ -12500,14 +12495,7 @@
     }
    },
    "methods": {},
-   "dependencies": {
-    "aura:registerEvent": [
-     {
-      "type": "handleEventTest:event",
-      "name": "evtB"
-     }
-    ]
-   }
+   "dependencies": {}
   },
   "cHandlesEventFromAandB.cmp": {
    "attributes": {},
@@ -14861,20 +14849,18 @@
     }
    },
    "imports": {},
-   "events": {},
+   "events": {
+    "versionEvt": {
+     "name": "versionEvt",
+     "type": "auratest:testEvent"
+    }
+   },
    "handlers": {},
    "methods": {
     "updateVersion": {},
     "fireEventWithVersionInServerController": {}
    },
-   "dependencies": {
-    "aura:registerEvent": [
-     {
-      "name": "versionEvt",
-      "type": "auratest:testEvent"
-     }
-    ]
-   }
+   "dependencies": {}
   },
   "requireConsumer.cmp": {
    "attributes": {
@@ -15035,7 +15021,12 @@
     }
    },
    "imports": {},
-   "events": {},
+   "events": {
+    "local": {
+     "name": "local",
+     "type": "test:testActionEventEvent"
+    }
+   },
    "handlers": {
     "local": {
      "name": "local",
@@ -15048,12 +15039,6 @@
    },
    "methods": {},
    "dependencies": {
-    "aura:registerEvent": [
-     {
-      "name": "local",
-      "type": "test:testActionEventEvent"
-     }
-    ],
     "ui:button": [
      {
       "aura:id": "trigger",
@@ -15492,18 +15477,17 @@
   "testEventBubblingEmitter.cmp": {
    "attributes": {},
    "imports": {},
-   "events": {},
+   "events": {
+    "bubblingEvent": {
+     "name": "bubblingEvent",
+     "type": "test:testEventBubblingEvent"
+    }
+   },
    "handlers": {},
    "methods": {
     "fireEvent": {}
    },
    "dependencies": {
-    "aura:registerEvent": [
-     {
-      "name": "bubblingEvent",
-      "type": "test:testEventBubblingEvent"
-     }
-    ],
     "ui:button": [
      {
       "aura:id": "button",
@@ -15516,18 +15500,17 @@
   "testEventBubblingEmitterExtended.cmp": {
    "attributes": {},
    "imports": {},
-   "events": {},
+   "events": {
+    "bubblingEvent": {
+     "name": "bubblingEvent",
+     "type": "test:testEventBubblingEventExtended"
+    }
+   },
    "handlers": {},
    "methods": {
     "fireEvent": {}
    },
    "dependencies": {
-    "aura:registerEvent": [
-     {
-      "name": "bubblingEvent",
-      "type": "test:testEventBubblingEventExtended"
-     }
-    ],
     "ui:button": [
      {
       "aura:id": "button",
@@ -15540,18 +15523,17 @@
   "testEventBubblingEmitterOther.cmp": {
    "attributes": {},
    "imports": {},
-   "events": {},
+   "events": {
+    "bubblingEvent": {
+     "name": "bubblingEvent",
+     "type": "test:testEventBubblingEventOther"
+    }
+   },
    "handlers": {},
    "methods": {
     "fireEvent": {}
    },
    "dependencies": {
-    "aura:registerEvent": [
-     {
-      "name": "bubblingEvent",
-      "type": "test:testEventBubblingEventOther"
-     }
-    ],
     "ui:button": [
      {
       "aura:id": "button",
@@ -26053,7 +26035,12 @@
     }
    },
    "imports": {},
-   "events": {},
+   "events": {
+    "notify": {
+     "name": "notify",
+     "type": "ui:notify"
+    }
+   },
    "handlers": {
     "notify": {
      "name": "notify",
@@ -26062,14 +26049,7 @@
     }
    },
    "methods": {},
-   "dependencies": {
-    "aura:registerEvent": [
-     {
-      "name": "notify",
-      "type": "ui:notify"
-     }
-    ]
-   }
+   "dependencies": {}
   },
   "panel2Content.cmp": {
    "attributes": {
@@ -26084,7 +26064,12 @@
     }
    },
    "imports": {},
-   "events": {},
+   "events": {
+    "notify": {
+     "name": "notify",
+     "type": "ui:notify"
+    }
+   },
    "handlers": {},
    "methods": {
     "incrementCounter": {
@@ -26095,12 +26080,6 @@
     }
    },
    "dependencies": {
-    "aura:registerEvent": [
-     {
-      "name": "notify",
-      "type": "ui:notify"
-     }
-    ],
     "ui:button": [
      {
       "aura:id": "notify",
@@ -26834,7 +26813,14 @@
      "property": "lib"
     }
    },
-   "events": {},
+   "events": {
+    "keydown": {
+     "name": "keydown",
+     "type": "ui:keydown",
+     "access": "GLOBAL",
+     "description": "The event fired when the user presses a keyboard key on the component."
+    }
+   },
    "handlers": {
     "keydown": {
      "name": "keydown",
@@ -26842,16 +26828,7 @@
     }
    },
    "methods": {},
-   "dependencies": {
-    "aura:registerEvent": [
-     {
-      "name": "keydown",
-      "type": "ui:keydown",
-      "access": "GLOBAL",
-      "description": "The event fired when the user presses a keyboard key on the component."
-     }
-    ]
-   }
+   "dependencies": {}
   },
   "pillContainer_WithAutoComplete.cmp": {
    "attributes": {
@@ -30758,17 +30735,15 @@
   "updateable.cmp": {
    "attributes": {},
    "imports": {},
-   "events": {},
+   "events": {
+    "click": {
+     "name": "click",
+     "type": "updateTest:updateableEvent"
+    }
+   },
    "handlers": {},
    "methods": {},
-   "dependencies": {
-    "aura:registerEvent": [
-     {
-      "name": "click",
-      "type": "updateTest:updateableEvent"
-     }
-    ]
-   }
+   "dependencies": {}
   },
   "updateableAlso.cmp": {
    "attributes": {},
@@ -30903,7 +30878,18 @@
     }
    },
    "imports": {},
-   "events": {},
+   "events": {
+    "refresh": {
+     "name": "refresh",
+     "type": "ui:refresh",
+     "description": "Provides fresh data from the dataProvider."
+    },
+    "addRemove": {
+     "name": "addRemove",
+     "type": "ui:addRemove",
+     "description": "Command event for grid to insert or delete items as rows."
+    }
+   },
    "handlers": {
     "init": {
      "name": "init",
@@ -30925,20 +30911,7 @@
     }
    },
    "methods": {},
-   "dependencies": {
-    "aura:registerEvent": [
-     {
-      "name": "refresh",
-      "type": "ui:refresh",
-      "description": "Provides fresh data from the dataProvider."
-     },
-     {
-      "name": "addRemove",
-      "type": "ui:addRemove",
-      "description": "Command event for grid to insert or delete items as rows."
-     }
-    ]
-   }
+   "dependencies": {}
   },
   "abstractList.cmp": {
    "attributes": {
@@ -30987,7 +30960,28 @@
     }
    },
    "imports": {},
-   "events": {},
+   "events": {
+    "triggerDataProvider": {
+     "name": "triggerDataProvider",
+     "type": "ui:dataProvide",
+     "description": "The event fired when the data provider is triggered."
+    },
+    "listComplete": {
+     "name": "listComplete",
+     "type": "aura:operationComplete",
+     "description": "The event fired when concrete implementations have finished their component creation."
+    },
+    "refresh": {
+     "name": "refresh",
+     "type": "ui:refresh",
+     "description": "The event fired when the component is refreshed."
+    },
+    "addRemove": {
+     "name": "addRemove",
+     "type": "ui:addRemove",
+     "description": "Command event to insert or remove items"
+    }
+   },
    "handlers": {
     "triggerDataProvider": {
      "name": "triggerDataProvider",
@@ -31009,28 +31003,6 @@
    },
    "methods": {},
    "dependencies": {
-    "aura:registerEvent": [
-     {
-      "name": "triggerDataProvider",
-      "type": "ui:dataProvide",
-      "description": "The event fired when the data provider is triggered."
-     },
-     {
-      "name": "listComplete",
-      "type": "aura:operationComplete",
-      "description": "The event fired when concrete implementations have finished their component creation."
-     },
-     {
-      "name": "refresh",
-      "type": "ui:refresh",
-      "description": "The event fired when the component is refreshed."
-     },
-     {
-      "name": "addRemove",
-      "type": "ui:addRemove",
-      "description": "Command event to insert or remove items"
-     }
-    ],
     "aura:if": [
      {
       "isTrue": "{!v.loadingIndicator.length == 0}"
@@ -31131,17 +31103,15 @@
   "actionDelegate.cmp": {
    "attributes": {},
    "imports": {},
-   "events": {},
+   "events": {
+    "onaction": {
+     "name": "onaction",
+     "type": "ui:actionEvent"
+    }
+   },
    "handlers": {},
    "methods": {},
-   "dependencies": {
-    "aura:registerEvent": [
-     {
-      "name": "onaction",
-      "type": "ui:actionEvent"
-     }
-    ]
-   }
+   "dependencies": {}
   },
   "actionMenuItem.cmp": {
    "attributes": {
@@ -31210,7 +31180,12 @@
     }
    },
    "imports": {},
-   "events": {},
+   "events": {
+    "load": {
+     "name": "load",
+     "type": "ui:load"
+    }
+   },
    "handlers": {
     "load": {
      "name": "load",
@@ -31219,12 +31194,6 @@
    },
    "methods": {},
    "dependencies": {
-    "aura:registerEvent": [
-     {
-      "name": "load",
-      "type": "ui:load"
-     }
-    ],
     "aura:dependency": [
      {
       "resource": "markup://ui:asyncComponentLoaded",
@@ -31341,7 +31310,33 @@
     }
    },
    "imports": {},
-   "events": {},
+   "events": {
+    "matchDone": {
+     "name": "matchDone",
+     "type": "ui:matchDone",
+     "description": "The event fired when the matching is done."
+    },
+    "inputChange": {
+     "name": "inputChange",
+     "type": "ui:inputChange",
+     "description": "The event fired when the input value changes."
+    },
+    "selectListOption": {
+     "name": "selectListOption",
+     "type": "ui:selectListOption",
+     "description": "The event fired when a list option is displayed."
+    },
+    "fetchData": {
+     "name": "fetchData",
+     "type": "ui:fetchData",
+     "description": "The event indicates we need to fetch data through a data provider."
+    },
+    "matchText": {
+     "name": "matchText",
+     "type": "ui:matchText",
+     "description": "The event fired when a text match occurs."
+    }
+   },
    "handlers": {
     "fetchData": {
      "name": "fetchData",
@@ -31364,33 +31359,6 @@
    },
    "methods": {},
    "dependencies": {
-    "aura:registerEvent": [
-     {
-      "name": "matchDone",
-      "type": "ui:matchDone",
-      "description": "The event fired when the matching is done."
-     },
-     {
-      "name": "inputChange",
-      "type": "ui:inputChange",
-      "description": "The event fired when the input value changes."
-     },
-     {
-      "name": "selectListOption",
-      "type": "ui:selectListOption",
-      "description": "The event fired when a list option is displayed."
-     },
-     {
-      "name": "fetchData",
-      "type": "ui:fetchData",
-      "description": "The event indicates we need to fetch data through a data provider."
-     },
-     {
-      "name": "matchText",
-      "type": "ui:matchText",
-      "description": "The event fired when a text match occurs."
-     }
-    ],
     "aura:set": [
      {
       "attribute": "labelPosition",
@@ -31563,7 +31531,48 @@
     }
    },
    "imports": {},
-   "events": {},
+   "events": {
+    "matchDone": {
+     "name": "matchDone",
+     "type": "ui:matchDone",
+     "description": "The event fired when the matching is done."
+    },
+    "listHighlight": {
+     "name": "listHighlight",
+     "type": "ui:listHighlight",
+     "description": "The event fired when a list option is highlighted."
+    },
+    "matchText": {
+     "name": "matchText",
+     "type": "ui:matchText",
+     "description": "The event fired when a text match occurs."
+    },
+    "pressOnHighlighted": {
+     "name": "pressOnHighlighted",
+     "type": "ui:press",
+     "description": "The event fired when a highlighted option is pressed."
+    },
+    "selectListOption": {
+     "name": "selectListOption",
+     "type": "ui:selectListOption",
+     "description": "The event fired when a list option is selected."
+    },
+    "updateAriaAttributes": {
+     "name": "updateAriaAttributes",
+     "type": "ui:updateAriaAttributes",
+     "description": "The event fired when a new option is highlighted."
+    },
+    "listExpand": {
+     "name": "listExpand",
+     "type": "ui:autocompleteListExpand",
+     "description": "The event fired when the list is made visible"
+    },
+    "listCollapse": {
+     "name": "listCollapse",
+     "type": "ui:autocompleteListCollapse",
+     "description": "The event fired when the list is made invisible"
+    }
+   },
    "handlers": {
     "init": {
      "name": "init",
@@ -31590,48 +31599,6 @@
    },
    "methods": {},
    "dependencies": {
-    "aura:registerEvent": [
-     {
-      "name": "matchDone",
-      "type": "ui:matchDone",
-      "description": "The event fired when the matching is done."
-     },
-     {
-      "name": "listHighlight",
-      "type": "ui:listHighlight",
-      "description": "The event fired when a list option is highlighted."
-     },
-     {
-      "name": "matchText",
-      "type": "ui:matchText",
-      "description": "The event fired when a text match occurs."
-     },
-     {
-      "name": "pressOnHighlighted",
-      "type": "ui:press",
-      "description": "The event fired when a highlighted option is pressed."
-     },
-     {
-      "name": "selectListOption",
-      "type": "ui:selectListOption",
-      "description": "The event fired when a list option is selected."
-     },
-     {
-      "name": "updateAriaAttributes",
-      "type": "ui:updateAriaAttributes",
-      "description": "The event fired when a new option is highlighted."
-     },
-     {
-      "name": "listExpand",
-      "type": "ui:autocompleteListExpand",
-      "description": "The event fired when the list is made visible"
-     },
-     {
-      "name": "listCollapse",
-      "type": "ui:autocompleteListCollapse",
-      "description": "The event fired when the list is made invisible"
-     }
-    ],
     "aura:set": [
      {
       "attribute": "header"
@@ -33075,28 +33042,26 @@
   "dataProvider.cmp": {
    "attributes": {},
    "imports": {},
-   "events": {},
+   "events": {
+    "provide": {
+     "name": "provide",
+     "type": "ui:dataProvide",
+     "description": "The event fired when the list is intialized."
+    },
+    "onchange": {
+     "name": "onchange",
+     "type": "ui:dataChanged",
+     "description": "The event fired when the list data changes."
+    },
+    "error": {
+     "name": "error",
+     "type": "ui:dataProvideError",
+     "description": "The event fired when there is an error during data fetching."
+    }
+   },
    "handlers": {},
    "methods": {},
-   "dependencies": {
-    "aura:registerEvent": [
-     {
-      "name": "provide",
-      "type": "ui:dataProvide",
-      "description": "The event fired when the list is intialized."
-     },
-     {
-      "name": "onchange",
-      "type": "ui:dataChanged",
-      "description": "The event fired when the list data changes."
-     },
-     {
-      "name": "error",
-      "type": "ui:dataProvideError",
-      "description": "The event fired when there is an error during data fetching."
-     }
-    ]
-   }
+   "dependencies": {}
   },
   "dataTable.cmp": {
    "attributes": {
@@ -33210,7 +33175,23 @@
     }
    },
    "imports": {},
-   "events": {},
+   "events": {
+    "write": {
+     "name": "write",
+     "type": "ui:write",
+     "description": "Command event to invoke writing."
+    },
+    "onsuccess": {
+     "name": "onsuccess",
+     "type": "ui:response",
+     "description": "Event fired on write success."
+    },
+    "onerror": {
+     "name": "onerror",
+     "type": "ui:response",
+     "description": "Event fired on write error."
+    }
+   },
    "handlers": {
     "change": {
      "name": "change",
@@ -33223,25 +33204,7 @@
     }
    },
    "methods": {},
-   "dependencies": {
-    "aura:registerEvent": [
-     {
-      "name": "write",
-      "type": "ui:write",
-      "description": "Command event to invoke writing."
-     },
-     {
-      "name": "onsuccess",
-      "type": "ui:response",
-      "description": "Event fired on write success."
-     },
-     {
-      "name": "onerror",
-      "type": "ui:response",
-      "description": "Event fired on write error."
-     }
-    ]
-   }
+   "dependencies": {}
   },
   "datePicker.cmp": {
    "attributes": {
@@ -33890,7 +33853,13 @@
     }
    },
    "imports": {},
-   "events": {},
+   "events": {
+    "close": {
+     "name": "close",
+     "type": "ui:closeDialog",
+     "description": "Event fired when the dialog window requests to close itself."
+    }
+   },
    "handlers": {
     "init": {
      "name": "init",
@@ -33900,13 +33869,6 @@
    },
    "methods": {},
    "dependencies": {
-    "aura:registerEvent": [
-     {
-      "name": "close",
-      "type": "ui:closeDialog",
-      "description": "Event fired when the dialog window requests to close itself."
-     }
-    ],
     "aura:if": [
      {
       "isTrue": "{!v.isModal}"
@@ -34215,7 +34177,23 @@
      "property": "lib"
     }
    },
-   "events": {},
+   "events": {
+    "dragStart": {
+     "name": "dragStart",
+     "type": "ui:dragEvent",
+     "description": "Event fired when user starts dragging this component."
+    },
+    "dragEnd": {
+     "name": "dragEnd",
+     "type": "ui:dragEvent",
+     "description": "Event fired when this drag operation is being ended."
+    },
+    "dropComplete": {
+     "name": "dropComplete",
+     "type": "ui:dragEvent",
+     "description": "Event fired when drop operation is completed."
+    }
+   },
    "handlers": {
     "dropComplete": {
      "name": "dropComplete",
@@ -34251,25 +34229,7 @@
      }
     }
    },
-   "dependencies": {
-    "aura:registerEvent": [
-     {
-      "name": "dragStart",
-      "type": "ui:dragEvent",
-      "description": "Event fired when user starts dragging this component."
-     },
-     {
-      "name": "dragEnd",
-      "type": "ui:dragEvent",
-      "description": "Event fired when this drag operation is being ended."
-     },
-     {
-      "name": "dropComplete",
-      "type": "ui:dragEvent",
-      "description": "Event fired when drop operation is completed."
-     }
-    ]
-   }
+   "dependencies": {}
   },
   "dropzone.cmp": {
    "attributes": {
@@ -34339,7 +34299,28 @@
      "property": "lib"
     }
    },
-   "events": {},
+   "events": {
+    "dragEnter": {
+     "name": "dragEnter",
+     "type": "ui:dragEvent",
+     "description": "Event fired when a dragged component enters this drop target."
+    },
+    "dragOver": {
+     "name": "dragOver",
+     "type": "ui:dragEvent",
+     "description": "Event fired when a dragged component is hovered over this drop target."
+    },
+    "dragLeave": {
+     "name": "dragLeave",
+     "type": "ui:dragEvent",
+     "description": "Event fired when a dragged component leaves this drop target."
+    },
+    "drop": {
+     "name": "drop",
+     "type": "ui:dragEvent",
+     "description": "Event fired when a component is dropped on this drop target."
+    }
+   },
    "handlers": {},
    "methods": {
     "enterDragOperation": {},
@@ -34390,30 +34371,7 @@
      }
     }
    },
-   "dependencies": {
-    "aura:registerEvent": [
-     {
-      "name": "dragEnter",
-      "type": "ui:dragEvent",
-      "description": "Event fired when a dragged component enters this drop target."
-     },
-     {
-      "name": "dragOver",
-      "type": "ui:dragEvent",
-      "description": "Event fired when a dragged component is hovered over this drop target."
-     },
-     {
-      "name": "dragLeave",
-      "type": "ui:dragEvent",
-      "description": "Event fired when a dragged component leaves this drop target."
-     },
-     {
-      "name": "drop",
-      "type": "ui:dragEvent",
-      "description": "Event fired when a component is dropped on this drop target."
-     }
-    ]
-   }
+   "dependencies": {}
   },
   "fieldLabel.cmp": {
    "attributes": {},
@@ -34490,7 +34448,18 @@
     }
    },
    "imports": {},
-   "events": {},
+   "events": {
+    "onload": {
+     "name": "onload",
+     "type": "ui:response",
+     "description": "Event fired when the image is done loading, passes the image loaded to the event."
+    },
+    "onerror": {
+     "name": "onerror",
+     "type": "ui:response",
+     "description": "Event fired when an error occurs while loading the image."
+    }
+   },
    "handlers": {
     "init": {
      "name": "init",
@@ -34499,20 +34468,7 @@
     }
    },
    "methods": {},
-   "dependencies": {
-    "aura:registerEvent": [
-     {
-      "name": "onload",
-      "type": "ui:response",
-      "description": "Event fired when the image is done loading, passes the image loaded to the event."
-     },
-     {
-      "name": "onerror",
-      "type": "ui:response",
-      "description": "Event fired when an error occurs while loading the image."
-     }
-    ]
-   }
+   "dependencies": {}
   },
   "infiniteList.cmp": {
    "attributes": {
@@ -34524,7 +34480,18 @@
     }
    },
    "imports": {},
-   "events": {},
+   "events": {
+    "onRowOpen": {
+     "name": "onRowOpen",
+     "type": "ui:openRow",
+     "description": "Fired when a row is swiped open."
+    },
+    "onRowClose": {
+     "name": "onRowClose",
+     "type": "ui:closeRow",
+     "description": "Fired when a row is swiped closed."
+    }
+   },
    "handlers": {
     "init": {
      "name": "init",
@@ -34538,18 +34505,6 @@
    },
    "methods": {},
    "dependencies": {
-    "aura:registerEvent": [
-     {
-      "name": "onRowOpen",
-      "type": "ui:openRow",
-      "description": "Fired when a row is swiped open."
-     },
-     {
-      "name": "onRowClose",
-      "type": "ui:closeRow",
-      "description": "Fired when a row is swiped closed."
-     }
-    ],
     "aura:iteration": [
      {
       "items": "{!v.items}",
@@ -34572,7 +34527,16 @@
     }
    },
    "imports": {},
-   "events": {},
+   "events": {
+    "open": {
+     "name": "open",
+     "type": "ui:open"
+    },
+    "close": {
+     "name": "close",
+     "type": "ui:close"
+    }
+   },
    "handlers": {
     "open": {
      "name": "open",
@@ -34584,18 +34548,7 @@
     }
    },
    "methods": {},
-   "dependencies": {
-    "aura:registerEvent": [
-     {
-      "name": "open",
-      "type": "ui:open"
-     },
-     {
-      "name": "close",
-      "type": "ui:close"
-     }
-    ]
-   }
+   "dependencies": {}
   },
   "input.cmp": {
    "attributes": {
@@ -34701,7 +34654,54 @@
      "property": "lib"
     }
    },
-   "events": {},
+   "events": {
+    "change": {
+     "name": "change",
+     "type": "ui:change",
+     "access": "GLOBAL",
+     "description": "The event fired when the user changes the content of the input."
+    },
+    "copy": {
+     "name": "copy",
+     "type": "ui:copy",
+     "access": "GLOBAL",
+     "description": "The event fired when the user copies content to the clipboard."
+    },
+    "cut": {
+     "name": "cut",
+     "type": "ui:cut",
+     "access": "GLOBAL",
+     "description": "The event fired when the user cuts content to the clipboard."
+    },
+    "paste": {
+     "name": "paste",
+     "type": "ui:paste",
+     "access": "GLOBAL",
+     "description": "The event fired when the user pastes content from the clipboard."
+    },
+    "onError": {
+     "name": "onError",
+     "type": "ui:validationError",
+     "access": "GLOBAL",
+     "description": "The event fired when there are any validation errors on the component."
+    },
+    "onClearErrors": {
+     "name": "onClearErrors",
+     "type": "ui:clearErrors",
+     "access": "GLOBAL",
+     "description": "The event fired when any validation errors should be cleared."
+    },
+    "updateError": {
+     "name": "updateError",
+     "type": "ui:updateError",
+     "description": "The event fired to trigger the default error component and messages (deprecated)."
+    },
+    "input": {
+     "name": "input",
+     "type": "ui:inputEvent",
+     "description": "The event fired when the user enters an input."
+    }
+   },
    "handlers": {
     "updateError": {
      "name": "updateError",
@@ -34730,54 +34730,6 @@
      {
       "resource": "markup://ui:inputDefaultError",
       "type": "COMPONENT"
-     }
-    ],
-    "aura:registerEvent": [
-     {
-      "name": "change",
-      "type": "ui:change",
-      "access": "GLOBAL",
-      "description": "The event fired when the user changes the content of the input."
-     },
-     {
-      "name": "copy",
-      "type": "ui:copy",
-      "access": "GLOBAL",
-      "description": "The event fired when the user copies content to the clipboard."
-     },
-     {
-      "name": "cut",
-      "type": "ui:cut",
-      "access": "GLOBAL",
-      "description": "The event fired when the user cuts content to the clipboard."
-     },
-     {
-      "name": "paste",
-      "type": "ui:paste",
-      "access": "GLOBAL",
-      "description": "The event fired when the user pastes content from the clipboard."
-     },
-     {
-      "name": "onError",
-      "type": "ui:validationError",
-      "access": "GLOBAL",
-      "description": "The event fired when there are any validation errors on the component."
-     },
-     {
-      "name": "onClearErrors",
-      "type": "ui:clearErrors",
-      "access": "GLOBAL",
-      "description": "The event fired when any validation errors should be cleared."
-     },
-     {
-      "name": "updateError",
-      "type": "ui:updateError",
-      "description": "The event fired to trigger the default error component and messages (deprecated)."
-     },
-     {
-      "name": "input",
-      "type": "ui:inputEvent",
-      "description": "The event fired when the user enters an input."
      }
     ]
    }
@@ -34826,7 +34778,12 @@
     }
    },
    "imports": {},
-   "events": {},
+   "events": {
+    "openPicker": {
+     "name": "openPicker",
+     "type": "ui:openPicker"
+    }
+   },
    "handlers": {
     "init": {
      "name": "init",
@@ -34840,12 +34797,6 @@
    },
    "methods": {},
    "dependencies": {
-    "aura:registerEvent": [
-     {
-      "name": "openPicker",
-      "type": "ui:openPicker"
-     }
-    ],
     "aura:if": [
      {
       "isTrue": "{!$Browser.isPhone || $Browser.isTablet}"
@@ -34952,7 +34903,12 @@
     }
    },
    "imports": {},
-   "events": {},
+   "events": {
+    "openPicker": {
+     "name": "openPicker",
+     "type": "ui:openPicker"
+    }
+   },
    "handlers": {
     "init": {
      "name": "init",
@@ -34966,12 +34922,6 @@
    },
    "methods": {},
    "dependencies": {
-    "aura:registerEvent": [
-     {
-      "name": "openPicker",
-      "type": "ui:openPicker"
-     }
-    ],
     "aura:if": [
      {
       "isTrue": "{!and($Browser.formFactor == 'DESKTOP', !v.useSingleInput)}"
@@ -35624,49 +35574,47 @@
     }
    },
    "imports": {},
-   "events": {},
+   "events": {
+    "blur": {
+     "name": "blur",
+     "type": "ui:blur",
+     "access": "GLOBAL",
+     "description": "The event fired when the user moves off from the component."
+    },
+    "focus": {
+     "name": "focus",
+     "type": "ui:focus",
+     "access": "GLOBAL",
+     "description": "The event fired when the user focuses on the component."
+    },
+    "keydown": {
+     "name": "keydown",
+     "type": "ui:keydown",
+     "access": "GLOBAL",
+     "description": "The event fired when the user presses a keyboard key on the component."
+    },
+    "keypress": {
+     "name": "keypress",
+     "type": "ui:keypress",
+     "access": "GLOBAL",
+     "description": "The event fired when the user presses or holds down a keyboard key on the component."
+    },
+    "keyup": {
+     "name": "keyup",
+     "type": "ui:keyup",
+     "access": "GLOBAL",
+     "description": "The event fired when the user releases a keyboard key on the component."
+    },
+    "select": {
+     "name": "select",
+     "type": "ui:select",
+     "access": "GLOBAL",
+     "description": "The event fired when the user selects some text."
+    }
+   },
    "handlers": {},
    "methods": {},
-   "dependencies": {
-    "aura:registerEvent": [
-     {
-      "name": "blur",
-      "type": "ui:blur",
-      "access": "GLOBAL",
-      "description": "The event fired when the user moves off from the component."
-     },
-     {
-      "name": "focus",
-      "type": "ui:focus",
-      "access": "GLOBAL",
-      "description": "The event fired when the user focuses on the component."
-     },
-     {
-      "name": "keydown",
-      "type": "ui:keydown",
-      "access": "GLOBAL",
-      "description": "The event fired when the user presses a keyboard key on the component."
-     },
-     {
-      "name": "keypress",
-      "type": "ui:keypress",
-      "access": "GLOBAL",
-      "description": "The event fired when the user presses or holds down a keyboard key on the component."
-     },
-     {
-      "name": "keyup",
-      "type": "ui:keyup",
-      "access": "GLOBAL",
-      "description": "The event fired when the user releases a keyboard key on the component."
-     },
-     {
-      "name": "select",
-      "type": "ui:select",
-      "access": "GLOBAL",
-      "description": "The event fired when the user selects some text."
-     }
-    ]
-   }
+   "dependencies": {}
   },
   "label.cmp": {
    "attributes": {
@@ -35832,7 +35780,12 @@
     }
    },
    "imports": {},
-   "events": {},
+   "events": {
+    "refresh": {
+     "name": "refresh",
+     "type": "ui:refresh"
+    }
+   },
    "handlers": {
     "init": {
      "name": "init",
@@ -35851,12 +35804,6 @@
    },
    "methods": {},
    "dependencies": {
-    "aura:registerEvent": [
-     {
-      "name": "refresh",
-      "type": "ui:refresh"
-     }
-    ],
     "aura:dependency": [
      {
       "resource": "markup://ui:menuTriggerLink",
@@ -36016,7 +35963,37 @@
     }
    },
    "imports": {},
-   "events": {},
+   "events": {
+    "menuCollapse": {
+     "access": "GLOBAL",
+     "name": "menuCollapse",
+     "type": "ui:collapse",
+     "description": "The event fired when the menu list collapses."
+    },
+    "menuExpand": {
+     "access": "GLOBAL",
+     "name": "menuExpand",
+     "type": "ui:expand",
+     "description": "The event fired when the menu list displays."
+    },
+    "menuSelect": {
+     "access": "GLOBAL",
+     "name": "menuSelect",
+     "type": "ui:menuSelect",
+     "description": "The event fired when the user select a menu item."
+    },
+    "menuFocusChange": {
+     "access": "GLOBAL",
+     "name": "menuFocusChange",
+     "type": "ui:menuFocusChange",
+     "description": "The event fired when the menu list focus changed from one menuItem to another menuItem."
+    },
+    "refresh": {
+     "name": "refresh",
+     "type": "ui:refresh",
+     "description": "Fire this event to refresh the menuList."
+    }
+   },
    "handlers": {
     "refresh": {
      "name": "refresh",
@@ -36025,37 +36002,6 @@
    },
    "methods": {},
    "dependencies": {
-    "aura:registerEvent": [
-     {
-      "access": "GLOBAL",
-      "name": "menuCollapse",
-      "type": "ui:collapse",
-      "description": "The event fired when the menu list collapses."
-     },
-     {
-      "access": "GLOBAL",
-      "name": "menuExpand",
-      "type": "ui:expand",
-      "description": "The event fired when the menu list displays."
-     },
-     {
-      "access": "GLOBAL",
-      "name": "menuSelect",
-      "type": "ui:menuSelect",
-      "description": "The event fired when the user select a menu item."
-     },
-     {
-      "access": "GLOBAL",
-      "name": "menuFocusChange",
-      "type": "ui:menuFocusChange",
-      "description": "The event fired when the menu list focus changed from one menuItem to another menuItem."
-     },
-     {
-      "name": "refresh",
-      "type": "ui:refresh",
-      "description": "Fire this event to refresh the menuList."
-     }
-    ],
     "aura:if": [
      {
       "isTrue": "{!v.headerText != null}"
@@ -36117,25 +36063,23 @@
      "name": "menuTriggerPress",
      "type": "ui:menuTriggerPress",
      "description": "The event that is fired when the trigger is clicked."
+    },
+    "blur": {
+     "access": "GLOBAL",
+     "name": "blur",
+     "type": "ui:blur",
+     "description": "The event fired when the user moves off from the trigger."
+    },
+    "focus": {
+     "access": "GLOBAL",
+     "name": "focus",
+     "type": "ui:focus",
+     "description": "The event fired when the user focuses on the trigger."
     }
    },
    "handlers": {},
    "methods": {},
    "dependencies": {
-    "aura:registerEvent": [
-     {
-      "access": "GLOBAL",
-      "name": "blur",
-      "type": "ui:blur",
-      "description": "The event fired when the user moves off from the trigger."
-     },
-     {
-      "access": "GLOBAL",
-      "name": "focus",
-      "type": "ui:focus",
-      "description": "The event fired when the user focuses on the trigger."
-     }
-    ],
     "aura:set": [
      {
       "attribute": "trigger"
@@ -36738,24 +36682,28 @@
      "property": "lib"
     }
    },
-   "events": {},
+   "events": {
+    "click": {
+     "name": "click",
+     "type": "ui:click",
+     "access": "GLOBAL",
+     "description": "The event fired when the user clicks on the component."
+    }
+   },
    "handlers": {},
    "methods": {},
-   "dependencies": {
-    "aura:registerEvent": [
-     {
-      "name": "click",
-      "type": "ui:click",
-      "access": "GLOBAL",
-      "description": "The event fired when the user clicks on the component."
-     }
-    ]
-   }
+   "dependencies": {}
   },
   "pager.cmp": {
    "attributes": {},
    "imports": {},
-   "events": {},
+   "events": {
+    "onPageChange": {
+     "name": "onPageChange",
+     "type": "ui:pagerEvent",
+     "description": "The event that is fired when a concrete pager triggers a paging event."
+    }
+   },
    "handlers": {
     "init": {
      "name": "init",
@@ -36769,15 +36717,7 @@
     }
    },
    "methods": {},
-   "dependencies": {
-    "aura:registerEvent": [
-     {
-      "name": "onPageChange",
-      "type": "ui:pagerEvent",
-      "description": "The event that is fired when a concrete pager triggers a paging event."
-     }
-    ]
-   }
+   "dependencies": {}
   },
   "pagerJumpToPage.cmp": {
    "attributes": {
@@ -37195,7 +37135,12 @@
     }
    },
    "imports": {},
-   "events": {},
+   "events": {
+    "panelDoneRendering": {
+     "name": "panelDoneRendering",
+     "type": "ui:panelDoneRendering"
+    }
+   },
    "handlers": {
     "init": {
      "name": "init",
@@ -37205,12 +37150,6 @@
    },
    "methods": {},
    "dependencies": {
-    "aura:registerEvent": [
-     {
-      "name": "panelDoneRendering",
-      "type": "ui:panelDoneRendering"
-     }
-    ],
     "aura:dependency": [
      {
       "resource": "markup://ui:panelTransitionBegin",
@@ -37413,6 +37352,18 @@
      "name": "onHandledEvent",
      "type": "ui:response",
      "description": "The event fired when the user interactions with this component which it should be handled by the pillContainer (i.e left and right arrow, Enter, and Backspace)"
+    },
+    "keydown": {
+     "name": "keydown",
+     "type": "ui:keydown",
+     "access": "GLOBAL",
+     "description": "The event fired when the user presses a keyboard key on the component."
+    },
+    "blur": {
+     "name": "blur",
+     "type": "ui:blur",
+     "access": "GLOBAL",
+     "description": "The event fired when the user moves off from the component."
     }
    },
    "handlers": {
@@ -37427,20 +37378,6 @@
    },
    "methods": {},
    "dependencies": {
-    "aura:registerEvent": [
-     {
-      "name": "keydown",
-      "type": "ui:keydown",
-      "access": "GLOBAL",
-      "description": "The event fired when the user presses a keyboard key on the component."
-     },
-     {
-      "name": "blur",
-      "type": "ui:blur",
-      "access": "GLOBAL",
-      "description": "The event fired when the user moves off from the component."
-     }
-    ],
     "aura:if": [
      {
       "isTrue": "{!!empty(v.iconUrl)}"
@@ -37648,7 +37585,33 @@
   "popup.cmp": {
    "attributes": {},
    "imports": {},
-   "events": {},
+   "events": {
+    "popupTriggerPress": {
+     "name": "popupTriggerPress",
+     "type": "ui:popupTriggerPress",
+     "description": "The event fired when the popup trigger is pressed. Other components may also fire this event to simulate a trigger press."
+    },
+    "popupTargetShow": {
+     "name": "popupTargetShow",
+     "type": "ui:popupTargetShow",
+     "description": "The trigger fires this event to show the target. Other components may also fire this event to show the target."
+    },
+    "popupTargetHide": {
+     "name": "popupTargetHide",
+     "type": "ui:popupTargetHide",
+     "description": "The trigger fires this event to hide the target. Other components may also fire this event to hide the target."
+    },
+    "popupKeyboardEvent": {
+     "name": "popupKeyboardEvent",
+     "type": "ui:popupKeyboardEvent",
+     "description": "The event fired when a user interacts with a popup via the keyboard."
+    },
+    "refresh": {
+     "name": "refresh",
+     "type": "ui:refresh",
+     "description": "Fire this event to refresh the popup"
+    }
+   },
    "handlers": {
     "init": {
      "name": "init",
@@ -37677,35 +37640,7 @@
     }
    },
    "methods": {},
-   "dependencies": {
-    "aura:registerEvent": [
-     {
-      "name": "popupTriggerPress",
-      "type": "ui:popupTriggerPress",
-      "description": "The event fired when the popup trigger is pressed. Other components may also fire this event to simulate a trigger press."
-     },
-     {
-      "name": "popupTargetShow",
-      "type": "ui:popupTargetShow",
-      "description": "The trigger fires this event to show the target. Other components may also fire this event to show the target."
-     },
-     {
-      "name": "popupTargetHide",
-      "type": "ui:popupTargetHide",
-      "description": "The trigger fires this event to hide the target. Other components may also fire this event to hide the target."
-     },
-     {
-      "name": "popupKeyboardEvent",
-      "type": "ui:popupKeyboardEvent",
-      "description": "The event fired when a user interacts with a popup via the keyboard."
-     },
-     {
-      "name": "refresh",
-      "type": "ui:refresh",
-      "description": "Fire this event to refresh the popup"
-     }
-    ]
-   }
+   "dependencies": {}
   },
   "popupTarget.cmp": {
    "attributes": {
@@ -37780,7 +37715,28 @@
     }
    },
    "imports": {},
-   "events": {},
+   "events": {
+    "popupCollapse": {
+     "name": "popupCollapse",
+     "type": "ui:collapse",
+     "description": "The event fired when the popup target list collapses."
+    },
+    "popupExpand": {
+     "name": "popupExpand",
+     "type": "ui:expand",
+     "description": "The event fired when the popup target list displays."
+    },
+    "popupKeyboardEvent": {
+     "name": "popupKeyboardEvent",
+     "type": "ui:popupKeyboardEvent",
+     "description": "The event fired when the user interacts with the popup using the keyboard."
+    },
+    "doClose": {
+     "name": "doClose",
+     "type": "ui:collapse",
+     "description": "Tell the target to close itself."
+    }
+   },
    "handlers": {
     "popupKeyboardEvent": {
      "name": "popupKeyboardEvent",
@@ -37789,28 +37745,6 @@
    },
    "methods": {},
    "dependencies": {
-    "aura:registerEvent": [
-     {
-      "name": "popupCollapse",
-      "type": "ui:collapse",
-      "description": "The event fired when the popup target list collapses."
-     },
-     {
-      "name": "popupExpand",
-      "type": "ui:expand",
-      "description": "The event fired when the popup target list displays."
-     },
-     {
-      "name": "popupKeyboardEvent",
-      "type": "ui:popupKeyboardEvent",
-      "description": "The event fired when the user interacts with the popup using the keyboard."
-     },
-     {
-      "name": "doClose",
-      "type": "ui:collapse",
-      "description": "Tell the target to close itself."
-     }
-    ],
     "aura:if": [
      {
       "isTrue": "{! v.attachToBody && v.curtain}"
@@ -37845,7 +37779,28 @@
     }
    },
    "imports": {},
-   "events": {},
+   "events": {
+    "popupTriggerPress": {
+     "name": "popupTriggerPress",
+     "type": "ui:popupTriggerPress",
+     "description": "The event fired when a popup trigger is pressed."
+    },
+    "popupTargetShow": {
+     "name": "popupTargetShow",
+     "type": "ui:popupTargetShow",
+     "description": "The trigger fires this event to show the target."
+    },
+    "popupTargetHide": {
+     "name": "popupTargetHide",
+     "type": "ui:popupTargetHide",
+     "description": "The trigger fires this event to hide the target."
+    },
+    "popupKeyboardEvent": {
+     "name": "popupKeyboardEvent",
+     "type": "ui:popupKeyboardEvent",
+     "description": "The event fired when a user interacts with a popup via the keyboard."
+    }
+   },
    "handlers": {
     "undefined": {
      "event": "ui:popupTargetToggle",
@@ -37856,28 +37811,6 @@
     "triggerInteraction": {}
    },
    "dependencies": {
-    "aura:registerEvent": [
-     {
-      "name": "popupTriggerPress",
-      "type": "ui:popupTriggerPress",
-      "description": "The event fired when a popup trigger is pressed."
-     },
-     {
-      "name": "popupTargetShow",
-      "type": "ui:popupTargetShow",
-      "description": "The trigger fires this event to show the target."
-     },
-     {
-      "name": "popupTargetHide",
-      "type": "ui:popupTargetHide",
-      "description": "The trigger fires this event to hide the target."
-     },
-     {
-      "name": "popupKeyboardEvent",
-      "type": "ui:popupKeyboardEvent",
-      "description": "The event fired when a user interacts with a popup via the keyboard."
-     }
-    ],
     "aura:if": [
      {
       "isTrue": "{!v.trigger.length > 0}"
@@ -38291,7 +38224,18 @@
      "property": "scopedScroll"
     }
    },
-   "events": {},
+   "events": {
+    "scrollTo": {
+     "name": "scrollTo",
+     "type": "ui:scrollTo",
+     "description": "The event fired when the scroller should move to a new destination"
+    },
+    "scrollBy": {
+     "name": "scrollBy",
+     "type": "ui:scrollBy",
+     "description": "The event fired when the scroller should move to a new destination relative to its current position"
+    }
+   },
    "handlers": {
     "scrollTo": {
      "name": "scrollTo",
@@ -38317,18 +38261,6 @@
    },
    "methods": {},
    "dependencies": {
-    "aura:registerEvent": [
-     {
-      "name": "scrollTo",
-      "type": "ui:scrollTo",
-      "description": "The event fired when the scroller should move to a new destination"
-     },
-     {
-      "name": "scrollBy",
-      "type": "ui:scrollBy",
-      "description": "The event fired when the scroller should move to a new destination relative to its current position"
-     }
-    ],
     "ui:resizeObserver": [
      {
       "onresize": "{!c.refresh}"
@@ -38518,7 +38450,23 @@
     }
    },
    "imports": {},
-   "events": {},
+   "events": {
+    "refreshed": {
+     "name": "refreshed",
+     "type": "ui:scrollerRefreshed",
+     "description": "The event fired when the scroller is refreshed."
+    },
+    "scrollTo": {
+     "name": "scrollTo",
+     "type": "ui:scrollTo",
+     "description": "The event fired when the scroller should move to a new destination."
+    },
+    "scrollBy": {
+     "name": "scrollBy",
+     "type": "ui:scrollBy",
+     "description": "The event fired when the scroller should move to a new destination relative to its current position."
+    }
+   },
    "handlers": {
     "undefined": {
      "event": "aura:locationChange",
@@ -38543,23 +38491,6 @@
    },
    "methods": {},
    "dependencies": {
-    "aura:registerEvent": [
-     {
-      "name": "refreshed",
-      "type": "ui:scrollerRefreshed",
-      "description": "The event fired when the scroller is refreshed."
-     },
-     {
-      "name": "scrollTo",
-      "type": "ui:scrollTo",
-      "description": "The event fired when the scroller should move to a new destination."
-     },
-     {
-      "name": "scrollBy",
-      "type": "ui:scrollBy",
-      "description": "The event fired when the scroller should move to a new destination relative to its current position."
-     }
-    ],
     "ui:resizeObserver": [
      {
       "onresize": "{!c.refresh}"
@@ -38596,7 +38527,14 @@
     }
    },
    "imports": {},
-   "events": {},
+   "events": {
+    "toggle": {
+     "access": "GLOBAL",
+     "name": "toggle",
+     "type": "ui:toggleLoadingIndicator",
+     "description": "The event fired when the spinner is toggled."
+    }
+   },
    "handlers": {
     "toggle": {
      "name": "toggle",
@@ -38605,14 +38543,6 @@
    },
    "methods": {},
    "dependencies": {
-    "aura:registerEvent": [
-     {
-      "access": "GLOBAL",
-      "name": "toggle",
-      "type": "ui:toggleLoadingIndicator",
-      "description": "The event fired when the spinner is toggled."
-     }
-    ],
     "ui:image": [
      {
       "class": "spinner-img",
@@ -38706,6 +38636,16 @@
      "name": "beforeActivate",
      "type": "ui:tabsetEvent",
      "description": "The event is triggered before the tab is activated. Can be canceled to prevent the tab from activating."
+    },
+    "onActivated": {
+     "name": "onActivated",
+     "type": "ui:tabsetEvent",
+     "description": "The event fired when the tab is activated."
+    },
+    "setActive": {
+     "name": "setActive",
+     "type": "ui:tabsetEvent",
+     "description": "The event fired from ui:tabset to set this tab as active or deactive."
     }
    },
    "handlers": {
@@ -38715,20 +38655,7 @@
     }
    },
    "methods": {},
-   "dependencies": {
-    "aura:registerEvent": [
-     {
-      "name": "onActivated",
-      "type": "ui:tabsetEvent",
-      "description": "The event fired when the tab is activated."
-     },
-     {
-      "name": "setActive",
-      "type": "ui:tabsetEvent",
-      "description": "The event fired from ui:tabset to set this tab as active or deactive."
-     }
-    ]
-   }
+   "dependencies": {}
   },
   "tabBar.cmp": {
    "attributes": {
@@ -39036,6 +38963,11 @@
      "name": "onTabUnhover",
      "type": "ui:onTabHover",
      "description": "The event is fired when the mouse moves off of a tab or when focus is moved away from a tab."
+    },
+    "onTabSelection": {
+     "name": "onTabSelection",
+     "type": "ui:tabsetEvent",
+     "description": "The event is fired when a tab from the overflow menu is selected."
     }
    },
    "handlers": {
@@ -39060,13 +38992,6 @@
     }
    },
    "dependencies": {
-    "aura:registerEvent": [
-     {
-      "name": "onTabSelection",
-      "type": "ui:tabsetEvent",
-      "description": "The event is fired when a tab from the overflow menu is selected."
-     }
-    ],
     "aura:dependency": [
      {
       "resource": "markup://ui:actionMenuItem"
@@ -39096,25 +39021,23 @@
   "tabOverflowMenuList.cmp": {
    "attributes": {},
    "imports": {},
-   "events": {},
+   "events": {
+    "forwardWrap": {
+     "access": "PUBLIC",
+     "name": "forwardWrap",
+     "type": "ui:collapse",
+     "description": "The event fired when the menu list attempts a forward wrap due to a key press."
+    },
+    "reverseWrap": {
+     "access": "PUBLIC",
+     "name": "reverseWrap",
+     "type": "ui:collapse",
+     "description": "The event fired when the menu list attempts a reverse wrap due to a key press."
+    }
+   },
    "handlers": {},
    "methods": {},
-   "dependencies": {
-    "aura:registerEvent": [
-     {
-      "access": "PUBLIC",
-      "name": "forwardWrap",
-      "type": "ui:collapse",
-      "description": "The event fired when the menu list attempts a forward wrap due to a key press."
-     },
-     {
-      "access": "PUBLIC",
-      "name": "reverseWrap",
-      "type": "ui:collapse",
-      "description": "The event fired when the menu list attempts a reverse wrap due to a key press."
-     }
-    ]
-   }
+   "dependencies": {}
   },
   "tabset.cmp": {
    "attributes": {
@@ -39696,7 +39619,12 @@
     }
    },
    "imports": {},
-   "events": {},
+   "events": {
+    "getChildren": {
+     "name": "getChildren",
+     "type": "ui:getChildren"
+    }
+   },
    "handlers": {
     "change": {
      "name": "change",
@@ -39710,12 +39638,6 @@
    },
    "methods": {},
    "dependencies": {
-    "aura:registerEvent": [
-     {
-      "name": "getChildren",
-      "type": "ui:getChildren"
-     }
-    ],
     "aura:iteration": [
      {
       "items": "{!v.nodes}",
@@ -39777,7 +39699,12 @@
     }
    },
    "imports": {},
-   "events": {},
+   "events": {
+    "getChildren": {
+     "name": "getChildren",
+     "type": "ui:getChildren"
+    }
+   },
    "handlers": {
     "traverse": {
      "name": "traverse",
@@ -39794,12 +39721,6 @@
    },
    "methods": {},
    "dependencies": {
-    "aura:registerEvent": [
-     {
-      "name": "getChildren",
-      "type": "ui:getChildren"
-     }
-    ],
     "aura:if": [
      {
       "isTrue": "{!!v.hidden}"
@@ -39963,7 +39884,28 @@
      "property": "lib"
     }
    },
-   "events": {},
+   "events": {
+    "refresh": {
+     "name": "refresh",
+     "type": "ui:refresh",
+     "description": "Provides fresh data from the dataProvider."
+    },
+    "gridAction": {
+     "name": "gridAction",
+     "type": "ui:gridAction",
+     "description": "Notifies listeners when actions were triggered by grid cells"
+    },
+    "onsort": {
+     "name": "onsort",
+     "type": "ui:sort",
+     "description": "The event fired when a column is sorted."
+    },
+    "onColumnResize": {
+     "name": "onColumnResize",
+     "type": "ui:resize",
+     "description": "The event fired when a column is resized."
+    }
+   },
    "handlers": {
     "refresh": {
      "name": "refresh",
@@ -40000,30 +39942,7 @@
      }
     }
    },
-   "dependencies": {
-    "aura:registerEvent": [
-     {
-      "name": "refresh",
-      "type": "ui:refresh",
-      "description": "Provides fresh data from the dataProvider."
-     },
-     {
-      "name": "gridAction",
-      "type": "ui:gridAction",
-      "description": "Notifies listeners when actions were triggered by grid cells"
-     },
-     {
-      "name": "onsort",
-      "type": "ui:sort",
-      "description": "The event fired when a column is sorted."
-     },
-     {
-      "name": "onColumnResize",
-      "type": "ui:resize",
-      "description": "The event fired when a column is resized."
-     }
-    ]
-   }
+   "dependencies": {}
   },
   "virtualList.cmp": {
    "attributes": {

@@ -128,53 +128,53 @@ export default (componentFileNames, baseDirAuraUpstream, outputDirDataPath) => {
 	            		})
 
 	            		//populate the use a ...
-	            		if(name.indexOf('aura:') === 0){
-	            			//only interest in aura:*
-	            			switch(name){
-	            				case 'aura:attribute'://{name, type, default, description, access}
-	            					const [curAttrName, curAttrAttributes] = util.getKeyValFromCheerioDom(attribute);
-	            					curControlObj.attributes[curAttrName] = curAttrAttributes;
-	            					break;
+	            		switch(name.toLowerCase()){
+            				case 'aura:attribute'://{name, type, default, description, access}
+            					const [curAttrName, curAttrAttributes] = util.getKeyValFromCheerioDom(attribute);
+            					curControlObj.attributes[curAttrName] = curAttrAttributes;
+            					break;
 
-            					case 'aura:import'://{library, property}
-            						const {library} = attribs;
-            						curControlObj.imports[library] = attribs;
-	            					break;
+        					case 'aura:import'://{library, property}
+        						const {library} = attribs;
+        						curControlObj.imports[library] = attribs;
+            					break;
 
-            					case 'aura:registerevent'://{name, type, description}
-            						const eventName = attribs.name;
-            						curControlObj.events[eventName] = attribs;
-        							break;
+        					case 'aura:registerevent'://{name, type, description}
+        						const eventName = attribs.name;
+        						curControlObj.events[eventName] = attribs;
+    							break;
 
-    							case 'aura:handler'://{name, value, action}
-    								const handlerName = attribs.name;
-            						curControlObj.handlers[handlerName] = attribs;
-        							break;
+							case 'aura:handler'://{name, value, action}
+								const handlerName = attribs.name;
+        						curControlObj.handlers[handlerName] = attribs;
+    							break;
 
-    							case 'aura:method'://{name, action, access, description}
-    								const methodName = attribs.name;
+							case 'aura:method'://{name, action, access, description}
+								const methodName = attribs.name;
 
-    								const childrenAttrs = _.reduce(
-    									children || [],
-    									(resChildAttrs, curChildAttr) => {
-    										if (curChildAttr.name === 'aura:attribute' && attribs){
-	    										const [childAttrName, childAttrAttributes] = util.getKeyValFromCheerioDom(curChildAttr);
-	    										resChildAttrs[childAttrName] = childAttrAttributes;
-    										}
+								const childrenAttrs = _.reduce(
+									children || [],
+									(resChildAttrs, curChildAttr) => {
+										if (curChildAttr.name === 'aura:attribute' && attribs){
+    										const [childAttrName, childAttrAttributes] = util.getKeyValFromCheerioDom(curChildAttr);
+    										resChildAttrs[childAttrName] = childAttrAttributes;
+										}
 
-    										return resChildAttrs;
-    									},
-    									{}
-									);
+										return resChildAttrs;
+									},
+									{}
+								);
 
-									curControlObj.methods[methodName] = childrenAttrs;
-    								break;
+								curControlObj.methods[methodName] = childrenAttrs;
+								break;
 
-								case 'aura:component'://to ignore
-									break;
+							case 'aura:component'://to ignore
+								break;
 
-            					default:
-            						const depdenciesName = name;
+        					default:
+        						//other tag will be considered depdencies
+        						const depdenciesName = name;
+        						if (util.isValidDependencies(depdenciesName)){
             						//list of dependenceis
             						curControlObj.dependencies[depdenciesName] = curControlObj.dependencies[depdenciesName] || [];
             						curControlObj.dependencies[depdenciesName].push(attribs);
@@ -183,20 +183,9 @@ export default (componentFileNames, baseDirAuraUpstream, outputDirDataPath) => {
             						//count control usage
             						controlCountMap[depdenciesName] = controlCountMap[depdenciesName] || 0;
             						controlCountMap[depdenciesName]++;
-            						break;
-	            			}
-	            		} else if(name.indexOf(':') > 0){
-	            			//only interested in stuffs with a :
-	            			const depdenciesName = name;
-    						//list of dependenceis
-    						curControlObj.dependencies[depdenciesName] = curControlObj.dependencies[depdenciesName] || [];
-    						curControlObj.dependencies[depdenciesName].push(attribs);
-
-
-    						//count control usage
-    						controlCountMap[depdenciesName] = controlCountMap[depdenciesName] || 0;
-    						controlCountMap[depdenciesName]++;
-	            		}
+            					}
+        						break;
+            			}
 	            	}
             	);
 
