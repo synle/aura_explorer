@@ -26,33 +26,27 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //internal loggr
 //external
 
-exports.default = function (baseDir, outputDir) {
-	_logger2.default.log(baseDir.bold.underline, baseDir);
-
+exports.default = function (componentBaseDir, metaDataOutputDir) {
 	//trim whitespace
-	baseDir = baseDir.trim();
-	outputDir = outputDir.trim();
-
-	//get a list of all files
-	//read content files
-	var componentBaseDir = _path2.default.join(baseDir, '/');
+	_logger2.default.log('componentBaseDir  :'.yellow, componentBaseDir);
+	_logger2.default.log('metaDataOutputDir :'.yellow, metaDataOutputDir);
 
 	//find all cmp files in nested structures
 	_util2.default.listDir(componentBaseDir).then(function (componentFileNames) {
 		//success
 		//print stats
-		_logger2.default.log('Statistics'.bold.underline.bgBlue.white);
-		_logger2.default.log('.app Files:'.bold, componentFileNames.app.length);
-		_logger2.default.log('.cmp Files:'.bold, componentFileNames.cmp.length);
-		_logger2.default.log('.evt Files:'.bold, componentFileNames.evt.length);
-		// logger.log('js Files:'.bold, componentFileNames.js.length);
-		_logger2.default.log('\tHelper.js Files:'.bold, componentFileNames.helperjs.length);
-		_logger2.default.log('\tController.js Files:'.bold, componentFileNames.controllerjs.length);
-		_logger2.default.log('\tRenderrer.js Files:'.bold, componentFileNames.rendererjs.length);
+		_logger2.default.log('Statistics'.yellow);
+		_logger2.default.log('\t.app:'.yellow, componentFileNames.app.length);
+		_logger2.default.log('\t.cmp:'.yellow, componentFileNames.cmp.length);
+		_logger2.default.log('\t.evt:'.yellow, componentFileNames.evt.length);
+		_logger2.default.log('\tjs:'.yellow, componentFileNames.js.length);
+		_logger2.default.log('\tHelper.js:'.yellow, componentFileNames.helperjs.length);
+		_logger2.default.log('\tController.js:'.yellow, componentFileNames.controllerjs.length);
+		_logger2.default.log('\tRenderrer.js:'.yellow, componentFileNames.rendererjs.length);
 
 		(0, _generateLookup2.default)(componentFileNames, //dictionary containing all js, evt and cmp files
-		baseDir, //base dir of the aura upstream directory
-		outputDir //base output dir , snippet
+		componentBaseDir, //base dir of the aura upstream directory
+		metaDataOutputDir //base output dir , snippet
 		);
 	}, function (err) {
 		//fail callback

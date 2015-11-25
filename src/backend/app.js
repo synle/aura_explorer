@@ -7,6 +7,6 @@ import config    from './config';
 
 //run it
 processor(
-	path.join(process.cwd(), config.baseDir),
-	config.outputDir
+	path.join(process.cwd(), config.baseDir, '/'),
+	path.join(process.cwd(), config.outputDir, '/')
 );

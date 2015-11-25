@@ -6,38 +6,28 @@ import logger from './logger';//internal loggr
 import util from './util';
 import generateLookup from './generateLookup';
 
-export default (baseDir, outputDir) => {
-	logger.log(baseDir.bold.underline, baseDir);
-
+export default (componentBaseDir, metaDataOutputDir) => {
 	//trim whitespace
-	baseDir = baseDir.trim();
-	outputDir = outputDir.trim();
-
-
-	//get a list of all files
-	//read content files
-	var componentBaseDir = path.join(
-		baseDir,
-		'/'
-	);
+	logger.log('componentBaseDir  :'.yellow, componentBaseDir);
+	logger.log('metaDataOutputDir :'.yellow, metaDataOutputDir);
 
 	//find all cmp files in nested structures
 	util.listDir(componentBaseDir).then( function( componentFileNames ){
 		//success
 		//print stats
-		logger.log('Statistics'.bold.underline.bgBlue.white);
-		logger.log('.app Files:'.bold, componentFileNames.app.length);
-		logger.log('.cmp Files:'.bold, componentFileNames.cmp.length);
-		logger.log('.evt Files:'.bold, componentFileNames.evt.length);
-		// logger.log('js Files:'.bold, componentFileNames.js.length);
-		logger.log('\tHelper.js Files:'.bold, componentFileNames.helperjs.length);
-		logger.log('\tController.js Files:'.bold, componentFileNames.controllerjs.length);
-		logger.log('\tRenderrer.js Files:'.bold, componentFileNames.rendererjs.length);
+		logger.log('Statistics'.yellow);
+		logger.log('\t.app:'.yellow, componentFileNames.app.length);
+		logger.log('\t.cmp:'.yellow, componentFileNames.cmp.length);
+		logger.log('\t.evt:'.yellow, componentFileNames.evt.length);
+		logger.log('\tjs:'.yellow, componentFileNames.js.length);
+		logger.log('\tHelper.js:'.yellow, componentFileNames.helperjs.length);
+		logger.log('\tController.js:'.yellow, componentFileNames.controllerjs.length);
+		logger.log('\tRenderrer.js:'.yellow, componentFileNames.rendererjs.length);
 
 		generateLookup(
 			componentFileNames,//dictionary containing all js, evt and cmp files
-			baseDir,//base dir of the aura upstream directory
-			outputDir//base output dir , snippet
+			componentBaseDir,//base dir of the aura upstream directory
+			metaDataOutputDir//base output dir , snippet
 		);
 	}, function(err){
 		//fail callback

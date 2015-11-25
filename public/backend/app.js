@@ -18,5 +18,5 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //run it
 
 //internal
-(0, _processParsingLookup2.default)(_path2.default.join(process.cwd(), _config2.default.baseDir), _config2.default.outputDir); //external
+(0, _processParsingLookup2.default)(_path2.default.join(process.cwd(), _config2.default.baseDir, '/'), _path2.default.join(process.cwd(), _config2.default.outputDir, '/')); //external
 //# sourceMappingURL=app.js.map
