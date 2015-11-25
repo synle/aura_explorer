@@ -118,8 +118,9 @@ export default (componentFileNames, baseDirAuraUpstream, outputDirDataPath) => {
 
 
 	            		//populate the parent hier...
-	            		usageMap[name] = usageMap[name] || [];
-	            		usageMap[name].push({
+	            		usageMap[name] = usageMap[name] || {};
+	            		usageMap[name][controlFullName] = usageMap[name][controlFullName] || [];
+	            		usageMap[name][controlFullName].push({
 	            			controlNameSpace,
 	            			controlName,
 	            			controlFullName,

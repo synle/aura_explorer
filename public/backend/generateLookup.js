@@ -144,8 +144,9 @@ exports.default = function (componentFileNames, baseDirAuraUpstream, outputDirDa
 
 																//populate the parent hier...
 
-																usageMap[name] = usageMap[name] || [];
-																usageMap[name].push({
+																usageMap[name] = usageMap[name] || {};
+																usageMap[name][controlFullName] = usageMap[name][controlFullName] || [];
+																usageMap[name][controlFullName].push({
 																				controlNameSpace: controlNameSpace,
 																				controlName: controlName,
 																				controlFullName: controlFullName,
