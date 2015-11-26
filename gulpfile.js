@@ -66,14 +66,14 @@ var generateScripts = function(src){
 	return function(){
 		return gulp.src(src)
 			.pipe(plumber())
-		    .pipe(sourcemaps.init())
+		    // .pipe(sourcemaps.init())
 		    .pipe(babel({
 				resolveModuleSource: function(source, filename) {
 					//remap the path
 					return source.replace('./src/client', './dist').replace('./data', '../data');
 				}
 		    }))
-		    .pipe(sourcemaps.write("."))
+		    // .pipe(sourcemaps.write("."))
 		    .pipe(header(headerBanner))
 		    .pipe(gulp.dest(outputDistDir));
 	}
@@ -84,14 +84,14 @@ var generateScripts_ReactComponents = function(src){
 	return function(){
 		return gulp.src(src, {base: './src/client/components'})
 			.pipe(plumber())
-		    .pipe(sourcemaps.init())
+		    // .pipe(sourcemaps.init())
 		    .pipe(babel({
 				resolveModuleSource: function(source, filename) {
 					//remap the path
 					return source.replace('/src/client/', '/dist/');
 				}
 		    }))
-		    .pipe(sourcemaps.write("."))
+		    // .pipe(sourcemaps.write("."))
 		    .pipe(header(headerBanner))
 		    .pipe(gulp.dest(outputDistComponentDir));
 	}
@@ -101,14 +101,14 @@ var generateScripts_Backend = function(src){
 	return function(){
 		return gulp.src(src)
 			.pipe(plumber())
-		    .pipe(sourcemaps.init())
+		    // .pipe(sourcemaps.init())
 		    .pipe(babel({
 				resolveModuleSource: function(source, filename) {
 					//remap the path
 					return source.replace('/src/backend/', '/backend/');
 				}
 		    }))
-		    .pipe(sourcemaps.write("."))
+		    // .pipe(sourcemaps.write("."))
 		    .pipe(header(headerBanner))
 		    .pipe(gulp.dest(outputDistBackendDir));
 	}
