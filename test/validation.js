@@ -20,5 +20,17 @@ describe('Aura Explorer', () => {
 			assert.isTrue( _.size(autoCompleteControlMap) > 0, 'autoCompleteControlMap is empty');
 			assert.isTrue( _.size(controlLocationMap) > 0, 'controlLocationMap is empty');
 	    });
+
+
+	    it('dataDependenciesMap should have valid data', () => {
+	        assert.isTrue( _.size(dataDependenciesMap) > 0, 'dataDependenciesMap is empty');
+	        assert.isTrue( _.size(dataDependenciesMap.ui) > 0, 'ui is empty');
+
+	        assert.isTrue( _.size(dataDependenciesMap.ui['scroller.cmp'].imports) > 0, 'dataDependenciesMap.ui.imports is empty');
+			assert.isTrue( _.size(dataDependenciesMap.ui['scroller.cmp'].events) > 0, 'dataDependenciesMap.ui.events is empty');
+			assert.isTrue( _.size(dataDependenciesMap.ui['scroller.cmp'].handlers) > 0, 'dataDependenciesMap.ui.handlers is empty');
+			// assert.isTrue( _.size(dataDependenciesMap.ui['scroller.cmp'].methods) > 0, 'dataDependenciesMap.ui.methods is empty');
+			assert.isTrue( _.size(dataDependenciesMap.ui['scroller.cmp'].dependencies) > 0, 'dataDependenciesMap.ui.dependencies is empty');
+	    });
     })
 })
