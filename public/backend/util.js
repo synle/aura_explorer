@@ -158,40 +158,27 @@ var self = {
         return false;
     },
 
-    /**
-     * @param  {[type]} usageMap     [description]
-     * @param  {[type]} parentName   [description]
-     * @param  {[type]} childrenName [description]
-     * @return the location in the map, this also initialize the map
-     * default state
-     */
-    getUsageMapByName: function getUsageMapByName(usageMap, parentName, childrenName) {
+    //append stuff
+    appendUsageMapByName: function appendUsageMapByName(usageMap, parentName, childrenName, newUsageObj) {
         usageMap[parentName] = usageMap[parentName] || {};
         usageMap[parentName][childrenName] = usageMap[parentName][childrenName] || [];
-        return usageMap[parentName][childrenName];
+        usageMap[parentName][childrenName].push(newUsageObj);
     },
-
-    /**
-     * @param  {[type]} curControlObj  [description]
-     * @param  {[type]} depdenciesName [description]
-     * @return the location in the map, this also initialize the map
-     * default state
-     */
-    getDependenciesPropInControlObj: function getDependenciesPropInControlObj(curControlObj, depdenciesName) {
+    appendDependenciesPropInControlObj: function appendDependenciesPropInControlObj(curControlObj, depdenciesName, attribs) {
         curControlObj.dependencies[depdenciesName] = curControlObj.dependencies[depdenciesName] || [];
-        return curControlObj.dependencies[depdenciesName];
+        curControlObj.dependencies[depdenciesName].push(attribs);
     },
-    getNamespaceCountMapEntry: function getNamespaceCountMapEntry(namespaceCountMap, controlNameSpace) {
+    addNamespaceCountMapEntry: function addNamespaceCountMapEntry(namespaceCountMap, controlNameSpace, delta) {
         namespaceCountMap[controlNameSpace] = namespaceCountMap[controlNameSpace] || 0;
-        return namespaceCountMap[controlNameSpace];
+        namespaceCountMap[controlNameSpace] += delta;
     },
-    getControlCountMapEntry: function getControlCountMapEntry(controlCountMap, depdenciesName) {
+    addControlCountMapEntry: function addControlCountMapEntry(controlCountMap, depdenciesName, delta) {
         controlCountMap[depdenciesName] = controlCountMap[depdenciesName] || 0;
-        return controlCountMap[depdenciesName];
+        controlCountMap[depdenciesName] += delta;
     },
-    getDependenciesMapEntry: function getDependenciesMapEntry(dependenciesMap, controlNameSpace) {
+    setDependenciesMapEntry: function setDependenciesMapEntry(dependenciesMap, controlNameSpace, controlName, curControlObj) {
         dependenciesMap[controlNameSpace] = dependenciesMap[controlNameSpace] || {};
-        return dependenciesMap[controlNameSpace];
+        dependenciesMap[controlNameSpace][controlName] = curControlObj;
     }
 };
 

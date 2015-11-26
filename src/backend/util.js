@@ -141,43 +141,34 @@ const self = {
         return false;
     },
 
-    /**
-     * @param  {[type]} usageMap     [description]
-     * @param  {[type]} parentName   [description]
-     * @param  {[type]} childrenName [description]
-     * @return the location in the map, this also initialize the map
-     * default state
-     */
-    getUsageMapByName(usageMap, parentName, childrenName){
+    
+
+    //append stuff
+    appendUsageMapByName(usageMap, parentName, childrenName, newUsageObj){
         usageMap[parentName] = usageMap[parentName] || {};
         usageMap[parentName][childrenName] = usageMap[parentName][childrenName] || [];
-        return usageMap[parentName][childrenName];
+        usageMap[parentName][childrenName].push( newUsageObj );
     },
 
-    /**
-     * @param  {[type]} curControlObj  [description]
-     * @param  {[type]} depdenciesName [description]
-     * @return the location in the map, this also initialize the map
-     * default state
-     */
-    getDependenciesPropInControlObj(curControlObj, depdenciesName){
+
+    appendDependenciesPropInControlObj(curControlObj, depdenciesName, attribs){
         curControlObj.dependencies[depdenciesName] = curControlObj.dependencies[depdenciesName] || [];
-        return curControlObj.dependencies[depdenciesName];
+        curControlObj.dependencies[depdenciesName].push(attribs);
     },
 
-    getNamespaceCountMapEntry(namespaceCountMap, controlNameSpace){
+    addNamespaceCountMapEntry(namespaceCountMap, controlNameSpace, delta){
         namespaceCountMap[controlNameSpace] = namespaceCountMap[controlNameSpace] || 0;
-        return namespaceCountMap[controlNameSpace];
+        namespaceCountMap[controlNameSpace] += delta;
     },
 
-    getControlCountMapEntry(controlCountMap, depdenciesName){
+    addControlCountMapEntry(controlCountMap, depdenciesName, delta){
         controlCountMap[depdenciesName] = controlCountMap[depdenciesName] || 0;
-        return controlCountMap[depdenciesName];
+        controlCountMap[depdenciesName] += delta;
     },
 
-    getDependenciesMapEntry(dependenciesMap, controlNameSpace){
+    setDependenciesMapEntry(dependenciesMap, controlNameSpace, controlName, curControlObj){
         dependenciesMap[controlNameSpace] = dependenciesMap[controlNameSpace] || {};
-        return dependenciesMap[controlNameSpace];
+        dependenciesMap[controlNameSpace][controlName] = curControlObj;
     }
 }
 

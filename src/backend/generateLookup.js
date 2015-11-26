@@ -90,10 +90,10 @@ export default (componentFileNames, baseDirAuraUpstream, outputDirDataPath) => {
 	        };
 
 	        //increment namespace count map
-	        util.getNamespaceCountMapEntry(namespaceCountMap,controlNameSpace)++;
+	        util.addNamespaceCountMapEntry(namespaceCountMap,controlNameSpace, 1);
 
 	        //update the dependencies stuffs
-	        util.getDependenciesMapEntry(dependenciesMap, controlNameSpace)[controlName] = curControlObj;
+	        util.setDependenciesMapEntry(dependenciesMap, controlNameSpace, controlName, curControlObj);
 
 	        //update it for autocomplete
 	        let relativeControlPath = fileName.substr(fileName.indexOf('aura_upstream/'));//substring to aura_upstream
@@ -116,16 +116,17 @@ export default (componentFileNames, baseDirAuraUpstream, outputDirDataPath) => {
 
 
 	            		//populate usage map
-	            		util.getUsageMapByName(
+	            		util.appendUsageMapByName(
 	            			usageMap,
 	            			name,
-	            			controlFullName
-            			).push({
-	            			controlNameSpace,
-	            			controlName,
 	            			controlFullName,
-	            			attribs
-	            		})
+	            			{
+		            			controlNameSpace,
+		            			controlName,
+		            			controlFullName,
+		            			attribs
+		            		}
+            			)
 
 	            		//populate the use a ...
 	            		switch(name.toLowerCase()){
@@ -176,14 +177,14 @@ export default (componentFileNames, baseDirAuraUpstream, outputDirDataPath) => {
         						const depdenciesName = name;
         						if (util.isValidDependencies(depdenciesName)){
             						//list of depdencies
-        							utill.getDependenciesPropInControlObj(
+        							utill.appendDependenciesPropInControlObj(
         								curControlObj,
-        								depdenciesName
-    								).push(attribs);
-
+        								depdenciesName,
+        								attribs
+    								);
 
             						//count control usage
-            						util.getControlCountMapEntry(controlCountMap, depdenciesName)++;
+            						util.addControlCountMapEntry(controlCountMap, depdenciesName, 1);
             					}
         						break;
             			}

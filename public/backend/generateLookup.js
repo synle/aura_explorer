@@ -117,12 +117,10 @@ exports.default = function (componentFileNames, baseDirAuraUpstream, outputDirDa
 								};
 
 								//increment namespace count map
-								namespaceCountMap[controlNameSpace] = namespaceCountMap[controlNameSpace] || 0;
-								namespaceCountMap[controlNameSpace]++;
+								_util2.default.addNamespaceCountMapEntry(namespaceCountMap, controlNameSpace, 1);
 
 								//update the dependencies stuffs
-								dependenciesMap[controlNameSpace] = dependenciesMap[controlNameSpace] || {};
-								dependenciesMap[controlNameSpace][controlName] = curControlObj;
+								_util2.default.setDependenciesMapEntry(dependenciesMap, controlNameSpace, controlName, curControlObj);
 
 								//update it for autocomplete
 								var relativeControlPath = fileName.substr(fileName.indexOf('aura_upstream/')); //substring to aura_upstream
@@ -142,11 +140,9 @@ exports.default = function (componentFileNames, baseDirAuraUpstream, outputDirDa
 																var attribs = attribute.attribs;
 																var children = attribute.children;
 
-																//populate the parent hier...
+																//populate usage map
 
-																usageMap[name] = usageMap[name] || {};
-																usageMap[name][controlFullName] = usageMap[name][controlFullName] || [];
-																usageMap[name][controlFullName].push({
+																_util2.default.appendUsageMapByName(usageMap, name, controlFullName, {
 																				controlNameSpace: controlNameSpace,
 																				controlName: controlName,
 																				controlFullName: controlFullName,
@@ -217,13 +213,11 @@ exports.default = function (componentFileNames, baseDirAuraUpstream, outputDirDa
 																								//other tag will be considered depdencies
 																								var depdenciesName = name;
 																								if (_util2.default.isValidDependencies(depdenciesName)) {
-																												//list of dependenceis
-																												curControlObj.dependencies[depdenciesName] = curControlObj.dependencies[depdenciesName] || [];
-																												curControlObj.dependencies[depdenciesName].push(attribs);
+																												//list of depdencies
+																												utill.appendDependenciesPropInControlObj(curControlObj, depdenciesName, attribs);
 
 																												//count control usage
-																												controlCountMap[depdenciesName] = controlCountMap[depdenciesName] || 0;
-																												controlCountMap[depdenciesName]++;
+																												_util2.default.addControlCountMapEntry(controlCountMap, depdenciesName, 1);
 																								}
 																								break;
 																}
