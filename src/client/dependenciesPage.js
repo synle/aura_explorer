@@ -7,12 +7,12 @@ import dataDependenciesMap from './data/dependenciesMap.json';
 import usageMaps from './data/usageMap.json';
 
 //internal react components
-import KeyValTableComponent from './src/client/components/KeyValTable';
 import ListView from './src/client/components/ListView';
 import Attributes_Handler_Events_Table from './src/client/components/AttributesHandlerEventsTable';
 import UsageTable from './src/client/components/UsageTable';
 import ControlDetailLink from './src/client/components/ControlDetailLink';
 import DependenciesDetailTable from './src/client/components/DependenciesDetailTable';
+import MethodTable from './src/client/components/MethodTable';
 
 //utils
 import util from './src/client/util';
@@ -34,8 +34,9 @@ const ControlDetailPage = React.createClass({
 			const shortControlName = controlName.substr(controlName, controlName.lastIndexOf('.'));
 			const attributeList = _.get(this, 'props.controlObj.attributes', []);
 			const dependenciesMap = _.get(this, 'props.controlObj.dependencies', {});
-			const eventsList = _.get(this, 'props.controlObj.events', []);
-			const handlersList = _.get(this, 'props.controlObj.handlers', []);
+			const eventsList = _.get(this, 'props.controlObj.events', {});
+			const handlersList = _.get(this, 'props.controlObj.handlers', {});
+			const methodsMap = _.get(this, 'props.controlObj.methods', {});//{controlName => methodName : {attribs}}
 			const usageList = _.reduce(
 				usageMaps,
 				(res, usageMap, curControlName) => {
@@ -66,6 +67,7 @@ const ControlDetailPage = React.createClass({
 						<li role="presentation"><a href="#tab-dependencies" aria-controls="settings" role="tab" data-toggle="tab">Dependencies</a></li>
 						<li role="presentation"><a href="#tab-events" aria-controls="settings" role="tab" data-toggle="tab">Events</a></li>
 						<li role="presentation"><a href="#tab-handlers" aria-controls="settings" role="tab" data-toggle="tab">Handlers</a></li>
+						<li role="presentation"><a href="#tab-methods" aria-controls="settings" role="tab" data-toggle="tab">Methods</a></li>
 						<li role="presentation"><a href="#tab-usages" aria-controls="settings" role="tab" data-toggle="tab">Usages</a></li>
 					</ul>
 
@@ -74,6 +76,7 @@ const ControlDetailPage = React.createClass({
 						<div role="tabpanel" className="tab-pane" id="tab-dependencies"><DependenciesDetailTable dependencies={dependenciesMap} /></div>
 						<div role="tabpanel" className="tab-pane" id="tab-events"><Attributes_Handler_Events_Table name='Events' properties={eventsList} /></div>
 						<div role="tabpanel" className="tab-pane" id="tab-handlers"><Attributes_Handler_Events_Table name='Handlers' properties={handlersList} /></div>
+						<div role="tabpanel" className="tab-pane" id="tab-methods"><MethodTable methodsMap={methodsMap} /></div>
 						<div role="tabpanel" className="tab-pane" id="tab-usages"><UsageTable selectedControlName={controlName} usage={usageList} /></div>
 					</div>
 				</div>

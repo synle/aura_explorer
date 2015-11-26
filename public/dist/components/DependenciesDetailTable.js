@@ -71,7 +71,11 @@ var DependenciesDetailTable = React.createClass({
 						'Dependency #',
 						depArgObjIdx + 1
 					),
-					usageDetailDom
+					React.createElement(
+						'div',
+						{ className: 'panel-body' },
+						usageDetailDom
+					)
 				);
 			});
 

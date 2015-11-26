@@ -37,7 +37,7 @@ const UsageTable = React.createClass({
 						return (
 							<div key={usageDetailDomKey} className="panel panel-info">
 								<div className="panel-heading">Usage #{idx + 1}</div>
-								{usageDetailDom}
+								<div className="panel-body">{usageDetailDom}</div>
 							</div>
 						);
 					}

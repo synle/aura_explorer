@@ -13,10 +13,6 @@ var _usageMap = require('../data/usageMap.json');
 
 var _usageMap2 = _interopRequireDefault(_usageMap);
 
-var _KeyValTable = require('./dist/components/KeyValTable');
-
-var _KeyValTable2 = _interopRequireDefault(_KeyValTable);
-
 var _ListView = require('./dist/components/ListView');
 
 var _ListView2 = _interopRequireDefault(_ListView);
@@ -36,6 +32,10 @@ var _ControlDetailLink2 = _interopRequireDefault(_ControlDetailLink);
 var _DependenciesDetailTable = require('./dist/components/DependenciesDetailTable');
 
 var _DependenciesDetailTable2 = _interopRequireDefault(_DependenciesDetailTable);
+
+var _MethodTable = require('./dist/components/MethodTable');
+
+var _MethodTable2 = _interopRequireDefault(_MethodTable);
 
 var _util = require('./dist/util');
 
@@ -74,8 +74,9 @@ var ControlDetailPage = React.createClass({
 				var shortControlName = controlName.substr(controlName, controlName.lastIndexOf('.'));
 				var attributeList = _lodash2.default.get(_this, 'props.controlObj.attributes', []);
 				var dependenciesMap = _lodash2.default.get(_this, 'props.controlObj.dependencies', {});
-				var eventsList = _lodash2.default.get(_this, 'props.controlObj.events', []);
-				var handlersList = _lodash2.default.get(_this, 'props.controlObj.handlers', []);
+				var eventsList = _lodash2.default.get(_this, 'props.controlObj.events', {});
+				var handlersList = _lodash2.default.get(_this, 'props.controlObj.handlers', {});
+				var methodsMap = _lodash2.default.get(_this, 'props.controlObj.methods', {}); //{controlName => methodName : {attribs}}
 				var usageList = _lodash2.default.reduce(_usageMap2.default, function (res, usageMap, curControlName) {
 					if (shortControlName === curControlName.toLowerCase()) {
 						return usageMap;
@@ -148,6 +149,15 @@ var ControlDetailPage = React.createClass({
 								{ role: 'presentation' },
 								React.createElement(
 									'a',
+									{ href: '#tab-methods', 'aria-controls': 'settings', role: 'tab', 'data-toggle': 'tab' },
+									'Methods'
+								)
+							),
+							React.createElement(
+								'li',
+								{ role: 'presentation' },
+								React.createElement(
+									'a',
 									{ href: '#tab-usages', 'aria-controls': 'settings', role: 'tab', 'data-toggle': 'tab' },
 									'Usages'
 								)
@@ -175,6 +185,11 @@ var ControlDetailPage = React.createClass({
 								'div',
 								{ role: 'tabpanel', className: 'tab-pane', id: 'tab-handlers' },
 								React.createElement(_AttributesHandlerEventsTable2.default, { name: 'Handlers', properties: handlersList })
+							),
+							React.createElement(
+								'div',
+								{ role: 'tabpanel', className: 'tab-pane', id: 'tab-methods' },
+								React.createElement(_MethodTable2.default, { methodsMap: methodsMap })
 							),
 							React.createElement(
 								'div',

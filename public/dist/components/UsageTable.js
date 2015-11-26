@@ -60,7 +60,11 @@ var UsageTable = React.createClass({
 						'Usage #',
 						idx + 1
 					),
-					usageDetailDom
+					React.createElement(
+						'div',
+						{ className: 'panel-body' },
+						usageDetailDom
+					)
 				);
 			});
 

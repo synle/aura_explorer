@@ -50,7 +50,7 @@ const DependenciesDetailTable = React.createClass({
 									<div key={`dependencies-${depKey}-${depArgObjIdx}-body`}
 									className="panel panel-info">
 										<div className="panel-heading">Dependency #{depArgObjIdx + 1}</div>
-										{usageDetailDom}
+										<div className="panel-body">{usageDetailDom}</div>
 									</div>
 								);
 							}
