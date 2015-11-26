@@ -94,14 +94,19 @@ const ControlDetailPage = React.createClass({
 	},
 	_getTabHeaderItem(tabContentId, headerName, entityObjects){
 		const entityCount = _.size( entityObjects );
+		const tabPlainText = `${headerName} ${this._getCountBadge( entityCount )}`;
 
-		return(
-			<li role="presentation">
+		return entityCount > 0
+			? <li role="presentation">
 				<a href={`#${tabContentId}`} aria-controls="settings" role="tab" data-toggle="tab">
-					{headerName} {this._getCountBadge( entityCount )}
+					{tabPlainText}
 				</a>
 			</li>
-		);
+			: <li role="presentation" className='disabled'>
+				<a className='disabled' aria-controls="settings" role="tab">
+					{tabPlainText}
+				</a>
+			</li>
 	},
 	_getCountBadge(countNum){
 		return countNum > 0 ? `[${countNum}]` : '';

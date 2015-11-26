@@ -171,16 +171,23 @@ var ControlDetailPage = React.createClass({
 	},
 	_getTabHeaderItem: function _getTabHeaderItem(tabContentId, headerName, entityObjects) {
 		var entityCount = _lodash2.default.size(entityObjects);
+		var tabPlainText = headerName + ' ' + this._getCountBadge(entityCount);
 
-		return React.createElement(
+		return entityCount > 0 ? React.createElement(
 			'li',
 			{ role: 'presentation' },
 			React.createElement(
 				'a',
 				{ href: '#' + tabContentId, 'aria-controls': 'settings', role: 'tab', 'data-toggle': 'tab' },
-				headerName,
-				' ',
-				this._getCountBadge(entityCount)
+				tabPlainText
+			)
+		) : React.createElement(
+			'li',
+			{ role: 'presentation', className: 'disabled' },
+			React.createElement(
+				'a',
+				{ className: 'disabled', 'aria-controls': 'settings', role: 'tab' },
+				tabPlainText
 			)
 		);
 	},
