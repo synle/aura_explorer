@@ -38,9 +38,10 @@ const TableComponent = React.createClass({
 					const rowDomKey = `TableComponent-Row-${rowIndex}`;
 
 					const rowCellsDom = _.map(
-						object,
-						(objVal, objKey) => {
-							const rowCellDomKey = `TableComponent-Row-${rowIndex}-${objKey}-${objVal}`;
+						uniqueArgsList,
+						(objKey) => {
+							const objVal = object[objKey] || '';
+							const rowCellDomKey = `TableComponent-Row-${rowIndex}-${objKey}`;
 							return (<td key={rowCellDomKey}>{objVal}</td>)
 						}
 					);

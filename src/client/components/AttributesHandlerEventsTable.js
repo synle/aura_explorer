@@ -2,67 +2,24 @@
 import _ from 'lodash';
 import util from '../util';
 
+//internal
+import TableComponent from './Table';
 
 //definitions
 const Attributes_Handler_Events_Table = React.createClass({
 	render(){
 		const objName = this.props.name;
 		const propertiesList = _.get(this, 'props.properties');
+		const flattenedPropertiesValues = _.values(propertiesList)
 
-		const unigueCellHeaders = _.reduce(
-			propertiesList,
-			(res, propObj) => {
-				return _.unique( res.concat( _.keys( propObj ) ) );
-			},
-			[]
-		);
 
-		//table headers
-		const domTableHeaders = _.map(
-			unigueCellHeaders,
-			propName => (
-				<th key={`${objName}-table-header-${propName}`}>
-					{propName}
-				</th>
-			)
-		)
-
-		//table rows
-		const domTableRows =  _.size(propertiesList) === 0
-			? null
-			: _.map(
-				propertiesList,
-				(attributeObj, attributeName, attributeIdx) => {
-					const tableCellsDom = _.map(
-						unigueCellHeaders,
-						propName => (
-							<td key={`${objName}-table-row-${propName}-${attributeIdx}`}>
-								{attributeObj[propName]}
-							</td>
-						)
-					);
-
-					return (
-						<tr key={`control-detail-row-attribute-${attributeObj.name}`}>
-							{tableCellsDom}
-						</tr>
-					);
-				}
-			);
-
-		const tableBody = _.size( domTableRows ) === 0
+		const tableBody = _.size( propertiesList ) === 0
 			? ( <div>No {objName}</div> )
 			: (
-				<table className="table table-bordered table-hover table-condensed">
-					<thead>
-					    <tr>
-							{domTableHeaders}
-					    </tr>
-					</thead>
-					<tbody>
-					    {domTableRows}
-					</tbody>
-				</table>
+				<TableComponent
+					objects={flattenedPropertiesValues}
+					showHeader={true}
+					showIndex={false} />
 			);
 
 		//return
@@ -73,7 +30,6 @@ const Attributes_Handler_Events_Table = React.createClass({
 		);
 	},
 	shouldComponentUpdate(nextProps, nextState) {
-		// return nextProps.selectedControlName !== this.props.selectedControlName;
 		return true;//always update
 	}
 });
