@@ -32,11 +32,14 @@ const ControlDetailPage = React.createClass({
 		} else{
 			const controlName = this.props.controlName.toLowerCase();
 			const shortControlName = controlName.substr(controlName, controlName.lastIndexOf('.'));
-			const attributeList = _.get(this, 'props.controlObj.attributes', []);
 			const dependenciesMap = _.get(this, 'props.controlObj.dependencies', {});
-			const eventsList = _.get(this, 'props.controlObj.events', {});
-			const handlersList = _.get(this, 'props.controlObj.handlers', {});
 			const methodsMap = _.get(this, 'props.controlObj.methods', {});//{controlName => methodName : {attribs}}
+
+			const attributeList = _.values( _.get(this, 'props.controlObj.attributes', []) );
+			const eventsList    = _.values( _.get(this, 'props.controlObj.events', {}) );
+			const handlersList  = _.values( _.get(this, 'props.controlObj.handlers', {}) );
+			const importsList   = _.values( _.get(this, 'props.controlObj.imports', {}) );
+
 			const usageList = _.reduce(
 				usageMaps,
 				(res, usageMap, curControlName) => {
@@ -66,6 +69,7 @@ const ControlDetailPage = React.createClass({
 						<li role="presentation" className="active"><a href="#tab-attributes" aria-controls="settings" role="tab" data-toggle="tab">Attributes</a></li>
 						<li role="presentation"><a href="#tab-dependencies" aria-controls="settings" role="tab" data-toggle="tab">Dependencies</a></li>
 						<li role="presentation"><a href="#tab-events" aria-controls="settings" role="tab" data-toggle="tab">Events</a></li>
+						<li role="presentation"><a href="#tab-imports" aria-controls="settings" role="tab" data-toggle="tab">Imports</a></li>
 						<li role="presentation"><a href="#tab-handlers" aria-controls="settings" role="tab" data-toggle="tab">Handlers</a></li>
 						<li role="presentation"><a href="#tab-methods" aria-controls="settings" role="tab" data-toggle="tab">Methods</a></li>
 						<li role="presentation"><a href="#tab-usages" aria-controls="settings" role="tab" data-toggle="tab">Usages</a></li>
@@ -75,6 +79,7 @@ const ControlDetailPage = React.createClass({
 						<div role="tabpanel" className="tab-pane active" id="tab-attributes"><Attributes_Handler_Events_Table name='Attributes' properties={attributeList} /></div>
 						<div role="tabpanel" className="tab-pane" id="tab-dependencies"><DependenciesDetailTable dependencies={dependenciesMap} /></div>
 						<div role="tabpanel" className="tab-pane" id="tab-events"><Attributes_Handler_Events_Table name='Events' properties={eventsList} /></div>
+						<div role="tabpanel" className="tab-pane" id="tab-imports"><Attributes_Handler_Events_Table name='Imports' properties={importsList} /></div>
 						<div role="tabpanel" className="tab-pane" id="tab-handlers"><Attributes_Handler_Events_Table name='Handlers' properties={handlersList} /></div>
 						<div role="tabpanel" className="tab-pane" id="tab-methods"><MethodTable methodsMap={methodsMap} /></div>
 						<div role="tabpanel" className="tab-pane" id="tab-usages"><UsageTable selectedControlName={controlName} usage={usageList} /></div>

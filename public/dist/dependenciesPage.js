@@ -72,11 +72,14 @@ var ControlDetailPage = React.createClass({
 			var _ret = (function () {
 				var controlName = _this.props.controlName.toLowerCase();
 				var shortControlName = controlName.substr(controlName, controlName.lastIndexOf('.'));
-				var attributeList = _lodash2.default.get(_this, 'props.controlObj.attributes', []);
 				var dependenciesMap = _lodash2.default.get(_this, 'props.controlObj.dependencies', {});
-				var eventsList = _lodash2.default.get(_this, 'props.controlObj.events', {});
-				var handlersList = _lodash2.default.get(_this, 'props.controlObj.handlers', {});
 				var methodsMap = _lodash2.default.get(_this, 'props.controlObj.methods', {}); //{controlName => methodName : {attribs}}
+
+				var attributeList = _lodash2.default.values(_lodash2.default.get(_this, 'props.controlObj.attributes', []));
+				var eventsList = _lodash2.default.values(_lodash2.default.get(_this, 'props.controlObj.events', {}));
+				var handlersList = _lodash2.default.values(_lodash2.default.get(_this, 'props.controlObj.handlers', {}));
+				var importsList = _lodash2.default.values(_lodash2.default.get(_this, 'props.controlObj.imports', {}));
+
 				var usageList = _lodash2.default.reduce(_usageMap2.default, function (res, usageMap, curControlName) {
 					if (shortControlName === curControlName.toLowerCase()) {
 						return usageMap;
@@ -140,6 +143,15 @@ var ControlDetailPage = React.createClass({
 								{ role: 'presentation' },
 								React.createElement(
 									'a',
+									{ href: '#tab-imports', 'aria-controls': 'settings', role: 'tab', 'data-toggle': 'tab' },
+									'Imports'
+								)
+							),
+							React.createElement(
+								'li',
+								{ role: 'presentation' },
+								React.createElement(
+									'a',
 									{ href: '#tab-handlers', 'aria-controls': 'settings', role: 'tab', 'data-toggle': 'tab' },
 									'Handlers'
 								)
@@ -180,6 +192,11 @@ var ControlDetailPage = React.createClass({
 								'div',
 								{ role: 'tabpanel', className: 'tab-pane', id: 'tab-events' },
 								React.createElement(_AttributesHandlerEventsTable2.default, { name: 'Events', properties: eventsList })
+							),
+							React.createElement(
+								'div',
+								{ role: 'tabpanel', className: 'tab-pane', id: 'tab-imports' },
+								React.createElement(_AttributesHandlerEventsTable2.default, { name: 'Imports', properties: importsList })
 							),
 							React.createElement(
 								'div',

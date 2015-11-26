@@ -25,7 +25,6 @@ var Attributes_Handler_Events_Table = React.createClass({
 	render: function render() {
 		var objName = this.props.name;
 		var propertiesList = _lodash2.default.get(this, 'props.properties');
-		var flattenedPropertiesValues = _lodash2.default.values(propertiesList);
 
 		var tableBody = _lodash2.default.size(propertiesList) === 0 ? React.createElement(
 			'div',
@@ -33,7 +32,7 @@ var Attributes_Handler_Events_Table = React.createClass({
 			'No ',
 			objName
 		) : React.createElement(_Table2.default, {
-			objects: flattenedPropertiesValues,
+			objects: propertiesList,
 			showHeader: true,
 			showIndex: false });
 
