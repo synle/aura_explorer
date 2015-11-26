@@ -4,7 +4,7 @@
   "description": "Aura explorer used to explore Salesforce Aura Components",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha --compilers js:babel-core/register test",
-    "pkg": "gulp; node ./public/backend/app.js;",
+    "pkg": "gulp && node ./public/backend/app.js;",
     "start": "npm install --production; nw . &",
     "clean": "rm -rf public/* data/* aura-master/* master.zip",
     "dev": "gulp dev;",
