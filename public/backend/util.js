@@ -157,6 +157,9 @@ var self = {
         }
         return false;
     },
+    getControlRelativePath: function getControlRelativePath(fileName) {
+        return fileName.substr(fileName.indexOf('/src/'));
+    },
 
     //append stuff
     appendUsageMapByName: function appendUsageMapByName(usageMap, parentName, childrenName, newUsageObj) {

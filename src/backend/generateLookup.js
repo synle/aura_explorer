@@ -1,3 +1,5 @@
+'use strict'
+
 //external
 import cheerio from 'cheerio';
 import path from 'path';
@@ -13,6 +15,7 @@ import util from './util';
 
 //exports
 export default (componentFileNames, baseDirAuraUpstream, outputDirDataPath) => {
+	const mainDefer = Q.defer();
 	const promises = [];
 
 	const interestedFiles = _.merge(
@@ -20,6 +23,9 @@ export default (componentFileNames, baseDirAuraUpstream, outputDirDataPath) => {
 		_.values(componentFileNames.app)
 	);
 
+
+	//buffer used to store meta data
+	let auraUpstreamPomFileContent;
 
 	const dependenciesMap = {};//which component I use
 	// {
@@ -71,6 +77,7 @@ export default (componentFileNames, baseDirAuraUpstream, outputDirDataPath) => {
 
 
 	//loop through interested files
+	logger.log( '[Begin parsing]:'.yellow, _.size( interestedFiles ) );
 	_.each(
 		interestedFiles,
 		fileName => {
@@ -79,6 +86,7 @@ export default (componentFileNames, baseDirAuraUpstream, outputDirDataPath) => {
 
 	        const [controlNameSpace, controlName] = util.getComponentNamesFromPath(fileName);
 	        const controlFullName = `${controlNameSpace}:${controlName}`;
+
 
 	        const curControlObj = {
 	        	attributes : {},
@@ -102,131 +110,166 @@ export default (componentFileNames, baseDirAuraUpstream, outputDirDataPath) => {
 
 	        //read and parse
 	        util.readFromFileAsync(fileName).then( fileContent => {
-	            //success
-	            //parsing xml
-	            const $ = cheerio.load(fileContent, {
-	                xmlMode: true
-	            });
+	        	const relativeFileName = util.getControlRelativePath( fileName );
+
+	            try{
+		            //parsing xml
+		            const $ = cheerio.load(fileContent, {
+		                xmlMode: true
+		            });
 
 
-	            _.each(
-	            	$('*'),
-	            	(attribute) => {
-	            		const {name, attribs, children} = attribute;
+		            _.each(
+		            	$('*'),
+		            	(attribute) => {
+		            		const {name, attribs, children} = attribute;
 
 
-	            		//populate usage map
-	            		util.appendUsageMapByName(
-	            			usageMap,
-	            			name,
-	            			controlFullName,
-	            			{
-		            			controlNameSpace,
-		            			controlName,
+		            		//populate usage map
+		            		util.appendUsageMapByName(
+		            			usageMap,
+		            			name,
 		            			controlFullName,
-		            			attribs
-		            		}
-            			)
+		            			{
+			            			controlNameSpace,
+			            			controlName,
+			            			controlFullName,
+			            			attribs
+			            		}
+	            			)
 
-	            		//populate the use a ...
-	            		switch(name.toLowerCase()){
-            				case 'aura:attribute'://{name, type, default, description, access}
-            					const [curAttrName, curAttrAttributes] = util.getKeyValFromCheerioDom(attribute);
-            					curControlObj.attributes[curAttrName] = curAttrAttributes;
-            					break;
+		            		//populate the use a ...
+		            		switch(name.toLowerCase()){
+	            				case 'aura:attribute'://{name, type, default, description, access}
+	            					const [curAttrName, curAttrAttributes] = util.getKeyValFromCheerioDom(attribute);
+	            					curControlObj.attributes[curAttrName] = curAttrAttributes;
+	            					break;
 
-        					case 'aura:import'://{library, property}
-        						const {library} = attribs;
-        						curControlObj.imports[library] = attribs;
-            					break;
+	        					case 'aura:import'://{library, property}
+	        						const {library} = attribs;
+	        						curControlObj.imports[library] = attribs;
+	            					break;
 
-        					case 'aura:registerevent'://{name, type, description}
-        						const eventName = attribs.name;
-        						curControlObj.events[eventName] = attribs;
-    							break;
+	        					case 'aura:registerevent'://{name, type, description}
+	        						const eventName = attribs.name;
+	        						curControlObj.events[eventName] = attribs;
+	    							break;
 
-							case 'aura:handler'://{name, value, action}
-								const handlerName = attribs.name;
-        						curControlObj.handlers[handlerName] = attribs;
-    							break;
+								case 'aura:handler'://{name, value, action}
+									const handlerName = attribs.name;
+	        						curControlObj.handlers[handlerName] = attribs;
+	    							break;
 
-							case 'aura:method'://{name, action, access, description}
-								const methodName = attribs.name;
+								case 'aura:method'://{name, action, access, description}
+									const methodName = attribs.name;
 
-								const childrenAttrs = _.reduce(
-									children || [],
-									(resChildAttrs, curChildAttr) => {
-										if (curChildAttr.name === 'aura:attribute' && attribs){
-    										const [childAttrName, childAttrAttributes] = util.getKeyValFromCheerioDom(curChildAttr);
-    										resChildAttrs[childAttrName] = childAttrAttributes;
-										}
+									const childrenAttrs = _.reduce(
+										children || [],
+										(resChildAttrs, curChildAttr) => {
+											if (curChildAttr.name === 'aura:attribute' && attribs){
+	    										const [childAttrName, childAttrAttributes] = util.getKeyValFromCheerioDom(curChildAttr);
+	    										resChildAttrs[childAttrName] = childAttrAttributes;
+											}
 
-										return resChildAttrs;
-									},
-									{}
-								);
+											return resChildAttrs;
+										},
+										{}
+									);
 
-								curControlObj.methods[methodName] = childrenAttrs;
-								break;
+									curControlObj.methods[methodName] = childrenAttrs;
+									break;
 
-							case 'aura:component'://to ignore
-								break;
+								case 'aura:component'://to ignore
+									break;
 
-        					default:
-        						//other tag will be considered depdencies
-        						const depdenciesName = name;
-        						if (util.isValidDependencies(depdenciesName)){
-            						//list of depdencies
-        							utill.appendDependenciesPropInControlObj(
-        								curControlObj,
-        								depdenciesName,
-        								attribs
-    								);
+	        					default:
+	        						//other tag will be considered depdencies
+	        						const depdenciesName = name;
+	        						if (util.isValidDependencies(depdenciesName)){
+	            						//list of depdencies
+	        							util.appendDependenciesPropInControlObj(
+	        								curControlObj,
+	        								depdenciesName,
+	        								attribs
+	    								);
 
-            						//count control usage
-            						util.addControlCountMapEntry(controlCountMap, depdenciesName, 1);
-            					}
-        						break;
-            			}
-	            	}
-            	);
+	            						//count control usage
+	            						util.addControlCountMapEntry(controlCountMap, depdenciesName, 1);
+	            					}
+	        						break;
+	            			}
+		            	}
+	            	);
 
-	            //resolved
-	            defer.resolve();
+		            //resolved
+		            defer.resolve(`${relativeFileName} done`);
+	            }catch(e){
+	            	defer.reject(`${relativeFileName} : ${e}`);
+	            }
 	        });
 		}
 	);
 
+	
+	const deferAuraPomXml = Q.defer();
+	promises.push(deferAuraPomXml.promise);
+	util.readFromFileAsync( path.join(baseDirAuraUpstream,'pom.xml') )
+	    .done( fileContent => {
+	    	auraUpstreamPomFileContent = fileContent;
+	    	deferAuraPomXml.resolve();
+	    });
+
 
 	//when all things are done, lets prepare to print
-	Q.all(promises).then( () => {
-		util.writeToFile(
-            util.serializeJsonObject( dependenciesMap ),
-            path.join(
-                outputDirDataPath,
-                'dependenciesMap.json'
-            )
-        );
+	logger.log('[Waiting for promises]: '.yellow, promises.length);
+	Q.allSettled(promises).then( (results) => {
+		logger.log('[Promises Returned]: '.yellow);
 
-        util.writeToFile(
-            util.serializeJsonObject( usageMap ),
-            path.join(
-                outputDirDataPath,
-                'usageMap.json'
-            )
-        );
+		//aggregate errors
+		let promiseSuccessCount = 0, promiseFailCount = 0;
+		const promisesErrors = [];
+		_.each(
+			results,
+			result => {
+				const {value, reason} = result;
 
-        util.writeToFile(
-            util.serializeJsonObject( namespaceCountMap ),
-            path.join(
-                outputDirDataPath,
-                'namespaceCountMap.json'
-            )
-        );
+		        if (result.state !== "fulfilled") {
+		        	promisesErrors.push(reason);
+		        	promiseFailCount++;
+		        } else{
+		        	promiseSuccessCount++;
+		        }
+		    }
+		);
+
+		//resolve the main promise
+		mainDefer.resolve({
+			promisesErrors,
+			promiseSuccessCount,
+			promiseFailCount
+		});
+	}).then( ({promisesErrors, promiseSuccessCount, promiseFailCount}) => {
+		//printing out the promise results
+		logger.log('[Promises Statistics:]'.yellow, `${promiseSuccessCount} succeeded`, `${promiseFailCount} failed`);
+
+		//print out promise error
+		_.each(
+			promisesErrors,
+			promiseError => logger.log('[Promise Failed]: '.red, promiseError)
+		);
+
+		mainDefer.resolve();
+	});
 
 
 
-        const remappedControlCountMap = _.reduce(
+	//main promise
+	mainDefer.promise.then( () => {
+		logger.log('[Main Promise Returned, Writing Output]:'.yellow);
+
+
+		//writing stuff to file
+		const remappedControlCountMap = _.reduce(
         	controlCountMap,
         	(res, controlReferencesCount, controlName) => {
         		const fullControlName = controlCountMap[`${controlName}.app`]
@@ -239,45 +282,76 @@ export default (componentFileNames, baseDirAuraUpstream, outputDirDataPath) => {
         	{}
     	);
 
-        //let's do a map to get the name
-        util.writeToFile(
-            util.serializeJsonObject( remappedControlCountMap ),
-            path.join(
+
+		//writing to files
+		const _writeToFile = (jsonSerialization, content, outputFileName) => {
+			const contentToWrite = jsonSerialization
+				? util.serializeJsonObject( content )
+				: content;
+			const outputFullPath = path.join(
                 outputDirDataPath,
-                'controlCountMap.json'
-            )
-        );
+                outputFileName
+            );
 
+			logger.log('\t[Writing To]: '.yellow, outputFullPath.blue, contentToWrite.length);
 
-
-        util.writeToFile(
-            util.serializeJsonObject( _.keys(controlLocationMap) ),
-            path.join(
-                outputDirDataPath,
-                'autoCompleteControlMap.json'
-            )
-        );
-
-
-        util.writeToFile(
-            util.serializeJsonObject( controlLocationMap ),
-            path.join(
-                outputDirDataPath,
-                'controlLocationMap.json'
-            )
-        );
-
-
-        //write the aura_upstream_pom
-        util.readFromFileAsync(path.join(baseDirAuraUpstream,'pom.xml'))
-        .done( fileContent => {
-        	util.writeToFile(
-	        	fileContent,
-	        	path.join(
-	                outputDirDataPath,
-	                'aura_upstream_pom.xml'
-	            )
+			util.writeToFile(
+	            contentToWrite,
+	            outputFullPath
 	        );
-        });
+		}
+
+
+		try{
+			_writeToFile(
+				true,//need json serialization
+	            dependenciesMap,
+	            'dependenciesMap.json'
+	        );
+
+	        _writeToFile(
+	        	true,//need json serialization
+	            usageMap,
+	            'usageMap.json'
+	        );
+
+	        _writeToFile(
+	        	true,//need json serialization
+	            namespaceCountMap,
+	            'namespaceCountMap.json'
+	        );
+
+	        //let's do a map to get the name
+	        _writeToFile(
+	        	true,//need json serialization
+	            remappedControlCountMap,
+	            'controlCountMap.json'
+	        );
+
+
+
+	        _writeToFile(
+	        	true,//need json serialization
+	            controlLocationMap,
+	            'autoCompleteControlMap.json'
+	        );
+
+
+	        _writeToFile(
+	        	true,//need json serialization
+	            controlLocationMap,
+	            'controlLocationMap.json'
+	        );
+
+
+	        //write the aura_upstream_pom
+	        _writeToFile(
+        		false,
+	        	auraUpstreamPomFileContent,
+	        	'aura_upstream_pom.xml'
+	        );
+        } catch(ex){
+        	logger.log('[Main Defer Error]'.red, ex);
+        }
 	});
 };

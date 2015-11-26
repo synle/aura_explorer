@@ -8,14 +8,14 @@ import generateLookup from './generateLookup';
 
 export default (componentBaseDir, metaDataOutputDir) => {
 	//trim whitespace
-	logger.log('componentBaseDir  :'.yellow, componentBaseDir);
-	logger.log('metaDataOutputDir :'.yellow, metaDataOutputDir);
+	logger.log('[componentBaseDir]: '.yellow, componentBaseDir);
+	logger.log('[metaDataOutputDir]: '.yellow, metaDataOutputDir);
 
 	//find all cmp files in nested structures
 	util.listDir(componentBaseDir).then( function( componentFileNames ){
 		//success
 		//print stats
-		logger.log('Statistics'.yellow);
+		logger.log('[Category Statistics]'.yellow);
 		logger.log('\t.app:'.yellow, componentFileNames.app.length);
 		logger.log('\t.cmp:'.yellow, componentFileNames.cmp.length);
 		logger.log('\t.evt:'.yellow, componentFileNames.evt.length);

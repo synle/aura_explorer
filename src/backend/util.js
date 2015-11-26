@@ -141,7 +141,9 @@ const self = {
         return false;
     },
 
-    
+    getControlRelativePath(fileName){
+        return fileName.substr( fileName.indexOf('/src/') );
+    },
 
     //append stuff
     appendUsageMapByName(usageMap, parentName, childrenName, newUsageObj){
