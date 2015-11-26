@@ -59,6 +59,7 @@
     "gulp-footer": "^1.0.5",
     "gulp-header": "^1.7.1",
     "gulp-less": "^3.0.5",
+    "gulp-minify": "0.0.5",
     "gulp-plumber": "^1.0.1",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-watch": "^4.3.5",

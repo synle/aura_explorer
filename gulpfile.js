@@ -9,6 +9,7 @@ var sourcemaps = require("gulp-sourcemaps");
 var less = require('gulp-less');
 var watch = require('gulp-watch');
 var plumber = require('gulp-plumber');
+var minify = require('gulp-minify');
 
 
 //output
@@ -31,8 +32,8 @@ var componentScripts = [
 ];
 
 var vendorScripts = [
-	'node_modules/jquery/dist/jquery.min.js',
-	'node_modules/bootstrap/dist/js/bootstrap.min.js',
+	'node_modules/jquery/dist/jquery.js',
+	'node_modules/bootstrap/dist/js/bootstrap.js',
 	'node_modules/react/dist/react-with-addons.js',
 	'node_modules/react-dom/dist/react-dom.js',
 	'src/clientInitScript.js'
@@ -58,8 +59,11 @@ var generateStyles = function(src, dest){
 			.pipe(plumber())
 		    .pipe(less())
 		    .pipe(concat(dest))
+		    .pipe(minify({
+		        mangle: false
+		    }))
 		    .pipe(gulp.dest(outputDistDir));
-	}	
+	}
 }
 
 var generateScripts = function(src){
@@ -75,6 +79,9 @@ var generateScripts = function(src){
 		    }))
 		    // .pipe(sourcemaps.write("."))
 		    .pipe(header(headerBanner))
+		    .pipe(minify({
+		        mangle: false
+		    }))
 		    .pipe(gulp.dest(outputDistDir));
 	}
 }
@@ -93,6 +100,9 @@ var generateScripts_ReactComponents = function(src){
 		    }))
 		    // .pipe(sourcemaps.write("."))
 		    .pipe(header(headerBanner))
+		    .pipe(minify({
+		        mangle: false
+		    }))
 		    .pipe(gulp.dest(outputDistComponentDir));
 	}
 }
@@ -110,6 +120,9 @@ var generateScripts_Backend = function(src){
 		    }))
 		    // .pipe(sourcemaps.write("."))
 		    .pipe(header(headerBanner))
+		    .pipe(minify({
+		        mangle: false
+		    }))
 		    .pipe(gulp.dest(outputDistBackendDir));
 	}
 }
