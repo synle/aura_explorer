@@ -82,25 +82,29 @@ Statistics allows you to look at how many components are there under a namespace
 On the control page you can look at a component's attribute as well as how it's being used in other places
 
 Attribute information
-![Aura Explorer Screenshot](images/2.jpg)
+![Aura Explorer Screenshot](images/2.1.jpg)
 
 Dependencies: information about which components are being used. And with the toggle you can quickly choose to see the information in Table view or XML view.
-![Aura Explorer Screenshot](images/3.1.jpg)
-![Aura Explorer Screenshot](images/3.2.jpg)
+![Aura Explorer Screenshot](images/2.2.jpg)
+![Aura Explorer Screenshot](images/2.3.jpg)
 
 Event Information
-![Aura Explorer Screenshot](images/4.jpg)
+![Aura Explorer Screenshot](images/2.4.jpg)
 
-Handler Information
-![Aura Explorer Screenshot](images/5.jpg)
+Imports Information
+![Aura Explorer Screenshot](images/2.5.jpg)
+
+Handlers Information
+![Aura Explorer Screenshot](images/2.6.jpg)
+
+Methods Information
+![Aura Explorer Screenshot](images/2.7.jpg)
 
 Usages: where is this component being used elsewhere. And with the toggle you can quickly choose to see the information in Table view or XML view.
-![Aura Explorer Screenshot](images/6.1.jpg)
-![Aura Explorer Screenshot](images/6.2.jpg)
-![Aura Explorer Screenshot](images/6.3.jpg)
-![Aura Explorer Screenshot](images/6.4.jpg)
+![Aura Explorer Screenshot](images/2.8.jpg)
+![Aura Explorer Screenshot](images/2.9.jpg)
 
 
 
 Sample Terminal Output for running meta data generation
-![Aura Explorer Screenshot](images/7.jpg)
+![Aura Explorer Screenshot](images/3.jpg)
