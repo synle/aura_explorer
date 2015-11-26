@@ -16,13 +16,13 @@ export default (componentBaseDir, metaDataOutputDir) => {
 		//success
 		//print stats
 		logger.log('[Category Statistics]'.yellow);
-		logger.log('\t.app:'.yellow, componentFileNames.app.length);
-		logger.log('\t.cmp:'.yellow, componentFileNames.cmp.length);
-		logger.log('\t.evt:'.yellow, componentFileNames.evt.length);
-		logger.log('\tjs:'.yellow, componentFileNames.js.length);
-		logger.log('\tHelper.js:'.yellow, componentFileNames.helperjs.length);
-		logger.log('\tController.js:'.yellow, componentFileNames.controllerjs.length);
-		logger.log('\tRenderrer.js:'.yellow, componentFileNames.rendererjs.length);
+		logger.log('\t.app'.blue, componentFileNames.app.length);
+		logger.log('\t.cmp'.blue, componentFileNames.cmp.length);
+		logger.log('\t.evt'.blue, componentFileNames.evt.length);
+		logger.log('\tjs'.blue, componentFileNames.js.length);
+		logger.log('\tHelper.js'.blue, componentFileNames.helperjs.length);
+		logger.log('\tController.js'.blue, componentFileNames.controllerjs.length);
+		logger.log('\tRenderrer.js'.blue, componentFileNames.rendererjs.length);
 
 		generateLookup(
 			componentFileNames,//dictionary containing all js, evt and cmp files

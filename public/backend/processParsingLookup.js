@@ -36,13 +36,13 @@ exports.default = function (componentBaseDir, metaDataOutputDir) {
 		//success
 		//print stats
 		_logger2.default.log('[Category Statistics]'.yellow);
-		_logger2.default.log('\t.app:'.yellow, componentFileNames.app.length);
-		_logger2.default.log('\t.cmp:'.yellow, componentFileNames.cmp.length);
-		_logger2.default.log('\t.evt:'.yellow, componentFileNames.evt.length);
-		_logger2.default.log('\tjs:'.yellow, componentFileNames.js.length);
-		_logger2.default.log('\tHelper.js:'.yellow, componentFileNames.helperjs.length);
-		_logger2.default.log('\tController.js:'.yellow, componentFileNames.controllerjs.length);
-		_logger2.default.log('\tRenderrer.js:'.yellow, componentFileNames.rendererjs.length);
+		_logger2.default.log('\t.app'.blue, componentFileNames.app.length);
+		_logger2.default.log('\t.cmp'.blue, componentFileNames.cmp.length);
+		_logger2.default.log('\t.evt'.blue, componentFileNames.evt.length);
+		_logger2.default.log('\tjs'.blue, componentFileNames.js.length);
+		_logger2.default.log('\tHelper.js'.blue, componentFileNames.helperjs.length);
+		_logger2.default.log('\tController.js'.blue, componentFileNames.controllerjs.length);
+		_logger2.default.log('\tRenderrer.js'.blue, componentFileNames.rendererjs.length);
 
 		(0, _generateLookup2.default)(componentFileNames, //dictionary containing all js, evt and cmp files
 		componentBaseDir, //base dir of the aura upstream directory

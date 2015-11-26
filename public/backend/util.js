@@ -59,6 +59,16 @@ var self = {
         _logger2.default.debug('Reading file...'.magenta.bold, self._getSimplePathString(path).yellow);;
 
         defer.resolve(_fs2.default.readFileSync(path, 'utf-8'));
+
+        _fs2.default.readFile(path, 'utf-8', function (error, fileContent) {
+            if (error) {
+                _logger2.default.log('[ReadFile Error]'.red, path + ': cannot be read');
+                defer.resolve(''); //if there is error, resolve with an empty file
+            } else {
+                    defer.resolve(fileContent);
+                }
+        });
+
         return defer.promise;
     },
     listDir: function listDir(inputDir, inputRes) {

@@ -40,6 +40,16 @@ const self = {
         );;
 
         defer.resolve( fs.readFileSync(path, 'utf-8') );
+
+        fs.readFile(path, 'utf-8', (error, fileContent) => {
+            if (error){
+                logger.log('[ReadFile Error]'.red,  `${path}: cannot be read`);
+                defer.resolve('');//if there is error, resolve with an empty file
+            } else {
+                defer.resolve(fileContent);
+            }
+        });
+
         return defer.promise;
     },
 	listDir: function listDir(inputDir, inputRes) {
