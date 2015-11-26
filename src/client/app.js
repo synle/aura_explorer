@@ -25,7 +25,14 @@ util.render( () => {
     	location.href = util.getQueryUrl(`${keyword}`);
     	return false;
     })
-    .appendTo('#navbar');
+    .appendTo('#navbar')
+        .find('input')
+        .popover({
+            trigger: 'focus',
+            title: 'Matching Component',
+            placement : 'bottom',
+            content: "Most control names are of form <namespace>:<controlName>" 
+        });
 
     //scroll to top
     const btnScrollToTop =$(`<button id="btnScrollToTop" class="btn btn-primary">^</button>`)

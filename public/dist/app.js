@@ -17,7 +17,12 @@ _util2.default.render(function () {
         var keyword = $.trim($(e.target).find('input').val()).toLowerCase();
         location.href = _util2.default.getQueryUrl('' + keyword);
         return false;
-    }).appendTo('#navbar');
+    }).appendTo('#navbar').find('input').popover({
+        trigger: 'focus',
+        title: 'Matching Component',
+        placement: 'bottom',
+        content: "Most control names are of form <namespace>:<controlName>"
+    });
 
     //scroll to top
     var btnScrollToTop = $('<button id="btnScrollToTop" class="btn btn-primary">^</button>').click(function () {
