@@ -66,13 +66,13 @@ const ControlDetailPage = React.createClass({
 					</div>
 
 					<ul className="nav nav-tabs" role="tablist">
-						<li role="presentation" className="active"><a href="#tab-attributes" aria-controls="settings" role="tab" data-toggle="tab">Attributes</a></li>
-						<li role="presentation"><a href="#tab-dependencies" aria-controls="settings" role="tab" data-toggle="tab">Dependencies</a></li>
-						<li role="presentation"><a href="#tab-events" aria-controls="settings" role="tab" data-toggle="tab">Events</a></li>
-						<li role="presentation"><a href="#tab-imports" aria-controls="settings" role="tab" data-toggle="tab">Imports</a></li>
-						<li role="presentation"><a href="#tab-handlers" aria-controls="settings" role="tab" data-toggle="tab">Handlers</a></li>
-						<li role="presentation"><a href="#tab-methods" aria-controls="settings" role="tab" data-toggle="tab">Methods</a></li>
-						<li role="presentation"><a href="#tab-usages" aria-controls="settings" role="tab" data-toggle="tab">Usages</a></li>
+						{ this._getTabHeaderItem( "tab-attributes",    "Attributes", attributeList) }
+						{ this._getTabHeaderItem( "tab-dependencies",  "Dependencies", dependenciesMap) }
+						{ this._getTabHeaderItem( "tab-events",        "Events", eventsList) }
+						{ this._getTabHeaderItem( "tab-imports",       "Imports", importsList) }
+						{ this._getTabHeaderItem( "tab-handlers",      "Handlers", handlersList) }
+						{ this._getTabHeaderItem( "tab-methods",       "Methods", methodsMap) }
+						{ this._getTabHeaderItem( "tab-usages",        "Usages", usageList) }
 					</ul>
 
 					<div className="tab-content">
@@ -91,6 +91,20 @@ const ControlDetailPage = React.createClass({
 	shouldComponentUpdate(nextProps, nextState) {
 		// return nextProps.selectedControlName !== this.props.selectedControlName;
 		return true;//always update
+	},
+	_getTabHeaderItem(tabContentId, headerName, entityObjects){
+		const entityCount = _.size( entityObjects );
+
+		return(
+			<li role="presentation">
+				<a href={`#${tabContentId}`} aria-controls="settings" role="tab" data-toggle="tab">
+					{headerName} {this._getCountBadge( entityCount )}
+				</a>
+			</li>
+		);
+	},
+	_getCountBadge(countNum){
+		return countNum > 0 ? `[${countNum}]` : '';
 	}
 });
 

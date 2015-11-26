@@ -111,69 +111,13 @@ var ControlDetailPage = React.createClass({
 						React.createElement(
 							'ul',
 							{ className: 'nav nav-tabs', role: 'tablist' },
-							React.createElement(
-								'li',
-								{ role: 'presentation', className: 'active' },
-								React.createElement(
-									'a',
-									{ href: '#tab-attributes', 'aria-controls': 'settings', role: 'tab', 'data-toggle': 'tab' },
-									'Attributes'
-								)
-							),
-							React.createElement(
-								'li',
-								{ role: 'presentation' },
-								React.createElement(
-									'a',
-									{ href: '#tab-dependencies', 'aria-controls': 'settings', role: 'tab', 'data-toggle': 'tab' },
-									'Dependencies'
-								)
-							),
-							React.createElement(
-								'li',
-								{ role: 'presentation' },
-								React.createElement(
-									'a',
-									{ href: '#tab-events', 'aria-controls': 'settings', role: 'tab', 'data-toggle': 'tab' },
-									'Events'
-								)
-							),
-							React.createElement(
-								'li',
-								{ role: 'presentation' },
-								React.createElement(
-									'a',
-									{ href: '#tab-imports', 'aria-controls': 'settings', role: 'tab', 'data-toggle': 'tab' },
-									'Imports'
-								)
-							),
-							React.createElement(
-								'li',
-								{ role: 'presentation' },
-								React.createElement(
-									'a',
-									{ href: '#tab-handlers', 'aria-controls': 'settings', role: 'tab', 'data-toggle': 'tab' },
-									'Handlers'
-								)
-							),
-							React.createElement(
-								'li',
-								{ role: 'presentation' },
-								React.createElement(
-									'a',
-									{ href: '#tab-methods', 'aria-controls': 'settings', role: 'tab', 'data-toggle': 'tab' },
-									'Methods'
-								)
-							),
-							React.createElement(
-								'li',
-								{ role: 'presentation' },
-								React.createElement(
-									'a',
-									{ href: '#tab-usages', 'aria-controls': 'settings', role: 'tab', 'data-toggle': 'tab' },
-									'Usages'
-								)
-							)
+							_this._getTabHeaderItem("tab-attributes", "Attributes", attributeList),
+							_this._getTabHeaderItem("tab-dependencies", "Dependencies", dependenciesMap),
+							_this._getTabHeaderItem("tab-events", "Events", eventsList),
+							_this._getTabHeaderItem("tab-imports", "Imports", importsList),
+							_this._getTabHeaderItem("tab-handlers", "Handlers", handlersList),
+							_this._getTabHeaderItem("tab-methods", "Methods", methodsMap),
+							_this._getTabHeaderItem("tab-usages", "Usages", usageList)
 						),
 						React.createElement(
 							'div',
@@ -224,6 +168,24 @@ var ControlDetailPage = React.createClass({
 	shouldComponentUpdate: function shouldComponentUpdate(nextProps, nextState) {
 		// return nextProps.selectedControlName !== this.props.selectedControlName;
 		return true; //always update
+	},
+	_getTabHeaderItem: function _getTabHeaderItem(tabContentId, headerName, entityObjects) {
+		var entityCount = _lodash2.default.size(entityObjects);
+
+		return React.createElement(
+			'li',
+			{ role: 'presentation' },
+			React.createElement(
+				'a',
+				{ href: '#' + tabContentId, 'aria-controls': 'settings', role: 'tab', 'data-toggle': 'tab' },
+				headerName,
+				' ',
+				this._getCountBadge(entityCount)
+			)
+		);
+	},
+	_getCountBadge: function _getCountBadge(countNum) {
+		return countNum > 0 ? '[' + countNum + ']' : '';
 	}
 });
 
