@@ -64,4 +64,3 @@ var MethodTable = React.createClass({
 //internal
 
 exports.default = MethodTable;
-//# sourceMappingURL=MethodTable.js.map

@@ -44,4 +44,3 @@ var ControlDetailLink = React.createClass({
 });
 
 exports.default = ControlDetailLink;
-//# sourceMappingURL=ControlDetailLink.js.map

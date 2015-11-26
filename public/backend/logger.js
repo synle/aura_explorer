@@ -26,4 +26,3 @@ exports.default = {
 		console.log.apply(this, arguments);
 	}
 };
-//# sourceMappingURL=logger.js.map

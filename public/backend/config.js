@@ -8,4 +8,3 @@ exports.default = {
     baseDir: './aura-master', //upstream aura path
     outputDir: './data'
 };
-//# sourceMappingURL=config.js.map

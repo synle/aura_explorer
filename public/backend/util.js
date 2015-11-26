@@ -185,4 +185,3 @@ var self = {
 //internal
 
 exports.default = self;
-//# sourceMappingURL=util.js.map

@@ -157,4 +157,3 @@ var UsageTable = React.createClass({
 //external
 
 exports.default = UsageTable;
-//# sourceMappingURL=UsageTable.js.map

@@ -52,4 +52,3 @@ var Attributes_Handler_Events_Table = React.createClass({
 //external
 
 exports.default = Attributes_Handler_Events_Table;
-//# sourceMappingURL=AttributesHandlerEventsTable.js.map

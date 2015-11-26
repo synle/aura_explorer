@@ -41,4 +41,3 @@ var KeyValueXmlSyntax = React.createClass({
 });
 
 exports.default = KeyValueXmlSyntax;
-//# sourceMappingURL=KeyValueXmlSyntax.js.map

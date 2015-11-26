@@ -153,4 +153,3 @@ var DependenciesDetailTable = React.createClass({
 //external
 
 exports.default = DependenciesDetailTable;
-//# sourceMappingURL=DependenciesDetailTable.js.map

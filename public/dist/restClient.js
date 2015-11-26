@@ -47,4 +47,3 @@ exports.default = {
 	packageInfo: _package2.default,
 	explorerConfig: _config2.default
 }; //external
-//# sourceMappingURL=restClient.js.map

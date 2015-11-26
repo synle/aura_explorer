@@ -24,4 +24,3 @@ _util2.default.render(function () {
         return $(document).scrollTop(0);
     }).appendTo('#navbar');
 }); //utils
-//# sourceMappingURL=app.js.map

@@ -108,4 +108,3 @@ var TableComponent = React.createClass({
 });
 
 exports.default = TableComponent;
-//# sourceMappingURL=Table.js.map

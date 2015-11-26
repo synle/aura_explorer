@@ -62,4 +62,3 @@ var ListView = React.createClass({
 });
 
 exports.default = ListView;
-//# sourceMappingURL=ListView.js.map

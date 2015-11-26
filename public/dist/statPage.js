@@ -178,4 +178,3 @@ _util2.default.render(function () {
 	//control usage count
 	ReactDOM.render(React.createElement(StatPage, null), document.querySelector('#body'));
 });
-//# sourceMappingURL=statPage.js.map

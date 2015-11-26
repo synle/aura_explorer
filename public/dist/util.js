@@ -73,4 +73,3 @@ exports.default = {
 		return extensionIdx > 0 ? tagName.substr(0, extensionIdx) : tagName;
 	}
 };
-//# sourceMappingURL=util.js.map

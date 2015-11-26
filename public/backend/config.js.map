@@ -1,2 +1,0 @@
-//Developed by Sy Le. Coprighted by Salesforce.com 2015
-{"version":3,"sources":["config.js"],"names":[],"mappings":";;;;;kBAAe;AACX,WAAO,EAAE,eAAe;AACxB,aAAS,EAAE,QAAQ;CAQtB","file":"config.js","sourcesContent":["export default {\n    baseDir: './aura-master',//upstream aura path\n    outputDir: './data',\n    // BLACK_LIST_NAMESPACE : {\n    //     auraTest : 1,\n    //     test : 1,\n    //     uitest : 1,\n    //     uiExamples : 1\n    // }\n    // TRIGGER_SEPARATOR : '-'\n};"],"sourceRoot":"/source/"}

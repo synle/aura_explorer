@@ -118,4 +118,3 @@ var KeyValTableComponent = React.createClass({
 });
 
 exports.default = KeyValTableComponent;
-//# sourceMappingURL=KeyValTable.js.map

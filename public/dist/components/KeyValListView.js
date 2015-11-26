@@ -72,4 +72,3 @@ var KeyValListViewComponent = React.createClass({
 }); //external
 
 exports.default = KeyValListViewComponent;
-//# sourceMappingURL=KeyValListView.js.map
