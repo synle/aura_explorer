@@ -6,7 +6,7 @@
     "test": "./node_modules/mocha/bin/mocha --compilers js:babel-core/register test",
     "pkg": "gulp && node ./public/backend/app.js;",
     "start": "npm install --production; nw . &",
-    "clean": "rm -rf public/* data/* aura-master/* master.zip",
+    "clean": "rm -rf public/* data/* aura-master master.zip",
     "dev": "gulp dev;",
     "get_aura_upstream": "curl -LOk https://github.com/forcedotcom/aura/archive/master.zip && (tar -xf master.zip || unzip master.zip)",
     "dist": "zip -r ./aura-explorer data/* public/* node_modules/* package.json"
