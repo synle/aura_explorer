@@ -312,6 +312,17 @@ exports.default = function (componentFileNames, baseDirAuraUpstream, outputDirDa
 			_util2.default.writeToFile(contentToWrite, outputFullPath);
 		};
 
+		//making output dir if it is not there
+		_logger2.default.log('[Making Output Dir]'.yellow, outputDirDataPath);
+		try {
+			_util2.default.mkDir(outputDirDataPath);
+			_logger2.default.log('\t[OuputDir Created]'.yellow);
+		} catch (e) {
+			_logger2.default.log('\t[Skipped]'.yellow, e);
+		}
+
+		//writing files
+		_logger2.default.log('[Writing Output]'.yellow);
 		try {
 			_writeToFile(true, //need json serialization
 			dependenciesMap, 'dependenciesMap.json');

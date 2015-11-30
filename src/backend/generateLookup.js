@@ -302,6 +302,17 @@ export default (componentFileNames, baseDirAuraUpstream, outputDirDataPath) => {
 		}
 
 
+		//making output dir if it is not there
+		logger.log('[Making Output Dir]'.yellow, outputDirDataPath);
+		try {
+			util.mkDir(outputDirDataPath);
+			logger.log('\t[OuputDir Created]'.yellow);
+		} catch(e) {
+			logger.log('\t[Skipped]'.yellow, e);
+		}
+
+		//writing files
+		logger.log('[Writing Output]'.yellow);
 		try{
 			_writeToFile(
 				true,//need json serialization

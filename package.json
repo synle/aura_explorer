@@ -4,8 +4,8 @@
   "description": "Aura explorer used to explore Salesforce Aura Components",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha --compilers js:babel-core/register test",
-    "pkg": "gulp && node ./public/backend/app.js;",
-    "start": "npm install --production; nw . &",
+    "pkg": "gulp scripts_backend && export NODE_PATH=$NODE_PATH:./public/ && node public/dist/backend/app.js",
+    "start": "npm install --production; export NODE_PATH=$NODE_PATH:./public/; nw . &",
     "clean": "rm -rf public/* data/* aura-master master.zip",
     "dev": "gulp dev;",
     "get_aura_upstream": "curl -LOk https://github.com/forcedotcom/aura/archive/master.zip && (tar -xf master.zip || unzip master.zip)",
@@ -23,7 +23,7 @@
   },
   "window": {
     "title": "Aura Explorer",
-    "toolbar": false,
+    "toolbar": true,
     "frame": true,
     "width": 1000,
     "height": 800,

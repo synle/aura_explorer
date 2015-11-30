@@ -170,6 +170,9 @@ var self = {
     getControlRelativePath: function getControlRelativePath(fileName) {
         return fileName.substr(fileName.indexOf('/src/'));
     },
+    mkDir: function mkDir(dir) {
+        _fs2.default.mkdirSync(dir);
+    },
 
     //append stuff
     appendUsageMapByName: function appendUsageMapByName(usageMap, parentName, childrenName, newUsageObj) {

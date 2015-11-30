@@ -155,6 +155,10 @@ const self = {
         return fileName.substr( fileName.indexOf('/src/') );
     },
 
+    mkDir(dir){
+        fs.mkdirSync(dir);
+    },
+
     //append stuff
     appendUsageMapByName(usageMap, parentName, childrenName, newUsageObj){
         usageMap[parentName] = usageMap[parentName] || {};

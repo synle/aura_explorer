@@ -68,7 +68,7 @@ var generateStyles = function(src, dest){
 
 var generateScripts = function(src, srcBase){
 	return function(){
-		return gulp.src(src, srcBase ? {base : srcBase} : {})
+		return gulp.src(src, { base : './src/client' } )
 			.pipe(plumber())
 		    // .pipe(sourcemaps.init())
 		    .pipe(babel({
@@ -89,7 +89,7 @@ var generateScripts = function(src, srcBase){
 
 
 var generateScripts_ReactComponents = function(src){
-	return generateScripts(src, './src/client/components');
+	return generateScripts(src);
 }
 
 var generateScripts_Backend = function(src){
