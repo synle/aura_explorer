@@ -9,7 +9,7 @@ var _lodash = require('lodash');
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var _Table = require('./Table');
+var _Table = require('dist/components/Table');
 
 var _Table2 = _interopRequireDefault(_Table);
 

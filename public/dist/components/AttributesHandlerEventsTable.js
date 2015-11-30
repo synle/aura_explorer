@@ -9,17 +9,19 @@ var _lodash = require('lodash');
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var _util = require('../util');
+var _util = require('dist/util');
 
 var _util2 = _interopRequireDefault(_util);
 
-var _Table = require('./Table');
+var _Table = require('dist/components/Table');
 
 var _Table2 = _interopRequireDefault(_Table);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 //definitions
+
+//internal
 var Attributes_Handler_Events_Table = React.createClass({
 	displayName: 'Attributes_Handler_Events_Table',
 	render: function render() {
@@ -46,9 +48,6 @@ var Attributes_Handler_Events_Table = React.createClass({
 	shouldComponentUpdate: function shouldComponentUpdate(nextProps, nextState) {
 		return true; //always update
 	}
-});
-
-//internal
-//external
+}); //external
 
 exports.default = Attributes_Handler_Events_Table;

@@ -1,11 +1,13 @@
 //external
 import _ from 'lodash';
-import util from '../util';
+
+//internal
+import util from '/aura-explorer/util';
 
 //internal component
-import KeyValTableComponent from './KeyValTable';
-import KeyValueXmlSyntaxComponent from './KeyValueXmlSyntax';
-import ControlDetailLink from './ControlDetailLink';
+import KeyValTableComponent from '/aura-explorer/components/KeyValTable';
+import KeyValueXmlSyntaxComponent from '/aura-explorer/components/KeyValueXmlSyntax';
+import ControlDetailLink from '/aura-explorer/components/ControlDetailLink';
 
 //definitions
 const UsageTable = React.createClass({

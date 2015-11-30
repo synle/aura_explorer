@@ -66,16 +66,15 @@ var generateStyles = function(src, dest){
 	}
 }
 
-var generateScripts = function(src){
+var generateScripts = function(src, srcBase){
 	return function(){
-		return gulp.src(src)
+		return gulp.src(src, srcBase ? {base : srcBase} : {})
 			.pipe(plumber())
 		    // .pipe(sourcemaps.init())
 		    .pipe(babel({
 				resolveModuleSource: function(source, filename) {
 					//remap the path
 					const newPath = source.replace('/aura-explorer/', 'dist/');
-
 					return newPath;
 				}
 		    }))
@@ -90,23 +89,7 @@ var generateScripts = function(src){
 
 
 var generateScripts_ReactComponents = function(src){
-	return function(){
-		return gulp.src(src, {base: './src/client/components'})
-			.pipe(plumber())
-		    // .pipe(sourcemaps.init())
-		    .pipe(babel({
-				resolveModuleSource: function(source, filename) {
-					//remap the path
-					return source.replace('/src/client/', '/dist/');
-				}
-		    }))
-		    // .pipe(sourcemaps.write("."))
-		    .pipe(header(headerBanner))
-		    .pipe(minify({
-		        mangle: false
-		    }))
-		    .pipe(gulp.dest(outputDistComponentDir));
-	}
+	return generateScripts(src, './src/client/components');
 }
 
 var generateScripts_Backend = function(src){
