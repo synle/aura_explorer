@@ -449,6 +449,88 @@
     ]
    }
   },
+  "simpledragdrop.cmp": {
+   "attributes": {
+    "_dropzoneContext1": {
+     "name": "_dropzoneContext1",
+     "type": "Object"
+    },
+    "_dropzoneContext2": {
+     "name": "_dropzoneContext2",
+     "type": "Object"
+    },
+    "_draggableContext1": {
+     "name": "_draggableContext1",
+     "type": "Object"
+    },
+    "_draggableContext2": {
+     "name": "_draggableContext2",
+     "type": "Object"
+    },
+    "list1": {
+     "name": "list1",
+     "type": "String[]",
+     "default": "1,2,3,4,5"
+    },
+    "list2": {
+     "name": "list2",
+     "type": "String[]",
+     "default": "A,B,C,D,E"
+    }
+   },
+   "imports": {},
+   "events": {},
+   "handlers": {
+    "init": {
+     "name": "init",
+     "value": "{!this}",
+     "action": "{!c.init}"
+    }
+   },
+   "methods": {},
+   "dependencies": {
+    "ui:dropzone": [
+     {
+      "inContextOf": "{!v._dropzoneContext1}",
+      "class": "sampleList",
+      "drop": "{!c.handleDrop}"
+     },
+     {
+      "inContextOf": "{!v._dropzoneContext2}",
+      "class": "sampleList",
+      "drop": "{!c.handleDrop}"
+     }
+    ],
+    "aura:iteration": [
+     {
+      "aura:id": "list",
+      "items": "{!v.list1}",
+      "var": "item"
+     },
+     {
+      "aura:id": "list",
+      "items": "{!v.list2}",
+      "var": "item"
+     }
+    ],
+    "ui:draggable": [
+     {
+      "inContextOf": "{!v._draggableContext1}",
+      "dragEnd": "{!c.handleDragEnd}",
+      "dataTransfer": "{!item}",
+      "class": "sampleCard",
+      "dragClass": "dragging"
+     },
+     {
+      "inContextOf": "{!v._draggableContext2}",
+      "dataTransfer": "{!item}",
+      "dragEnd": "{!c.handleDragEnd}",
+      "class": "sampleCard",
+      "dragClass": "dragging"
+     }
+    ]
+   }
+  },
   "spinnerTopic.cmp": {
    "attributes": {},
    "imports": {},
@@ -5393,49 +5475,6 @@
     ]
    }
   },
-  "componentDefStorageEviction.app": {
-   "attributes": {
-    "load": {
-     "name": "load",
-     "type": "String",
-     "default": "ui:tab"
-    },
-    "status": {
-     "name": "status",
-     "type": "String",
-     "default": "Waiting"
-    },
-    "output": {
-     "name": "output",
-     "type": "Aura.Component"
-    },
-    "defStorageContents": {
-     "name": "defStorageContents",
-     "type": "String[]",
-     "default": ""
-    }
-   },
-   "imports": {},
-   "events": {},
-   "handlers": {
-    "undefined": {
-     "event": "auraStorage:modified",
-     "action": "{!c.storageModified}"
-    }
-   },
-   "methods": {
-    "fetchCmp": {},
-    "createComponentDeprecated": {},
-    "clearActionAndDefStorage": {}
-   },
-   "dependencies": {
-    "aura:application": [
-     {
-      "template": "auraStorageTest:componentDefStorageEvictionTemplate"
-     }
-    ]
-   }
-  },
   "cryptoAlternateStorageTest.app": {
    "attributes": {},
    "imports": {
@@ -5676,53 +5715,6 @@
    "handlers": {},
    "methods": {},
    "dependencies": {}
-  },
-  "componentDefStorageEvictionContainer.cmp": {
-   "attributes": {},
-   "imports": {
-    "auraStorageTest:iframeTestLib": {
-     "library": "auraStorageTest:iframeTestLib",
-     "property": "lib"
-    }
-   },
-   "events": {},
-   "handlers": {},
-   "methods": {},
-   "dependencies": {}
-  },
-  "componentDefStorageEvictionTemplate.cmp": {
-   "attributes": {},
-   "imports": {},
-   "events": {},
-   "handlers": {},
-   "methods": {},
-   "dependencies": {
-    "aura:set": [
-     {
-      "attribute": "auraPreInitBlock"
-     }
-    ],
-    "auraStorage:init": [
-     {
-      "name": "actions",
-      "maxSize": "4096",
-      "defaultExpiration": "3600",
-      "secure": "false",
-      "persistent": "true",
-      "clearStorageOnInit": "false"
-     },
-     {
-      "name": "ComponentDefStorage",
-      "persistent": "true",
-      "secure": "false",
-      "defaultExpiration": "10886400",
-      "defaultAutoRefreshInterval": "0",
-      "maxSize": "370",
-      "debugLoggingEnabled": "true",
-      "clearStorageOnInit": "false"
-     }
-    ]
-   }
   },
   "componentDefStorageTemplate.cmp": {
    "attributes": {},
@@ -36966,7 +36958,7 @@
     "advancedConfig": {
      "name": "advancedConfig",
      "type": "Object",
-     "description": "Advanced positioning options, overrides direction. align and targetAlign are required, vertPad is optional. See documentation for "
+     "description": "Advanced positioning options, overrides direction. align and targetAlign are required, vertPad is optional."
     },
     "pad": {
      "name": "pad",

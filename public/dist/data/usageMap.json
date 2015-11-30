@@ -313,16 +313,6 @@
     }
    }
   ],
-  "auraStorageTest:componentDefStorageEviction.app": [
-   {
-    "controlNameSpace": "auraStorageTest",
-    "controlName": "componentDefStorageEviction.app",
-    "controlFullName": "auraStorageTest:componentDefStorageEviction.app",
-    "attribs": {
-     "template": "auraStorageTest:componentDefStorageEvictionTemplate"
-    }
-   }
-  ],
   "auraStorageTest:cryptoAlternateStorageTest.app": [
    {
     "controlNameSpace": "auraStorageTest",
@@ -1341,47 +1331,6 @@
     "attribs": {
      "name": "output",
      "type": "Aura.Component"
-    }
-   }
-  ],
-  "auraStorageTest:componentDefStorageEviction.app": [
-   {
-    "controlNameSpace": "auraStorageTest",
-    "controlName": "componentDefStorageEviction.app",
-    "controlFullName": "auraStorageTest:componentDefStorageEviction.app",
-    "attribs": {
-     "name": "load",
-     "type": "String",
-     "default": "ui:tab"
-    }
-   },
-   {
-    "controlNameSpace": "auraStorageTest",
-    "controlName": "componentDefStorageEviction.app",
-    "controlFullName": "auraStorageTest:componentDefStorageEviction.app",
-    "attribs": {
-     "name": "status",
-     "type": "String",
-     "default": "Waiting"
-    }
-   },
-   {
-    "controlNameSpace": "auraStorageTest",
-    "controlName": "componentDefStorageEviction.app",
-    "controlFullName": "auraStorageTest:componentDefStorageEviction.app",
-    "attribs": {
-     "name": "output",
-     "type": "Aura.Component"
-    }
-   },
-   {
-    "controlNameSpace": "auraStorageTest",
-    "controlName": "componentDefStorageEviction.app",
-    "controlFullName": "auraStorageTest:componentDefStorageEviction.app",
-    "attribs": {
-     "name": "defStorageContents",
-     "type": "String[]",
-     "default": ""
     }
    }
   ],
@@ -2517,6 +2466,64 @@
     "attribs": {
      "name": "submitCount",
      "type": "integer"
+    }
+   }
+  ],
+  "auradocs:simpledragdrop.cmp": [
+   {
+    "controlNameSpace": "auradocs",
+    "controlName": "simpledragdrop.cmp",
+    "controlFullName": "auradocs:simpledragdrop.cmp",
+    "attribs": {
+     "name": "_dropzoneContext1",
+     "type": "Object"
+    }
+   },
+   {
+    "controlNameSpace": "auradocs",
+    "controlName": "simpledragdrop.cmp",
+    "controlFullName": "auradocs:simpledragdrop.cmp",
+    "attribs": {
+     "name": "_dropzoneContext2",
+     "type": "Object"
+    }
+   },
+   {
+    "controlNameSpace": "auradocs",
+    "controlName": "simpledragdrop.cmp",
+    "controlFullName": "auradocs:simpledragdrop.cmp",
+    "attribs": {
+     "name": "_draggableContext1",
+     "type": "Object"
+    }
+   },
+   {
+    "controlNameSpace": "auradocs",
+    "controlName": "simpledragdrop.cmp",
+    "controlFullName": "auradocs:simpledragdrop.cmp",
+    "attribs": {
+     "name": "_draggableContext2",
+     "type": "Object"
+    }
+   },
+   {
+    "controlNameSpace": "auradocs",
+    "controlName": "simpledragdrop.cmp",
+    "controlFullName": "auradocs:simpledragdrop.cmp",
+    "attribs": {
+     "name": "list1",
+     "type": "String[]",
+     "default": "1,2,3,4,5"
+    }
+   },
+   {
+    "controlNameSpace": "auradocs",
+    "controlName": "simpledragdrop.cmp",
+    "controlFullName": "auradocs:simpledragdrop.cmp",
+    "attribs": {
+     "name": "list2",
+     "type": "String[]",
+     "default": "A,B,C,D,E"
     }
    }
   ],
@@ -8229,7 +8236,7 @@
     "attribs": {
      "name": "advancedConfig",
      "type": "Object",
-     "description": "Advanced positioning options, overrides direction. align and targetAlign are required, vertPad is optional. See documentation for "
+     "description": "Advanced positioning options, overrides direction. align and targetAlign are required, vertPad is optional."
     }
    },
    {
@@ -24321,24 +24328,6 @@
     }
    }
   ],
-  "auraStorageTest:componentDefStorageEviction.app": [
-   {
-    "controlNameSpace": "auraStorageTest",
-    "controlName": "componentDefStorageEviction.app",
-    "controlFullName": "auraStorageTest:componentDefStorageEviction.app",
-    "attribs": {
-     "aura:id": "status"
-    }
-   },
-   {
-    "controlNameSpace": "auraStorageTest",
-    "controlName": "componentDefStorageEviction.app",
-    "controlFullName": "auraStorageTest:componentDefStorageEviction.app",
-    "attribs": {
-     "aura:id": "output"
-    }
-   }
-  ],
   "auraStorageTest:cryptoAlternateStorageTest.app": [
    {
     "controlNameSpace": "auraStorageTest",
@@ -25498,6 +25487,16 @@
     "attribs": {
      "class": "clickableme",
      "onclick": "{!c.cssalert}"
+    }
+   }
+  ],
+  "auradocs:simpledragdrop.cmp": [
+   {
+    "controlNameSpace": "auradocs",
+    "controlName": "simpledragdrop.cmp",
+    "controlFullName": "auradocs:simpledragdrop.cmp",
+    "attribs": {
+     "class": "container"
     }
    }
   ],
@@ -27632,16 +27631,6 @@
     "controlNameSpace": "auraStorageTest",
     "controlName": "componentDefStorageContainer.cmp",
     "controlFullName": "auraStorageTest:componentDefStorageContainer.cmp",
-    "attribs": {
-     "aura:id": "iframeContainer"
-    }
-   }
-  ],
-  "auraStorageTest:componentDefStorageEvictionContainer.cmp": [
-   {
-    "controlNameSpace": "auraStorageTest",
-    "controlName": "componentDefStorageEvictionContainer.cmp",
-    "controlFullName": "auraStorageTest:componentDefStorageEvictionContainer.cmp",
     "attribs": {
      "aura:id": "iframeContainer"
     }
@@ -38085,6 +38074,20 @@
     "attribs": {}
    }
   ],
+  "auradocs:simpledragdrop.cmp": [
+   {
+    "controlNameSpace": "auradocs",
+    "controlName": "simpledragdrop.cmp",
+    "controlFullName": "auradocs:simpledragdrop.cmp",
+    "attribs": {}
+   },
+   {
+    "controlNameSpace": "auradocs",
+    "controlName": "simpledragdrop.cmp",
+    "controlFullName": "auradocs:simpledragdrop.cmp",
+    "attribs": {}
+   }
+  ],
   "auradocs:spinnerTopic.cmp": [
    {
     "controlNameSpace": "auradocs",
@@ -39126,20 +39129,6 @@
     "controlNameSpace": "auraStorageTest",
     "controlName": "componentDefStorage.app",
     "controlFullName": "auraStorageTest:componentDefStorage.app",
-    "attribs": {}
-   }
-  ],
-  "auraStorageTest:componentDefStorageEviction.app": [
-   {
-    "controlNameSpace": "auraStorageTest",
-    "controlName": "componentDefStorageEviction.app",
-    "controlFullName": "auraStorageTest:componentDefStorageEviction.app",
-    "attribs": {}
-   },
-   {
-    "controlNameSpace": "auraStorageTest",
-    "controlName": "componentDefStorageEviction.app",
-    "controlFullName": "auraStorageTest:componentDefStorageEviction.app",
     "attribs": {}
    }
   ],
@@ -45139,6 +45128,28 @@
      "aura:id": "Iteration",
      "items": "Inter Milan",
      "var": "team"
+    }
+   }
+  ],
+  "auradocs:simpledragdrop.cmp": [
+   {
+    "controlNameSpace": "auradocs",
+    "controlName": "simpledragdrop.cmp",
+    "controlFullName": "auradocs:simpledragdrop.cmp",
+    "attribs": {
+     "aura:id": "list",
+     "items": "{!v.list1}",
+     "var": "item"
+    }
+   },
+   {
+    "controlNameSpace": "auradocs",
+    "controlName": "simpledragdrop.cmp",
+    "controlFullName": "auradocs:simpledragdrop.cmp",
+    "attribs": {
+     "aura:id": "list",
+     "items": "{!v.list2}",
+     "var": "item"
     }
    }
   ],
@@ -52045,16 +52056,6 @@
     "controlNameSpace": "auraStorageTest",
     "controlName": "actionsStorageTemplate.cmp",
     "controlFullName": "auraStorageTest:actionsStorageTemplate.cmp",
-    "attribs": {
-     "attribute": "auraPreInitBlock"
-    }
-   }
-  ],
-  "auraStorageTest:componentDefStorageEvictionTemplate.cmp": [
-   {
-    "controlNameSpace": "auraStorageTest",
-    "controlName": "componentDefStorageEvictionTemplate.cmp",
-    "controlFullName": "auraStorageTest:componentDefStorageEvictionTemplate.cmp",
     "attribs": {
      "attribute": "auraPreInitBlock"
     }
@@ -59773,17 +59774,6 @@
     }
    }
   ],
-  "auraStorageTest:componentDefStorageEviction.app": [
-   {
-    "controlNameSpace": "auraStorageTest",
-    "controlName": "componentDefStorageEviction.app",
-    "controlFullName": "auraStorageTest:componentDefStorageEviction.app",
-    "attribs": {
-     "event": "auraStorage:modified",
-     "action": "{!c.storageModified}"
-    }
-   }
-  ],
   "auraStorageTest:noGetApplicationCache.app": [
    {
     "controlNameSpace": "auraStorageTest",
@@ -60092,6 +60082,18 @@
     "controlNameSpace": "uitest",
     "controlName": "panelManager_Test.app",
     "controlFullName": "uitest:panelManager_Test.app",
+    "attribs": {
+     "name": "init",
+     "value": "{!this}",
+     "action": "{!c.init}"
+    }
+   }
+  ],
+  "auradocs:simpledragdrop.cmp": [
+   {
+    "controlNameSpace": "auradocs",
+    "controlName": "simpledragdrop.cmp",
+    "controlFullName": "auradocs:simpledragdrop.cmp",
     "attribs": {
      "name": "init",
      "value": "{!this}",
@@ -67899,6 +67901,14 @@
     "attribs": {
      "src": "/auraFW/resources/codemirror/js/codemirror.js"
     }
+   }
+  ],
+  "auraStorageTest:componentDefStorageTemplate.cmp": [
+   {
+    "controlNameSpace": "auraStorageTest",
+    "controlName": "componentDefStorageTemplate.cmp",
+    "controlFullName": "auraStorageTest:componentDefStorageTemplate.cmp",
+    "attribs": {}
    }
   ],
   "auraStorageTest:failedStorageTemplate.cmp": [
@@ -75981,17 +75991,6 @@
     }
    }
   ],
-  "auraStorageTest:componentDefStorageEvictionContainer.cmp": [
-   {
-    "controlNameSpace": "auraStorageTest",
-    "controlName": "componentDefStorageEvictionContainer.cmp",
-    "controlFullName": "auraStorageTest:componentDefStorageEvictionContainer.cmp",
-    "attribs": {
-     "library": "auraStorageTest:iframeTestLib",
-     "property": "lib"
-    }
-   }
-  ],
   "auraStorageTest:isolationTest.cmp": [
    {
     "controlNameSpace": "auraStorageTest",
@@ -76184,35 +76183,6 @@
     "attribs": {
      "name": "verifyDefsRestored",
      "action": "c.verifyDefsRestored"
-    }
-   }
-  ],
-  "auraStorageTest:componentDefStorageEviction.app": [
-   {
-    "controlNameSpace": "auraStorageTest",
-    "controlName": "componentDefStorageEviction.app",
-    "controlFullName": "auraStorageTest:componentDefStorageEviction.app",
-    "attribs": {
-     "name": "fetchCmp",
-     "action": "c.fetchCmp"
-    }
-   },
-   {
-    "controlNameSpace": "auraStorageTest",
-    "controlName": "componentDefStorageEviction.app",
-    "controlFullName": "auraStorageTest:componentDefStorageEviction.app",
-    "attribs": {
-     "name": "createComponentDeprecated",
-     "action": "c.createComponentDeprecated"
-    }
-   },
-   {
-    "controlNameSpace": "auraStorageTest",
-    "controlName": "componentDefStorageEviction.app",
-    "controlFullName": "auraStorageTest:componentDefStorageEviction.app",
-    "attribs": {
-     "name": "clearActionAndDefStorage",
-     "action": "c.clearActionAndDefStorage"
     }
    }
   ],
@@ -80885,36 +80855,6 @@
     "controlFullName": "auraStorageTest:actionsStorageTest.cmp",
     "attribs": {
      "name": "actions"
-    }
-   }
-  ],
-  "auraStorageTest:componentDefStorageEvictionTemplate.cmp": [
-   {
-    "controlNameSpace": "auraStorageTest",
-    "controlName": "componentDefStorageEvictionTemplate.cmp",
-    "controlFullName": "auraStorageTest:componentDefStorageEvictionTemplate.cmp",
-    "attribs": {
-     "name": "actions",
-     "maxSize": "4096",
-     "defaultExpiration": "3600",
-     "secure": "false",
-     "persistent": "true",
-     "clearStorageOnInit": "false"
-    }
-   },
-   {
-    "controlNameSpace": "auraStorageTest",
-    "controlName": "componentDefStorageEvictionTemplate.cmp",
-    "controlFullName": "auraStorageTest:componentDefStorageEvictionTemplate.cmp",
-    "attribs": {
-     "name": "ComponentDefStorage",
-     "persistent": "true",
-     "secure": "false",
-     "defaultExpiration": "10886400",
-     "defaultAutoRefreshInterval": "0",
-     "maxSize": "370",
-     "debugLoggingEnabled": "true",
-     "clearStorageOnInit": "false"
     }
    }
   ],
@@ -88427,6 +88367,14 @@
   ]
  },
  "aura:component": {
+  "auradocs:simpledragdrop.cmp": [
+   {
+    "controlNameSpace": "auradocs",
+    "controlName": "simpledragdrop.cmp",
+    "controlFullName": "auradocs:simpledragdrop.cmp",
+    "attribs": {}
+   }
+  ],
   "auradocs:spinnerTopic.cmp": [
    {
     "controlNameSpace": "auradocs",
@@ -91251,25 +91199,6 @@
     "controlName": "componentDefStorageContainer.cmp",
     "controlFullName": "auraStorageTest:componentDefStorageContainer.cmp",
     "attribs": {}
-   }
-  ],
-  "auraStorageTest:componentDefStorageEvictionContainer.cmp": [
-   {
-    "controlNameSpace": "auraStorageTest",
-    "controlName": "componentDefStorageEvictionContainer.cmp",
-    "controlFullName": "auraStorageTest:componentDefStorageEvictionContainer.cmp",
-    "attribs": {}
-   }
-  ],
-  "auraStorageTest:componentDefStorageEvictionTemplate.cmp": [
-   {
-    "controlNameSpace": "auraStorageTest",
-    "controlName": "componentDefStorageEvictionTemplate.cmp",
-    "controlFullName": "auraStorageTest:componentDefStorageEvictionTemplate.cmp",
-    "attribs": {
-     "isTemplate": "true",
-     "extends": "aura:template"
-    }
    }
   ],
   "auraStorageTest:componentDefStorageTemplate.cmp": [
@@ -98307,6 +98236,258 @@
     "attribs": {
      "whitespace": "preserve",
      "render": "client"
+    }
+   }
+  ]
+ },
+ "ui:dropzone": {
+  "auradocs:simpledragdrop.cmp": [
+   {
+    "controlNameSpace": "auradocs",
+    "controlName": "simpledragdrop.cmp",
+    "controlFullName": "auradocs:simpledragdrop.cmp",
+    "attribs": {
+     "inContextOf": "{!v._dropzoneContext1}",
+     "class": "sampleList",
+     "drop": "{!c.handleDrop}"
+    }
+   },
+   {
+    "controlNameSpace": "auradocs",
+    "controlName": "simpledragdrop.cmp",
+    "controlFullName": "auradocs:simpledragdrop.cmp",
+    "attribs": {
+     "inContextOf": "{!v._dropzoneContext2}",
+     "class": "sampleList",
+     "drop": "{!c.handleDrop}"
+    }
+   }
+  ],
+  "uiExamples:dragAndDropExample.cmp": [
+   {
+    "controlNameSpace": "uiExamples",
+    "controlName": "dragAndDropExample.cmp",
+    "controlFullName": "uiExamples:dragAndDropExample.cmp",
+    "attribs": {
+     "inContextOf": "{!v._context1}",
+     "label": "List A",
+     "types": "move,copy",
+     "class": "sampleList",
+     "dragOverClass": "dragOver",
+     "drop": "{!c.handleDrop}"
+    }
+   },
+   {
+    "controlNameSpace": "uiExamples",
+    "controlName": "dragAndDropExample.cmp",
+    "controlFullName": "uiExamples:dragAndDropExample.cmp",
+    "attribs": {
+     "inContextOf": "{!v._context2}",
+     "label": "List B",
+     "types": "move",
+     "class": "sampleList",
+     "dragOverClass": "dragOver",
+     "drop": "{!c.handleDrop}"
+    }
+   },
+   {
+    "controlNameSpace": "uiExamples",
+    "controlName": "dragAndDropExample.cmp",
+    "controlFullName": "uiExamples:dragAndDropExample.cmp",
+    "attribs": {
+     "inContextOf": "{!v._context3}",
+     "label": "List C",
+     "types": "copy",
+     "class": "sampleList",
+     "dragOverClass": "dragOver",
+     "drop": "{!c.handleDrop}"
+    }
+   }
+  ],
+  "uitest:dragAndDrop_Test.cmp": [
+   {
+    "controlNameSpace": "uitest",
+    "controlName": "dragAndDrop_Test.cmp",
+    "controlFullName": "uitest:dragAndDrop_Test.cmp",
+    "attribs": {
+     "inContextOf": "{!v._dropzoneContext1}",
+     "class": "sampleList",
+     "drop": "{!c.handleDrop}",
+     "aura:id": "dropzoneCopy",
+     "types": "copy"
+    }
+   },
+   {
+    "controlNameSpace": "uitest",
+    "controlName": "dragAndDrop_Test.cmp",
+    "controlFullName": "uitest:dragAndDrop_Test.cmp",
+    "attribs": {
+     "inContextOf": "{!v._dropzoneContext2}",
+     "label": "Dropzone Type: Move",
+     "class": "sampleList",
+     "drop": "{!c.handleDrop}",
+     "aura:id": "dropzoneMove",
+     "types": "move"
+    }
+   },
+   {
+    "controlNameSpace": "uitest",
+    "controlName": "dragAndDrop_Test.cmp",
+    "controlFullName": "uitest:dragAndDrop_Test.cmp",
+    "attribs": {
+     "inContextOf": "{!v._dropzoneContext3}",
+     "class": "sampleList",
+     "drop": "{!c.handleDrop}",
+     "aura:id": "dropzoneNone",
+     "types": ""
+    }
+   },
+   {
+    "controlNameSpace": "uitest",
+    "controlName": "dragAndDrop_Test.cmp",
+    "controlFullName": "uitest:dragAndDrop_Test.cmp",
+    "attribs": {
+     "inContextOf": "{!v._dropzoneContext4}",
+     "label": "Dropzone Type: Move2",
+     "class": "sampleList",
+     "drop": "{!c.handleDrop}",
+     "aura:id": "dropzoneMove2",
+     "types": "move"
+    }
+   }
+  ]
+ },
+ "ui:draggable": {
+  "auradocs:simpledragdrop.cmp": [
+   {
+    "controlNameSpace": "auradocs",
+    "controlName": "simpledragdrop.cmp",
+    "controlFullName": "auradocs:simpledragdrop.cmp",
+    "attribs": {
+     "inContextOf": "{!v._draggableContext1}",
+     "dragEnd": "{!c.handleDragEnd}",
+     "dataTransfer": "{!item}",
+     "class": "sampleCard",
+     "dragClass": "dragging"
+    }
+   },
+   {
+    "controlNameSpace": "auradocs",
+    "controlName": "simpledragdrop.cmp",
+    "controlFullName": "auradocs:simpledragdrop.cmp",
+    "attribs": {
+     "inContextOf": "{!v._draggableContext2}",
+     "dataTransfer": "{!item}",
+     "dragEnd": "{!c.handleDragEnd}",
+     "class": "sampleCard",
+     "dragClass": "dragging"
+    }
+   }
+  ],
+  "uiExamples:dragAndDropExample.cmp": [
+   {
+    "controlNameSpace": "uiExamples",
+    "controlName": "dragAndDropExample.cmp",
+    "controlFullName": "uiExamples:dragAndDropExample.cmp",
+    "attribs": {
+     "inContextOf": "{!v._context1}",
+     "dataTransfer": "{!item}",
+     "type": "move",
+     "dragEnd": "{!c.handleDragEnd}",
+     "class": "sampleCard",
+     "dragClass": "dragging",
+     "dragImageClass": "dragImage",
+     "accessibilityComponent": "{!v._accessibilityComponent}"
+    }
+   },
+   {
+    "controlNameSpace": "uiExamples",
+    "controlName": "dragAndDropExample.cmp",
+    "controlFullName": "uiExamples:dragAndDropExample.cmp",
+    "attribs": {
+     "inContextOf": "{!v._context2}",
+     "dataTransfer": "{!item}",
+     "type": "move",
+     "dragEnd": "{!c.handleDragEnd}",
+     "class": "sampleCard",
+     "dragClass": "dragging",
+     "accessibilityComponent": "{!v._accessibilityComponent}"
+    }
+   },
+   {
+    "controlNameSpace": "uiExamples",
+    "controlName": "dragAndDropExample.cmp",
+    "controlFullName": "uiExamples:dragAndDropExample.cmp",
+    "attribs": {
+     "inContextOf": "{!v._context3}",
+     "dataTransfer": "{!item}",
+     "type": "copy",
+     "dragEnd": "{!c.handleDragEnd}",
+     "class": "sampleCard",
+     "dragClass": "dragging",
+     "accessibilityComponent": "{!v._accessibilityComponent}"
+    }
+   }
+  ],
+  "uitest:dragAndDrop_Test.cmp": [
+   {
+    "controlNameSpace": "uitest",
+    "controlName": "dragAndDrop_Test.cmp",
+    "controlFullName": "uitest:dragAndDrop_Test.cmp",
+    "attribs": {
+     "inContextOf": "{!v._draggableContext1}",
+     "dragEnd": "{!c.handleDragEnd}",
+     "dataTransfer": "{!item}",
+     "class": "sampleCard",
+     "dragClass": "dragging",
+     "aura:id": "draggableNone",
+     "type": "",
+     "accessibilityComponent": "{!v._accessibilityComponent}"
+    }
+   },
+   {
+    "controlNameSpace": "uitest",
+    "controlName": "dragAndDrop_Test.cmp",
+    "controlFullName": "uitest:dragAndDrop_Test.cmp",
+    "attribs": {
+     "inContextOf": "{!v._draggableContext2}",
+     "dataTransfer": "{!item}",
+     "dragEnd": "{!c.handleDragEnd}",
+     "class": "sampleCard",
+     "dragClass": "dragging",
+     "aura:id": "draggableCopy",
+     "type": "copy",
+     "accessibilityComponent": "{!v._accessibilityComponent}"
+    }
+   },
+   {
+    "controlNameSpace": "uitest",
+    "controlName": "dragAndDrop_Test.cmp",
+    "controlFullName": "uitest:dragAndDrop_Test.cmp",
+    "attribs": {
+     "inContextOf": "{!v._draggableContext3}",
+     "dataTransfer": "{!item}",
+     "dragEnd": "{!c.handleDragEnd}",
+     "class": "sampleCard",
+     "dragClass": "dragging",
+     "aura:id": "draggableMove",
+     "type": "move",
+     "accessibilityComponent": "{!v._accessibilityComponent}"
+    }
+   },
+   {
+    "controlNameSpace": "uitest",
+    "controlName": "dragAndDrop_Test.cmp",
+    "controlFullName": "uitest:dragAndDrop_Test.cmp",
+    "attribs": {
+     "inContextOf": "{!v._draggableContext4}",
+     "dataTransfer": "{!item}",
+     "dragEnd": "{!c.handleDragEnd}",
+     "class": "sampleCard",
+     "dragClass": "dragging",
+     "aura:id": "draggableMove2",
+     "type": "move",
+     "accessibilityComponent": "{!v._accessibilityComponent}"
     }
    }
   ]
@@ -108065,101 +108246,6 @@
    }
   ]
  },
- "ui:dropzone": {
-  "uiExamples:dragAndDropExample.cmp": [
-   {
-    "controlNameSpace": "uiExamples",
-    "controlName": "dragAndDropExample.cmp",
-    "controlFullName": "uiExamples:dragAndDropExample.cmp",
-    "attribs": {
-     "inContextOf": "{!v._context1}",
-     "label": "List A",
-     "types": "move,copy",
-     "class": "sampleList",
-     "dragOverClass": "dragOver",
-     "drop": "{!c.handleDrop}"
-    }
-   },
-   {
-    "controlNameSpace": "uiExamples",
-    "controlName": "dragAndDropExample.cmp",
-    "controlFullName": "uiExamples:dragAndDropExample.cmp",
-    "attribs": {
-     "inContextOf": "{!v._context2}",
-     "label": "List B",
-     "types": "move",
-     "class": "sampleList",
-     "dragOverClass": "dragOver",
-     "drop": "{!c.handleDrop}"
-    }
-   },
-   {
-    "controlNameSpace": "uiExamples",
-    "controlName": "dragAndDropExample.cmp",
-    "controlFullName": "uiExamples:dragAndDropExample.cmp",
-    "attribs": {
-     "inContextOf": "{!v._context3}",
-     "label": "List C",
-     "types": "copy",
-     "class": "sampleList",
-     "dragOverClass": "dragOver",
-     "drop": "{!c.handleDrop}"
-    }
-   }
-  ],
-  "uitest:dragAndDrop_Test.cmp": [
-   {
-    "controlNameSpace": "uitest",
-    "controlName": "dragAndDrop_Test.cmp",
-    "controlFullName": "uitest:dragAndDrop_Test.cmp",
-    "attribs": {
-     "inContextOf": "{!v._dropzoneContext1}",
-     "class": "sampleList",
-     "drop": "{!c.handleDrop}",
-     "aura:id": "dropzoneCopy",
-     "types": "copy"
-    }
-   },
-   {
-    "controlNameSpace": "uitest",
-    "controlName": "dragAndDrop_Test.cmp",
-    "controlFullName": "uitest:dragAndDrop_Test.cmp",
-    "attribs": {
-     "inContextOf": "{!v._dropzoneContext2}",
-     "label": "Dropzone Type: Move",
-     "class": "sampleList",
-     "drop": "{!c.handleDrop}",
-     "aura:id": "dropzoneMove",
-     "types": "move"
-    }
-   },
-   {
-    "controlNameSpace": "uitest",
-    "controlName": "dragAndDrop_Test.cmp",
-    "controlFullName": "uitest:dragAndDrop_Test.cmp",
-    "attribs": {
-     "inContextOf": "{!v._dropzoneContext3}",
-     "class": "sampleList",
-     "drop": "{!c.handleDrop}",
-     "aura:id": "dropzoneNone",
-     "types": ""
-    }
-   },
-   {
-    "controlNameSpace": "uitest",
-    "controlName": "dragAndDrop_Test.cmp",
-    "controlFullName": "uitest:dragAndDrop_Test.cmp",
-    "attribs": {
-     "inContextOf": "{!v._dropzoneContext4}",
-     "label": "Dropzone Type: Move2",
-     "class": "sampleList",
-     "drop": "{!c.handleDrop}",
-     "aura:id": "dropzoneMove2",
-     "types": "move"
-    }
-   }
-  ]
- },
  "ui:infinitelist": {
   "uiExamples:dragAndDropExample.cmp": [
    {
@@ -108332,115 +108418,6 @@
     "attribs": {
      "prefix": "Draggable Type: Move2",
      "count": "1"
-    }
-   }
-  ]
- },
- "ui:draggable": {
-  "uiExamples:dragAndDropExample.cmp": [
-   {
-    "controlNameSpace": "uiExamples",
-    "controlName": "dragAndDropExample.cmp",
-    "controlFullName": "uiExamples:dragAndDropExample.cmp",
-    "attribs": {
-     "inContextOf": "{!v._context1}",
-     "dataTransfer": "{!item}",
-     "type": "move",
-     "dragEnd": "{!c.handleDragEnd}",
-     "class": "sampleCard",
-     "dragClass": "dragging",
-     "dragImageClass": "dragImage",
-     "accessibilityComponent": "{!v._accessibilityComponent}"
-    }
-   },
-   {
-    "controlNameSpace": "uiExamples",
-    "controlName": "dragAndDropExample.cmp",
-    "controlFullName": "uiExamples:dragAndDropExample.cmp",
-    "attribs": {
-     "inContextOf": "{!v._context2}",
-     "dataTransfer": "{!item}",
-     "type": "move",
-     "dragEnd": "{!c.handleDragEnd}",
-     "class": "sampleCard",
-     "dragClass": "dragging",
-     "accessibilityComponent": "{!v._accessibilityComponent}"
-    }
-   },
-   {
-    "controlNameSpace": "uiExamples",
-    "controlName": "dragAndDropExample.cmp",
-    "controlFullName": "uiExamples:dragAndDropExample.cmp",
-    "attribs": {
-     "inContextOf": "{!v._context3}",
-     "dataTransfer": "{!item}",
-     "type": "copy",
-     "dragEnd": "{!c.handleDragEnd}",
-     "class": "sampleCard",
-     "dragClass": "dragging",
-     "accessibilityComponent": "{!v._accessibilityComponent}"
-    }
-   }
-  ],
-  "uitest:dragAndDrop_Test.cmp": [
-   {
-    "controlNameSpace": "uitest",
-    "controlName": "dragAndDrop_Test.cmp",
-    "controlFullName": "uitest:dragAndDrop_Test.cmp",
-    "attribs": {
-     "inContextOf": "{!v._draggableContext1}",
-     "dragEnd": "{!c.handleDragEnd}",
-     "dataTransfer": "{!item}",
-     "class": "sampleCard",
-     "dragClass": "dragging",
-     "aura:id": "draggableNone",
-     "type": "",
-     "accessibilityComponent": "{!v._accessibilityComponent}"
-    }
-   },
-   {
-    "controlNameSpace": "uitest",
-    "controlName": "dragAndDrop_Test.cmp",
-    "controlFullName": "uitest:dragAndDrop_Test.cmp",
-    "attribs": {
-     "inContextOf": "{!v._draggableContext2}",
-     "dataTransfer": "{!item}",
-     "dragEnd": "{!c.handleDragEnd}",
-     "class": "sampleCard",
-     "dragClass": "dragging",
-     "aura:id": "draggableCopy",
-     "type": "copy",
-     "accessibilityComponent": "{!v._accessibilityComponent}"
-    }
-   },
-   {
-    "controlNameSpace": "uitest",
-    "controlName": "dragAndDrop_Test.cmp",
-    "controlFullName": "uitest:dragAndDrop_Test.cmp",
-    "attribs": {
-     "inContextOf": "{!v._draggableContext3}",
-     "dataTransfer": "{!item}",
-     "dragEnd": "{!c.handleDragEnd}",
-     "class": "sampleCard",
-     "dragClass": "dragging",
-     "aura:id": "draggableMove",
-     "type": "move",
-     "accessibilityComponent": "{!v._accessibilityComponent}"
-    }
-   },
-   {
-    "controlNameSpace": "uitest",
-    "controlName": "dragAndDrop_Test.cmp",
-    "controlFullName": "uitest:dragAndDrop_Test.cmp",
-    "attribs": {
-     "inContextOf": "{!v._draggableContext4}",
-     "dataTransfer": "{!item}",
-     "dragEnd": "{!c.handleDragEnd}",
-     "class": "sampleCard",
-     "dragClass": "dragging",
-     "aura:id": "draggableMove2",
-     "type": "move",
-     "accessibilityComponent": "{!v._accessibilityComponent}"
     }
    }
   ]
