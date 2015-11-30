@@ -4,18 +4,18 @@ import Q from 'q';
 
 //internal
 //data
-import restClient from './src/client/restClient';
+import restClient from '/aura-explorer/restClient';
 
 //internal react components
-import ListView from './src/client/components/ListView';
-import Attributes_Handler_Events_Table from './src/client/components/AttributesHandlerEventsTable';
-import UsageTable from './src/client/components/UsageTable';
-import ControlDetailLink from './src/client/components/ControlDetailLink';
-import DependenciesDetailTable from './src/client/components/DependenciesDetailTable';
-import MethodTable from './src/client/components/MethodTable';
+import ListView from '/aura-explorer/components/ListView';
+import Attributes_Handler_Events_Table from '/aura-explorer/components/AttributesHandlerEventsTable';
+import UsageTable from '/aura-explorer/components/UsageTable';
+import ControlDetailLink from '/aura-explorer/components/ControlDetailLink';
+import DependenciesDetailTable from '/aura-explorer/components/DependenciesDetailTable';
+import MethodTable from '/aura-explorer/components/MethodTable';
 
 //utils
-import util from './src/client/util';
+import util from '/aura-explorer/util';
 
 
 //control detail

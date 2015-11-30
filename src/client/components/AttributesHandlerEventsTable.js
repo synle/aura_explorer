@@ -1,8 +1,8 @@
 //external
 import _ from 'lodash';
-import util from '../util';
 
 //internal
+import util from '../util';
 import TableComponent from './Table';
 
 //definitions

@@ -3,10 +3,10 @@ import _ from 'lodash';
 import fs from 'fs';
 
 //internal
-import restClient from './src/client/restClient';
+import restClient from '/aura-explorer/restClient';
 
 //utils
-import util from './src/client/util';
+import util from '/aura-explorer/util';
 
 
 const AboutPage = React.createClass({

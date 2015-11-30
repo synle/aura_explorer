@@ -8,8 +8,9 @@ import dataDependenciesMap from '/aura-explorer/data/dependenciesMap.json';
 import usageMap from '/aura-explorer/data/usageMap.json';
 import controlCountMap from '/aura-explorer/data/controlCountMap.json';
 import namespaceCountMap from '/aura-explorer/data/namespaceCountMap.json';
-import packageInfo from '../../package.json';
 import explorerConfig from '/aura-explorer/backend/config.js';
+import packageInfo from '../../package.json';
+
 
 const util_readFromFileAsync = (fpath) => fs.readFileSync(fpath, 'utf8');
 

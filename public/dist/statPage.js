@@ -9,15 +9,15 @@ var _q = require('q');
 
 var _q2 = _interopRequireDefault(_q);
 
-var _restClient = require('./dist/restClient');
+var _restClient = require('dist/restClient');
 
 var _restClient2 = _interopRequireDefault(_restClient);
 
-var _KeyValListView = require('./dist/components/KeyValListView');
+var _KeyValListView = require('dist/components/KeyValListView');
 
 var _KeyValListView2 = _interopRequireDefault(_KeyValListView);
 
-var _util = require('./dist/util');
+var _util = require('dist/util');
 
 var _util2 = _interopRequireDefault(_util);
 

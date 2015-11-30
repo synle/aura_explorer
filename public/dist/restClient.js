@@ -17,29 +17,29 @@ var _path = require('path');
 
 var _path2 = _interopRequireDefault(_path);
 
-var _dependenciesMap = require('./data/dependenciesMap.json');
+var _dependenciesMap = require('dist/data/dependenciesMap.json');
 
 var _dependenciesMap2 = _interopRequireDefault(_dependenciesMap);
 
-var _usageMap = require('./data/usageMap.json');
+var _usageMap = require('dist/data/usageMap.json');
 
 var _usageMap2 = _interopRequireDefault(_usageMap);
 
-var _controlCountMap = require('./data/controlCountMap.json');
+var _controlCountMap = require('dist/data/controlCountMap.json');
 
 var _controlCountMap2 = _interopRequireDefault(_controlCountMap);
 
-var _namespaceCountMap = require('./data/namespaceCountMap.json');
+var _namespaceCountMap = require('dist/data/namespaceCountMap.json');
 
 var _namespaceCountMap2 = _interopRequireDefault(_namespaceCountMap);
+
+var _config = require('dist/backend/config.js');
+
+var _config2 = _interopRequireDefault(_config);
 
 var _package = require('../../package.json');
 
 var _package2 = _interopRequireDefault(_package);
-
-var _config = require('./backend/config.js');
-
-var _config2 = _interopRequireDefault(_config);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 

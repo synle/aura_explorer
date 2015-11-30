@@ -9,35 +9,35 @@ var _q = require('q');
 
 var _q2 = _interopRequireDefault(_q);
 
-var _restClient = require('./dist/restClient');
+var _restClient = require('dist/restClient');
 
 var _restClient2 = _interopRequireDefault(_restClient);
 
-var _ListView = require('./dist/components/ListView');
+var _ListView = require('dist/components/ListView');
 
 var _ListView2 = _interopRequireDefault(_ListView);
 
-var _AttributesHandlerEventsTable = require('./dist/components/AttributesHandlerEventsTable');
+var _AttributesHandlerEventsTable = require('dist/components/AttributesHandlerEventsTable');
 
 var _AttributesHandlerEventsTable2 = _interopRequireDefault(_AttributesHandlerEventsTable);
 
-var _UsageTable = require('./dist/components/UsageTable');
+var _UsageTable = require('dist/components/UsageTable');
 
 var _UsageTable2 = _interopRequireDefault(_UsageTable);
 
-var _ControlDetailLink = require('./dist/components/ControlDetailLink');
+var _ControlDetailLink = require('dist/components/ControlDetailLink');
 
 var _ControlDetailLink2 = _interopRequireDefault(_ControlDetailLink);
 
-var _DependenciesDetailTable = require('./dist/components/DependenciesDetailTable');
+var _DependenciesDetailTable = require('dist/components/DependenciesDetailTable');
 
 var _DependenciesDetailTable2 = _interopRequireDefault(_DependenciesDetailTable);
 
-var _MethodTable = require('./dist/components/MethodTable');
+var _MethodTable = require('dist/components/MethodTable');
 
 var _MethodTable2 = _interopRequireDefault(_MethodTable);
 
-var _util = require('./dist/util');
+var _util = require('dist/util');
 
 var _util2 = _interopRequireDefault(_util);
 

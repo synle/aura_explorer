@@ -4,13 +4,13 @@ import Q from 'q';
 
 //internal
 //data
-import restClient from './src/client/restClient';
+import restClient from '/aura-explorer/restClient';
 
 //internal react components
-import KeyValListView from './src/client/components/KeyValListView';
+import KeyValListView from '/aura-explorer/components/KeyValListView';
 
 //utils
-import util from './src/client/util';
+import util from '/aura-explorer/util';
 
 
 

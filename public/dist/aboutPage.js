@@ -9,11 +9,11 @@ var _fs = require('fs');
 
 var _fs2 = _interopRequireDefault(_fs);
 
-var _restClient = require('./dist/restClient');
+var _restClient = require('dist/restClient');
 
 var _restClient2 = _interopRequireDefault(_restClient);
 
-var _util = require('./dist/util');
+var _util = require('dist/util');
 
 var _util2 = _interopRequireDefault(_util);
 
