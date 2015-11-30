@@ -1,16 +1,17 @@
 //external
 import _ from 'lodash';
+import Q from 'q';
 
 //internal
 //data
-import controlCountMap from './data/controlCountMap.json';
-import namespaceCountMap from './data/namespaceCountMap.json';
+import restClient from './src/client/restClient';
 
 //internal react components
 import KeyValListView from './src/client/components/KeyValListView';
 
 //utils
 import util from './src/client/util';
+
 
 
 //controls
@@ -81,7 +82,7 @@ const StatPage = React.createClass({
 							<h3 className="panel-title">How many components in a Namespace?</h3>
 						</div>
 						<div className="panel-body">
-							<CountTableComponent countMap={namespaceCountMap} keyLabel='Namespaces' badgeExtraText='Components' onSelectRow={this.selectNameSpace} />
+							<CountTableComponent countMap={this.props.namespaceCountMap} keyLabel='Namespaces' badgeExtraText='Components' onSelectRow={this.selectNameSpace} />
 						</div>
 					</div>
 				</div>
@@ -92,7 +93,7 @@ const StatPage = React.createClass({
 							<h3 className="panel-title">How many time a component is used?</h3>
 						</div>
 						<div className="panel-body">
-							<CountTableComponent countMap={controlCountMap}
+							<CountTableComponent countMap={this.props.controlCountMap}
 								keyLabel='Controls'
 								badgeExtraText='References'
 								onSelectRow={this.selectControl} />
@@ -110,12 +111,17 @@ const StatPage = React.createClass({
 	}
 });
 
-
 //rendering
 util.render( () => {
-	//control usage count
-	ReactDOM.render(
-		<StatPage />,
-		document.querySelector('#body')
-	);
+	const controlCountMap = restClient.getControlCountMap();
+	const namespaceCountMap = restClient.getNamespaceCountMap();
+
+	//TODO: use promises
+	// Q.all([restClient.getControlCountMap(), restClient.getNamespaceCountMap()]).done((controlCountMap, namespaceCountMap) => {
+		ReactDOM.render(
+			<StatPage namespaceCountMap={namespaceCountMap}
+				controlCountMap={controlCountMap} />,
+			document.querySelector('#body')
+		);
+	// });
 });

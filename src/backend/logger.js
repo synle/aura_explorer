@@ -1,4 +1,4 @@
-var colors = require('colors');
+import colors from 'colors';
 
 export default {
 	error: function(){

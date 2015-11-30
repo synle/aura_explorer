@@ -1,10 +1,10 @@
 //external
 import _ from 'lodash';
+import Q from 'q';
 
 //internal
 //data
-import dataDependenciesMap from './data/dependenciesMap.json';
-import usageMaps from './data/usageMap.json';
+import restClient from './src/client/restClient';
 
 //internal react components
 import ListView from './src/client/components/ListView';
@@ -41,7 +41,7 @@ const ControlDetailPage = React.createClass({
 			const importsList   = _.values( _.get(this, 'props.controlObj.imports', {}) );
 
 			const usageList = _.reduce(
-				usageMaps,
+				this.props.usageMaps,
 				(res, usageMap, curControlName) => {
 					if (shortControlName === curControlName.toLowerCase()){
 						return usageMap;
@@ -115,7 +115,7 @@ const ControlDetailPage = React.createClass({
 const DependenciesPage = React.createClass({
 	getInitialState(){
 		const searchTerm = util.getSearchTerm(location.href);
-		const flattenDependencies = util.flattenDependencies( dataDependenciesMap );
+		const flattenDependencies = util.flattenDependencies( this.props.dataDependenciesMap );
 
 		const myInitState = {
 			flattenDependencies,
@@ -170,7 +170,8 @@ const DependenciesPage = React.createClass({
 					</div>
 					<div id="control-detail-wrapper" className="col-sm-8">
 						<ControlDetailPage controlName={this.state.selectedControlName}
-							controlObj={this.state.selectedControlObj} />
+							controlObj={this.state.selectedControlObj}
+							usageMaps={this.props.usageMaps} />
 					</div>
 				</div>
 			</div>
@@ -200,9 +201,13 @@ const DependenciesPage = React.createClass({
 
 //rendering
 util.render( () => {
+	const dataDependenciesMap = restClient.getDataDependenciesMap();
+	const usageMaps = restClient.getUsageMap();
+
 	//control usage count
 	ReactDOM.render(
-		<DependenciesPage />,
+		<DependenciesPage dataDependenciesMap={dataDependenciesMap}
+			usageMaps={usageMaps} />,
 		document.querySelector('#body')
 	);
 });

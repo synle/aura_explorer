@@ -5,13 +5,13 @@ var _lodash = require('lodash');
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var _controlCountMap = require('../data/controlCountMap.json');
+var _q = require('q');
 
-var _controlCountMap2 = _interopRequireDefault(_controlCountMap);
+var _q2 = _interopRequireDefault(_q);
 
-var _namespaceCountMap = require('../data/namespaceCountMap.json');
+var _restClient = require('./dist/restClient');
 
-var _namespaceCountMap2 = _interopRequireDefault(_namespaceCountMap);
+var _restClient2 = _interopRequireDefault(_restClient);
 
 var _KeyValListView = require('./dist/components/KeyValListView');
 
@@ -26,9 +26,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //controls
 
 //internal react components
-
-//internal
-//data
 var CountTableComponent = React.createClass({
 	displayName: 'CountTableComponent',
 	getInitialState: function getInitialState() {
@@ -108,6 +105,9 @@ var CountTableComponent = React.createClass({
 });
 
 //utils
+
+//internal
+//data
 //external
 
 var StatPage = React.createClass({
@@ -134,7 +134,7 @@ var StatPage = React.createClass({
 					React.createElement(
 						'div',
 						{ className: 'panel-body' },
-						React.createElement(CountTableComponent, { countMap: _namespaceCountMap2.default, keyLabel: 'Namespaces', badgeExtraText: 'Components', onSelectRow: this.selectNameSpace })
+						React.createElement(CountTableComponent, { countMap: this.props.namespaceCountMap, keyLabel: 'Namespaces', badgeExtraText: 'Components', onSelectRow: this.selectNameSpace })
 					)
 				)
 			),
@@ -156,7 +156,7 @@ var StatPage = React.createClass({
 					React.createElement(
 						'div',
 						{ className: 'panel-body' },
-						React.createElement(CountTableComponent, { countMap: _controlCountMap2.default,
+						React.createElement(CountTableComponent, { countMap: this.props.controlCountMap,
 							keyLabel: 'Controls',
 							badgeExtraText: 'References',
 							onSelectRow: this.selectControl })
@@ -175,6 +175,12 @@ var StatPage = React.createClass({
 
 //rendering
 _util2.default.render(function () {
-	//control usage count
-	ReactDOM.render(React.createElement(StatPage, null), document.querySelector('#body'));
+	var controlCountMap = _restClient2.default.getControlCountMap();
+	var namespaceCountMap = _restClient2.default.getNamespaceCountMap();
+
+	//TODO: use promises
+	// Q.all([restClient.getControlCountMap(), restClient.getNamespaceCountMap()]).done((controlCountMap, namespaceCountMap) => {
+	ReactDOM.render(React.createElement(StatPage, { namespaceCountMap: namespaceCountMap,
+		controlCountMap: controlCountMap }), document.querySelector('#body'));
+	// });
 });

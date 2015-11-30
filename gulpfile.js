@@ -16,7 +16,7 @@ var minify = require('gulp-minify');
 var outputDir = 'public';
 var outputDistDir = 'public/dist';
 var outputDistComponentDir = 'public/dist/components';
-var outputDistBackendDir = 'public/backend';
+var outputDistBackendDir = 'public/dist/backend';
 
 //scripts
 var appScripts = [
@@ -74,7 +74,7 @@ var generateScripts = function(src){
 		    .pipe(babel({
 				resolveModuleSource: function(source, filename) {
 					//remap the path
-					return source.replace('./src/client', './dist').replace('./data', '../data');
+					return source.replace('./src/client', './dist').replace('/aura-explorer/data', './data');
 				}
 		    }))
 		    // .pipe(sourcemaps.write("."))

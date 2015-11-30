@@ -5,13 +5,13 @@ var _lodash = require('lodash');
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var _dependenciesMap = require('../data/dependenciesMap.json');
+var _q = require('q');
 
-var _dependenciesMap2 = _interopRequireDefault(_dependenciesMap);
+var _q2 = _interopRequireDefault(_q);
 
-var _usageMap = require('../data/usageMap.json');
+var _restClient = require('./dist/restClient');
 
-var _usageMap2 = _interopRequireDefault(_usageMap);
+var _restClient2 = _interopRequireDefault(_restClient);
 
 var _ListView = require('./dist/components/ListView');
 
@@ -80,7 +80,7 @@ var ControlDetailPage = React.createClass({
 				var handlersList = _lodash2.default.values(_lodash2.default.get(_this, 'props.controlObj.handlers', {}));
 				var importsList = _lodash2.default.values(_lodash2.default.get(_this, 'props.controlObj.imports', {}));
 
-				var usageList = _lodash2.default.reduce(_usageMap2.default, function (res, usageMap, curControlName) {
+				var usageList = _lodash2.default.reduce(_this.props.usageMaps, function (res, usageMap, curControlName) {
 					if (shortControlName === curControlName.toLowerCase()) {
 						return usageMap;
 					}
@@ -193,7 +193,7 @@ var DependenciesPage = React.createClass({
 	displayName: 'DependenciesPage',
 	getInitialState: function getInitialState() {
 		var searchTerm = _util2.default.getSearchTerm(location.href);
-		var flattenDependencies = _util2.default.flattenDependencies(_dependenciesMap2.default);
+		var flattenDependencies = _util2.default.flattenDependencies(this.props.dataDependenciesMap);
 
 		var myInitState = {
 			flattenDependencies: flattenDependencies,
@@ -277,7 +277,8 @@ var DependenciesPage = React.createClass({
 					'div',
 					{ id: 'control-detail-wrapper', className: 'col-sm-8' },
 					React.createElement(ControlDetailPage, { controlName: this.state.selectedControlName,
-						controlObj: this.state.selectedControlObj })
+						controlObj: this.state.selectedControlObj,
+						usageMaps: this.props.usageMaps })
 				)
 			)
 		);
@@ -304,6 +305,10 @@ var DependenciesPage = React.createClass({
 
 //rendering
 _util2.default.render(function () {
+	var dataDependenciesMap = _restClient2.default.getDataDependenciesMap();
+	var usageMaps = _restClient2.default.getUsageMap();
+
 	//control usage count
-	ReactDOM.render(React.createElement(DependenciesPage, null), document.querySelector('#body'));
+	ReactDOM.render(React.createElement(DependenciesPage, { dataDependenciesMap: dataDependenciesMap,
+		usageMaps: usageMaps }), document.querySelector('#body'));
 });
