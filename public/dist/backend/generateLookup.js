@@ -31,11 +31,11 @@ var _q = require('q');
 
 var _q2 = _interopRequireDefault(_q);
 
-var _logger = require('./logger');
+var _logger = require('dist/backend/logger');
 
 var _logger2 = _interopRequireDefault(_logger);
 
-var _util = require('./util');
+var _util = require('dist/backend/util');
 
 var _util2 = _interopRequireDefault(_util);
 

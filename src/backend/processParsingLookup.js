@@ -2,9 +2,9 @@
 import path from 'path';
 
 //internal
-import logger from './logger';//internal loggr
-import util from './util';
-import generateLookup from './generateLookup';
+import logger from '/aura-explorer/backend/logger';//internal loggr
+import util from '/aura-explorer/backend/util';
+import generateLookup from '/aura-explorer/backend/generateLookup';
 
 export default (componentBaseDir, metaDataOutputDir) => {
 	//trim whitespace

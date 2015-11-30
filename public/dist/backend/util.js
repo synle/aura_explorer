@@ -25,7 +25,7 @@ var _q = require('q');
 
 var _q2 = _interopRequireDefault(_q);
 
-var _logger = require('./logger');
+var _logger = require('dist/backend/logger');
 
 var _logger2 = _interopRequireDefault(_logger);
 

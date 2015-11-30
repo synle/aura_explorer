@@ -9,15 +9,15 @@ var _path = require('path');
 
 var _path2 = _interopRequireDefault(_path);
 
-var _logger = require('./logger');
+var _logger = require('dist/backend/logger');
 
 var _logger2 = _interopRequireDefault(_logger);
 
-var _util = require('./util');
+var _util = require('dist/backend/util');
 
 var _util2 = _interopRequireDefault(_util);
 
-var _generateLookup = require('./generateLookup');
+var _generateLookup = require('dist/backend/generateLookup');
 
 var _generateLookup2 = _interopRequireDefault(_generateLookup);
 

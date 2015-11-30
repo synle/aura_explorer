@@ -5,11 +5,11 @@ var _path = require('path');
 
 var _path2 = _interopRequireDefault(_path);
 
-var _processParsingLookup = require('./processParsingLookup');
+var _processParsingLookup = require('dist/backend/processParsingLookup');
 
 var _processParsingLookup2 = _interopRequireDefault(_processParsingLookup);
 
-var _config = require('./config');
+var _config = require('dist/backend/config');
 
 var _config2 = _interopRequireDefault(_config);
 

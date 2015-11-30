@@ -2,8 +2,8 @@
 import path from 'path';
 
 //internal
-import processor from './processParsingLookup';
-import config    from './config';
+import processor from '/aura-explorer/backend/processParsingLookup';
+import config    from '/aura-explorer/backend/config';
 
 //run it
 processor(
