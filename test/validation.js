@@ -1,13 +1,32 @@
 import {assert} from 'chai';
 import _ from 'lodash';
+import fs from 'fs';
+import path from 'path';
+
+const _readFile = (fpath) => {
+	const fullPath = path.join(process.cwd(), `/public/dist/data/${fpath}`);
+	console.log(fullPath);
+	return fs.readFileSync(
+		fullPath,
+		'utf8'
+	);
+}
+
+const _readJsonFile = (fpath) => {
+	try{
+		return JSON.parse(_readFile(fpath));
+	} catch(e){
+		return {};
+	}
+}
 
 //internal
-import dataDependenciesMap from '../data/dependenciesMap.json';
-import usageMaps from '../data/usageMap.json';
-import controlCountMap from '../data/controlCountMap.json';
-import namespaceCountMap from '../data/namespaceCountMap.json';
-import autoCompleteControlMap from '../data/autoCompleteControlMap.json';
-import controlLocationMap from '../data/controlLocationMap.json';
+const dataDependenciesMap = _readJsonFile('dependenciesMap.json');
+const usageMaps = _readJsonFile('usageMap.json');
+const controlCountMap = _readJsonFile('controlCountMap.json');
+const namespaceCountMap = _readJsonFile('namespaceCountMap.json');
+const autoCompleteControlMap = _readJsonFile('autoCompleteControlMap.json');
+const controlLocationMap = _readJsonFile('controlLocationMap.json');
 
 
 describe('Aura Explorer', () => {
