@@ -66,7 +66,7 @@ const ControlDetailPage = React.createClass({
 					</div>
 
 					<ul className="nav nav-tabs" role="tablist">
-						{ this._getTabHeaderItem( "tab-attributes",    "Attributes", attributeList) }
+						{ this._getTabHeaderItem( "tab-attributes",    "Attributes", attributeList , true) }
 						{ this._getTabHeaderItem( "tab-dependencies",  "Dependencies", dependenciesMap) }
 						{ this._getTabHeaderItem( "tab-events",        "Events", eventsList) }
 						{ this._getTabHeaderItem( "tab-imports",       "Imports", importsList) }
@@ -92,21 +92,17 @@ const ControlDetailPage = React.createClass({
 		// return nextProps.selectedControlName !== this.props.selectedControlName;
 		return true;//always update
 	},
-	_getTabHeaderItem(tabContentId, headerName, entityObjects){
+	_getTabHeaderItem(tabContentId, headerName, entityObjects, active){
 		const entityCount = _.size( entityObjects );
 		const tabPlainText = `${headerName} ${this._getCountBadge( entityCount )}`;
 
-		return entityCount > 0
-			? <li role="presentation">
+		return (
+			<li role="presentation" className={active ? 'active' : ''}>
 				<a href={`#${tabContentId}`} aria-controls="settings" role="tab" data-toggle="tab">
 					{tabPlainText}
 				</a>
 			</li>
-			: <li role="presentation" className='disabled'>
-				<a className='disabled' aria-controls="settings" role="tab">
-					{tabPlainText}
-				</a>
-			</li>
+		)
 	},
 	_getCountBadge(countNum){
 		return countNum > 0 ? `[${countNum}]` : '';

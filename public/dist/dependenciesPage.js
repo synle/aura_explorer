@@ -111,7 +111,7 @@ var ControlDetailPage = React.createClass({
 						React.createElement(
 							'ul',
 							{ className: 'nav nav-tabs', role: 'tablist' },
-							_this._getTabHeaderItem("tab-attributes", "Attributes", attributeList),
+							_this._getTabHeaderItem("tab-attributes", "Attributes", attributeList, true),
 							_this._getTabHeaderItem("tab-dependencies", "Dependencies", dependenciesMap),
 							_this._getTabHeaderItem("tab-events", "Events", eventsList),
 							_this._getTabHeaderItem("tab-imports", "Imports", importsList),
@@ -169,24 +169,16 @@ var ControlDetailPage = React.createClass({
 		// return nextProps.selectedControlName !== this.props.selectedControlName;
 		return true; //always update
 	},
-	_getTabHeaderItem: function _getTabHeaderItem(tabContentId, headerName, entityObjects) {
+	_getTabHeaderItem: function _getTabHeaderItem(tabContentId, headerName, entityObjects, active) {
 		var entityCount = _lodash2.default.size(entityObjects);
 		var tabPlainText = headerName + ' ' + this._getCountBadge(entityCount);
 
-		return entityCount > 0 ? React.createElement(
+		return React.createElement(
 			'li',
-			{ role: 'presentation' },
+			{ role: 'presentation', className: active ? 'active' : '' },
 			React.createElement(
 				'a',
 				{ href: '#' + tabContentId, 'aria-controls': 'settings', role: 'tab', 'data-toggle': 'tab' },
-				tabPlainText
-			)
-		) : React.createElement(
-			'li',
-			{ role: 'presentation', className: 'disabled' },
-			React.createElement(
-				'a',
-				{ className: 'disabled', 'aria-controls': 'settings', role: 'tab' },
 				tabPlainText
 			)
 		);
