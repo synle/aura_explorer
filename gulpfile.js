@@ -74,7 +74,7 @@ var generateScripts = function(src){
 		    .pipe(babel({
 				resolveModuleSource: function(source, filename) {
 					//remap the path
-					return source.replace('./src/client', './dist').replace('/aura-explorer/data', './data');
+					return source.replace('./src/client', './dist').replace('/aura-explorer/data', './data').replace('/aura-explorer/backend', './backend');
 				}
 		    }))
 		    // .pipe(sourcemaps.write("."))

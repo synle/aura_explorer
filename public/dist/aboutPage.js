@@ -9,13 +9,9 @@ var _fs = require('fs');
 
 var _fs2 = _interopRequireDefault(_fs);
 
-var _package = require('../package.json');
+var _restClient = require('./dist/restClient');
 
-var _package2 = _interopRequireDefault(_package);
-
-var _config = require('../public/backend/config.js');
-
-var _config2 = _interopRequireDefault(_config);
+var _restClient2 = _interopRequireDefault(_restClient);
 
 var _util = require('./dist/util');
 
@@ -25,14 +21,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 //internal
 //external
-
-var auraExplorerJson = _fs2.default.readFileSync('./package.json', 'utf8');
-
-//config content
-
-var auraStreamPom = _fs2.default.readFileSync('./data/aura_upstream_pom.xml', 'utf8');
-
-//utils
 
 var AboutPage = React.createClass({
 	displayName: 'AboutPage',
@@ -52,7 +40,7 @@ var AboutPage = React.createClass({
 						'Aura-Explorer Version'
 					),
 					' : ',
-					_package2.default.version
+					this.props.packageInfo.version
 				),
 				React.createElement(
 					'div',
@@ -65,7 +53,7 @@ var AboutPage = React.createClass({
 					React.createElement(
 						'pre',
 						null,
-						JSON.stringify(_config2.default, null, 2)
+						JSON.stringify(this.props.explorerConfig, null, 2)
 					)
 				),
 				React.createElement(
@@ -79,7 +67,7 @@ var AboutPage = React.createClass({
 					React.createElement(
 						'pre',
 						null,
-						auraExplorerJson
+						this.props.auraExplorerJson
 					)
 				),
 				React.createElement(
@@ -93,7 +81,7 @@ var AboutPage = React.createClass({
 					React.createElement(
 						'pre',
 						null,
-						auraStreamPom
+						this.props.auraStreamPom
 					)
 				)
 			)
@@ -108,7 +96,17 @@ var AboutPage = React.createClass({
 });
 
 //rendering
+
+//utils
 _util2.default.render(function () {
+	var packageInfo = _restClient2.default.getPackageInfo();
+	var explorerConfig = _restClient2.default.getExplorerConfig();
+	var auraExplorerJson = _restClient2.default.getAuraExplorerJson();
+	var auraStreamPom = _restClient2.default.getAuraStreamPom();
+
 	//control usage count
-	ReactDOM.render(React.createElement(AboutPage, null), document.querySelector('#body'));
+	ReactDOM.render(React.createElement(AboutPage, { packageInfo: packageInfo,
+		explorerConfig: explorerConfig,
+		auraExplorerJson: auraExplorerJson,
+		auraStreamPom: auraStreamPom }), document.querySelector('#body'));
 });
