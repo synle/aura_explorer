@@ -14,16 +14,19 @@ var minify = require('gulp-minify');
 
 //output
 var outputDir = 'public';
-var outputDistDir = 'public/dist';
+var outputDistJsDir = 'public/dist/js';
+var outputDistCssDir = 'public/dist/css';
+var outputDistViewDir = 'public';
 
 //scripts
 var appScripts = [
 	'src/client/*.js'
 ];
 
-var backendScripts = [
-	'src/backend/*.js'
+var pagesScripts = [
+	'src/client/pages/*.js'
 ];
+
 
 var componentScripts = [
 	'src/client/components/*.js'
@@ -45,6 +48,11 @@ var appViews = [
 	'view/**/*.html'
 ];
 
+//back end
+var backendScripts = [
+	'src/backend/*.js'
+];
+
 
 //other extras
 var headerBanner = '//Developed by Sy Le. Coprighted by Salesforce.com 2015\n';
@@ -60,7 +68,7 @@ var generateStyles = function(src, dest){
 		    .pipe(minify({
 		        mangle: false
 		    }))
-		    .pipe(gulp.dest(outputDistDir));
+		    .pipe(gulp.dest(outputDistCssDir));
 	}
 }
 
@@ -72,7 +80,7 @@ var generateScripts = function(src, srcBase){
 		    .pipe(babel({
 				resolveModuleSource: function(source, filename) {
 					//remap the path
-					const newPath = source.replace('/aura-explorer/', 'dist/');
+					const newPath = source.replace('/aura-explorer/', 'dist/js/');
 					return newPath;
 				}
 		    }))
@@ -81,12 +89,16 @@ var generateScripts = function(src, srcBase){
 		    // .pipe(minify({
 		    //     mangle: false
 		    // }))
-		    .pipe(gulp.dest(outputDistDir));
+		    .pipe(gulp.dest(outputDistJsDir));
 	}
 }
 
 
 var generateScripts_ReactComponents = function(src){
+	return generateScripts(src, { base : './src/client' });
+}
+
+var generateScripts_Pages = function(src){
 	return generateScripts(src, { base : './src/client' });
 }
 
@@ -102,7 +114,7 @@ var generateScripts_Vendor = function(src){
 			.pipe(plumber())
 		    .pipe(concat('vendor.js'))
 		    .pipe(header(headerBanner))
-		    .pipe(gulp.dest(outputDistDir));
+		    .pipe(gulp.dest(outputDistJsDir));
 	}
 }
 
@@ -110,7 +122,7 @@ var generateScripts_Vendor = function(src){
 var generateViews = function(src){
 	return function(){
 		return gulp.src(src, {base: './view'})
-			.pipe(gulp.dest(outputDir));
+			.pipe(gulp.dest(outputDistViewDir));
 	}
 }
 
@@ -119,6 +131,7 @@ var generateViews = function(src){
 gulp.task('styles', generateStyles(appStyles, 'app.css'));
 gulp.task('scripts_app', generateScripts(appScripts));
 gulp.task('scripts_component', generateScripts_ReactComponents(componentScripts));
+gulp.task('scripts_pages', generateScripts_Pages(pagesScripts));
 gulp.task('scripts_vendor', generateScripts_Vendor(vendorScripts));
 gulp.task('scripts_backend', generateScripts_Backend(backendScripts));
 gulp.task('views', generateViews(appViews));
@@ -127,6 +140,7 @@ gulp.task('dev', function(){
 	gulp.run('default');
 	gulp.watch(appScripts,  ['scripts_app']);
 	gulp.watch(vendorScripts,  ['scripts_vendor']);
+	gulp.watch(pagesScripts,  ['scripts_pages']);
 	gulp.watch(componentScripts,  ['scripts_component']);
 	gulp.watch(appStyles,  ['styles']);
 	gulp.watch(appViews,  ['views']);
@@ -134,5 +148,5 @@ gulp.task('dev', function(){
 
 
 //publis alias
-gulp.task('scripts', ['scripts_app', 'scripts_component', 'scripts_vendor', 'scripts_backend']);
+gulp.task('scripts', ['scripts_app', 'scripts_pages', 'scripts_component', 'scripts_vendor', 'scripts_backend']);
 gulp.task('default', ['scripts', 'styles', 'views']);

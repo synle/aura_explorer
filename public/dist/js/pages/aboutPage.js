@@ -5,22 +5,17 @@ var _lodash = require('lodash');
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var _fs = require('fs');
-
-var _fs2 = _interopRequireDefault(_fs);
-
-var _restClient = require('dist/restClient');
+var _restClient = require('dist/js/restClient');
 
 var _restClient2 = _interopRequireDefault(_restClient);
 
-var _util = require('dist/util');
+var _util = require('dist/js/util');
 
 var _util2 = _interopRequireDefault(_util);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 //internal
-//external
 
 var AboutPage = React.createClass({
 	displayName: 'AboutPage',
@@ -98,6 +93,7 @@ var AboutPage = React.createClass({
 //rendering
 
 //utils
+//external
 _util2.default.render(function () {
 	var packageInfo = _restClient2.default.getPackageInfo();
 	var explorerConfig = _restClient2.default.getExplorerConfig();

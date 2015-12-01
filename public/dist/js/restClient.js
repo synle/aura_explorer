@@ -17,41 +17,41 @@ var _path = require('path');
 
 var _path2 = _interopRequireDefault(_path);
 
-var _dependenciesMap = require('dist/data/dependenciesMap.json');
+var _dependenciesMap = require('dist/js/data/dependenciesMap.json');
 
 var _dependenciesMap2 = _interopRequireDefault(_dependenciesMap);
 
-var _usageMap = require('dist/data/usageMap.json');
+var _usageMap = require('dist/js/data/usageMap.json');
 
 var _usageMap2 = _interopRequireDefault(_usageMap);
 
-var _controlCountMap = require('dist/data/controlCountMap.json');
+var _controlCountMap = require('dist/js/data/controlCountMap.json');
 
 var _controlCountMap2 = _interopRequireDefault(_controlCountMap);
 
-var _namespaceCountMap = require('dist/data/namespaceCountMap.json');
+var _namespaceCountMap = require('dist/js/data/namespaceCountMap.json');
 
 var _namespaceCountMap2 = _interopRequireDefault(_namespaceCountMap);
 
-var _config = require('dist/backend/config.js');
+var _config = require('dist/js/backend/config.js');
 
 var _config2 = _interopRequireDefault(_config);
 
-var _package = require('../../package.json');
-
-var _package2 = _interopRequireDefault(_package);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//internal
+//external
 
 var util_readFromFileAsync = function util_readFromFileAsync(fpath) {
 	return _fs2.default.readFileSync(fpath, 'utf8');
-}; //external
+};
+
+//internal
 
 var auraExplorerJson = util_readFromFileAsync(_path2.default.join(process.cwd(), 'package.json'));
 
-var auraStreamPom = util_readFromFileAsync(_path2.default.join(process.cwd(), 'public', 'dist', 'data', 'aura_upstream_pom.xml'));
+var auraStreamPom = util_readFromFileAsync(_path2.default.join(process.cwd(), 'public', 'dist', 'js', 'data', 'aura_upstream_pom.xml'));
+
+var packageInfo = JSON.parse(auraExplorerJson);
 
 exports.default = {
 	getDataDependenciesMap: function getDataDependenciesMap() {
@@ -90,7 +90,7 @@ exports.default = {
 		// defer.resolve(packageInfo);
 		// return defer.promise;
 		//
-		return _package2.default;
+		return packageInfo;
 	},
 	getExplorerConfig: function getExplorerConfig() {
 		// const defer = Q.defer();

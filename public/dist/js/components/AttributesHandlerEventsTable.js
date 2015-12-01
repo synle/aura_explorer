@@ -9,11 +9,11 @@ var _lodash = require('lodash');
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var _util = require('dist/util');
+var _util = require('dist/js/util');
 
 var _util2 = _interopRequireDefault(_util);
 
-var _Table = require('dist/components/Table');
+var _Table = require('dist/js/components/Table');
 
 var _Table2 = _interopRequireDefault(_Table);
 
