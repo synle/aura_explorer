@@ -2,28 +2,43 @@
 import util from '/aura-explorer/util';
 
 //render
-util.render( () => {
+export default () => {
     //navs
     const navItems = $(`
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="index.html">Statistics</a></li>
-                <li><a href="controls.html">Controls</a></li>
-                <li><a href="config.html">Config</a></li>
-            </ul>
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                </button>
+                <strong class="navbar-brand">
+                Aura Explorer
+                <small>Statistics</small>
+                </strong>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="index.html">Statistics</a></li>
+                    <li><a href="controls.html">Controls</a></li>
+                    <li><a href="config.html">Config</a></li>
+                </ul>
+            </div>
         </div>
-    `).appendTo('#nav > div.container-fluid');
+    `).prependTo('#nav');
 
-	//search box
-	const searchForm = $(`
-		<form class="navbar-form navbar-right">
-        	<input id="headerSearchBox" type="text" class="form-control" placeholder="Search...">
-    	</form>
+
+
+    //search box
+    const searchForm = $(`
+        <form class="navbar-form navbar-right">
+            <input id="headerSearchBox" type="text" class="form-control" placeholder="Search...">
+        </form>
     `)
     .submit((e) => {
-    	const keyword = $.trim( $(e.target).find('input').val() ).toLowerCase();
-    	location.href = util.getQueryUrl(`${keyword}`);
-    	return false;
+        const keyword = $.trim( $(e.target).find('input').val() ).toLowerCase();
+        location.href = util.getQueryUrl(`${keyword}`);
+        return false;
     })
     .appendTo('#navbar')
         .find('input')
@@ -34,8 +49,11 @@ util.render( () => {
             content: "Most control names are of form <namespace>:<controlName>" 
         });
 
+
+
+
     //scroll to top
     const btnScrollToTop =$(`<button id="btnScrollToTop" class="btn btn-primary">^</button>`)
-    	.click(() => $(document).scrollTop(0))
-    	.appendTo('#navbar');
-})
+        .click(() => $(document).scrollTop(0))
+        .appendTo('#navbar');
+}

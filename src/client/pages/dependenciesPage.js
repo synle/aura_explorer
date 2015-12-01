@@ -15,6 +15,9 @@ import ControlDetailPage from '/aura-explorer/components/AuraControlDetail';
 //utils
 import util from '/aura-explorer/util';
 
+//app init
+import appInit from '/aura-explorer/app';
+
 //main page
 const DependenciesPage = React.createClass({
 	getInitialState(){
@@ -99,12 +102,12 @@ const DependenciesPage = React.createClass({
 	},
 });
 
-
-
-
-
 //rendering
 util.render( () => {
+	//init app
+	appInit();
+
+	//loading components
 	Q.all([
 		restClient.getDataDependenciesMap(),
 		restClient.getUsageMap()
