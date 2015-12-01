@@ -32,62 +32,43 @@ const packageInfo = JSON.parse(auraExplorerJson);
 
 export default {
 	getDataDependenciesMap(){
-		// const defer = Q.defer();
-		// defer.resolve(dataDependenciesMap);
-		// return defer.promise;
-		// 
-		// 
-		return dataDependenciesMap;
+		const defer = Q.defer();
+		defer.resolve(dataDependenciesMap);
+		return defer.promise;
 	},
 	getUsageMap(){
-		// const defer = Q.defer();
-		// defer.resolve(usageMap);
-		// return defer.promise;
-		// 
-		// 
-		return usageMap;
+		const defer = Q.defer();
+		defer.resolve(usageMap);
+		return defer.promise;
 	},
 	getControlCountMap(){
-		// const defer = Q.defer();
-		// defer.resolve(controlCountMap);
-		// return defer.promise;
-		// 
-		// 
-		return controlCountMap;
+		const defer = Q.defer();
+		defer.resolve(controlCountMap);
+		return defer.promise;
 	},
 	getNamespaceCountMap(){
-		// const defer = Q.defer();
-		// defer.resolve(namespaceCountMap);
-		// return defer.promise;
-		// 
-		return namespaceCountMap;
+		const defer = Q.defer();
+		defer.resolve(namespaceCountMap);
+		return defer.promise;
 	},
 	getPackageInfo(){
-		// const defer = Q.defer();
-		// defer.resolve(packageInfo);
-		// return defer.promise;
-		// 
-		return packageInfo;
+		const defer = Q.defer();
+		defer.resolve(packageInfo);
+		return defer.promise;
 	},
 	getExplorerConfig(){
-		// const defer = Q.defer();
-		// defer.resolve(explorerConfig);
-		// return defer.promise;
-		// 
-		return explorerConfig;
+		const defer = Q.defer();
+		defer.resolve(explorerConfig);
+		return defer.promise;
 	},
 	getAuraExplorerJson(){
-		// const defer = Q.defer();
-		// defer.resolve(auraExplorerJson);
-		// return defer.promise;
-		// 
-		return auraExplorerJson;
+		const defer = Q.defer();
+		defer.resolve(auraExplorerJson);
+		return defer.promise;
 	},
 	getAuraStreamPom(){
-		// const defer = Q.defer();
-		// defer.resolve(auraStreamPom);
-		// return defer.promise;
-		// 
-		return auraStreamPom;
+		const defer = Q.defer();
+		defer.resolve(auraStreamPom);
+		return defer.promise;
 	}
 }
