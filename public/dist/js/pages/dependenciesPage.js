@@ -1,6 +1,17 @@
 //Developed by Sy Le. Coprighted by Salesforce.com 2015
 'use strict';
 
+var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; })(); //external
+
+//internal
+//data
+
+//internal react components
+
+//big component
+
+//utils
+
 var _lodash = require('lodash');
 
 var _lodash2 = _interopRequireDefault(_lodash);
@@ -28,12 +39,6 @@ var _util2 = _interopRequireDefault(_util);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 //main page
-
-//big component
-
-//internal
-//data
-//external
 var DependenciesPage = React.createClass({
 	displayName: 'DependenciesPage',
 	getInitialState: function getInitialState() {
@@ -149,15 +154,14 @@ var DependenciesPage = React.createClass({
 });
 
 //rendering
-
-//utils
-
-//internal react components
 _util2.default.render(function () {
-	var dataDependenciesMap = _restClient2.default.getDataDependenciesMap();
-	var usageMaps = _restClient2.default.getUsageMap();
+	_q2.default.all([_restClient2.default.getDataDependenciesMap(), _restClient2.default.getUsageMap()]).done(function (_ref2) {
+		var _ref3 = _slicedToArray(_ref2, 2);
 
-	//control usage count
-	ReactDOM.render(React.createElement(DependenciesPage, { dataDependenciesMap: dataDependenciesMap,
-		usageMaps: usageMaps }), document.querySelector('#body'));
+		var dataDependenciesMap = _ref3[0];
+		var usageMaps = _ref3[1];
+
+		ReactDOM.render(React.createElement(DependenciesPage, { dataDependenciesMap: dataDependenciesMap,
+			usageMaps: usageMaps }), document.querySelector('#body'));
+	});
 });

@@ -105,13 +105,12 @@ const DependenciesPage = React.createClass({
 
 //rendering
 util.render( () => {
-	const dataDependenciesMap = restClient.getDataDependenciesMap();
-	const usageMaps = restClient.getUsageMap();
-
-	//control usage count
-	ReactDOM.render(
-		<DependenciesPage dataDependenciesMap={dataDependenciesMap}
-			usageMaps={usageMaps} />,
-		document.querySelector('#body')
-	);
+	Q.all([restClient.getDataDependenciesMap(), restClient.getUsageMap()])
+	.done(([dataDependenciesMap, usageMaps]) => {
+		ReactDOM.render(
+			<DependenciesPage dataDependenciesMap={dataDependenciesMap}
+				usageMaps={usageMaps} />,
+			document.querySelector('#body')
+		);
+	});
 });

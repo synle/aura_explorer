@@ -1,5 +1,6 @@
 //external
 import _ from 'lodash';
+import Q from 'q';
 
 //internal
 import restClient from '/aura-explorer/restClient';
@@ -43,18 +44,14 @@ const AboutPage = React.createClass({
 
 //rendering
 util.render( () => {
-	const packageInfo = restClient.getPackageInfo();
-	const explorerConfig = restClient.getExplorerConfig();
-	const auraExplorerJson = restClient.getAuraExplorerJson();
-	const auraStreamPom = restClient.getAuraStreamPom();
-
-
-	//control usage count
-	ReactDOM.render(
-		<AboutPage packageInfo={packageInfo}
-			explorerConfig={explorerConfig}
-			auraExplorerJson={auraExplorerJson}
-			auraStreamPom={auraStreamPom}/>,
-		document.querySelector('#body')
-	);
+	Q.all([restClient.getPackageInfo(), restClient.getExplorerConfig(), restClient.getAuraExplorerJson(), restClient.getAuraStreamPom()])
+	.done(([packageInfo, explorerConfig, auraExplorerJson, auraStreamPom]) => {
+		ReactDOM.render(
+			<AboutPage packageInfo={packageInfo}
+				explorerConfig={explorerConfig}
+				auraExplorerJson={auraExplorerJson}
+				auraStreamPom={auraStreamPom}/>,
+			document.querySelector('#body')
+		);
+	});
 });

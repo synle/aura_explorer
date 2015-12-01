@@ -54,15 +54,12 @@ const StatPage = React.createClass({
 
 //rendering
 util.render( () => {
-	const controlCountMap = restClient.getControlCountMap();
-	const namespaceCountMap = restClient.getNamespaceCountMap();
-
-	//TODO: use promises
-	// Q.all([restClient.getControlCountMap(), restClient.getNamespaceCountMap()]).done((controlCountMap, namespaceCountMap) => {
+	Q.all([restClient.getControlCountMap(), restClient.getNamespaceCountMap()])
+	.done(([controlCountMap, namespaceCountMap]) => {
 		ReactDOM.render(
 			<StatPage namespaceCountMap={namespaceCountMap}
 				controlCountMap={controlCountMap} />,
 			document.querySelector('#body')
 		);
-	// });
+	});
 });
