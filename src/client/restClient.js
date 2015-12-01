@@ -9,8 +9,6 @@ import usageMap from '/aura-explorer/data/usageMap.json';
 import controlCountMap from '/aura-explorer/data/controlCountMap.json';
 import namespaceCountMap from '/aura-explorer/data/namespaceCountMap.json';
 import explorerConfig from '/aura-explorer/backend/config.js';
-import packageInfo from '../../package.json';
-
 
 const util_readFromFileAsync = (fpath) => fs.readFileSync(fpath, 'utf8');
 
@@ -24,11 +22,13 @@ const auraStreamPom    = util_readFromFileAsync(path.join(
 		process.cwd(),
 		'public',
 		'dist',
+		'js',
 		'data',
 		'aura_upstream_pom.xml'
 	)
 );
 
+const packageInfo = JSON.parse(auraExplorerJson);
 
 export default {
 	getDataDependenciesMap(){

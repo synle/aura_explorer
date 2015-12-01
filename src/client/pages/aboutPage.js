@@ -1,6 +1,5 @@
 //external
 import _ from 'lodash';
-import fs from 'fs';
 
 //internal
 import restClient from '/aura-explorer/restClient';

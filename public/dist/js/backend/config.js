@@ -6,5 +6,5 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = {
     baseDir: './aura-master', //upstream aura path
-    outputDir: './public/dist/data'
+    outputDir: './public/dist/js/data'
 };
