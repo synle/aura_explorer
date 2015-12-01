@@ -8,6 +8,8 @@ import restClient from '/aura-explorer/restClient';
 //utils
 import util from '/aura-explorer/util';
 
+//app init
+import appInit from '/aura-explorer/app';
 
 const AboutPage = React.createClass({
 	render(){
@@ -44,6 +46,10 @@ const AboutPage = React.createClass({
 
 //rendering
 util.render( () => {
+	//init app
+	appInit();
+
+	//loading components
 	Q.all([
 		restClient.getPackageInfo(),
 		restClient.getExplorerConfig(),

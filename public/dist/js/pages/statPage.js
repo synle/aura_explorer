@@ -10,6 +10,8 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 
 //utils
 
+//app init
+
 var _lodash = require('lodash');
 
 var _lodash2 = _interopRequireDefault(_lodash);
@@ -29,6 +31,10 @@ var _AuraStatCountTable2 = _interopRequireDefault(_AuraStatCountTable);
 var _util = require('dist/js/util');
 
 var _util2 = _interopRequireDefault(_util);
+
+var _app = require('dist/js/app');
+
+var _app2 = _interopRequireDefault(_app);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -98,6 +104,10 @@ var StatPage = React.createClass({
 
 //rendering
 _util2.default.render(function () {
+	//init app
+	(0, _app2.default)();
+
+	//loading components
 	_q2.default.all([_restClient2.default.getControlCountMap(), _restClient2.default.getNamespaceCountMap()]).done(function (_ref) {
 		var _ref2 = _slicedToArray(_ref, 2);
 

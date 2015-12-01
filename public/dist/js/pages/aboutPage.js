@@ -7,6 +7,8 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
 
 //utils
 
+//app init
+
 var _lodash = require('lodash');
 
 var _lodash2 = _interopRequireDefault(_lodash);
@@ -22,6 +24,10 @@ var _restClient2 = _interopRequireDefault(_restClient);
 var _util = require('dist/js/util');
 
 var _util2 = _interopRequireDefault(_util);
+
+var _app = require('dist/js/app');
+
+var _app2 = _interopRequireDefault(_app);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -100,6 +106,10 @@ var AboutPage = React.createClass({
 
 //rendering
 _util2.default.render(function () {
+	//init app
+	(0, _app2.default)();
+
+	//loading components
 	_q2.default.all([_restClient2.default.getPackageInfo(), _restClient2.default.getExplorerConfig(), _restClient2.default.getAuraExplorerJson(), _restClient2.default.getAuraStreamPom()]).done(function (_ref) {
 		var _ref2 = _slicedToArray(_ref, 4);
 

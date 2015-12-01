@@ -12,6 +12,9 @@ import CountTableComponent from '/aura-explorer/components/AuraStatCountTable';
 //utils
 import util from '/aura-explorer/util';
 
+//app init
+import appInit from '/aura-explorer/app';
+
 //main page
 const StatPage = React.createClass({
 	render(){
@@ -54,6 +57,10 @@ const StatPage = React.createClass({
 
 //rendering
 util.render( () => {
+	//init app
+	appInit();
+
+	//loading components
 	Q.all([
 		restClient.getControlCountMap(),
 		restClient.getNamespaceCountMap()
