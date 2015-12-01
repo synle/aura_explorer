@@ -55,62 +55,43 @@ var packageInfo = JSON.parse(auraExplorerJson);
 
 exports.default = {
 	getDataDependenciesMap: function getDataDependenciesMap() {
-		// const defer = Q.defer();
-		// defer.resolve(dataDependenciesMap);
-		// return defer.promise;
-		//
-		//
-		return _dependenciesMap2.default;
+		var defer = _q2.default.defer();
+		defer.resolve(_dependenciesMap2.default);
+		return defer.promise;
 	},
 	getUsageMap: function getUsageMap() {
-		// const defer = Q.defer();
-		// defer.resolve(usageMap);
-		// return defer.promise;
-		//
-		//
-		return _usageMap2.default;
+		var defer = _q2.default.defer();
+		defer.resolve(_usageMap2.default);
+		return defer.promise;
 	},
 	getControlCountMap: function getControlCountMap() {
-		// const defer = Q.defer();
-		// defer.resolve(controlCountMap);
-		// return defer.promise;
-		//
-		//
-		return _controlCountMap2.default;
+		var defer = _q2.default.defer();
+		defer.resolve(_controlCountMap2.default);
+		return defer.promise;
 	},
 	getNamespaceCountMap: function getNamespaceCountMap() {
-		// const defer = Q.defer();
-		// defer.resolve(namespaceCountMap);
-		// return defer.promise;
-		//
-		return _namespaceCountMap2.default;
+		var defer = _q2.default.defer();
+		defer.resolve(_namespaceCountMap2.default);
+		return defer.promise;
 	},
 	getPackageInfo: function getPackageInfo() {
-		// const defer = Q.defer();
-		// defer.resolve(packageInfo);
-		// return defer.promise;
-		//
-		return packageInfo;
+		var defer = _q2.default.defer();
+		defer.resolve(packageInfo);
+		return defer.promise;
 	},
 	getExplorerConfig: function getExplorerConfig() {
-		// const defer = Q.defer();
-		// defer.resolve(explorerConfig);
-		// return defer.promise;
-		//
-		return _config2.default;
+		var defer = _q2.default.defer();
+		defer.resolve(_config2.default);
+		return defer.promise;
 	},
 	getAuraExplorerJson: function getAuraExplorerJson() {
-		// const defer = Q.defer();
-		// defer.resolve(auraExplorerJson);
-		// return defer.promise;
-		//
-		return auraExplorerJson;
+		var defer = _q2.default.defer();
+		defer.resolve(auraExplorerJson);
+		return defer.promise;
 	},
 	getAuraStreamPom: function getAuraStreamPom() {
-		// const defer = Q.defer();
-		// defer.resolve(auraStreamPom);
-		// return defer.promise;
-		//
-		return auraStreamPom;
+		var defer = _q2.default.defer();
+		defer.resolve(auraStreamPom);
+		return defer.promise;
 	}
 };
