@@ -105,8 +105,10 @@ const DependenciesPage = React.createClass({
 
 //rendering
 util.render( () => {
-	Q.all([restClient.getDataDependenciesMap(), restClient.getUsageMap()])
-	.done(([dataDependenciesMap, usageMaps]) => {
+	Q.all([
+		restClient.getDataDependenciesMap(),
+		restClient.getUsageMap()
+	]).done(([ dataDependenciesMap, usageMaps ]) => {
 		ReactDOM.render(
 			<DependenciesPage dataDependenciesMap={dataDependenciesMap}
 				usageMaps={usageMaps} />,

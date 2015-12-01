@@ -44,8 +44,12 @@ const AboutPage = React.createClass({
 
 //rendering
 util.render( () => {
-	Q.all([restClient.getPackageInfo(), restClient.getExplorerConfig(), restClient.getAuraExplorerJson(), restClient.getAuraStreamPom()])
-	.done(([packageInfo, explorerConfig, auraExplorerJson, auraStreamPom]) => {
+	Q.all([
+		restClient.getPackageInfo(),
+		restClient.getExplorerConfig(),
+		restClient.getAuraExplorerJson(),
+		restClient.getAuraStreamPom()
+	]).done( ( [ packageInfo, explorerConfig, auraExplorerJson, auraStreamPom ] ) => {
 		ReactDOM.render(
 			<AboutPage packageInfo={packageInfo}
 				explorerConfig={explorerConfig}
