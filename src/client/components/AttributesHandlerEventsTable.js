@@ -1,9 +1,9 @@
 //external
 import _ from 'lodash';
-import util from '../util';
 
 //internal
-import TableComponent from './Table';
+import util from '/aura-explorer/util';
+import TableComponent from '/aura-explorer/components/Table';
 
 //definitions
 const Attributes_Handler_Events_Table = React.createClass({

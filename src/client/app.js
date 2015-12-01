@@ -1,5 +1,5 @@
 //utils
-import util from './src/client/util';
+import util from '/aura-explorer/util';
 
 //render
 util.render( () => {

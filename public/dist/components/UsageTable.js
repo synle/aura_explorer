@@ -9,25 +9,27 @@ var _lodash = require('lodash');
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var _util = require('../util');
+var _util = require('dist/util');
 
 var _util2 = _interopRequireDefault(_util);
 
-var _KeyValTable = require('./KeyValTable');
+var _KeyValTable = require('dist/components/KeyValTable');
 
 var _KeyValTable2 = _interopRequireDefault(_KeyValTable);
 
-var _KeyValueXmlSyntax = require('./KeyValueXmlSyntax');
+var _KeyValueXmlSyntax = require('dist/components/KeyValueXmlSyntax');
 
 var _KeyValueXmlSyntax2 = _interopRequireDefault(_KeyValueXmlSyntax);
 
-var _ControlDetailLink = require('./ControlDetailLink');
+var _ControlDetailLink = require('dist/components/ControlDetailLink');
 
 var _ControlDetailLink2 = _interopRequireDefault(_ControlDetailLink);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 //definitions
+
+//internal
 var UsageTable = React.createClass({
 	displayName: 'UsageTable',
 	getInitialState: function getInitialState() {

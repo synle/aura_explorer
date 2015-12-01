@@ -6,7 +6,7 @@ import _ from 'lodash';
 import Q from 'q';
 
 //internal
-import logger from './logger';//internal loggr
+import logger from '/aura-explorer/backend/logger';//internal loggr
 
 //export
 const self = {
@@ -153,6 +153,10 @@ const self = {
 
     getControlRelativePath(fileName){
         return fileName.substr( fileName.indexOf('/src/') );
+    },
+
+    mkDir(dir){
+        fs.mkdirSync(dir);
     },
 
     //append stuff

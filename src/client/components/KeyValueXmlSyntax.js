@@ -1,6 +1,8 @@
 //external
 import _ from 'lodash';
-import util from '../util';
+
+//internal
+import util from '/aura-explorer/util';
 
 
 //definitions

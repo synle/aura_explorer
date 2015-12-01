@@ -15,8 +15,6 @@ var minify = require('gulp-minify');
 //output
 var outputDir = 'public';
 var outputDistDir = 'public/dist';
-var outputDistComponentDir = 'public/dist/components';
-var outputDistBackendDir = 'public/backend';
 
 //scripts
 var appScripts = [
@@ -66,65 +64,34 @@ var generateStyles = function(src, dest){
 	}
 }
 
-var generateScripts = function(src){
+var generateScripts = function(src, srcBase){
 	return function(){
-		return gulp.src(src)
+		return gulp.src(src, srcBase || {} )
 			.pipe(plumber())
 		    // .pipe(sourcemaps.init())
 		    .pipe(babel({
 				resolveModuleSource: function(source, filename) {
 					//remap the path
-					return source.replace('./src/client', './dist').replace('./data', '../data');
+					const newPath = source.replace('/aura-explorer/', 'dist/');
+					return newPath;
 				}
 		    }))
 		    // .pipe(sourcemaps.write("."))
 		    .pipe(header(headerBanner))
-		    .pipe(minify({
-		        mangle: false
-		    }))
+		    // .pipe(minify({
+		    //     mangle: false
+		    // }))
 		    .pipe(gulp.dest(outputDistDir));
 	}
 }
 
 
 var generateScripts_ReactComponents = function(src){
-	return function(){
-		return gulp.src(src, {base: './src/client/components'})
-			.pipe(plumber())
-		    // .pipe(sourcemaps.init())
-		    .pipe(babel({
-				resolveModuleSource: function(source, filename) {
-					//remap the path
-					return source.replace('/src/client/', '/dist/');
-				}
-		    }))
-		    // .pipe(sourcemaps.write("."))
-		    .pipe(header(headerBanner))
-		    .pipe(minify({
-		        mangle: false
-		    }))
-		    .pipe(gulp.dest(outputDistComponentDir));
-	}
+	return generateScripts(src, { base : './src/client' });
 }
 
 var generateScripts_Backend = function(src){
-	return function(){
-		return gulp.src(src)
-			.pipe(plumber())
-		    // .pipe(sourcemaps.init())
-		    .pipe(babel({
-				resolveModuleSource: function(source, filename) {
-					//remap the path
-					return source.replace('/src/backend/', '/backend/');
-				}
-		    }))
-		    // .pipe(sourcemaps.write("."))
-		    .pipe(header(headerBanner))
-		    .pipe(minify({
-		        mangle: false
-		    }))
-		    .pipe(gulp.dest(outputDistBackendDir));
-	}
+	return generateScripts(src, { base : './src' });
 }
 
 

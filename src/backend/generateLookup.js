@@ -9,8 +9,8 @@ import Q from 'q';
 
 
 //internal
-import logger from './logger';
-import util from './util';
+import logger from '/aura-explorer/backend/logger';
+import util from '/aura-explorer/backend/util';
 
 
 //exports
@@ -302,6 +302,17 @@ export default (componentFileNames, baseDirAuraUpstream, outputDirDataPath) => {
 		}
 
 
+		//making output dir if it is not there
+		logger.log('[Making Output Dir]'.yellow, outputDirDataPath);
+		try {
+			util.mkDir(outputDirDataPath);
+			logger.log('\t[OuputDir Created]'.yellow);
+		} catch(e) {
+			logger.log('\t[Skipped]'.yellow, e);
+		}
+
+		//writing files
+		logger.log('[Writing Output]'.yellow);
 		try{
 			_writeToFile(
 				true,//need json serialization

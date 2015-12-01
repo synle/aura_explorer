@@ -9,7 +9,7 @@ var _lodash = require('lodash');
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var _util = require('../util');
+var _util = require('dist/util');
 
 var _util2 = _interopRequireDefault(_util);
 
@@ -42,5 +42,7 @@ var ControlDetailLink = React.createClass({
 		);
 	}
 });
+
+//internal
 
 exports.default = ControlDetailLink;

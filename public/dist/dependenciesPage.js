@@ -5,39 +5,39 @@ var _lodash = require('lodash');
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var _dependenciesMap = require('../data/dependenciesMap.json');
+var _q = require('q');
 
-var _dependenciesMap2 = _interopRequireDefault(_dependenciesMap);
+var _q2 = _interopRequireDefault(_q);
 
-var _usageMap = require('../data/usageMap.json');
+var _restClient = require('dist/restClient');
 
-var _usageMap2 = _interopRequireDefault(_usageMap);
+var _restClient2 = _interopRequireDefault(_restClient);
 
-var _ListView = require('./dist/components/ListView');
+var _ListView = require('dist/components/ListView');
 
 var _ListView2 = _interopRequireDefault(_ListView);
 
-var _AttributesHandlerEventsTable = require('./dist/components/AttributesHandlerEventsTable');
+var _AttributesHandlerEventsTable = require('dist/components/AttributesHandlerEventsTable');
 
 var _AttributesHandlerEventsTable2 = _interopRequireDefault(_AttributesHandlerEventsTable);
 
-var _UsageTable = require('./dist/components/UsageTable');
+var _UsageTable = require('dist/components/UsageTable');
 
 var _UsageTable2 = _interopRequireDefault(_UsageTable);
 
-var _ControlDetailLink = require('./dist/components/ControlDetailLink');
+var _ControlDetailLink = require('dist/components/ControlDetailLink');
 
 var _ControlDetailLink2 = _interopRequireDefault(_ControlDetailLink);
 
-var _DependenciesDetailTable = require('./dist/components/DependenciesDetailTable');
+var _DependenciesDetailTable = require('dist/components/DependenciesDetailTable');
 
 var _DependenciesDetailTable2 = _interopRequireDefault(_DependenciesDetailTable);
 
-var _MethodTable = require('./dist/components/MethodTable');
+var _MethodTable = require('dist/components/MethodTable');
 
 var _MethodTable2 = _interopRequireDefault(_MethodTable);
 
-var _util = require('./dist/util');
+var _util = require('dist/util');
 
 var _util2 = _interopRequireDefault(_util);
 
@@ -80,7 +80,7 @@ var ControlDetailPage = React.createClass({
 				var handlersList = _lodash2.default.values(_lodash2.default.get(_this, 'props.controlObj.handlers', {}));
 				var importsList = _lodash2.default.values(_lodash2.default.get(_this, 'props.controlObj.imports', {}));
 
-				var usageList = _lodash2.default.reduce(_usageMap2.default, function (res, usageMap, curControlName) {
+				var usageList = _lodash2.default.reduce(_this.props.usageMaps, function (res, usageMap, curControlName) {
 					if (shortControlName === curControlName.toLowerCase()) {
 						return usageMap;
 					}
@@ -111,7 +111,7 @@ var ControlDetailPage = React.createClass({
 						React.createElement(
 							'ul',
 							{ className: 'nav nav-tabs', role: 'tablist' },
-							_this._getTabHeaderItem("tab-attributes", "Attributes", attributeList),
+							_this._getTabHeaderItem("tab-attributes", "Attributes", attributeList, true),
 							_this._getTabHeaderItem("tab-dependencies", "Dependencies", dependenciesMap),
 							_this._getTabHeaderItem("tab-events", "Events", eventsList),
 							_this._getTabHeaderItem("tab-imports", "Imports", importsList),
@@ -169,24 +169,16 @@ var ControlDetailPage = React.createClass({
 		// return nextProps.selectedControlName !== this.props.selectedControlName;
 		return true; //always update
 	},
-	_getTabHeaderItem: function _getTabHeaderItem(tabContentId, headerName, entityObjects) {
+	_getTabHeaderItem: function _getTabHeaderItem(tabContentId, headerName, entityObjects, active) {
 		var entityCount = _lodash2.default.size(entityObjects);
 		var tabPlainText = headerName + ' ' + this._getCountBadge(entityCount);
 
-		return entityCount > 0 ? React.createElement(
+		return React.createElement(
 			'li',
-			{ role: 'presentation' },
+			{ role: 'presentation', className: active ? 'active' : '' },
 			React.createElement(
 				'a',
 				{ href: '#' + tabContentId, 'aria-controls': 'settings', role: 'tab', 'data-toggle': 'tab' },
-				tabPlainText
-			)
-		) : React.createElement(
-			'li',
-			{ role: 'presentation', className: 'disabled' },
-			React.createElement(
-				'a',
-				{ className: 'disabled', 'aria-controls': 'settings', role: 'tab' },
 				tabPlainText
 			)
 		);
@@ -201,7 +193,7 @@ var DependenciesPage = React.createClass({
 	displayName: 'DependenciesPage',
 	getInitialState: function getInitialState() {
 		var searchTerm = _util2.default.getSearchTerm(location.href);
-		var flattenDependencies = _util2.default.flattenDependencies(_dependenciesMap2.default);
+		var flattenDependencies = _util2.default.flattenDependencies(this.props.dataDependenciesMap);
 
 		var myInitState = {
 			flattenDependencies: flattenDependencies,
@@ -285,7 +277,8 @@ var DependenciesPage = React.createClass({
 					'div',
 					{ id: 'control-detail-wrapper', className: 'col-sm-8' },
 					React.createElement(ControlDetailPage, { controlName: this.state.selectedControlName,
-						controlObj: this.state.selectedControlObj })
+						controlObj: this.state.selectedControlObj,
+						usageMaps: this.props.usageMaps })
 				)
 			)
 		);
@@ -312,6 +305,10 @@ var DependenciesPage = React.createClass({
 
 //rendering
 _util2.default.render(function () {
+	var dataDependenciesMap = _restClient2.default.getDataDependenciesMap();
+	var usageMaps = _restClient2.default.getUsageMap();
+
 	//control usage count
-	ReactDOM.render(React.createElement(DependenciesPage, null), document.querySelector('#body'));
+	ReactDOM.render(React.createElement(DependenciesPage, { dataDependenciesMap: dataDependenciesMap,
+		usageMaps: usageMaps }), document.querySelector('#body'));
 });

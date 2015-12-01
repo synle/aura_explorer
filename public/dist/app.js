@@ -1,7 +1,7 @@
 //Developed by Sy Le. Coprighted by Salesforce.com 2015
 'use strict';
 
-var _util = require('./dist/util');
+var _util = require('dist/util');
 
 var _util2 = _interopRequireDefault(_util);
 

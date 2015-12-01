@@ -1,21 +1,21 @@
 //external
 import _ from 'lodash';
+import Q from 'q';
 
 //internal
 //data
-import dataDependenciesMap from './data/dependenciesMap.json';
-import usageMaps from './data/usageMap.json';
+import restClient from '/aura-explorer/restClient';
 
 //internal react components
-import ListView from './src/client/components/ListView';
-import Attributes_Handler_Events_Table from './src/client/components/AttributesHandlerEventsTable';
-import UsageTable from './src/client/components/UsageTable';
-import ControlDetailLink from './src/client/components/ControlDetailLink';
-import DependenciesDetailTable from './src/client/components/DependenciesDetailTable';
-import MethodTable from './src/client/components/MethodTable';
+import ListView from '/aura-explorer/components/ListView';
+import Attributes_Handler_Events_Table from '/aura-explorer/components/AttributesHandlerEventsTable';
+import UsageTable from '/aura-explorer/components/UsageTable';
+import ControlDetailLink from '/aura-explorer/components/ControlDetailLink';
+import DependenciesDetailTable from '/aura-explorer/components/DependenciesDetailTable';
+import MethodTable from '/aura-explorer/components/MethodTable';
 
 //utils
-import util from './src/client/util';
+import util from '/aura-explorer/util';
 
 
 //control detail
@@ -41,7 +41,7 @@ const ControlDetailPage = React.createClass({
 			const importsList   = _.values( _.get(this, 'props.controlObj.imports', {}) );
 
 			const usageList = _.reduce(
-				usageMaps,
+				this.props.usageMaps,
 				(res, usageMap, curControlName) => {
 					if (shortControlName === curControlName.toLowerCase()){
 						return usageMap;
@@ -66,7 +66,7 @@ const ControlDetailPage = React.createClass({
 					</div>
 
 					<ul className="nav nav-tabs" role="tablist">
-						{ this._getTabHeaderItem( "tab-attributes",    "Attributes", attributeList) }
+						{ this._getTabHeaderItem( "tab-attributes",    "Attributes", attributeList , true) }
 						{ this._getTabHeaderItem( "tab-dependencies",  "Dependencies", dependenciesMap) }
 						{ this._getTabHeaderItem( "tab-events",        "Events", eventsList) }
 						{ this._getTabHeaderItem( "tab-imports",       "Imports", importsList) }
@@ -92,21 +92,17 @@ const ControlDetailPage = React.createClass({
 		// return nextProps.selectedControlName !== this.props.selectedControlName;
 		return true;//always update
 	},
-	_getTabHeaderItem(tabContentId, headerName, entityObjects){
+	_getTabHeaderItem(tabContentId, headerName, entityObjects, active){
 		const entityCount = _.size( entityObjects );
 		const tabPlainText = `${headerName} ${this._getCountBadge( entityCount )}`;
 
-		return entityCount > 0
-			? <li role="presentation">
+		return (
+			<li role="presentation" className={active ? 'active' : ''}>
 				<a href={`#${tabContentId}`} aria-controls="settings" role="tab" data-toggle="tab">
 					{tabPlainText}
 				</a>
 			</li>
-			: <li role="presentation" className='disabled'>
-				<a className='disabled' aria-controls="settings" role="tab">
-					{tabPlainText}
-				</a>
-			</li>
+		)
 	},
 	_getCountBadge(countNum){
 		return countNum > 0 ? `[${countNum}]` : '';
@@ -119,7 +115,7 @@ const ControlDetailPage = React.createClass({
 const DependenciesPage = React.createClass({
 	getInitialState(){
 		const searchTerm = util.getSearchTerm(location.href);
-		const flattenDependencies = util.flattenDependencies( dataDependenciesMap );
+		const flattenDependencies = util.flattenDependencies( this.props.dataDependenciesMap );
 
 		const myInitState = {
 			flattenDependencies,
@@ -174,7 +170,8 @@ const DependenciesPage = React.createClass({
 					</div>
 					<div id="control-detail-wrapper" className="col-sm-8">
 						<ControlDetailPage controlName={this.state.selectedControlName}
-							controlObj={this.state.selectedControlObj} />
+							controlObj={this.state.selectedControlObj}
+							usageMaps={this.props.usageMaps} />
 					</div>
 				</div>
 			</div>
@@ -204,9 +201,13 @@ const DependenciesPage = React.createClass({
 
 //rendering
 util.render( () => {
+	const dataDependenciesMap = restClient.getDataDependenciesMap();
+	const usageMaps = restClient.getUsageMap();
+
 	//control usage count
 	ReactDOM.render(
-		<DependenciesPage />,
+		<DependenciesPage dataDependenciesMap={dataDependenciesMap}
+			usageMaps={usageMaps} />,
 		document.querySelector('#body')
 	);
 });
