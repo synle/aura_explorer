@@ -28,8 +28,9 @@ var appScripts = [
 ];
 
 var pagesScripts = [
-	'src/frontend/pages/*.js',
-	'src/frontend/components/*.js'
+	'src/frontend/**/*.js'
+	// 'src/frontend/pages/*.js',
+	// 'src/frontend/components/*.js'
 ];
 
 var vendorScripts = [
@@ -81,7 +82,9 @@ var generateViews = function(src){
 }
 
 
-var generateScripts = function(dest, src, srcBase){
+var generateScripts = function(dest, src){
+	var srcBase = { base : './src' };
+
 	return function(){
 		return gulp.src(src, srcBase)
 			.pipe(plumber())
@@ -103,11 +106,11 @@ var generateScripts = function(dest, src, srcBase){
 }
 
 var generateScripts_Frontend_App = function(){
-	return generateScripts(outputDistJsDir, appScripts, { base : './src' });
+	return generateScripts(outputDistJsDir, appScripts);
 }
 
 var generateScripts_Frontend_Pages = function(){
-	return generateScripts(outputDistJsDir, pagesScripts, { base : './src' });
+	return generateScripts(outputDistJsDir, pagesScripts);
 }
 
 var generateScripts_Frontend_Vendor = function(){
@@ -115,15 +118,18 @@ var generateScripts_Frontend_Vendor = function(){
 		return gulp.src(vendorScripts)
 			.pipe(plumber())
 		    .pipe(concat('vendor.js'))
+		    .pipe(minify({
+		        mangle: false
+		    }))
 		    .pipe(header(headerBanner))
-		    .pipe(gulp.dest(outputDistJsDir));
+		    .pipe(gulp.dest(outputDistJsFrontendDir));
 	}
 }
 
 
 //back end
 var generateScripts_Backend = function(src){
-	return generateScripts(outputDistJsDir, backendScripts, { base : './src' });
+	return generateScripts(outputDistJsDir, backendScripts);
 }
 
 
