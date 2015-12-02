@@ -3,17 +3,12 @@ import _ from 'lodash';
 import Q from 'q';
 
 //internal
-//data
-import restClient from '/aura-explorer/frontend/restClient';
-
-//internal react components
 import CountTableComponent from '/aura-explorer/frontend/components/AuraStatCountTable';
 
 //utils
 import util from '/aura-explorer/frontend/util';
-
-//app init
-import appInit from '/aura-explorer/frontend/app';
+import appInit from '/aura-explorer/frontend/library/app';
+import restClient from '/aura-explorer/frontend/library/restClient';
 
 //main page
 const StatPage = React.createClass({
@@ -58,7 +53,7 @@ const StatPage = React.createClass({
 //rendering
 util.render( () => {
 	//init app
-	appInit();
+	appInit(document);
 
 	//loading components
 	Q.all([

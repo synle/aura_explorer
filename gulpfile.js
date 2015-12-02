@@ -30,7 +30,8 @@ var appScripts = [
 var pagesScripts = [
 	'src/frontend/**/*.js'
 	// 'src/frontend/pages/*.js',
-	// 'src/frontend/components/*.js'
+	// 'src/frontend/components/*.js',
+	// 'src/frontend/library/*.js'
 ];
 
 var vendorScripts = [

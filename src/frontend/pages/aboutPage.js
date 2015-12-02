@@ -3,13 +3,10 @@ import _ from 'lodash';
 import Q from 'q';
 
 //internal
-import restClient from '/aura-explorer/frontend/restClient';
-
 //utils
 import util from '/aura-explorer/frontend/util';
-
-//app init
-import appInit from '/aura-explorer/frontend/app';
+import appInit from '/aura-explorer/frontend/library/app';
+import restClient from '/aura-explorer/frontend/library/restClient';
 
 const AboutPage = React.createClass({
 	render(){
@@ -47,7 +44,7 @@ const AboutPage = React.createClass({
 //rendering
 util.render( () => {
 	//init app
-	appInit();
+	appInit(document);
 
 	//loading components
 	Q.all([

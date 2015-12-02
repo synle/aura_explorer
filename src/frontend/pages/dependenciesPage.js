@@ -3,20 +3,14 @@ import _ from 'lodash';
 import Q from 'q';
 
 //internal
-//data
-import restClient from '/aura-explorer/frontend/restClient';
-
 //internal react components
 import ListView from '/aura-explorer/frontend/components/ListView';
-
-//big component
 import ControlDetailPage from '/aura-explorer/frontend/components/AuraControlDetail';
 
 //utils
 import util from '/aura-explorer/frontend/util';
-
-//app init
-import appInit from '/aura-explorer/frontend/app';
+import appInit from '/aura-explorer/frontend/library/app';
+import restClient from '/aura-explorer/frontend/library/restClient';
 
 //main page
 const DependenciesPage = React.createClass({
@@ -105,7 +99,7 @@ const DependenciesPage = React.createClass({
 //rendering
 util.render( () => {
 	//init app
-	appInit();
+	appInit(document);
 
 	//loading components
 	Q.all([

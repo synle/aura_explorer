@@ -5,7 +5,7 @@
 import util from '/aura-explorer/frontend/util';
 
 //render
-const appInit = () => {
+const appInit = (document) => {
     //navs
     const navItems = $(`
         <div class="container-fluid">
@@ -57,7 +57,7 @@ const appInit = () => {
 
     //scroll to top
     const btnScrollToTop =$(`<button id="btnScrollToTop" class="btn btn-primary">^</button>`)
-        .click(() => $('#body').scrollTop(0))
+        .click(() => $(document).scrollTop(0))
         .appendTo('#navbar');
 }
 

@@ -81,8 +81,19 @@ const utils = {
 
 	//strip .cmp and .app
 	getTagNameFromControlName(tagName){
-		const extensionIdx = tagName.lastIndexOf('.cmp') || tagName.lastIndexOf('.app');
-		return extensionIdx > 0 ? tagName.substr(0, extensionIdx) : tagName;
+		let extensionIdx;
+
+		extensionIdx = tagName.lastIndexOf('.cmp');
+		if (extensionIdx >= 0){
+			return tagName.substr(0, extensionIdx);
+		}
+
+		extensionIdx = tagName.lastIndexOf('.app');
+		if (extensionIdx >= 0){
+			return tagName.substr(0, extensionIdx);
+		}
+
+		return tagName;
 	}
 };
 
