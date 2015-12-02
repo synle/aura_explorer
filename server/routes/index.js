@@ -1,14 +1,21 @@
-var express = require('express');
-var router = express.Router();
+//external
+import Q from 'q';
+import express from 'express';
 
-var lastCommit = 'last commit';
-var resourceNames = [
+//internal
+import data from '../src/data';
+
+
+//code start
+const router = express.Router();
+
+const lastCommit = 'last commit';
+const resourceNames = [
 	'dataDependenciesMap',
 	'usageMap',
 	'controlCountMap',
 	'namespaceCountMap',
 	'packageInfo',
-	'explorerConfig',
 	'auraExplorerJson',
 	'auraStreamPom'
 ];
@@ -18,44 +25,47 @@ var resourceNames = [
 //   res.render('index', { title: 'Express' });
 // });
 
-router.get('/rest/:resourceName/:commitId', function(req, res, next) {
-	var error = null;
-	var content = null;
-	var commitId = req.params.commitId || lastCommit;
-	var resourceName = req.params.resourceName;
+router.get('/rest/:resourceName/:commitId', (req, res, next) => {
+	let error = null;
+	let content = null;
+	let commitId = req.params.commitId || lastCommit;
+	let resourceName = req.params.resourceName;
+
+	let asyncRestPromise = true;
+
+	//set the content on the promise
+	const _asyncIntermidateThen = (newContent) => {
+		content = newContent;
+	}
 
 	switch(resourceName.toLowerCase()){
 		case 'datadependenciesmap':
 			resourceName = 'dataDependenciesMap';
-			content = {};
+			asyncRestPromise = data.getDataDependenciesMap( commitId ).then(_asyncIntermidateThen);
 			break;
 		case 'usagemap':
 			resourceName = 'usageMap';
-			content = {};
+			asyncRestPromise = data.getUsageMap( commitId ).then(_asyncIntermidateThen);
 			break;
 		case 'controlcountmap':
 			resourceName = 'controlCountMap';
-			content = {};
+			asyncRestPromise = data.getControlCountMap( commitId ).then(_asyncIntermidateThen);
 			break;
 		case 'namespacecountmap':
 			resourceName = 'namespaceCountMap';
-			content = {};
+			asyncRestPromise = data.getNamespaceCountMap( commitId ).then(_asyncIntermidateThen);
 			break;
 		case 'packageinfo':
 			resourceName = 'packageInfo';
-			content = {};
-			break;
-		case 'explorerconfig':
-			resourceName = 'explorerConfig';
-			content = {};
+			asyncRestPromise = data.getPackageInfo( commitId ).then(_asyncIntermidateThen);
 			break;
 		case 'auraexplorerjson':
 			resourceName = 'auraExplorerJson';
-			content = {};
+			asyncRestPromise = data.getAuraExplorerJson( commitId ).then(_asyncIntermidateThen);
 			break;
 		case 'aurastreampom':
 			resourceName = 'auraStreamPom';
-			content = {};
+			asyncRestPromise = data.getAuraStreamPom( commitId ).then(_asyncIntermidateThen);
 			break;
 		default:
 			error = 'Invalid resource name. Resource name must be of form: ' + resourceNames.join(', ');
@@ -64,7 +74,12 @@ router.get('/rest/:resourceName/:commitId', function(req, res, next) {
 			break;
 	}
 
-	res.json({'name': resourceName, 'content': content, 'commitId': commitId, error : error});
+	//wait for promise to be settled
+	Q.allSettled([asyncRestPromise]).then(() => {
+		res.json(
+			{'name': resourceName, content, commitId, error}
+		);
+	});
 });
 
 module.exports = router;
