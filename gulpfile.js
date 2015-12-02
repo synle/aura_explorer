@@ -95,7 +95,7 @@ var generateScripts = function(dest, src){
 		    .pipe(babel({
 				resolveModuleSource: function(source, filename) {
 					//remap the path
-					const newPath = source.replace('/aura-explorer/', 'public/dist/js/');
+					const newPath = source.replace('/aura-explorer/', '~/public/dist/js/');
 					return newPath;
 				}
 		    }))
@@ -156,6 +156,7 @@ gulp.task('babelify', function (cb) {
 		],
 		function(curScript){
 			var curBaseScriptName = path.basename(curScript);
+			console.log('babelify', outputDistJsNativeDir + '/' + curBaseScriptName);
 
 			browserify({ debug: true })
 			  .transform(babelify)
