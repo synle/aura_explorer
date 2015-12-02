@@ -6,7 +6,7 @@ import _ from 'lodash';
 import Q from 'q';
 
 //internal
-import logger from '/aura-explorer/backend/logger';//internal loggr
+import logger from '~/src/backend/logger';//internal loggr
 
 //export
 const self = {
