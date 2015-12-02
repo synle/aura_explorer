@@ -10,6 +10,7 @@ import controlCountMap from '/aura-explorer/data/controlCountMap.json';
 import namespaceCountMap from '/aura-explorer/data/namespaceCountMap.json';
 import explorerConfig from '/aura-explorer/backend/config.js';
 
+//get contents
 const util_readFromFileAsync = (fpath) => fs.readFileSync(fpath, 'utf8');
 
 const auraExplorerJson = util_readFromFileAsync(path.join(
@@ -30,7 +31,9 @@ const auraStreamPom    = util_readFromFileAsync(path.join(
 
 const packageInfo = JSON.parse(auraExplorerJson);
 
-export default {
+
+//definitions
+const restClient = {
 	getDataDependenciesMap(){
 		const defer = Q.defer();
 		defer.resolve(dataDependenciesMap);
@@ -72,3 +75,6 @@ export default {
 		return defer.promise;
 	}
 }
+
+//export
+export default restClient;
