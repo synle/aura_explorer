@@ -5,14 +5,14 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _util = require('dist/js/frontend/util');
+var _util = require('public/dist/js/frontend/util');
 
 var _util2 = _interopRequireDefault(_util);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 //render
-var appInit = function appInit() {
+var appInit = function appInit(document) {
     //navs
     var navItems = $('\n        <div class="container-fluid">\n            <div class="navbar-header">\n                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">\n                <span class="sr-only">Toggle navigation</span>\n                <span class="icon-bar"></span>\n                <span class="icon-bar"></span>\n                </button>\n                <strong class="navbar-brand">\n                Aura Explorer\n                <small>Statistics</small>\n                </strong>\n            </div>\n            <div id="navbar" class="navbar-collapse collapse">\n                <ul class="nav navbar-nav navbar-right">\n                    <li><a href="index.html">Statistics</a></li>\n                    <li><a href="controls.html">Controls</a></li>\n                    <li><a href="config.html">Config</a></li>\n                </ul>\n            </div>\n        </div>\n    ').prependTo('#nav');
 
@@ -35,5 +35,8 @@ var appInit = function appInit() {
 };
 
 //export
-//utils
+//external
+// import $ from 'jquery';
+
+//internal
 exports.default = appInit;

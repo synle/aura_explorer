@@ -9,23 +9,23 @@ var _lodash = require('lodash');
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var _AttributesHandlerEventsTable = require('dist/js/frontend/components/AttributesHandlerEventsTable');
+var _AttributesHandlerEventsTable = require('public/dist/js/frontend/components/AttributesHandlerEventsTable');
 
 var _AttributesHandlerEventsTable2 = _interopRequireDefault(_AttributesHandlerEventsTable);
 
-var _UsageTable = require('dist/js/frontend/components/UsageTable');
+var _UsageTable = require('public/dist/js/frontend/components/UsageTable');
 
 var _UsageTable2 = _interopRequireDefault(_UsageTable);
 
-var _DependenciesDetailTable = require('dist/js/frontend/components/DependenciesDetailTable');
+var _DependenciesDetailTable = require('public/dist/js/frontend/components/DependenciesDetailTable');
 
 var _DependenciesDetailTable2 = _interopRequireDefault(_DependenciesDetailTable);
 
-var _MethodTable = require('dist/js/frontend/components/MethodTable');
+var _MethodTable = require('public/dist/js/frontend/components/MethodTable');
 
 var _MethodTable2 = _interopRequireDefault(_MethodTable);
 
-var _util = require('dist/js/frontend/util');
+var _util = require('public/dist/js/frontend/util');
 
 var _util2 = _interopRequireDefault(_util);
 
