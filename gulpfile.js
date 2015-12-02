@@ -1,5 +1,8 @@
 //dependencies
+//nongulp
+var exec = require('child_process').exec;
 var path = require('path');
+//gulps
 var gulp = require('gulp');
 var header = require('gulp-header');
 var footer = require('gulp-footer');
@@ -24,11 +27,7 @@ var appScripts = [
 ];
 
 var pagesScripts = [
-	'src/client/pages/*.js'
-];
-
-
-var componentScripts = [
+	'src/client/pages/*.js',
 	'src/client/components/*.js'
 ];
 
@@ -59,6 +58,7 @@ var headerBanner = '//Developed by Sy Le. Coprighted by Salesforce.com 2015\n';
 
 
 //task detail
+//front end
 var generateStyles = function(src, dest){
 	return function(){
 		return gulp.src(src)
@@ -72,9 +72,17 @@ var generateStyles = function(src, dest){
 	}
 }
 
+var generateViews = function(src){
+	return function(){
+		return gulp.src(src, {base: './view'})
+			.pipe(gulp.dest(outputDistViewDir));
+	}
+}
+
+
 var generateScripts = function(src, srcBase){
 	return function(){
-		return gulp.src(src, srcBase || {} )
+		return gulp.src(src, srcBase)
 			.pipe(plumber())
 		    // .pipe(sourcemaps.init())
 		    .pipe(babel({
@@ -93,24 +101,17 @@ var generateScripts = function(src, srcBase){
 	}
 }
 
-
-var generateScripts_ReactComponents = function(src){
-	return generateScripts(src, { base : './src/client' });
+var generateScripts_Frontend_App = function(){
+	return generateScripts(appScripts, { base : './src/client' });
 }
 
-var generateScripts_Pages = function(src){
-	return generateScripts(src, { base : './src/client' });
+var generateScripts_Frontend_Pages = function(){
+	return generateScripts(pagesScripts, { base : './src/client' });
 }
 
-var generateScripts_Backend = function(src){
-	return generateScripts(src, { base : './src' });
-}
-
-
-
-var generateScripts_Vendor = function(src){
+var generateScripts_Frontend_Vendor = function(){
 	return function(){
-		return gulp.src(src)
+		return gulp.src(vendorScripts)
 			.pipe(plumber())
 		    .pipe(concat('vendor.js'))
 		    .pipe(header(headerBanner))
@@ -119,34 +120,40 @@ var generateScripts_Vendor = function(src){
 }
 
 
-var generateViews = function(src){
-	return function(){
-		return gulp.src(src, {base: './view'})
-			.pipe(gulp.dest(outputDistViewDir));
-	}
+//back end
+var generateScripts_Backend = function(src){
+	return generateScripts(src, { base : './src' });
 }
 
 
 //task definitons
-gulp.task('styles', generateStyles(appStyles, 'app.css'));
-gulp.task('scripts_app', generateScripts(appScripts));
-gulp.task('scripts_component', generateScripts_ReactComponents(componentScripts));
-gulp.task('scripts_pages', generateScripts_Pages(pagesScripts));
-gulp.task('scripts_vendor', generateScripts_Vendor(vendorScripts));
-gulp.task('scripts_backend', generateScripts_Backend(backendScripts));
+//frontend
 gulp.task('views', generateViews(appViews));
+gulp.task('styles', generateStyles(appStyles, 'app.css'));
+gulp.task('scripts_frontend_app',    generateScripts_Frontend_App()    );
+gulp.task('scripts_frontend_pages',  generateScripts_Frontend_Pages()  );
+gulp.task('scripts_frontend_vendor', generateScripts_Frontend_Vendor() );
+//back end
+gulp.task('scripts_backend', generateScripts_Backend(backendScripts));
+//build data
+gulp.task('pkg', function (cb) {
+	exec('npm run pkg', function (err, stdout, stderr) {
+		console.log(stdout);
+		console.log(stderr);
+		cb(err);
+	});
+})
 
 gulp.task('dev', function(){
 	gulp.run('default');
-	gulp.watch(appScripts,  ['scripts_app']);
-	gulp.watch(vendorScripts,  ['scripts_vendor']);
-	gulp.watch(pagesScripts,  ['scripts_pages']);
-	gulp.watch(componentScripts,  ['scripts_component']);
+	gulp.watch(appScripts,  ['scripts_frontend_app']);
+	gulp.watch(vendorScripts,  ['scripts_frontend_vendor']);
+	gulp.watch(pagesScripts,  ['scripts_frontend_pages']);
 	gulp.watch(appStyles,  ['styles']);
 	gulp.watch(appViews,  ['views']);
 })
 
 
 //publis alias
-gulp.task('scripts', ['scripts_app', 'scripts_pages', 'scripts_component', 'scripts_vendor', 'scripts_backend']);
+gulp.task('scripts', ['scripts_frontend_app', 'scripts_frontend_pages', 'scripts_frontend_vendor', 'scripts_backend']);
 gulp.task('default', ['scripts', 'styles', 'views']);
