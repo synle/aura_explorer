@@ -119,9 +119,9 @@ var generateScripts_Frontend_Vendor = function(){
 		return gulp.src(vendorScripts)
 			.pipe(plumber())
 		    .pipe(concat('vendor.js'))
-		    .pipe(minify({
-		        mangle: false
-		    }))
+		    // .pipe(minify({
+		    //     mangle: false
+		    // }))
 		    .pipe(header(headerBanner))
 		    .pipe(gulp.dest(outputDistJsFrontendDir));
 	}
@@ -129,7 +129,7 @@ var generateScripts_Frontend_Vendor = function(){
 
 
 //back end
-var generateScripts_Backend = function(src){
+var generateScripts_Backend = function(){
 	return generateScripts(outputDistJsDir, backendScripts);
 }
 
@@ -165,3 +165,8 @@ gulp.task('dev', function(){
 //publis alias
 gulp.task('scripts', ['scripts_frontend_app', 'scripts_frontend_pages', 'scripts_frontend_vendor', 'scripts_backend']);
 gulp.task('default', ['scripts', 'styles', 'views']);
+
+
+
+//babelify scripts
+// browserify public/dist/js/frontend/pages/statPage.js -t babelify --outfile public/dist/js/statPage.native.js; browserify public/dist/js/frontend/pages/dependenciesPage.js -t babelify --outfile public/dist/js/dependenciesPage.native.js; browserify public/dist/js/frontend/pages/aboutPage.js -t babelify --outfile public/dist/js/aboutPage.native.js;
