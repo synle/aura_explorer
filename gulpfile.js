@@ -18,17 +18,18 @@ var minify = require('gulp-minify');
 //output
 var outputDir = 'public';
 var outputDistJsDir = 'public/dist/js';
+var outputDistJsFrontendDir = 'public/dist/js/frontend';
 var outputDistCssDir = 'public/dist/css';
 var outputDistViewDir = 'public';
 
 //scripts
 var appScripts = [
-	'src/client/*.js'
+	'src/frontend/*.js'
 ];
 
 var pagesScripts = [
-	'src/client/pages/*.js',
-	'src/client/components/*.js'
+	'src/frontend/pages/*.js',
+	'src/frontend/components/*.js'
 ];
 
 var vendorScripts = [
@@ -80,7 +81,7 @@ var generateViews = function(src){
 }
 
 
-var generateScripts = function(src, srcBase){
+var generateScripts = function(dest, src, srcBase){
 	return function(){
 		return gulp.src(src, srcBase)
 			.pipe(plumber())
@@ -97,16 +98,16 @@ var generateScripts = function(src, srcBase){
 		    // .pipe(minify({
 		    //     mangle: false
 		    // }))
-		    .pipe(gulp.dest(outputDistJsDir));
+		    .pipe(gulp.dest(dest));
 	}
 }
 
 var generateScripts_Frontend_App = function(){
-	return generateScripts(appScripts, { base : './src/client' });
+	return generateScripts(outputDistJsDir, appScripts, { base : './src' });
 }
 
 var generateScripts_Frontend_Pages = function(){
-	return generateScripts(pagesScripts, { base : './src/client' });
+	return generateScripts(outputDistJsDir, pagesScripts, { base : './src' });
 }
 
 var generateScripts_Frontend_Vendor = function(){
@@ -122,7 +123,7 @@ var generateScripts_Frontend_Vendor = function(){
 
 //back end
 var generateScripts_Backend = function(src){
-	return generateScripts(src, { base : './src' });
+	return generateScripts(outputDistJsDir, backendScripts, { base : './src' });
 }
 
 
