@@ -9,11 +9,11 @@ var _lodash = require('lodash');
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var _util = require('public/dist/js/frontend/util');
+var _util = require('/Users/sle/git/aura_explorer/public/dist/js/frontend/util');
 
 var _util2 = _interopRequireDefault(_util);
 
-var _Table = require('public/dist/js/frontend/components/Table');
+var _Table = require('/Users/sle/git/aura_explorer/public/dist/js/frontend/components/Table');
 
 var _Table2 = _interopRequireDefault(_Table);
 

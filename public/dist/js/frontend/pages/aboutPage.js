@@ -14,15 +14,15 @@ var _q = require('q');
 
 var _q2 = _interopRequireDefault(_q);
 
-var _util = require('public/dist/js/frontend/util');
+var _util = require('/Users/sle/git/aura_explorer/public/dist/js/frontend/util');
 
 var _util2 = _interopRequireDefault(_util);
 
-var _app = require('public/dist/js/frontend/library/app');
+var _app = require('/Users/sle/git/aura_explorer/public/dist/js/frontend/library/app');
 
 var _app2 = _interopRequireDefault(_app);
 
-var _restClient = require('public/dist/js/frontend/library/restClient');
+var _restClient = require('/Users/sle/git/aura_explorer/public/dist/js/frontend/library/restClient');
 
 var _restClient2 = _interopRequireDefault(_restClient);
 
@@ -47,20 +47,6 @@ var AboutPage = React.createClass({
 					),
 					' : ',
 					this.props.packageInfo.version
-				),
-				React.createElement(
-					'div',
-					{ className: 'mb15' },
-					React.createElement(
-						'strong',
-						null,
-						'Explorer Config'
-					),
-					React.createElement(
-						'pre',
-						null,
-						JSON.stringify(this.props.explorerConfig, null, 2)
-					)
 				),
 				React.createElement(
 					'div',
@@ -107,16 +93,14 @@ _util2.default.render(function () {
 	(0, _app2.default)(document);
 
 	//loading components
-	_q2.default.all([_restClient2.default.getPackageInfo(), _restClient2.default.getExplorerConfig(), _restClient2.default.getAuraExplorerJson(), _restClient2.default.getAuraStreamPom()]).done(function (_ref) {
-		var _ref2 = _slicedToArray(_ref, 4);
+	_q2.default.all([_restClient2.default.getPackageInfo(), _restClient2.default.getAuraExplorerJson(), _restClient2.default.getAuraStreamPom()]).done(function (_ref) {
+		var _ref2 = _slicedToArray(_ref, 3);
 
 		var packageInfo = _ref2[0];
-		var explorerConfig = _ref2[1];
-		var auraExplorerJson = _ref2[2];
-		var auraStreamPom = _ref2[3];
+		var auraExplorerJson = _ref2[1];
+		var auraStreamPom = _ref2[2];
 
 		ReactDOM.render(React.createElement(AboutPage, { packageInfo: packageInfo,
-			explorerConfig: explorerConfig,
 			auraExplorerJson: auraExplorerJson,
 			auraStreamPom: auraStreamPom }), document.querySelector('#body'));
 	});

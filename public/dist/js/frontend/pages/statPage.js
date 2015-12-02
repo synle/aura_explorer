@@ -15,19 +15,19 @@ var _q = require('q');
 
 var _q2 = _interopRequireDefault(_q);
 
-var _AuraStatCountTable = require('public/dist/js/frontend/components/AuraStatCountTable');
+var _AuraStatCountTable = require('/Users/sle/git/aura_explorer/public/dist/js/frontend/components/AuraStatCountTable');
 
 var _AuraStatCountTable2 = _interopRequireDefault(_AuraStatCountTable);
 
-var _util = require('public/dist/js/frontend/util');
+var _util = require('/Users/sle/git/aura_explorer/public/dist/js/frontend/util');
 
 var _util2 = _interopRequireDefault(_util);
 
-var _app = require('public/dist/js/frontend/library/app');
+var _app = require('/Users/sle/git/aura_explorer/public/dist/js/frontend/library/app');
 
 var _app2 = _interopRequireDefault(_app);
 
-var _restClient = require('public/dist/js/frontend/library/restClient');
+var _restClient = require('/Users/sle/git/aura_explorer/public/dist/js/frontend/library/restClient');
 
 var _restClient2 = _interopRequireDefault(_restClient);
 

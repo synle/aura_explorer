@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _util = require('public/dist/js/frontend/util');
+var _util = require('/Users/sle/git/aura_explorer/public/dist/js/frontend/util');
 
 var _util2 = _interopRequireDefault(_util);
 

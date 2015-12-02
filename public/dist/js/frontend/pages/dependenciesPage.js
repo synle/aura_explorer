@@ -16,23 +16,23 @@ var _q = require('q');
 
 var _q2 = _interopRequireDefault(_q);
 
-var _ListView = require('public/dist/js/frontend/components/ListView');
+var _ListView = require('/Users/sle/git/aura_explorer/public/dist/js/frontend/components/ListView');
 
 var _ListView2 = _interopRequireDefault(_ListView);
 
-var _AuraControlDetail = require('public/dist/js/frontend/components/AuraControlDetail');
+var _AuraControlDetail = require('/Users/sle/git/aura_explorer/public/dist/js/frontend/components/AuraControlDetail');
 
 var _AuraControlDetail2 = _interopRequireDefault(_AuraControlDetail);
 
-var _util = require('public/dist/js/frontend/util');
+var _util = require('/Users/sle/git/aura_explorer/public/dist/js/frontend/util');
 
 var _util2 = _interopRequireDefault(_util);
 
-var _app = require('public/dist/js/frontend/library/app');
+var _app = require('/Users/sle/git/aura_explorer/public/dist/js/frontend/library/app');
 
 var _app2 = _interopRequireDefault(_app);
 
-var _restClient = require('public/dist/js/frontend/library/restClient');
+var _restClient = require('/Users/sle/git/aura_explorer/public/dist/js/frontend/library/restClient');
 
 var _restClient2 = _interopRequireDefault(_restClient);
 
