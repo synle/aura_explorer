@@ -11,7 +11,10 @@ var _lodash2 = _interopRequireDefault(_lodash);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = {
+//external
+
+//definitions
+var utils = {
 	render: function render(cb) {
 		$(function () {
 			return cb();
@@ -73,3 +76,7 @@ exports.default = {
 		return extensionIdx > 0 ? tagName.substr(0, extensionIdx) : tagName;
 	}
 };
+
+//export
+//internal
+exports.default = utils;

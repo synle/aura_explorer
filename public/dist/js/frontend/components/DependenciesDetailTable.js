@@ -9,19 +9,19 @@ var _lodash = require('lodash');
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var _util = require('dist/js/util');
+var _util = require('dist/js/frontend/util');
 
 var _util2 = _interopRequireDefault(_util);
 
-var _ControlDetailLink = require('dist/js/components/ControlDetailLink');
+var _ControlDetailLink = require('dist/js/frontend/components/ControlDetailLink');
 
 var _ControlDetailLink2 = _interopRequireDefault(_ControlDetailLink);
 
-var _KeyValTable = require('dist/js/components/KeyValTable');
+var _KeyValTable = require('dist/js/frontend/components/KeyValTable');
 
 var _KeyValTable2 = _interopRequireDefault(_KeyValTable);
 
-var _KeyValueXmlSyntax = require('dist/js/components/KeyValueXmlSyntax');
+var _KeyValueXmlSyntax = require('dist/js/frontend/components/KeyValueXmlSyntax');
 
 var _KeyValueXmlSyntax2 = _interopRequireDefault(_KeyValueXmlSyntax);
 

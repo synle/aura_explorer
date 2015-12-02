@@ -20,19 +20,19 @@ var _q = require('q');
 
 var _q2 = _interopRequireDefault(_q);
 
-var _restClient = require('dist/js/restClient');
+var _restClient = require('dist/js/frontend/restClient');
 
 var _restClient2 = _interopRequireDefault(_restClient);
 
-var _AuraStatCountTable = require('dist/js/components/AuraStatCountTable');
+var _AuraStatCountTable = require('dist/js/frontend/components/AuraStatCountTable');
 
 var _AuraStatCountTable2 = _interopRequireDefault(_AuraStatCountTable);
 
-var _util = require('dist/js/util');
+var _util = require('dist/js/frontend/util');
 
 var _util2 = _interopRequireDefault(_util);
 
-var _app = require('dist/js/app');
+var _app = require('dist/js/frontend/app');
 
 var _app2 = _interopRequireDefault(_app);
 
