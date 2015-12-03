@@ -27979,6 +27979,14 @@
     }
    }
   ],
+  "auratest:errorHandlingErrorModelCmp.cmp": [
+   {
+    "controlNameSpace": "auratest",
+    "controlName": "errorHandlingErrorModelCmp.cmp",
+    "controlFullName": "auratest:errorHandlingErrorModelCmp.cmp",
+    "attribs": {}
+   }
+  ],
   "auratest:fastClickDomEvents.cmp": [
    {
     "controlNameSpace": "auratest",
@@ -52016,6 +52024,16 @@
     }
    }
   ],
+  "auraStorageTest:failedStorageTemplate.cmp": [
+   {
+    "controlNameSpace": "auraStorageTest",
+    "controlName": "failedStorageTemplate.cmp",
+    "controlFullName": "auraStorageTest:failedStorageTemplate.cmp",
+    "attribs": {
+     "attribute": "auraPreInitBlock"
+    }
+   }
+  ],
   "auraStorageTest:indexedDBtemplate.cmp": [
    {
     "controlNameSpace": "auraStorageTest",
@@ -67849,6 +67867,14 @@
     "controlNameSpace": "auraStorageTest",
     "controlName": "failedDefStorageTemplate.cmp",
     "controlFullName": "auraStorageTest:failedDefStorageTemplate.cmp",
+    "attribs": {}
+   }
+  ],
+  "auraStorageTest:failedStorageTemplate.cmp": [
+   {
+    "controlNameSpace": "auraStorageTest",
+    "controlName": "failedStorageTemplate.cmp",
+    "controlFullName": "auraStorageTest:failedStorageTemplate.cmp",
     "attribs": {}
    }
   ],
@@ -91185,6 +91211,29 @@
     }
    }
   ],
+  "auraStorageTest:failedStorageTemplate.cmp": [
+   {
+    "controlNameSpace": "auraStorageTest",
+    "controlName": "failedStorageTemplate.cmp",
+    "controlFullName": "auraStorageTest:failedStorageTemplate.cmp",
+    "attribs": {
+     "isTemplate": "true",
+     "extensible": "true",
+     "extends": "aura:template"
+    }
+   }
+  ],
+  "auraStorageTest:failedStorageTest.cmp": [
+   {
+    "controlNameSpace": "auraStorageTest",
+    "controlName": "failedStorageTest.cmp",
+    "controlFullName": "auraStorageTest:failedStorageTest.cmp",
+    "attribs": {
+     "template": "auraStorageTest:failedStorageTemplate",
+     "controller": "java://org.auraframework.impl.java.controller.AuraStorageTestController"
+    }
+   }
+  ],
   "auraStorageTest:fuelGaugeTestStub.cmp": [
    {
     "controlNameSpace": "auraStorageTest",
@@ -91667,6 +91716,17 @@
     "controlFullName": "auratest:errorHandling.cmp",
     "attribs": {
      "controller": "java://org.auraframework.components.test.java.controller.TestController"
+    }
+   }
+  ],
+  "auratest:errorHandlingErrorModelCmp.cmp": [
+   {
+    "controlNameSpace": "auratest",
+    "controlName": "errorHandlingErrorModelCmp.cmp",
+    "controlFullName": "auratest:errorHandlingErrorModelCmp.cmp",
+    "attribs": {
+     "render": "client",
+     "model": "java://org.auraframework.components.test.java.model.TestModelThrowsInGetter"
     }
    }
   ],
