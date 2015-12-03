@@ -4,15 +4,15 @@
   "description": "Aura explorer used to explore Salesforce Aura Components",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha --compilers js:babel-core/register test",
-    "pkg": "./node_modules/.bin/babel-node  src/backend/app.js",
-    "start": "npm install --production; nw .",
+    "start": "nw .",
     "start_server": "./node_modules/.bin/babel-node  ./bin/www",
-    "clean": "rm -rf public/* aura-master master.zip node_modules/*",
-    "clean_public": "rm -rf public/*",
-    "dev": "gulp dev;",
+    "clean": "npm run clean_aura_upstream; npm run clean_resource",
+    "clean_resource": "rm -rf public/*",
+    "clean_aura_upstream": "rm -rf ./aura-master master.zip",
     "get_aura_upstream": "curl -sLOk https://github.com/forcedotcom/aura/archive/master.zip && (tar -xf master.zip || unzip master.zip)",
-    "build": "npm run clean; npm run get_aura_upstream; npm install; gulp; npm run pkg",
-    "dist": "zip -r ./aura-explorer data/* public/* node_modules/* package.json"
+    "build": "npm run build_source && npm run build_metadata",
+    "build_metadata": "./node_modules/.bin/babel-node src/backend/app.js",
+    "build_source": "npm install; gulp; gulp babelify"
   },
   "main": "public/index.html",
   "repository": {
