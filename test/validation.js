@@ -2,9 +2,10 @@ import {assert} from 'chai';
 import _ from 'lodash';
 import fs from 'fs';
 import path from 'path';
+import CONFIG from '~/config.json';
 
 const _readFile = (fpath) => {
-	const fullPath = path.join(process.cwd(), `/public/dist/data/${fpath}`);
+	const fullPath = path.join(process.cwd(), CONFIG.auraMetaOutputDir, `${fpath}`);
 	console.log(fullPath);
 	return fs.readFileSync(
 		fullPath,
