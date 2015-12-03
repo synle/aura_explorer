@@ -24,7 +24,6 @@ const appInit = (document) => {
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="index.html">Statistics</a></li>
                     <li><a href="controls.html">Controls</a></li>
-                    <li><a href="config.html">Config</a></li>
                 </ul>
             </div>
         </div>

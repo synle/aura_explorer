@@ -1,19 +1,15 @@
 //external
+import Q from 'q';
 import path from 'path';
-import _ from 'lodash';
 
 //internal
-const _util_getJoinPath = (myPath) => `${myPath}`;//path.join( process.cwd(), myPath );
-const _util_readFromFileAsync = global.util_readFromFileAsync;
-const _parsePromise = response => {
-	try{
-		if (_.isString( response )){
-			return JSON.parse(response)
-		}
-	} catch(e){}
+import util from './util';
 
-	return response;
-};
+//get path
+const _util_getJoinPath = (myPath) => `${myPath}`;//path.join( process.cwd(), myPath );
+const _util_readFromFileAsync = util.readFromFileAsync;
+
+const _parsePromise = stringContent => JSON.parse(stringContent);
 
 
 //definitions

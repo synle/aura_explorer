@@ -5,76 +5,54 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _q = require('q');
-
-var _q2 = _interopRequireDefault(_q);
-
 var _path = require('path');
 
 var _path2 = _interopRequireDefault(_path);
+
+var _lodash = require('lodash');
+
+var _lodash2 = _interopRequireDefault(_lodash);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 //internal
 //external
-var util_getJoinPath = function util_getJoinPath(myPath) {
-	return myPath;
+var _util_getJoinPath = function _util_getJoinPath(myPath) {
+	return '' + myPath;
 }; //path.join( process.cwd(), myPath );
+var _util_readFromFileAsync = global.util_readFromFileAsync;
+var _parsePromise = function _parsePromise(response) {
+	try {
+		if (_lodash2.default.isString(response)) {
+			return JSON.parse(response);
+		}
+	} catch (e) {}
 
-//get contents
-var auraExplorerJson = global.util_readFromFileAsync(util_getJoinPath('package.json'));
-
-var auraStreamPom = global.util_readFromFileAsync(util_getJoinPath('public/dist/js/data/aura_upstream_pom.xml'));
-
-var dataDependenciesMap = JSON.parse(global.util_readFromFileAsync('public/dist/js/data/dependenciesMap.json'));
-var usageMap = JSON.parse(global.util_readFromFileAsync('public/dist/js/data/usageMap.json'));
-var controlCountMap = JSON.parse(global.util_readFromFileAsync('public/dist/js/data/controlCountMap.json'));
-var namespaceCountMap = JSON.parse(global.util_readFromFileAsync('public/dist/js/data/namespaceCountMap.json'));
-var explorerConfig = {};
-
-var packageInfo = JSON.parse(auraExplorerJson);
+	return response;
+};
 
 //definitions
 var restClient = {
-	getDataDependenciesMap: function getDataDependenciesMap() {
-		var defer = _q2.default.defer();
-		defer.resolve(dataDependenciesMap);
-		return defer.promise;
-	},
-	getUsageMap: function getUsageMap() {
-		var defer = _q2.default.defer();
-		defer.resolve(usageMap);
-		return defer.promise;
-	},
-	getControlCountMap: function getControlCountMap() {
-		var defer = _q2.default.defer();
-		defer.resolve(controlCountMap);
-		return defer.promise;
-	},
-	getNamespaceCountMap: function getNamespaceCountMap() {
-		var defer = _q2.default.defer();
-		defer.resolve(namespaceCountMap);
-		return defer.promise;
-	},
 	getPackageInfo: function getPackageInfo() {
-		var defer = _q2.default.defer();
-		defer.resolve(packageInfo);
-		return defer.promise;
-	},
-	getExplorerConfig: function getExplorerConfig() {
-		var defer = _q2.default.defer();
-		defer.resolve(explorerConfig);
-		return defer.promise;
+		return _util_readFromFileAsync(_util_getJoinPath('package.json'));
 	},
 	getAuraExplorerJson: function getAuraExplorerJson() {
-		var defer = _q2.default.defer();
-		defer.resolve(auraExplorerJson);
-		return defer.promise;
+		return _util_readFromFileAsync(_util_getJoinPath('package.json')).then(_parsePromise);
+	},
+	getDataDependenciesMap: function getDataDependenciesMap() {
+		return _util_readFromFileAsync(_util_getJoinPath('public/dist/js/data/dependenciesMap.json')).then(_parsePromise);
+	},
+	getUsageMap: function getUsageMap() {
+		return _util_readFromFileAsync(_util_getJoinPath('public/dist/js/data/usageMap.json')).then(_parsePromise);
+	},
+	getControlCountMap: function getControlCountMap() {
+		return _util_readFromFileAsync(_util_getJoinPath('public/dist/js/data/controlCountMap.json')).then(_parsePromise);
+	},
+	getNamespaceCountMap: function getNamespaceCountMap() {
+		return _util_readFromFileAsync(_util_getJoinPath('public/dist/js/data/namespaceCountMap.json')).then(_parsePromise);
 	},
 	getAuraStreamPom: function getAuraStreamPom() {
-		var defer = _q2.default.defer();
-		defer.resolve(auraStreamPom);
-		return defer.promise;
+		return _util_readFromFileAsync(_util_getJoinPath('public/dist/js/data/aura_upstream_pom.xml'));
 	}
 };
 
