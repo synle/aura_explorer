@@ -2,7 +2,7 @@
 // import $ from 'jquery';
 
 //internal
-import util from '/aura-explorer/frontend/util';
+import util from '~/src/frontend/library/util';
 
 //render
 const appInit = (document) => {

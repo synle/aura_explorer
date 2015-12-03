@@ -2,7 +2,7 @@
 import _ from 'lodash';
 
 //internal
-import TableComponent from '/aura-explorer/frontend/components/Table';
+import TableComponent from '~/src/frontend/components/Table';
 
 //definitions
 const MethodTable = React.createClass({

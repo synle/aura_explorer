@@ -3,13 +3,13 @@ import _ from 'lodash';
 
 //internal
 //internal react components
-import Attributes_Handler_Events_Table from '/aura-explorer/frontend/components/AttributesHandlerEventsTable';
-import UsageTable from '/aura-explorer/frontend/components/UsageTable';
-import DependenciesDetailTable from '/aura-explorer/frontend/components/DependenciesDetailTable';
-import MethodTable from '/aura-explorer/frontend/components/MethodTable';
+import Attributes_Handler_Events_Table from '~/src/frontend/components/AttributesHandlerEventsTable';
+import UsageTable from '~/src/frontend/components/UsageTable';
+import DependenciesDetailTable from '~/src/frontend/components/DependenciesDetailTable';
+import MethodTable from '~/src/frontend/components/MethodTable';
 
 //utils
-import util from '/aura-explorer/frontend/util';
+import util from '~/src/frontend/library/util';
 
 
 //control detail

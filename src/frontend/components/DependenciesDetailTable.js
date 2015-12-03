@@ -1,11 +1,11 @@
 //external
 import _ from 'lodash';
-import util from '/aura-explorer/frontend/util';
+import util from '~/src/frontend/library/util';
 
 //internal
-import ControlDetailLink from '/aura-explorer/frontend/components/ControlDetailLink';
-import KeyValTableComponent from '/aura-explorer/frontend/components/KeyValTable';
-import KeyValueXmlSyntaxComponent from '/aura-explorer/frontend/components/KeyValueXmlSyntax';
+import ControlDetailLink from '~/src/frontend/components/ControlDetailLink';
+import KeyValTableComponent from '~/src/frontend/components/KeyValTable';
+import KeyValueXmlSyntaxComponent from '~/src/frontend/components/KeyValueXmlSyntax';
 
 //definitions
 const DependenciesDetailTable = React.createClass({

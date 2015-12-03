@@ -4,7 +4,13 @@ import _ from 'lodash';
 
 //internal
 const _util_getJoinPath = (myPath) => `${myPath}`;//path.join( process.cwd(), myPath );
-const _util_readFromFileAsync = global.util_readFromFileAsync;
+const _util_readFromFileAsync = _.memoize( fileName => {
+	try{
+		return util.readFromFileAsync(fileName);
+	} catch(e){
+		return global.util_readFromFileAsync(fileName);
+	}
+});
 const _parsePromise = response => {
 	try{
 		if (_.isString( response )){
@@ -18,13 +24,6 @@ const _parsePromise = response => {
 
 //definitions
 const restClient = {
-	getPackageInfo(){
-		return _util_readFromFileAsync( _util_getJoinPath( 'package.json' ) );
-	},
-	getAuraExplorerJson(){
-		return _util_readFromFileAsync( _util_getJoinPath( 'package.json' ) )
-			.then(_parsePromise);
-	},
 	getDataDependenciesMap(){
 		return _util_readFromFileAsync( _util_getJoinPath( 'public/dist/js/data/dependenciesMap.json' ) )
 			.then(_parsePromise);
@@ -40,9 +39,6 @@ const restClient = {
 	getNamespaceCountMap(){
 		return _util_readFromFileAsync( _util_getJoinPath( 'public/dist/js/data/namespaceCountMap.json' ) )
 			.then(_parsePromise);
-	},
-	getAuraStreamPom(){
-		return _util_readFromFileAsync( _util_getJoinPath( 'public/dist/js/data/aura_upstream_pom.xml' ) );
 	}
 }
 

@@ -27979,14 +27979,6 @@
     }
    }
   ],
-  "auratest:errorHandlingErrorModelCmp.cmp": [
-   {
-    "controlNameSpace": "auratest",
-    "controlName": "errorHandlingErrorModelCmp.cmp",
-    "controlFullName": "auratest:errorHandlingErrorModelCmp.cmp",
-    "attribs": {}
-   }
-  ],
   "auratest:fastClickDomEvents.cmp": [
    {
     "controlNameSpace": "auratest",
@@ -52024,16 +52016,6 @@
     }
    }
   ],
-  "auraStorageTest:failedStorageTemplate.cmp": [
-   {
-    "controlNameSpace": "auraStorageTest",
-    "controlName": "failedStorageTemplate.cmp",
-    "controlFullName": "auraStorageTest:failedStorageTemplate.cmp",
-    "attribs": {
-     "attribute": "auraPreInitBlock"
-    }
-   }
-  ],
   "auraStorageTest:indexedDBtemplate.cmp": [
    {
     "controlNameSpace": "auraStorageTest",
@@ -67870,14 +67852,6 @@
     "attribs": {}
    }
   ],
-  "auraStorageTest:failedStorageTemplate.cmp": [
-   {
-    "controlNameSpace": "auraStorageTest",
-    "controlName": "failedStorageTemplate.cmp",
-    "controlFullName": "auraStorageTest:failedStorageTemplate.cmp",
-    "attribs": {}
-   }
-  ],
   "auraStorageTest:noGetApplicationCacheTemplate.cmp": [
    {
     "controlNameSpace": "auraStorageTest",
@@ -76029,6 +76003,37 @@
     "attribs": {
      "library": "test:test_LibraryWithExternalImports",
      "property": "externallyImportedAgain"
+    }
+   },
+   {
+    "controlNameSpace": "test",
+    "controlName": "libraryTest.cmp",
+    "controlFullName": "test:libraryTest.cmp",
+    "attribs": {
+     "library": "test:libraryTestLib",
+     "property": "libraryTestLib"
+    }
+   }
+  ],
+  "test:libraryTestInheritedHelperOnly.cmp": [
+   {
+    "controlNameSpace": "test",
+    "controlName": "libraryTestInheritedHelperOnly.cmp",
+    "controlFullName": "test:libraryTestInheritedHelperOnly.cmp",
+    "attribs": {
+     "library": "test:libraryTestLib",
+     "property": "libraryTestLib"
+    }
+   }
+  ],
+  "test:libraryTestNoHelper.cmp": [
+   {
+    "controlNameSpace": "test",
+    "controlName": "libraryTestNoHelper.cmp",
+    "controlFullName": "test:libraryTestNoHelper.cmp",
+    "attribs": {
+     "library": "test:libraryTestLib",
+     "property": "libraryTestLib"
     }
    }
   ],
@@ -91211,29 +91216,6 @@
     }
    }
   ],
-  "auraStorageTest:failedStorageTemplate.cmp": [
-   {
-    "controlNameSpace": "auraStorageTest",
-    "controlName": "failedStorageTemplate.cmp",
-    "controlFullName": "auraStorageTest:failedStorageTemplate.cmp",
-    "attribs": {
-     "isTemplate": "true",
-     "extensible": "true",
-     "extends": "aura:template"
-    }
-   }
-  ],
-  "auraStorageTest:failedStorageTest.cmp": [
-   {
-    "controlNameSpace": "auraStorageTest",
-    "controlName": "failedStorageTest.cmp",
-    "controlFullName": "auraStorageTest:failedStorageTest.cmp",
-    "attribs": {
-     "template": "auraStorageTest:failedStorageTemplate",
-     "controller": "java://org.auraframework.impl.java.controller.AuraStorageTestController"
-    }
-   }
-  ],
   "auraStorageTest:fuelGaugeTestStub.cmp": [
    {
     "controlNameSpace": "auraStorageTest",
@@ -91716,17 +91698,6 @@
     "controlFullName": "auratest:errorHandling.cmp",
     "attribs": {
      "controller": "java://org.auraframework.components.test.java.controller.TestController"
-    }
-   }
-  ],
-  "auratest:errorHandlingErrorModelCmp.cmp": [
-   {
-    "controlNameSpace": "auratest",
-    "controlName": "errorHandlingErrorModelCmp.cmp",
-    "controlFullName": "auratest:errorHandlingErrorModelCmp.cmp",
-    "attribs": {
-     "render": "client",
-     "model": "java://org.auraframework.components.test.java.model.TestModelThrowsInGetter"
     }
    }
   ],
@@ -95483,6 +95454,37 @@
     "controlFullName": "test:libraryTest.cmp",
     "attribs": {
      "render": "client"
+    }
+   }
+  ],
+  "test:libraryTestInheritedHelperOnly.cmp": [
+   {
+    "controlNameSpace": "test",
+    "controlName": "libraryTestInheritedHelperOnly.cmp",
+    "controlFullName": "test:libraryTestInheritedHelperOnly.cmp",
+    "attribs": {
+     "render": "client",
+     "extends": "test:libraryTestSuper"
+    }
+   }
+  ],
+  "test:libraryTestNoHelper.cmp": [
+   {
+    "controlNameSpace": "test",
+    "controlName": "libraryTestNoHelper.cmp",
+    "controlFullName": "test:libraryTestNoHelper.cmp",
+    "attribs": {
+     "render": "client"
+    }
+   }
+  ],
+  "test:libraryTestSuper.cmp": [
+   {
+    "controlNameSpace": "test",
+    "controlName": "libraryTestSuper.cmp",
+    "controlFullName": "test:libraryTestSuper.cmp",
+    "attribs": {
+     "extensible": "true"
     }
    }
   ],

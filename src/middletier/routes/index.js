@@ -14,10 +14,7 @@ const resourceNames = [
 	'dataDependenciesMap',
 	'usageMap',
 	'controlCountMap',
-	'namespaceCountMap',
-	'packageInfo',
-	'auraExplorerJson',
-	'auraStreamPom'
+	'namespaceCountMap'
 ];
 
 /* GET home page. */
@@ -54,18 +51,6 @@ router.get('/rest/:resourceName/:commitId', (req, res, next) => {
 		case 'namespacecountmap':
 			resourceName = 'namespaceCountMap';
 			asyncRestPromise = data.getNamespaceCountMap( commitId ).then(_asyncIntermidateThen);
-			break;
-		case 'packageinfo':
-			resourceName = 'packageInfo';
-			asyncRestPromise = data.getPackageInfo( commitId ).then(_asyncIntermidateThen);
-			break;
-		case 'auraexplorerjson':
-			resourceName = 'auraExplorerJson';
-			asyncRestPromise = data.getAuraExplorerJson( commitId ).then(_asyncIntermidateThen);
-			break;
-		case 'aurastreampom':
-			resourceName = 'auraStreamPom';
-			asyncRestPromise = data.getAuraStreamPom( commitId ).then(_asyncIntermidateThen);
 			break;
 		default:
 			error = 'Invalid resource name. Resource name must be of form: ' + resourceNames.join(', ');

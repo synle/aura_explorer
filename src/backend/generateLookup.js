@@ -307,9 +307,7 @@ export default (componentFileNames, baseDirAuraUpstream, outputDirDataPath) => {
 		try {
 			util.mkDir(outputDirDataPath);
 			logger.log('\t[OuputDir Created]'.yellow);
-		} catch(e) {
-			logger.log('\t[Skipped]'.yellow, e);
-		}
+		} catch(e) {}
 
 		//writing files
 		logger.log('[Writing Output]'.yellow);

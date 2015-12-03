@@ -57,11 +57,16 @@ This application built on Node Webkit which lets you run it on local machine. Th
 	#to get the aura-master upstream set up
 
 	#rebuild meta data
-	npm run pkg
+	npm run build_metadata
+
+	#if you make changes to the code, you can rerun the gulp
+	npm run build_source
+
+	#if you want to run a full build (source + meta data), simply do
+	npm run build
 
 	#to start the app
 	npm start
-
 
 	#if you are a developer and want to play with the code, you
 	#can run gulp dev to keep the background job that watch
