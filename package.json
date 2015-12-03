@@ -10,9 +10,9 @@
     "clean_resource": "rm -rf public/*; mkdir -p public/dist/js/frontend;",
     "clean_aura_upstream": "rm -rf ./aura-master master.zip",
     "get_aura_upstream": "curl -sLOk https://github.com/forcedotcom/aura/archive/master.zip && (tar -xf master.zip || unzip master.zip)",
-    "build": "npm run build_source && npm run build_metadata",
+    "build": "npm install && npm run build_source && npm run build_metadata",
     "build_metadata": "./node_modules/.bin/babel-node src/backend/app.js",
-    "build_source": "npm install; gulp;"
+    "build_source": "gulp;"
   },
   "main": "public/index.html",
   "repository": {
