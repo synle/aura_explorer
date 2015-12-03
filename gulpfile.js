@@ -55,7 +55,7 @@ var appStyles = [
 ];
 
 var appViews = [
-	'view/**/*.html'
+	'view/native/*.html'
 ];
 
 
@@ -80,7 +80,7 @@ var generateStyles = function(src, dest){
 
 var generateViews = function(src){
 	return function(){
-		return gulp.src(src, {base: './view'})
+		return gulp.src(src, {base: './view/native'})
 			.pipe(gulp.dest(outputDistViewDir));
 	}
 }
@@ -180,7 +180,7 @@ gulp.task('dev', function(){
 
 
 //publis alias
-gulp.task('scripts', ['scripts_frontend_app', 'scripts_frontend_pages', 'scripts_frontend_vendor']);
+gulp.task('scripts', ['scripts_frontend_app', 'scripts_frontend_pages', 'scripts_frontend_vendor', 'babelify']);
 gulp.task('default', ['scripts', 'styles', 'views']);
 
 

@@ -9,7 +9,7 @@ var routes = require('./src/middletier/routes/index');
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'view_node'));
+app.set('views', path.join(__dirname, 'view/node'));
 app.set('view engine', 'hbs');
 
 // uncomment after placing your favicon in /public
