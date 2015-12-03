@@ -5,14 +5,14 @@ import _ from 'lodash';
 //internal
 const _util_getJoinPath = (myPath) => `${myPath}`;//path.join( process.cwd(), myPath );
 const _util_readFromFileAsync = global.util_readFromFileAsync;
-const _parsePromise = stringContent => {
+const _parsePromise = response => {
 	try{
-		if (_.isString( stringContent )){
-			return JSON.parse(stringContent)
+		if (_.isString( response )){
+			return JSON.parse(response)
 		}
 	} catch(e){}
 
-	return {};
+	return response;
 };
 
 

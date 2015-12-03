@@ -45,14 +45,18 @@ try {
 
         var url = '';
         if ( fullPath.indexOf('data/controlCountMap.json') >= 0){
-            url = '/rest/controlCountMap/123';
+            url = '/rest/controlCountMap/latest';
         } else if ( fullPath.indexOf('data/dependenciesMap.json') >= 0){
-            url = '/rest/dependenciesMap/123';
+            url = '/rest/dependenciesMap/latest';
+        } else if ( fullPath.indexOf('data/namespaceCountMap.json') >= 0){
+            url = '/rest/namespaceCountMap/latest';
+        } else if ( fullPath.indexOf('data/usageMap.json') >= 0){
+            url = '/rest/usageMap/latest';
         }
 
         //making ajax calls
         $.get(url).done(function(content){
-            defer.resolve(JSON.stringify(content.content), fullPath);
+            defer.resolve(content.content, fullPath);
         });
 
         return defer.promise;
