@@ -128,6 +128,7 @@ gulp.task('scripts_frontend_app', function (cb) {
 
 gulp.task('dev', function(){
 	gulp.run('default');
+	gulp.watch(appScripts,  ['scripts_frontend_app']);
 	gulp.watch(vendorScripts,  ['scripts_frontend_vendor']);
 	gulp.watch(appStyles,  ['styles']);
 	gulp.watch(appViews,  ['views']);
