@@ -31,14 +31,8 @@ var outputDistViewDir = 'public';
 
 //scripts
 var appScripts = [
-	'src/frontend/*.js'
-];
-
-var pagesScripts = [
-	'src/frontend/**/*.js'
-	// 'src/frontend/pages/*.js',
-	// 'src/frontend/components/*.js',
-	// 'src/frontend/library/*.js'
+	'src/frontend/pages/statPage.js',
+	'src/frontend/pages/dependenciesPage.js'
 ];
 
 var vendorScripts = [
@@ -85,38 +79,6 @@ var generateViews = function(src){
 	};
 };
 
-
-var generateScripts = function(dest, src){
-	var srcBase = { base : './src' };
-
-	return function(){
-		return gulp.src(src, srcBase)
-			.pipe(plumber())
-		    // .pipe(sourcemaps.init())
-		    .pipe(babel({
-				resolveModuleSource: function(source, filename) {
-					//remap the path
-					const newPath = source.replace('/aura-explorer/', '~/public/dist/js/');
-					return newPath;
-				}
-		    }))
-		    // .pipe(sourcemaps.write("."))
-		    .pipe(header(headerBanner))
-		    // .pipe(minify({
-		    //     mangle: false
-		    // }))
-		    .pipe(gulp.dest(dest));
-	};
-};
-
-var generateScripts_Frontend_App = function(){
-	return generateScripts(outputDistJsDir, appScripts);
-};
-
-var generateScripts_Frontend_Pages = function(){
-	return generateScripts(outputDistJsDir, pagesScripts);
-};
-
 var generateScripts_Frontend_Vendor = function(){
 	return function(){
 		return gulp.src(vendorScripts)
@@ -135,8 +97,6 @@ var generateScripts_Frontend_Vendor = function(){
 //frontend
 gulp.task('views', generateViews(appViews));
 gulp.task('styles', generateStyles(appStyles, 'app.css'));
-gulp.task('scripts_frontend_app',    generateScripts_Frontend_App()    );
-gulp.task('scripts_frontend_pages',  generateScripts_Frontend_Pages()  );
 gulp.task('scripts_frontend_vendor', generateScripts_Frontend_Vendor() );
 
 //build data
@@ -148,37 +108,33 @@ gulp.task('pkg', function (cb) {
 	});
 });
 
-gulp.task('babelify', function (cb) {
+//babelify the front end code
+gulp.task('scripts_frontend_app', function (cb) {
 	_.each(
-		[
-			'public/dist/js/frontend/pages/statPage.js',
-			'public/dist/js/frontend/pages/dependenciesPage.js'
-		],
+		appScripts,
 		function(curScript){
 			var curBaseScriptName = path.basename(curScript);
-			console.log('babelify', outputDistJsNativeDir + '/' + curBaseScriptName);
+			console.log('\t[babelify]', curScript);
 
 			browserify({ debug: true })
 			  .transform(babelify)
 			  .require(curScript, { entry: true })
 			  .bundle()
 			  .on("error", function (err) { console.log("Error: " + err.message); })
-			  .pipe(fs.createWriteStream(outputDistJsNativeDir + '/' + curBaseScriptName));
+			  .pipe( fs.createWriteStream( path.join( outputDistJsFrontendDir, curBaseScriptName) ) );
 		}
 	);
 });
 
 gulp.task('dev', function(){
 	gulp.run('default');
-	gulp.watch(appScripts,  ['scripts_frontend_app']);
 	gulp.watch(vendorScripts,  ['scripts_frontend_vendor']);
-	gulp.watch(pagesScripts,  ['scripts_frontend_pages']);
 	gulp.watch(appStyles,  ['styles']);
 	gulp.watch(appViews,  ['views']);
 });
 
 
 //publis alias
-gulp.task('scripts', ['scripts_frontend_app', 'scripts_frontend_pages', 'scripts_frontend_vendor']);
+gulp.task('scripts', ['scripts_frontend_vendor', 'scripts_frontend_app']);
 gulp.task('default', ['scripts', 'styles', 'views']);
 

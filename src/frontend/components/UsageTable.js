@@ -2,12 +2,12 @@
 import _ from 'lodash';
 
 //internal
-import util from '/aura-explorer/frontend/util';
+import util from '~/src/frontend/library/util';
 
 //internal component
-import KeyValTableComponent from '/aura-explorer/frontend/components/KeyValTable';
-import KeyValueXmlSyntaxComponent from '/aura-explorer/frontend/components/KeyValueXmlSyntax';
-import ControlDetailLink from '/aura-explorer/frontend/components/ControlDetailLink';
+import KeyValTableComponent from '~/src/frontend/components/KeyValTable';
+import KeyValueXmlSyntaxComponent from '~/src/frontend/components/KeyValueXmlSyntax';
+import ControlDetailLink from '~/src/frontend/components/ControlDetailLink';
 
 //definitions
 const UsageTable = React.createClass({

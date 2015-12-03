@@ -2,7 +2,7 @@
 import _ from 'lodash';
 
 //internal
-import util from '/aura-explorer/frontend/util';
+import util from '~/src/frontend/library/util';
 
 
 //definitions

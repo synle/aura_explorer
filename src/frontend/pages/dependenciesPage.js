@@ -4,13 +4,13 @@ import Q from 'q';
 
 //internal
 //internal react components
-import ListView from '/aura-explorer/frontend/components/ListView';
-import ControlDetailPage from '/aura-explorer/frontend/components/AuraControlDetail';
+import ListView from '~/src/frontend/components/ListView';
+import ControlDetailPage from '~/src/frontend/components/AuraControlDetail';
 
 //utils
-import util from '/aura-explorer/frontend/util';
-import appInit from '/aura-explorer/frontend/library/app';
-import restClient from '/aura-explorer/frontend/library/restClient';
+import util from '~/src/frontend/library/util';
+import appInit from '~/src/frontend/library/app';
+import restClient from '~/src/frontend/library/restClient';
 
 //main page
 const DependenciesPage = React.createClass({

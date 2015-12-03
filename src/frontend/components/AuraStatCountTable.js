@@ -3,10 +3,10 @@ import _ from 'lodash';
 
 //internal
 //internal react components
-import KeyValListView from '/aura-explorer/frontend/components/KeyValListView';
+import KeyValListView from '~/src/frontend/components/KeyValListView';
 
 //utils
-import util from '/aura-explorer/frontend/util';
+import util from '~/src/frontend/library/util';
 
 
 

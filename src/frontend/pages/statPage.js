@@ -3,12 +3,12 @@ import _ from 'lodash';
 import Q from 'q';
 
 //internal
-import CountTableComponent from '/aura-explorer/frontend/components/AuraStatCountTable';
+import CountTableComponent from '~/src/frontend/components/AuraStatCountTable';
 
 //utils
-import util from '/aura-explorer/frontend/util';
-import appInit from '/aura-explorer/frontend/library/app';
-import restClient from '/aura-explorer/frontend/library/restClient';
+import util from '~/src/frontend/library/util';
+import appInit from '~/src/frontend/library/app';
+import restClient from '~/src/frontend/library/restClient';
 
 //main page
 const StatPage = React.createClass({
