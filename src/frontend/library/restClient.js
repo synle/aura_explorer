@@ -5,7 +5,14 @@ import path from 'path';
 //internal
 const _util_getJoinPath = (myPath) => `${myPath}`;//path.join( process.cwd(), myPath );
 const _util_readFromFileAsync = global.util_readFromFileAsync;
-const _parsePromise = stringContent => JSON.parse(stringContent);
+const _parsePromise = stringContent => {
+	debugger;
+	try{
+		JSON.parse(stringContent)
+	} catch(e){
+		return stringContent;
+	}
+};
 
 
 //definitions

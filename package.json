@@ -5,7 +5,7 @@
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha --compilers js:babel-core/register test",
     "pkg": "babel-node src/backend/app.js",
-    "start": "npm install --production; nw . &",
+    "start": "npm install --production; nw .",
     "clean": "rm -rf public/* aura-master master.zip node_modules/*",
     "clean_public": "rm -rf public/*",
     "dev": "gulp dev;",
