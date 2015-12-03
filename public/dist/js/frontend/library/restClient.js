@@ -20,7 +20,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var _util_getJoinPath = function _util_getJoinPath(myPath) {
 	return '' + myPath;
 }; //path.join( process.cwd(), myPath );
-var _util_readFromFileAsync = global.util_readFromFileAsync;
+var _util_readFromFileAsync = _lodash2.default.memoize(function (fileName) {
+	return util.readFromFileAsync(fileName);
+});
 var _parsePromise = function _parsePromise(response) {
 	try {
 		if (_lodash2.default.isString(response)) {
@@ -33,12 +35,6 @@ var _parsePromise = function _parsePromise(response) {
 
 //definitions
 var restClient = {
-	getPackageInfo: function getPackageInfo() {
-		return _util_readFromFileAsync(_util_getJoinPath('package.json'));
-	},
-	getAuraExplorerJson: function getAuraExplorerJson() {
-		return _util_readFromFileAsync(_util_getJoinPath('package.json')).then(_parsePromise);
-	},
 	getDataDependenciesMap: function getDataDependenciesMap() {
 		return _util_readFromFileAsync(_util_getJoinPath('public/dist/js/data/dependenciesMap.json')).then(_parsePromise);
 	},
@@ -50,9 +46,6 @@ var restClient = {
 	},
 	getNamespaceCountMap: function getNamespaceCountMap() {
 		return _util_readFromFileAsync(_util_getJoinPath('public/dist/js/data/namespaceCountMap.json')).then(_parsePromise);
-	},
-	getAuraStreamPom: function getAuraStreamPom() {
-		return _util_readFromFileAsync(_util_getJoinPath('public/dist/js/data/aura_upstream_pom.xml'));
 	}
 };
 
