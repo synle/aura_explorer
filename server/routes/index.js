@@ -39,8 +39,8 @@ router.get('/rest/:resourceName/:commitId', (req, res, next) => {
 	}
 
 	switch(resourceName.toLowerCase()){
-		case 'datadependenciesmap':
-			resourceName = 'dataDependenciesMap';
+		case 'dependenciesmap':
+			resourceName = 'dependenciesMap';
 			asyncRestPromise = data.getDataDependenciesMap( commitId ).then(_asyncIntermidateThen);
 			break;
 		case 'usagemap':
