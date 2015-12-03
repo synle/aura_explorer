@@ -1,33 +1,24 @@
 //external
-import fs from 'fs';
 import Q from 'q';
 import path from 'path';
 
 //internal
-import dataDependenciesMap from '/aura-explorer/data/dependenciesMap.json';
-import usageMap from '/aura-explorer/data/usageMap.json';
-import controlCountMap from '/aura-explorer/data/controlCountMap.json';
-import namespaceCountMap from '/aura-explorer/data/namespaceCountMap.json';
-import explorerConfig from '/aura-explorer/backend/config.js';
+const util_getJoinPath = (myPath) => myPath;//path.join( process.cwd(), myPath );
 
 //get contents
-const util_readFromFileAsync = (fpath) => fs.readFileSync(fpath, 'utf8');
-
-const auraExplorerJson = util_readFromFileAsync(path.join(
-		process.cwd(),
-		'package.json'
-	)
+const auraExplorerJson = global.util_readFromFileAsync(
+	util_getJoinPath( 'package.json' )
 );
 
-const auraStreamPom    = util_readFromFileAsync(path.join(
-		process.cwd(),
-		'public',
-		'dist',
-		'js',
-		'data',
-		'aura_upstream_pom.xml'
-	)
+const auraStreamPom    = global.util_readFromFileAsync(
+	util_getJoinPath( 'public/dist/js/data/aura_upstream_pom.xml' )
 );
+
+const dataDependenciesMap = JSON.parse( global.util_readFromFileAsync( 'public/dist/js/data/dependenciesMap.json' ) );
+const usageMap = JSON.parse( global.util_readFromFileAsync( 'public/dist/js/data/usageMap.json' ) );
+const controlCountMap = JSON.parse( global.util_readFromFileAsync( 'public/dist/js/data/controlCountMap.json' ) );
+const namespaceCountMap = JSON.parse( global.util_readFromFileAsync( 'public/dist/js/data/namespaceCountMap.json' ) );
+const explorerConfig = {};
 
 const packageInfo = JSON.parse(auraExplorerJson);
 

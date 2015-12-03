@@ -9,8 +9,8 @@ import Q from 'q';
 
 
 //internal
-import logger from '/aura-explorer/backend/logger';
-import util from '/aura-explorer/backend/util';
+import logger from '~/src/backend/logger';
+import util from '~/src/backend/util';
 
 
 //exports

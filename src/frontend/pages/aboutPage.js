@@ -17,10 +17,6 @@ const AboutPage = React.createClass({
 						<strong>Aura-Explorer Version</strong> : {this.props.packageInfo.version}
 					</div>
 					<div className="mb15">
-						<strong>Explorer Config</strong>
-						<pre>{JSON.stringify(this.props.explorerConfig, null, 2)}</pre>
-					</div>
-					<div className="mb15">
 						<strong>Aura Explorer JSON</strong>
 						<pre>{this.props.auraExplorerJson}</pre>
 					</div>
@@ -49,13 +45,11 @@ util.render( () => {
 	//loading components
 	Q.all([
 		restClient.getPackageInfo(),
-		restClient.getExplorerConfig(),
 		restClient.getAuraExplorerJson(),
 		restClient.getAuraStreamPom()
-	]).done( ( [ packageInfo, explorerConfig, auraExplorerJson, auraStreamPom ] ) => {
+	]).done( ( [ packageInfo, auraExplorerJson, auraStreamPom ] ) => {
 		ReactDOM.render(
 			<AboutPage packageInfo={packageInfo}
-				explorerConfig={explorerConfig}
 				auraExplorerJson={auraExplorerJson}
 				auraStreamPom={auraStreamPom}/>,
 			document.querySelector('#body')

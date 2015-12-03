@@ -9,19 +9,19 @@ var _lodash = require('lodash');
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var _util = require('dist/js/frontend/util');
+var _util = require('/Users/sle/git/aura_explorer/public/dist/js/frontend/util');
 
 var _util2 = _interopRequireDefault(_util);
 
-var _KeyValTable = require('dist/js/frontend/components/KeyValTable');
+var _KeyValTable = require('/Users/sle/git/aura_explorer/public/dist/js/frontend/components/KeyValTable');
 
 var _KeyValTable2 = _interopRequireDefault(_KeyValTable);
 
-var _KeyValueXmlSyntax = require('dist/js/frontend/components/KeyValueXmlSyntax');
+var _KeyValueXmlSyntax = require('/Users/sle/git/aura_explorer/public/dist/js/frontend/components/KeyValueXmlSyntax');
 
 var _KeyValueXmlSyntax2 = _interopRequireDefault(_KeyValueXmlSyntax);
 
-var _ControlDetailLink = require('dist/js/frontend/components/ControlDetailLink');
+var _ControlDetailLink = require('/Users/sle/git/aura_explorer/public/dist/js/frontend/components/ControlDetailLink');
 
 var _ControlDetailLink2 = _interopRequireDefault(_ControlDetailLink);
 

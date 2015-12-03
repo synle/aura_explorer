@@ -1,6 +1,3 @@
-//external
-import $ from 'jquery';
-
 //internal
 import _ from 'lodash';
 

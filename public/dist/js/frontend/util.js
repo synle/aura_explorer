@@ -11,8 +11,6 @@ var _lodash2 = _interopRequireDefault(_lodash);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//external
-
 //definitions
 var utils = {
 	render: function render(cb) {
@@ -72,8 +70,19 @@ var utils = {
 
 	//strip .cmp and .app
 	getTagNameFromControlName: function getTagNameFromControlName(tagName) {
-		var extensionIdx = tagName.lastIndexOf('.cmp') || tagName.lastIndexOf('.app');
-		return extensionIdx > 0 ? tagName.substr(0, extensionIdx) : tagName;
+		var extensionIdx = undefined;
+
+		extensionIdx = tagName.lastIndexOf('.cmp');
+		if (extensionIdx >= 0) {
+			return tagName.substr(0, extensionIdx);
+		}
+
+		extensionIdx = tagName.lastIndexOf('.app');
+		if (extensionIdx >= 0) {
+			return tagName.substr(0, extensionIdx);
+		}
+
+		return tagName;
 	}
 };
 
