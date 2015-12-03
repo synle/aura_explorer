@@ -1,6 +1,6 @@
 //dependencies
 //nongulp
-var _ = require('lodash');;
+var _ = require('lodash');
 var exec = require('child_process').exec;
 var path = require('path');
 var fs = require("fs");
@@ -75,15 +75,15 @@ var generateStyles = function(src, dest){
 		        mangle: false
 		    }))
 		    .pipe(gulp.dest(outputDistCssDir));
-	}
-}
+	};
+};
 
 var generateViews = function(src){
 	return function(){
 		return gulp.src(src, {base: './view/native'})
 			.pipe(gulp.dest(outputDistViewDir));
-	}
-}
+	};
+};
 
 
 var generateScripts = function(dest, src){
@@ -106,16 +106,16 @@ var generateScripts = function(dest, src){
 		    //     mangle: false
 		    // }))
 		    .pipe(gulp.dest(dest));
-	}
-}
+	};
+};
 
 var generateScripts_Frontend_App = function(){
 	return generateScripts(outputDistJsDir, appScripts);
-}
+};
 
 var generateScripts_Frontend_Pages = function(){
 	return generateScripts(outputDistJsDir, pagesScripts);
-}
+};
 
 var generateScripts_Frontend_Vendor = function(){
 	return function(){
@@ -127,8 +127,8 @@ var generateScripts_Frontend_Vendor = function(){
 		    // }))
 		    .pipe(header(headerBanner))
 		    .pipe(gulp.dest(outputDistJsFrontendDir));
-	}
-}
+	};
+};
 
 
 //task definitons
@@ -146,7 +146,7 @@ gulp.task('pkg', function (cb) {
 		console.log(stderr);
 		cb(err);
 	});
-})
+});
 
 gulp.task('babelify', function (cb) {
 	_.each(
@@ -166,7 +166,7 @@ gulp.task('babelify', function (cb) {
 			  .pipe(fs.createWriteStream(outputDistJsNativeDir + '/' + curBaseScriptName));
 		}
 	);
-})
+});
 
 gulp.task('dev', function(){
 	gulp.run('default');
@@ -175,14 +175,10 @@ gulp.task('dev', function(){
 	gulp.watch(pagesScripts,  ['scripts_frontend_pages']);
 	gulp.watch(appStyles,  ['styles']);
 	gulp.watch(appViews,  ['views']);
-})
+});
 
 
 //publis alias
 gulp.task('scripts', ['scripts_frontend_app', 'scripts_frontend_pages', 'scripts_frontend_vendor']);
 gulp.task('default', ['scripts', 'styles', 'views']);
 
-
-
-//babelify scripts
-// browserify public/dist/js/frontend/pages/statPage.js -t babelify --outfile public/dist/js/statPage.native.js; browserify public/dist/js/frontend/pages/dependenciesPage.js -t babelify --outfile public/dist/js/dependenciesPage.native.js; browserify public/dist/js/frontend/pages/aboutPage.js -t babelify --outfile public/dist/js/aboutPage.native.js;
