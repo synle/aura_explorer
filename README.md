@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/synle/aura_autocomplete_sublime.svg?branch=master)](https://travis-ci.org/synle/aura_autocomplete_sublime)
+Master : [![Build Status](https://travis-ci.org/synle/aura_autocomplete_sublime.svg?branch=master)](https://travis-ci.org/synle/aura_autocomplete_sublime)
 
 # Salesforce Aura Explorer
 This application allows you to quickly explore Aura components with information such as dependencies, references as well as attributes.
