@@ -21,7 +21,11 @@ var _util_getJoinPath = function _util_getJoinPath(myPath) {
 	return '' + myPath;
 }; //path.join( process.cwd(), myPath );
 var _util_readFromFileAsync = _lodash2.default.memoize(function (fileName) {
-	return util.readFromFileAsync(fileName);
+	try {
+		return util.readFromFileAsync(fileName);
+	} catch (e) {
+		return global.util_readFromFileAsync(fileName);
+	}
 });
 var _parsePromise = function _parsePromise(response) {
 	try {
