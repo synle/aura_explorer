@@ -114,7 +114,7 @@ gulp.task('scripts_frontend_app', function (cb) {
 		appScripts,
 		function(curScript){
 			var curBaseScriptName = path.basename(curScript);
-			console.log('\t[babelify]', curScript);
+			// console.log('\t[babelify]', curScript);
 
 			browserify({ debug: true })
 			  .transform(babelify)
