@@ -5,7 +5,11 @@ import _ from 'lodash';
 //internal
 const _util_getJoinPath = (myPath) => `${myPath}`;//path.join( process.cwd(), myPath );
 const _util_readFromFileAsync = _.memoize( fileName => {
-	return util.readFromFileAsync(fileName);
+	try{
+		return util.readFromFileAsync(fileName);
+	} catch(e){
+		return global.util_readFromFileAsync(fileName);
+	}
 });
 const _parsePromise = response => {
 	try{
