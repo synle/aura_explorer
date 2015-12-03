@@ -5,13 +5,13 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _q = require('q');
-
-var _q2 = _interopRequireDefault(_q);
-
 var _path = require('path');
 
 var _path2 = _interopRequireDefault(_path);
+
+var _lodash = require('lodash');
+
+var _lodash2 = _interopRequireDefault(_lodash);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -21,13 +21,14 @@ var _util_getJoinPath = function _util_getJoinPath(myPath) {
 	return '' + myPath;
 }; //path.join( process.cwd(), myPath );
 var _util_readFromFileAsync = global.util_readFromFileAsync;
-var _parsePromise = function _parsePromise(stringContent) {
-	debugger;
+var _parsePromise = function _parsePromise(response) {
 	try {
-		JSON.parse(stringContent);
-	} catch (e) {
-		return stringContent;
-	}
+		if (_lodash2.default.isString(response)) {
+			return JSON.parse(response);
+		}
+	} catch (e) {}
+
+	return response;
 };
 
 //definitions
