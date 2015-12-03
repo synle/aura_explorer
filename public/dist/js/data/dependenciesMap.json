@@ -5717,28 +5717,6 @@
     ]
    }
   },
-  "failedStorageTemplate.cmp": {
-   "attributes": {},
-   "imports": {},
-   "events": {},
-   "handlers": {},
-   "methods": {},
-   "dependencies": {
-    "aura:set": [
-     {
-      "attribute": "auraPreInitBlock"
-     }
-    ]
-   }
-  },
-  "failedStorageTest.cmp": {
-   "attributes": {},
-   "imports": {},
-   "events": {},
-   "handlers": {},
-   "methods": {},
-   "dependencies": {}
-  },
   "fuelGaugeTestStub.cmp": {
    "attributes": {},
    "imports": {},
@@ -8336,14 +8314,6 @@
      }
     ]
    }
-  },
-  "errorHandlingErrorModelCmp.cmp": {
-   "attributes": {},
-   "imports": {},
-   "events": {},
-   "handlers": {},
-   "methods": {},
-   "dependencies": {}
   },
   "eventCounter.cmp": {
    "attributes": {
@@ -14701,8 +14671,46 @@
     "test:test_LibraryWithExternalImports": {
      "library": "test:test_LibraryWithExternalImports",
      "property": "externallyImportedAgain"
+    },
+    "test:libraryTestLib": {
+     "library": "test:libraryTestLib",
+     "property": "libraryTestLib"
     }
    },
+   "events": {},
+   "handlers": {},
+   "methods": {},
+   "dependencies": {}
+  },
+  "libraryTestInheritedHelperOnly.cmp": {
+   "attributes": {},
+   "imports": {
+    "test:libraryTestLib": {
+     "library": "test:libraryTestLib",
+     "property": "libraryTestLib"
+    }
+   },
+   "events": {},
+   "handlers": {},
+   "methods": {},
+   "dependencies": {}
+  },
+  "libraryTestNoHelper.cmp": {
+   "attributes": {},
+   "imports": {
+    "test:libraryTestLib": {
+     "library": "test:libraryTestLib",
+     "property": "libraryTestLib"
+    }
+   },
+   "events": {},
+   "handlers": {},
+   "methods": {},
+   "dependencies": {}
+  },
+  "libraryTestSuper.cmp": {
+   "attributes": {},
+   "imports": {},
    "events": {},
    "handlers": {},
    "methods": {},
