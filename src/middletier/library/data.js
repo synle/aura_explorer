@@ -6,7 +6,7 @@ import path from 'path';
 import util from './util';
 
 //get path
-const _util_getJoinPath = (myPath) => `../${myPath}`;//path.join( process.cwd(), myPath );
+const _util_getJoinPath = (myPath) => `${myPath}`;//path.join( process.cwd(), myPath );
 const _util_readFromFileAsync = util.readFromFileAsync;
 
 const _parsePromise = stringContent => JSON.parse(stringContent);

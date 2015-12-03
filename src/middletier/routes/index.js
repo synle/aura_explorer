@@ -3,13 +3,13 @@ import Q from 'q';
 import express from 'express';
 
 //internal
-import data from '../src/data';
+import data from '../library/data';
 
 
 //code start
 const router = express.Router();
 
-const lastCommit = 'last commit';
+const lastCommit = 'latest';
 const resourceNames = [
 	'dataDependenciesMap',
 	'usageMap',
