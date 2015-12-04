@@ -34419,82 +34419,88 @@ return Q;
 
 });
 
-//utils
-var jsonPath = 'public/dist/js/data/';
+(function(){
+    //utils
+    var FILE_BASE_PATH = 'public/dist/js/data/';
+    var REST_URL_BASE_PATH = '/rest';
 
-var getFilePath = function(jsonName, commitId, path){
-    return path.join(
-        process.cwd(),
-        jsonPath,
-        jsonName
-    );
-}
-
-var getRestUrlPath = function(jsonName, commitId){
-    jsonName = jsonName.toLowerCase();
-
-    if ( jsonName.indexOf('controlcountmap.json') >= 0){
-        return '/rest/controlCountMap/' + commitId;
-    } else if ( jsonName.indexOf('dependenciesmap.json') >= 0){
-        return '/rest/dependenciesMap/' + commitId;
-    } else if ( jsonName.indexOf('namespacecountmap.json') >= 0){
-        return '/rest/namespaceCountMap/' + commitId;
-    } else if ( jsonName.indexOf('usagemap.json') >= 0){
-        return '/rest/usageMap/' + commitId;
+    var getFilePath = function(jsonName, commitId, path){
+        return path.join(
+            process.cwd(),
+            FILE_BASE_PATH,
+            jsonName
+        );
     }
-    return '';
-}
 
-var getCommitIdString = function( commitId ){
-    return commitId || 'latest';
-}
+    var getRestUrlPath = function(jsonName, commitId){
+        var restUrlPathSegments = [REST_URL_BASE_PATH, jsonName, commitId];
+        return restUrlPathSegments.join('/');
+    }
 
-try {
-    //polyfill for native
-    //import
-    var fs = require( 'fs' );
-    var path = require( 'path' );
-    var Q = require( 'q' );
 
-    //polyfill
-    //this script is appended to vendor script to make certain external
-    //lib available in global
-    global.React = React;
-    global.$ = $;
-    global.util_readFromFileAsync = function (fullPath, commitId) {
-        var defer = Q.defer();
+    var AURA_EXPLORER_UTILS = {
+        tryParseJSON: function(response){
+            try{
+                return JSON.parse(response);
+            } catch(e){}
 
-        fullPath = getFilePath(fullPath, getCommitIdString( commitId ), path);
-
-        try{
-            fs.readFile(fullPath, 'utf-8', function (error, fileContent) {
-                if (error){
-                    throw error;
-                } else {
-                    defer.resolve(fileContent);
-                }
-            });
-        } catch(exception) {
-            console.log('global.util_readFromFileAsync error', exception);
-            defer.resolve('');//if there is error, resolve with an empty file
+            return response;
         }
-
-        return defer.promise;
     };
-} catch(e){
-    //polyfill for server side
-    //this script is appended to vendor script to make certain external
-    //lib available in global
-    window.global = window.global || {};
-    window.global.util_readFromFileAsync = function (fullPath, commitId) {
-        var defer = Q.defer();
-        var url = getRestUrlPath(fullPath, getCommitIdString( commitId ));
 
-        //making ajax calls
-        $.get(url).done(function(content){
-            defer.resolve(content.content, fullPath);
-        });
+    try{
+        //polyfill for native
+        //import
+        var fs = require( 'fs' );
+        var path = require( 'path' );
+        var Q = require( 'q' );
 
-        return defer.promise;
-    };
-}
+        //set get data methods from files
+        AURA_EXPLORER_UTILS.getData = function (fullPath, commitId) {
+            var defer = Q.defer();
+
+            fullPath = getFilePath(fullPath, commitId, path);
+
+            try{
+                fs.readFile(fullPath, 'utf-8', function (error, fileContent) {
+                    if (error){
+                        throw error;
+                    } else {
+                        defer.resolve(fileContent);
+                    }
+                });
+            } catch(exception) {
+                console.log('global.getData error', exception);
+                defer.resolve('');//if there is error, resolve with an empty file
+            }
+
+            return defer.promise;
+        };
+
+
+        //set global variables used for native node webkit
+        global.React = React;
+        global.$ = $;
+        global.AURA_EXPLORER_UTILS = AURA_EXPLORER_UTILS;
+    } catch(e) {
+        //polyfill for server side
+        //import
+        var Q = window.Q;
+
+        //set get data methods from files
+        AURA_EXPLORER_UTILS.getData = function (fullPath, commitId) {
+            var defer = Q.defer();
+            var url = getRestUrlPath(fullPath, commitId);
+
+            //making ajax calls
+            $.get(url).done(function(content){
+                defer.resolve(content.content, fullPath);
+            });
+
+            return defer.promise;
+        };
+
+        //override the vars
+        window.AURA_EXPLORER_UTILS = AURA_EXPLORER_UTILS;
+    }
+})()
