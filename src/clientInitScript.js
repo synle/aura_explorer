@@ -1,64 +1,77 @@
-try {
-    //polyfill for native
-    //import
-    var path = require( 'path' );
-    var fs = require( 'fs' );
-    var Q = require( 'q' );
+(function(){
+    //utils
+    var FILE_BASE_PATH = 'public/dist/js/data/';
+    var REST_URL_BASE_PATH = '/rest';
 
-    //polyfill
-    //this script is appended to vendor script to make certain external
-    //lib available in global
-    global.React = React;
-    global.$ = $;
-    global.util_readFromFileAsync = function (fullPath) {
-        var defer = Q.defer();
+    var getFilePath = function(jsonName, commitId, path){
+        return path.join(
+            process.cwd(),
+            FILE_BASE_PATH,
+            jsonName
+        );
+    }
 
-        fullPath = path.join(process.cwd(), fullPath);
+    var getRestUrlPath = function(jsonName, commitId){
+        var restUrlPathSegments = [REST_URL_BASE_PATH, jsonName, commitId];
+        return restUrlPathSegments.join('/');
+    }
 
-        console.log('Reading Native', fullPath);
 
-        try{
-            fs.readFile(fullPath, 'utf-8', function (error, fileContent) {
-                if (error){
-                    throw error;
-                } else {
-                    defer.resolve(fileContent);
-                }
+    var AURA_EXPLORER_UTILS = {};
+
+    try{
+        //polyfill for native
+        //import
+        var fs = require( 'fs' );
+        var path = require( 'path' );
+        var Q = require( 'q' );
+
+        //set get data methods from files
+        AURA_EXPLORER_UTILS.getData = function (fullPath, commitId) {
+            var defer = Q.defer();
+
+            fullPath = getFilePath(fullPath, commitId, path);
+
+            try{
+                fs.readFile(fullPath, 'utf-8', function (error, fileContent) {
+                    if (error){
+                        throw error;
+                    } else {
+                        defer.resolve(fileContent);
+                    }
+                });
+            } catch(exception) {
+                console.log('global.getData error', exception);
+                defer.resolve('');//if there is error, resolve with an empty file
+            }
+
+            return defer.promise;
+        };
+
+
+        //set global variables used for native node webkit
+        global.React = React;
+        global.$ = $;
+        global.AURA_EXPLORER_UTILS = AURA_EXPLORER_UTILS;
+    } catch(e) {
+        //polyfill for server side
+        //import
+        var Q = window.Q;
+
+        //set get data methods from files
+        AURA_EXPLORER_UTILS.getData = function (fullPath, commitId) {
+            var defer = Q.defer();
+            var url = getRestUrlPath(fullPath, commitId);
+
+            //making ajax calls
+            $.get(url).done(function(content){
+                defer.resolve(content.content, fullPath);
             });
-        } catch(exception) {
-            console.log('global.util_readFromFileAsync error', exception);
-            defer.resolve('');//if there is error, resolve with an empty file
-        }
 
-        return defer.promise;
-    };
-} catch(e){
-    console.log('//polyfill for server side');
-    //polyfill for server side
-    //this script is appended to vendor script to make certain external
-    //lib available in global
-    var global = {};
-    global.util_readFromFileAsync = function (fullPath) {
-        var defer = Q.defer();
+            return defer.promise;
+        };
 
-        console.log('Reading Server Side', fullPath);
-
-        var url = '';
-        if ( fullPath.indexOf('data/controlCountMap.json') >= 0){
-            url = '/rest/controlCountMap/latest';
-        } else if ( fullPath.indexOf('data/dependenciesMap.json') >= 0){
-            url = '/rest/dependenciesMap/latest';
-        } else if ( fullPath.indexOf('data/namespaceCountMap.json') >= 0){
-            url = '/rest/namespaceCountMap/latest';
-        } else if ( fullPath.indexOf('data/usageMap.json') >= 0){
-            url = '/rest/usageMap/latest';
-        }
-
-        //making ajax calls
-        $.get(url).done(function(content){
-            defer.resolve(content.content, fullPath);
-        });
-
-        return defer.promise;
-    };
-}
+        //override the vars
+        window.AURA_EXPLORER_UTILS = AURA_EXPLORER_UTILS;
+    }
+})()

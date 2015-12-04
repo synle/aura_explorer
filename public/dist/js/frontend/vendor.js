@@ -34419,11 +34419,41 @@ return Q;
 
 });
 
+//utils
+var jsonPath = 'public/dist/js/data/';
+
+var getFilePath = function(jsonName, commitId, path){
+    return path.join(
+        process.cwd(),
+        jsonPath,
+        jsonName
+    );
+}
+
+var getRestUrlPath = function(jsonName, commitId){
+    jsonName = jsonName.toLowerCase();
+
+    if ( jsonName.indexOf('controlcountmap.json') >= 0){
+        return '/rest/controlCountMap/' + commitId;
+    } else if ( jsonName.indexOf('dependenciesmap.json') >= 0){
+        return '/rest/dependenciesMap/' + commitId;
+    } else if ( jsonName.indexOf('namespacecountmap.json') >= 0){
+        return '/rest/namespaceCountMap/' + commitId;
+    } else if ( jsonName.indexOf('usagemap.json') >= 0){
+        return '/rest/usageMap/' + commitId;
+    }
+    return '';
+}
+
+var getCommitIdString = function( commitId ){
+    return commitId || 'latest';
+}
+
 try {
     //polyfill for native
     //import
-    var path = require( 'path' );
     var fs = require( 'fs' );
+    var path = require( 'path' );
     var Q = require( 'q' );
 
     //polyfill
@@ -34431,12 +34461,10 @@ try {
     //lib available in global
     global.React = React;
     global.$ = $;
-    global.util_readFromFileAsync = function (fullPath) {
+    global.util_readFromFileAsync = function (fullPath, commitId) {
         var defer = Q.defer();
 
-        fullPath = path.join(process.cwd(), fullPath);
-
-        console.log('Reading Native', fullPath);
+        fullPath = getFilePath(fullPath, getCommitIdString( commitId ), path);
 
         try{
             fs.readFile(fullPath, 'utf-8', function (error, fileContent) {
@@ -34454,26 +34482,13 @@ try {
         return defer.promise;
     };
 } catch(e){
-    console.log('//polyfill for server side');
     //polyfill for server side
     //this script is appended to vendor script to make certain external
     //lib available in global
-    var global = {};
-    global.util_readFromFileAsync = function (fullPath) {
+    window.global = window.global || {};
+    window.global.util_readFromFileAsync = function (fullPath, commitId) {
         var defer = Q.defer();
-
-        console.log('Reading Server Side', fullPath);
-
-        var url = '';
-        if ( fullPath.indexOf('data/controlCountMap.json') >= 0){
-            url = '/rest/controlCountMap/latest';
-        } else if ( fullPath.indexOf('data/dependenciesMap.json') >= 0){
-            url = '/rest/dependenciesMap/latest';
-        } else if ( fullPath.indexOf('data/namespaceCountMap.json') >= 0){
-            url = '/rest/namespaceCountMap/latest';
-        } else if ( fullPath.indexOf('data/usageMap.json') >= 0){
-            url = '/rest/usageMap/latest';
-        }
+        var url = getRestUrlPath(fullPath, getCommitIdString( commitId ));
 
         //making ajax calls
         $.get(url).done(function(content){
