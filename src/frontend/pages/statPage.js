@@ -8,7 +8,7 @@ import CountTableComponent from '~/src/frontend/components/AuraStatCountTable';
 //utils
 import util from '~/src/frontend/library/util';
 import appInit from '~/src/frontend/library/app';
-import restClient from '~/src/frontend/library/restClient';
+import RestClient from '~/src/frontend/library/restClient';
 
 //main page
 const StatPage = React.createClass({
@@ -52,6 +52,8 @@ const StatPage = React.createClass({
 
 //rendering
 util.render( () => {
+	const restClient = new RestClient();
+
 	//init app
 	appInit(document);
 

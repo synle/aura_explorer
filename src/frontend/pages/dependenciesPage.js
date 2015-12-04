@@ -10,7 +10,7 @@ import ControlDetailPage from '~/src/frontend/components/AuraControlDetail';
 //utils
 import util from '~/src/frontend/library/util';
 import appInit from '~/src/frontend/library/app';
-import restClient from '~/src/frontend/library/restClient';
+import RestClient from '~/src/frontend/library/restClient';
 
 //main page
 const DependenciesPage = React.createClass({
@@ -98,6 +98,8 @@ const DependenciesPage = React.createClass({
 
 //rendering
 util.render( () => {
+	const restClient = new RestClient();
+
 	//init app
 	appInit(document);
 
