@@ -25,19 +25,19 @@ const _parsePromise = response => {
 //definitions
 const restClient = {
 	getDataDependenciesMap(){
-		return _util_readFromFileAsync( _util_getJoinPath( 'public/dist/js/data/dependenciesMap.json' ) )
+		return _util_readFromFileAsync( _util_getJoinPath( 'dependenciesMap.json' ) )
 			.then(_parsePromise);
 	},
 	getUsageMap(){
-		return _util_readFromFileAsync( _util_getJoinPath( 'public/dist/js/data/usageMap.json' ) )
+		return _util_readFromFileAsync( _util_getJoinPath( 'usageMap.json' ) )
 			.then(_parsePromise);
 	},
 	getControlCountMap(){
-		return _util_readFromFileAsync( _util_getJoinPath( 'public/dist/js/data/controlCountMap.json' ) )
+		return _util_readFromFileAsync( _util_getJoinPath( 'controlCountMap.json' ) )
 			.then(_parsePromise);
 	},
 	getNamespaceCountMap(){
-		return _util_readFromFileAsync( _util_getJoinPath( 'public/dist/js/data/namespaceCountMap.json' ) )
+		return _util_readFromFileAsync( _util_getJoinPath( 'namespaceCountMap.json' ) )
 			.then(_parsePromise);
 	}
 }
