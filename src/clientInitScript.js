@@ -17,7 +17,15 @@
     }
 
 
-    var AURA_EXPLORER_UTILS = {};
+    var AURA_EXPLORER_UTILS = {
+        tryParseJSON: function(response){
+            try{
+                return JSON.parse(response);
+            } catch(e){}
+
+            return response;
+        }
+    };
 
     try{
         //polyfill for native
