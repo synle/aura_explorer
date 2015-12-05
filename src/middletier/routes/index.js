@@ -35,10 +35,12 @@ router.get('/rest/:resourceName/:commitId', (req, res, next) => {
 		content = newContent;
 	}
 
-	switch(resourceName.toLowerCase().substr(
-		0,
-		resourceName.indexOf( '.json' )
-	)){
+	let formattedResourceName = resourceName.toLowerCase();
+	if (formattedResourceName.indexOf('.json') > 0){
+		formattedResourceName = formattedResourceName.substr(0, formattedResourceName.indexOf('.json'))
+	}
+
+	switch(formattedResourceName){
 		case 'dependenciesmap':
 			resourceName = 'dependenciesMap';
 			asyncRestPromise = data.getDataDependenciesMap( commitId ).then(_asyncIntermidateThen);
