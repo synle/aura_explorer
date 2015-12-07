@@ -1,23 +1,23 @@
 'use strict';
 
+//internal
+import processor from '~/src/backend/processParsingLookup';
+import config    from '~/config.json';
+import util      from '~/src/backend/util';
+
 //external
-var Git = require("nodegit");
-var _ = require('lodash');
+import path from 'path';
+import Git from "nodegit";
+import _ from 'lodash';
+import Q from 'q';
 
-//
-var getMostRecentCommit = function(repository) {
-	console.log('repository', repository);
-	return repository.getBranchCommit("master");
-};
-
-var getCommitMessage = function(commit) {
-	console.log('getCommitMessage', commit);
-	return commit.message();
-};
 
 var auraSubmodule = "aura-submodule";
 // var auraSubmodule = ".";
 
+
+//code start
+var deferGetAllcommit = Q.defer();
 Git.Repository.open(auraSubmodule)
 	.then(function(repo) {
 		return repo.getMasterCommit();
@@ -28,13 +28,7 @@ Git.Repository.open(auraSubmodule)
 		var history = firstCommitOnMaster.history(Git.Revwalk.SORT.Time);
 
 		history.on('end', function(commits) {
-			console.log('Total commits:', commits.length);
-
-			_.each(commits, function(commit, idx){
-				var commitSha = commit.sha();
-				var commitMessage = commit.sha();
-				
-			});
+			deferGetAllcommit.resolve(commits);
 		});
 
 		// Don't forget to call `start()`!
@@ -43,10 +37,45 @@ Git.Repository.open(auraSubmodule)
 
 
 
+deferGetAllcommit.promise.then(function(commits){
+	console.log('Total commits:', commits.length);
 
-// Git.Repository.open(auraSubmodule)
-//   .then(getMostRecentCommit)
-//   .then(getCommitMessage)
-//   .then(function(message) {
-//     console.log('message', message);
-//   });
+	//try making the base path
+	try {
+		util.mkDir(path.join(process.cwd(), config.auraMetaOutputDir));
+	} catch(e) {
+		console.log('[Error]', e);
+	}
+
+	var promises = [];
+
+	_.each(commits, function(commit, idx){
+		var defer = Q.defer();
+		promises.push(defer.promise);
+
+		var commitSha = commit.sha();
+		var commitMessage = commit.message();
+
+		//create the empty body
+		try {
+			util.mkDir(path.join(process.cwd(), config.auraMetaOutputDir, commitSha));
+		} catch(e) {}
+
+		//run it
+		processor(
+			path.join(process.cwd(), config.auraSourceBaseDir, '/'),
+			path.join(process.cwd(), config.auraMetaOutputDir, commitSha, '/'),
+			function(){
+				defer.resolve(commitMessage);
+			}
+		);
+	});
+
+	//finally done
+	console.log('Waiting On Promises', promises.length);
+	Q.allSettled(promises).then(function(){
+		console.log('finally done...');
+	});
+});
+
+
