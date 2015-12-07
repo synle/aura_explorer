@@ -98,15 +98,13 @@ const DependenciesPage = React.createClass({
 
 //rendering
 util.render( () => {
-	const restClient = new RestClient();
-
 	//init app
 	appInit(document);
 
 	//loading components
 	Q.all([
-		restClient.getDataDependenciesMap(),
-		restClient.getUsageMap()
+		RestClient.getDataDependenciesMap(),
+		RestClient.getUsageMap()
 	]).done(([ dataDependenciesMap, usageMaps ]) => {
 		ReactDOM.render(
 			<DependenciesPage dataDependenciesMap={dataDependenciesMap}

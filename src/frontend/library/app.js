@@ -3,6 +3,7 @@
 
 //internal
 import util from '~/src/frontend/library/util';
+import clientInitScript from '~/src/clientInitScript';
 
 //render
 const appInit = (document) => {

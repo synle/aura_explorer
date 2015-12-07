@@ -52,15 +52,13 @@ const StatPage = React.createClass({
 
 //rendering
 util.render( () => {
-	const restClient = new RestClient();
-
 	//init app
 	appInit(document);
 
 	//loading components
 	Q.all([
-		restClient.getControlCountMap(),
-		restClient.getNamespaceCountMap()
+		RestClient.getControlCountMap(),
+		RestClient.getNamespaceCountMap()
 	]).done(([controlCountMap, namespaceCountMap]) => {
 		ReactDOM.render(
 			<StatPage namespaceCountMap={namespaceCountMap}
