@@ -18,16 +18,18 @@ var concat = require("gulp-concat");
 var less = require('gulp-less');
 var watch = require('gulp-watch');
 var plumber = require('gulp-plumber');
-var minify = require('gulp-minify');
+// var minify = require('gulp-minify');
 
+//internal
+var CONFIG = require("./config.json")
 
 //output
-var outputDir = 'public';
-var outputDistJsDir = 'public/dist/js';
-var outputDistJsNativeDir = 'public/dist/js';
-var outputDistJsFrontendDir = 'public/dist/js/frontend';
-var outputDistCssDir = 'public/dist/css';
-var outputDistViewDir = 'public';
+var outputDir = CONFIG.resourceBaseDir;
+var outputDistJsDir = outputDir + '/dist/js';
+var outputDistJsNativeDir = outputDir + '/dist/js';
+var outputDistJsFrontendDir = outputDir + '/dist/js/frontend';
+var outputDistCssDir = outputDir + '/dist/css';
+var outputDistViewDir = outputDir + '/';
 
 //scripts
 var appScripts = [
@@ -65,9 +67,9 @@ var generateStyles = function(src, dest){
 			.pipe(plumber())
 		    .pipe(less())
 		    .pipe(concat(dest))
-		    .pipe(minify({
-		        mangle: false
-		    }))
+		    // .pipe(minify({
+		    //     mangle: false
+		    // }))
 		    .pipe(gulp.dest(outputDistCssDir));
 	};
 };

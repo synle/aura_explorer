@@ -1,4 +1,5 @@
 {
     "auraSourceBaseDir": "./aura-master",
-    "auraMetaOutputDir": "./public/dist/js/data"
+    "auraMetaOutputDir": "./public/dist/js/data",
+    "resourceBaseDir": "public"
 }
