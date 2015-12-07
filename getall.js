@@ -9,8 +9,6 @@ var Q = require('q');
 var auraSubmodule = "aura-submodule";
 // var auraSubmodule = ".";
 
-var allCommits = [];
-
 Git.Repository.open(auraSubmodule)
 	.then(function(repo) {
 		return repo.getMasterCommit();
@@ -21,12 +19,12 @@ Git.Repository.open(auraSubmodule)
 		var history = firstCommitOnMaster.history(Git.Revwalk.SORT.Time);
 
 		history.on('end', function(commits) {
-			console.log('#Total commits:', commits.length);
+			// console.log('#Total commits:', commits.length);
 
 			_.each(commits, function(commit, idx){
 				var commitSha = commit.sha();
 				var commitMessage = commit.sha();
-				console.log(`cd ${auraSubmodule}; git checkout ${commitSha}; cd ..; npm run build ${commitSha}`);
+				console.log(`cd ${auraSubmodule}; git checkout ${commitSha}; cd ..; npm run build ${commitSha};`);
 			});
 		});
 
