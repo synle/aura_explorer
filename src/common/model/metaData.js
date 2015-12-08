@@ -28,9 +28,9 @@ const metaDataDb = DataConnector.define(
 export default {
     init(){
         return metaDataDb.sync({
-            force: true
+            force: false
         }).then(() => {
-            console.log('initting metaDataDb...');
+            console.log('Initting metaDataDb...');
         });
     },
     getMetaByCommitId(commit){
