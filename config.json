@@ -1,4 +1,7 @@
 {
-    "auraSourceBaseDir": "./aura-master",
-    "auraMetaOutputDir": "./public/dist/js/data"
+    "auraSourceBaseDir": "./aura-submodule",
+    "auraSourceBaseDir_ZipFile": "./aura-master",
+    "auraSourceBaseDir_Submodule": "./aura-submodule",
+    "auraMetaOutputDir": "./public/dist/js/data",
+    "resourceBaseDir": "public"
 }

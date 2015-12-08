@@ -1,0 +1,3 @@
+[submodule "aura-submodule"]
+	path = aura-submodule
+	url = https://github.com/forcedotcom/aura.git
