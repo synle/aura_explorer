@@ -3,5 +3,21 @@
     "auraSourceBaseDir_ZipFile": "./aura-master",
     "auraSourceBaseDir_Submodule": "./aura-submodule",
     "auraMetaOutputDir": "./public/dist/js/data",
-    "resourceBaseDir": "public"
+    "resourceBaseDir": "public",
+    "databaseConfig": {
+    	"database" : "database",
+    	"username" : "username",
+    	"password" : "password",
+    	"options" : {
+			"host": "localhost",
+			"dialect": "sqlite",
+			"pool": {
+				"max": 5,
+				"min": 0,
+				"idle": 10000
+			},
+			"storage": "./metaData.sqlite3",
+			"logging": false
+		}
+    }
 }

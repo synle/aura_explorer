@@ -6,7 +6,7 @@ import logger from '~/src/backend/logger';//internal loggr
 import util from '~/src/backend/util';
 import generateLookup from '~/src/backend/generateLookup';
 
-export default (componentBaseDir, metaDataOutputDir, callback) => {
+export default (commit, componentBaseDir, metaDataOutputDir, callback) => {
 	//trim whitespace
 	logger.log('[componentBaseDir]: '.yellow, componentBaseDir);
 	logger.log('[metaDataOutputDir]: '.yellow, metaDataOutputDir);
@@ -32,6 +32,7 @@ export default (componentBaseDir, metaDataOutputDir, callback) => {
 
 		//generate lookup
 		generateLookup(
+			commit,
 			componentFileNames,//dictionary containing all js, evt and cmp files
 			componentBaseDir,//base dir of the aura upstream directory
 			metaDataOutputDir//base output dir , snippet

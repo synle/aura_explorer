@@ -11,13 +11,13 @@ import Q from 'q';
 //internal
 import logger from '~/src/backend/logger';
 import util from '~/src/backend/util';
-
+import metaDataModel from '~/src/common/model/metaData';
 
 //exports
-export default (componentFileNames, baseDirAuraUpstream, outputDirDataPath) => {
+export default (commit, componentFileNames, baseDirAuraUpstream, outputDirDataPath) => {
 	const finallyDoneDefer = Q.defer();
 	const mainDefer = Q.defer();
-	const promises = [];
+	const promises = [metaDataModel.init()];//first promise is initting the model
 
 	const interestedFiles = _.merge(
 		_.values(componentFileNames.cmp),
@@ -284,23 +284,40 @@ export default (componentFileNames, baseDirAuraUpstream, outputDirDataPath) => {
     	);
 
 
-		//writing to files
-		const _writeToFile = (jsonSerialization, content, outputFileName) => {
+		const writeData = (jsonSerialization, content, outputFileName) => {
 			const contentToWrite = jsonSerialization
 				? util.serializeJsonObject( content )
 				: content;
+
+			logger.log(
+				`\t[Writing ${jsonSerialization ? 'JSON' : 'Text'}]:`.yellow,
+				outputFileName.blue,
+				contentToWrite.length
+			);
+
+			// _writeToFile(contentToWrite, outputFileName);
+			_writeToDB(contentToWrite, outputFileName);
+		}
+
+
+		//writing to files
+		const _writeToFile = (content, outputFileName) => {
 			const outputFullPath = path.join(
                 outputDirDataPath,
                 outputFileName
             );
-
-			logger.log('\t[Writing To]: '.yellow, outputFullPath.blue, contentToWrite.length);
 
 			util.writeToFile(
 	            contentToWrite,
 	            outputFullPath
 	        );
 		}
+
+		//writing to db
+		const _writeToDB = (content, outputFileName) => {
+			return metaDataModel.upsert(commit, outputFileName, content);
+		}
+
 
 
 		//making output dir if it is not there
@@ -313,26 +330,26 @@ export default (componentFileNames, baseDirAuraUpstream, outputDirDataPath) => {
 		//writing files
 		logger.log('[Writing Output]'.yellow);
 		try{
-			_writeToFile(
+			writeData(
 				true,//need json serialization
 	            dependenciesMap,
 	            'dependenciesMap.json'
 	        );
 
-	        _writeToFile(
+	        writeData(
 	        	true,//need json serialization
 	            usageMap,
 	            'usageMap.json'
 	        );
 
-	        _writeToFile(
+	        writeData(
 	        	true,//need json serialization
 	            namespaceCountMap,
 	            'namespaceCountMap.json'
 	        );
 
 	        //let's do a map to get the name
-	        _writeToFile(
+	        writeData(
 	        	true,//need json serialization
 	            remappedControlCountMap,
 	            'controlCountMap.json'
@@ -340,14 +357,14 @@ export default (componentFileNames, baseDirAuraUpstream, outputDirDataPath) => {
 
 
 
-	        _writeToFile(
+	        writeData(
 	        	true,//need json serialization
 	            controlLocationMap,
 	            'autoCompleteControlMap.json'
 	        );
 
 
-	        _writeToFile(
+	        writeData(
 	        	true,//need json serialization
 	            controlLocationMap,
 	            'controlLocationMap.json'
@@ -355,7 +372,7 @@ export default (componentFileNames, baseDirAuraUpstream, outputDirDataPath) => {
 
 
 	        //write the aura_upstream_pom
-	        _writeToFile(
+	        writeData(
         		false,
 	        	auraUpstreamPomFileContent,
 	        	'aura_upstream_pom.xml'
@@ -367,6 +384,6 @@ export default (componentFileNames, baseDirAuraUpstream, outputDirDataPath) => {
         finallyDoneDefer.resolve();
 	});
 
-
+	console.log();
 	return finallyDoneDefer.promise;
 };

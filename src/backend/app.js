@@ -17,6 +17,7 @@ console.log('Parsing branch:', commit);
 
 //run it
 processor(
+	commit,
 	path.join(process.cwd(), config.auraSourceBaseDir, '/'),
 	path.join(process.cwd(), config.auraMetaOutputDir, commit, '/'),
 	() => {
