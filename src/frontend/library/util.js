@@ -1,6 +1,6 @@
 //internal
 import _ from 'lodash';
-
+import $ from 'jquery';
 
 //definitions
 const utils = {

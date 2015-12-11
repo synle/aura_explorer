@@ -1,6 +1,8 @@
 //external
 import _ from 'lodash';
 import Q from 'q';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 //internal
 import CountTableComponent from '~/src/frontend/components/AuraStatCountTable';

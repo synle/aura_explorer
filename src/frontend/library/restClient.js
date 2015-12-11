@@ -12,6 +12,9 @@ const _parseJSONPromise = response => {
 };
 
 
+const AURA_EXPLORER_UTILS = typeof global !== 'undefined' ? global.AURA_EXPLORER_UTILS : window.AURA_EXPLORER_UTILS;
+
+
 //definitions
 const restClient = function(){
 	let commitId = 'latest';

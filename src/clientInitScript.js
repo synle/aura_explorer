@@ -19,8 +19,12 @@
 
     var AURA_EXPLORER_UTILS = {};
 
-    try{
+    if (typeof global !== 'undefined'){
         //polyfill for native
+        global.document = window.document;
+        global.navigator = window.navigator;
+        global.$ = window.$;
+
         //import
         var fs = require( 'fs' );
         var path = require( 'path' );
@@ -50,10 +54,8 @@
 
 
         //set global variables used for native node webkit
-        global.React = React;
-        global.$ = $;
         global.AURA_EXPLORER_UTILS = AURA_EXPLORER_UTILS;
-    } catch(e) {
+    } else{
         //polyfill for server side
         //import
         var Q = window.Q;
