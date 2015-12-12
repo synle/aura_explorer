@@ -1,5 +1,6 @@
 //external
 import _ from 'lodash';
+import React from 'react';
 
 //internal
 import TableComponent from '~/src/frontend/components/Table';

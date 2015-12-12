@@ -1,5 +1,6 @@
 //external
 import _ from 'lodash';
+import React from 'react';
 
 //definitions
 const KeyValListViewComponent = React.createClass({
