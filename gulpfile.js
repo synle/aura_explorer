@@ -40,8 +40,6 @@ var appScripts = [
 var vendorScripts = [
 	'node_modules/jquery/dist/jquery.js',
 	'node_modules/bootstrap/dist/js/bootstrap.js',
-	'node_modules/react/dist/react-with-addons.js',
-	'node_modules/react-dom/dist/react-dom.js',
 	'node_modules/q/q.js',
 	'src/clientInitScript.js'
 ];

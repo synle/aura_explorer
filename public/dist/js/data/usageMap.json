@@ -7455,6 +7455,16 @@
      "default": "true",
      "description": "Sets initial focus on the first item in the panel"
     }
+   },
+   {
+    "controlNameSpace": "ui",
+    "controlName": "modal.cmp",
+    "controlFullName": "ui:modal.cmp",
+    "attribs": {
+     "name": "icon",
+     "type": "Aura.Component[]",
+     "description": "The icon for the modal"
+    }
    }
   ],
   "ui:output.cmp": [
@@ -90308,7 +90318,7 @@
     "controlName": "tooltipAdvanced.cmp",
     "controlFullName": "ui:tooltipAdvanced.cmp",
     "attribs": {
-     "description": "This is the tooltip advanced subcomponent, used by tooltip.cmp. DO NOT USE ALONE"
+     "description": "A tooltip advanced subcomponent for use in tooltip.cmp. DO NOT USE."
     }
    }
   ],

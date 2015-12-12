@@ -1,5 +1,7 @@
 //external
 import _ from 'lodash';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import Q from 'q';
 
 //internal

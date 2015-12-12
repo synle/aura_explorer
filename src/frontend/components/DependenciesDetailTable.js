@@ -1,5 +1,6 @@
 //external
 import _ from 'lodash';
+import React from 'react';
 import util from '~/src/frontend/library/util';
 
 //internal
