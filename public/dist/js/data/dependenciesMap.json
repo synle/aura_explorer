@@ -36195,6 +36195,11 @@
      "type": "Boolean",
      "default": "true",
      "description": "Sets initial focus on the first item in the panel"
+    },
+    "icon": {
+     "name": "icon",
+     "type": "Aura.Component[]",
+     "description": "The icon for the modal"
     }
    },
    "imports": {
