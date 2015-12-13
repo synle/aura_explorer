@@ -1,5 +1,7 @@
 import Sequelize from 'sequelize';
 import DataConnector from '~/src/common/dataConnector';
+import Q from 'q';
+import _ from 'lodash';
 
 //definitions
 //schema
@@ -25,7 +27,43 @@ const metaDataDb = DataConnector.define(
     }
 );
 
-export default {
+
+const getConvertedMap = metaDataReturn => {
+    return _.reduce(metaDataReturn, (res, curMetaData) => {
+        let {id, commit, type, content} = curMetaData.dataValues;
+        type = type.toLowerCase();//normalized the keyname
+
+        if (type !== 'aura_upstream_pom.xml'){
+            content = JSON.parse(content);
+        }
+
+        res[type] = {id, commit, type, content};
+        return res;
+    }, {//the body
+        'aura_upstream_pom.xml' : null,
+        'autocompletecontrolmap.json' : null,
+        'controlcountmap.json' : null,
+        'controllocationmap.json' : null,
+        'dependenciesmap.json' : null,
+        'namespacecountmap.json' : null,
+        'usagemap.json' : null
+    });
+};
+
+
+const promiseWrap = (curPromise, resolver) => {
+    const defer = Q.defer();
+
+    curPromise.then(( returnData ) => {
+        defer.resolve( getConvertedMap(returnData) );
+    }).catch(
+        e => console.log('promiseWrap Error', e)
+    );
+
+    return defer.promise;
+}
+
+const databaseDriver = {
     init(){
         return metaDataDb.sync({
             force: false
@@ -34,15 +72,19 @@ export default {
         });
     },
     getMetaByCommitId(commit){
-        return metaDataDb.findAll({
-            commit
-        });
+        return promiseWrap(
+            metaDataDb.findAll({
+                commit
+            })
+        );
     },
     getMetaByCommitIdAndType(commit, type){
-        return metaDataDb.findOne({
-            commit,
-            type
-        });
+        return promiseWrap(
+            metaDataDb.findOne({
+                commit,
+                type
+            })
+        );
     },
     upsert(commit, type, content) {
         return metaDataDb.upsert({
@@ -52,4 +94,10 @@ export default {
             content
         });
     }
-}
+};
+
+
+
+const driverToUse = databaseDriver;//fileDriver
+
+export default driverToUse;
