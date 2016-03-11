@@ -15,6 +15,7 @@ import util from '~/src/backend/util';
 
 //exports
 export default (componentFileNames, baseDirAuraUpstream, outputDirDataPath) => {
+	const finallyDoneDefer = Q.defer();
 	const mainDefer = Q.defer();
 	const promises = [];
 
@@ -362,5 +363,10 @@ export default (componentFileNames, baseDirAuraUpstream, outputDirDataPath) => {
         } catch(ex){
         	logger.log('[Main Defer Error]'.red, ex);
         }
+
+        finallyDoneDefer.resolve();
 	});
+
+
+	return finallyDoneDefer.promise;
 };
